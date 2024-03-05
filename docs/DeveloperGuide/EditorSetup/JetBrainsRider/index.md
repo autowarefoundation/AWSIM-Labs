@@ -2,6 +2,7 @@
 
 ## Install JetBrains Rider:
 
+Follow the steps in:
 - https://www.jetbrains.com/help/rider/Installation_guide.html#snap
 
 ```bash
@@ -10,6 +11,7 @@ sudo snap install rider --classic
 
 ## Install .NET SDK:
 
+Follow the steps in:
 - https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#register-the-microsoft-package-repository
 
 ```bash
@@ -32,14 +34,15 @@ sudo apt install dotnet-sdk-8.0
 
 ## Connect Rider to Unity Editor:
 
+Follow the steps in:
 - https://www.jetbrains.com/help/rider/Unity.html#8f092cb7_9
 
 ```bash
 1) Open an existing Unity project in the Unity Editor.
 
-2) Select Edit | Preferences (Unity | Settings on macOS) and open the External Tools page.
+2) Select Edit > Preferences (Unity > Settings on macOS) and open the External Tools page.
 
-3) In the External Script Editor, select a $p1//product-profile[@id=$p2]/@name installation.
+3) In the External Script Editor, select a "Rider" installation.
 
 4) In the Preferences window, click "Regenerate project files" under the External Tools section.
 
