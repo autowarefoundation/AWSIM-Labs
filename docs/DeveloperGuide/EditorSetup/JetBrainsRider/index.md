@@ -3,6 +3,7 @@
 ## Install JetBrains Rider:
 
 Follow the steps in:
+
 - https://www.jetbrains.com/help/rider/Installation_guide.html#snap
 
 ```bash
@@ -12,6 +13,7 @@ sudo snap install rider --classic
 ## Install .NET SDK:
 
 Follow the steps in:
+
 - https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#register-the-microsoft-package-repository
 
 ```bash
@@ -35,6 +37,7 @@ sudo apt install dotnet-sdk-8.0
 ## Connect Rider to Unity Editor:
 
 Follow the steps in:
+
 - https://www.jetbrains.com/help/rider/Unity.html#8f092cb7_9
 
 ```bash
