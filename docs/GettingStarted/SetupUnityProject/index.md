@@ -166,6 +166,10 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
     The Externals directory is added to the `.gitignore` because the map has a large file size and should not be directly uploaded to the repository.
 
+## Import Graphy Asset
+
+To be able to import Graphy follow these instructions: [Graphy Asset Setup](../../DeveloperGuide/EditorSetup/Graphy/index.md) 
+
 ## Run the demo in Editor
 
 The following steps describe how to run the demo in Unity Editor:
