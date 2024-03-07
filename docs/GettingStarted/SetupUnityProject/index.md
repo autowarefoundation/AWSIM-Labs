@@ -168,7 +168,7 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
 ## Import Graphy Asset
 
-To be able to import Graphy follow these instructions: [Graphy Asset Setup](../../DeveloperGuide/EditorSetup/Graphy/index.md) 
+Import Graphy by following these instructions: [Graphy Asset Setup](../../DeveloperGuide/EditorSetup/Graphy/index.md) 
 
 ## Run the demo in Editor
 
