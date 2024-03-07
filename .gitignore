@@ -71,4 +71,5 @@ crashlytics-build.properties
 
 # JetBrains
 /.idea/
+.idea/
 
