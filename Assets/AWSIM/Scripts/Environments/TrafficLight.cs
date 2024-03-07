@@ -102,15 +102,14 @@ namespace AWSIM
             int materialIndex;
 
             // const parameters.
-            const string EmissiveColor = "_EmissiveColor";
-            const string EmissiveIntensity = "_EmissiveIntensity";
-            const string EmissiveExposureWeight = "_EmissiveExposureWeight";
-            const string LightOnFlag = "_LightOn";
+            const string EmissionColor = "_EmissionColor";
+            const string EmissionIntensity = "_EmissionIntensity";
+            const string EmissionExposureWeight = "_EmissionExposureWeight";
             const float flashIntervalSec = 0.5f;                // flash bulb lighting interval(sec).
 
             float timer = 0;                            // used for flashing status.     NOTE: Might as well make it static and refer to the same time. 
-            Color defaultEmissiveColor;                 // default bulb material emissive color.
-            float defaultEmissiveExposureWeight;        // default bulb mateiral emissive exposure weight
+            Color defaultEmissionColor;                 // default bulb material  color.
+            float defaultEmissionExposureWeight;        // default bulb mateiral  exposure weight
             Dictionary<BulbColor, EmissionConfig> bulbColorConfigPairs;
             Material material = null;                   // bulb mateiral(instance).
             bool initialized = false;
@@ -132,8 +131,8 @@ namespace AWSIM
                 material = renderer.materials[materialIndex];
 
                 // cache default material parameters.
-                defaultEmissiveColor = material.GetColor(EmissiveColor);
-                defaultEmissiveExposureWeight = material.GetFloat(EmissiveExposureWeight);
+                defaultEmissionColor = material.GetColor(EmissionColor);
+                defaultEmissionExposureWeight = material.GetFloat(EmissionExposureWeight);
 
                 initialized = true;
             }
@@ -209,23 +208,15 @@ namespace AWSIM
                 if (isLightOn)
                 {
                     var config = bulbColorConfigPairs[color];
-                    material.SetColor(EmissiveColor, config.Color * config.Intensity);
-                    material.SetFloat(EmissiveExposureWeight, config.ExposureWeight);
-                    if(material.HasProperty(LightOnFlag))
-                    {
-                        material.SetInt(LightOnFlag, 1);
-                    }
+                    material.SetColor(EmissionColor, config.Color * config.Intensity);
+                    material.SetFloat(EmissionExposureWeight, config.ExposureWeight);
                     this.isLightOn = true;
                     timer = 0;
                 }
                 else
                 {
-                    material.SetColor(EmissiveColor, defaultEmissiveColor);
-                    material.SetFloat(EmissiveExposureWeight, defaultEmissiveExposureWeight);
-                    if(material.HasProperty(LightOnFlag))
-                    {
-                        material.SetInt(LightOnFlag, 0);
-                    }
+                    material.SetColor(EmissionColor, defaultEmissionColor);
+                    material.SetFloat(EmissionExposureWeight, defaultEmissionExposureWeight);
                     this.isLightOn = false;
                     timer = 0;
                 }
