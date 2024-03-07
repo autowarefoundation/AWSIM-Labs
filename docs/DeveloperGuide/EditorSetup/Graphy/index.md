@@ -26,7 +26,7 @@ If you can't see the Graphy in the scene you can add it to your scene by followi
 
 1) Go to the Assets folder in the Project window.
 2) Open `Graphy > Prefab` folder.
-3) Drag the [Graphy] prefab into the scene.
+3) Drag the `Graphy` prefab into the scene.
 4) You can customize your Graphy by selecting the Graphy prefab in the scene and changing the settings in the inspector
    window.
 
