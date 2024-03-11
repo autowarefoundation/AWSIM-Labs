@@ -25,7 +25,7 @@ the `AutowareSimulation` scene. If it's missing you can add it to scene by follo
 
 ## Integrating Graphy into custom scenes
 
-Graphy is pre-integrated within the AutowareSimulation scene. To incorporate Graphy into your own custom scenes, please adhere to the following steps:
+Graphy is pre-integrated within the `AutowareSimulation` scene. To incorporate Graphy into your own custom scenes, please adhere to the following steps:
 
 1) Go to the Assets folder in the Project window.
 2) Open `Graphy > Prefab` folder.
