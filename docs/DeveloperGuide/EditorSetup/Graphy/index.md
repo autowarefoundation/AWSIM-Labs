@@ -11,6 +11,9 @@ Graphy Asset Store link:
 ## Add Graphy to the Unity Editor
 
 1) Open up the Unity Editor.
+  - Open up a temporary new scene by File -> New Scene -> Empty(Built-in) -> Create
+  - This is due to a bug with Unity crashing on certain Linux configurations.
+  - When the package is imported, you can open up the desired scene.
 2) Go to the `Window` menu and select `Package Manager`.
 3) Make sure the `My Assets` tab is selected from the top left of the Package Manager window.
 4) Find & select the Graphy from the list and click `Download` or `Import` from the bottom left of the Package Manager
