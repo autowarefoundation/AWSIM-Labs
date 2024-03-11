@@ -23,9 +23,9 @@ Graphy Asset Store link:
 After the import is complete, you should be able to see Graphy prefab in the `Hierarchy` window of
 the `AutowareSimulation` scene. If it's missing you can add it to scene by following steps below.
 
-## Add Graphy to the Scene
+## Integrating Graphy into custom scenes
 
-If you can't see the Graphy in the scene you can add it to your scene by following these steps:
+Graphy is pre-integrated within the AutowareSimulation scene. To incorporate Graphy into your own custom scenes, please adhere to the following steps:
 
 1) Go to the Assets folder in the Project window.
 2) Open `Graphy > Prefab` folder.
