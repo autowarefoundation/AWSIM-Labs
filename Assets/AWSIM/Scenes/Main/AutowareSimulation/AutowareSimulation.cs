@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using AWSIM.Scripts.UI;
 using AWSIM.TrafficSimulation;
 
 namespace AWSIM
@@ -40,6 +41,8 @@ namespace AWSIM
             public EgoConfiguration Ego = new EgoConfiguration();
         }
 
+        private EgoVehiclePositionManager egoVehiclePositionManager;
+
         void Awake()
         {
             // check if time source selector is present
@@ -73,6 +76,10 @@ namespace AWSIM
                 // set time source
                 timeSourceSelector?.SetType(config.TimeSource);
             }
+
+            egoVehiclePositionManager = gameObject.AddComponent<EgoVehiclePositionManager>();
+            egoVehiclePositionManager.EgoTransform = egoTransform;
+            egoVehiclePositionManager.enabled = true;
         }
     }
 }
