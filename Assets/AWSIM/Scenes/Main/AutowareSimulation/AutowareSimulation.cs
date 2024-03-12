@@ -12,7 +12,7 @@ namespace AWSIM
     public class AutowareSimulation : MonoBehaviour
     {
         [SerializeField] TrafficManager trafficManager;
-        [SerializeField] public Transform egoTransform;
+        [SerializeField] Transform egoTransform;
         [SerializeField] TimeSourceSelector timeSourceSelector;
 
         [Header("Player Config")]
