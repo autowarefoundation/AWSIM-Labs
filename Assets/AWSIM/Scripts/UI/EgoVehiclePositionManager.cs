@@ -20,14 +20,6 @@ namespace AWSIM.Scripts.UI
             initialEgoRotation = EgoTransform.rotation;
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                ResetEgoToSpawnPoint();
-            }
-        }
-
         // If the ego transform reference is present, reset the ego to the initial position and rotation.
         public void ResetEgoToSpawnPoint()
         {

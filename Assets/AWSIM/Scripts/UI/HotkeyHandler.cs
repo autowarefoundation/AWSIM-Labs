@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace AWSIM.Scripts.UI
 {
@@ -30,6 +29,7 @@ namespace AWSIM.Scripts.UI
                 }
             }
 
+            // Reset the ego vehicle to the spawn point
             if (Input.GetKeyDown(KeyCode.R))
             {
                 egoVehiclePositionManager.ResetEgoToSpawnPoint();
