@@ -22,12 +22,12 @@ namespace AWSIM
             [SerializeField, Range(0, 1)] float lightingExposureWeight;
 
             Material material = null;
-            Color defaultEmissiveColor;
-            float defaultExposureWeight;
+            Color defaultEmissionColor;
+            float defaultEmission;
             bool isOn = false;
 
-            const string EmissiveColor = "_EmissiveColor";
-            const string EmissiveExposureWeight = "_EmissiveExposureWeight";
+            const string EmissionColor = "_EmissionColor";
+            const string Emission = "_Emission";
 
             public void Initialize()
             {
@@ -35,8 +35,8 @@ namespace AWSIM
                 {
                     material = meshRenderer.materials[materialIndex];
                     material.EnableKeyword("_EMISSION");
-                    defaultEmissiveColor = material.GetColor(EmissiveColor);
-                    defaultExposureWeight = material.GetFloat(EmissiveExposureWeight);
+                    defaultEmissionColor = material.GetColor(EmissionColor);
+                   // defaultEmission = material.GetFloat(Emission);
                 }
             }
 
@@ -48,13 +48,13 @@ namespace AWSIM
                 this.isOn = isLightOn;
                 if (isLightOn)
                 {
-                    material.SetColor(EmissiveColor, lightingColor * lightingIntensity);
-                    material.SetFloat(EmissiveExposureWeight, lightingExposureWeight);
+                    material.SetColor(EmissionColor, lightingColor * lightingIntensity);
+                    material.SetFloat(Emission, lightingExposureWeight);
                 }
                 else
                 {
-                    material.SetColor(EmissiveColor, defaultEmissiveColor);
-                    material.SetFloat(EmissiveExposureWeight, defaultExposureWeight);
+                    material.SetColor(EmissionColor, defaultEmissionColor);
+                    material.SetFloat(Emission, defaultEmission);
                 }
             }
 

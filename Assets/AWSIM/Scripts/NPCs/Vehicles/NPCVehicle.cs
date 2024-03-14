@@ -97,12 +97,12 @@ namespace AWSIM
             [SerializeField, Range(0, 1)] float lightingExposureWeight;
 
             Material material = null;
-            Color defaultEmissiveColor;
+            Color defaultEmissionColor;
             float defaultExposureWeight;
             bool isOn = false;
 
-            const string EmissiveColor = "_EmissiveColor";
-            const string EmissiveExposureWeight = "_EmissiveExposureWeight";
+            const string EmissionColor = "_EmissionColor";
+            const string EmissionExposureWeight = "_EmissionExposureWeight";
 
             public void Initialize()
             {
@@ -110,8 +110,8 @@ namespace AWSIM
                 {
                     material = meshRenderer.materials[materialIndex];
                     material.EnableKeyword("_EMISSION");
-                    defaultEmissiveColor = material.GetColor(EmissiveColor);
-                    defaultExposureWeight = material.GetFloat(EmissiveExposureWeight);
+                    defaultEmissionColor = material.GetColor(EmissionColor);
+                  //  defaultExposureWeight = material.GetFloat(EmissionExposureWeight);
                 }
             }
 
@@ -123,13 +123,13 @@ namespace AWSIM
                 this.isOn = isLightOn;
                 if (isLightOn)
                 {
-                    material.SetColor(EmissiveColor, lightingColor * lightingIntensity);
-                    material.SetFloat(EmissiveExposureWeight, lightingExposureWeight);
+                    material.SetColor(EmissionColor, lightingColor * lightingIntensity);
+                    material.SetFloat(EmissionExposureWeight, lightingExposureWeight);
                 }
                 else
                 {
-                    material.SetColor(EmissiveColor, defaultEmissiveColor);
-                    material.SetFloat(EmissiveExposureWeight, defaultExposureWeight);
+                    material.SetColor(EmissionColor, defaultEmissionColor);
+                    material.SetFloat(EmissionExposureWeight, defaultExposureWeight);
                 }
             }
 

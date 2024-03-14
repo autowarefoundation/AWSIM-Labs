@@ -104,12 +104,12 @@ namespace AWSIM
             // const parameters.
             const string EmissionColor = "_EmissionColor";
             const string EmissionIntensity = "_EmissionIntensity";
-            const string EmissionExposureWeight = "_EmissionExposureWeight";
+            //const string Emission = "Emission";
             const float flashIntervalSec = 0.5f;                // flash bulb lighting interval(sec).
 
             float timer = 0;                            // used for flashing status.     NOTE: Might as well make it static and refer to the same time. 
             Color defaultEmissionColor;                 // default bulb material  color.
-            float defaultEmissionExposureWeight;        // default bulb mateiral  exposure weight
+            float defaultEmission;        // default bulb mateiral  exposure weight
             Dictionary<BulbColor, EmissionConfig> bulbColorConfigPairs;
             Material material = null;                   // bulb mateiral(instance).
             bool initialized = false;
@@ -132,7 +132,7 @@ namespace AWSIM
 
                 // cache default material parameters.
                 defaultEmissionColor = material.GetColor(EmissionColor);
-                defaultEmissionExposureWeight = material.GetFloat(EmissionExposureWeight);
+                //defaultEmission = material.GetFloat(Emission);
 
                 initialized = true;
             }
@@ -209,14 +209,14 @@ namespace AWSIM
                 {
                     var config = bulbColorConfigPairs[color];
                     material.SetColor(EmissionColor, config.Color * config.Intensity);
-                    material.SetFloat(EmissionExposureWeight, config.ExposureWeight);
+                    //material.SetFloat(Emission, config.ExposureWeight);
                     this.isLightOn = true;
                     timer = 0;
                 }
                 else
                 {
                     material.SetColor(EmissionColor, defaultEmissionColor);
-                    material.SetFloat(EmissionExposureWeight, defaultEmissionExposureWeight);
+                    //material.SetFloat(Emission, defaultEmission);
                     this.isLightOn = false;
                     timer = 0;
                 }
