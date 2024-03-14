@@ -33,6 +33,10 @@ namespace AWSIM.Loader
                 trafficSim.gameObject.SetActive(simulationConfiguration.useTraffic);
             }
 
+            // Set Ego position manager
+            Scripts.UI.EgoVehiclePositionManager positionManager = GameObject.FindObjectOfType<Scripts.UI.EgoVehiclePositionManager>();
+            positionManager.InitializeEgoTransform(GameObject.FindObjectOfType<Vehicle>().transform);
+
             // Set scene time scale
             DemoUI demoUi = GameObject.FindObjectOfType<DemoUI>();
             demoUi.SetTimeScale(simulationConfiguration.timeScale);

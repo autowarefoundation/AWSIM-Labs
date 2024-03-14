@@ -11,11 +11,24 @@ namespace AWSIM.Scripts.UI
 
         private void Awake()
         {
-            egoRigidbody = EgoTransform.GetComponent<Rigidbody>();
+            if (egoRigidbody)
+            {
+                egoRigidbody = EgoTransform.GetComponent<Rigidbody>();
+            }
         }
 
         private void Start()
         {
+            if (EgoTransform) {
+                initialEgoPosition = EgoTransform.position;
+                initialEgoRotation = EgoTransform.rotation;
+            }
+        }
+
+        public void InitializeEgoTransform(Transform egoTransform)
+        {
+            EgoTransform = egoTransform;
+            egoRigidbody = EgoTransform.GetComponent<Rigidbody>();
             initialEgoPosition = EgoTransform.position;
             initialEgoRotation = EgoTransform.rotation;
         }
