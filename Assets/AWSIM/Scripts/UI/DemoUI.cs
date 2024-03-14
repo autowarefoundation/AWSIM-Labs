@@ -11,6 +11,8 @@ namespace AWSIM
         [SerializeField] Slider timeScaleSlider;
         [SerializeField] Text versionText;
 
+        public Slider TimeScaleSlider => timeScaleSlider;
+
         private void Start()
         {
             timeScaleSlider.value = Time.timeScale;
