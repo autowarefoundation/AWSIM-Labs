@@ -8,18 +8,18 @@ Instead, open a discussion in the [Q&A category](https://github.com/autowarefoun
 The trouble shooting page at [AWSIM](../TroubleShooting/index.md) and at [Autoware](https://autowarefoundation.github.io/autoware-documentation/main/support/troubleshooting/) will be also helpful.
 
 ## Issue
-Before you post an issue, please search [Issues](https://github.com/tier4/AWSIM/issues?q=is%3Aissue) and [Discussions Q&A catecory](https://github.com/orgs/autowarefoundation/discussions/categories/q-a) to check if it is not a known issue.
+Before you post an issue, please search [Issues](https://github.com/autowarefoundation/AWSIM/issues?q=is%3Aissue) and [Discussions Q&A catecory](https://github.com/orgs/autowarefoundation/discussions/categories/q-a) to check if it is not a known issue.
 
 [This page](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) is helpful how to create an issue from a repository.
 
 ### Bug report
-If you find a new bug, please create an issue [here](https://github.com/tier4/AWSIM/issues/new?assignees=&labels=&template=bug.yaml)
+If you find a new bug, please create an issue [here](https://github.com/autowarefoundation/AWSIM/issues/new?assignees=&labels=&template=bug.yaml)
 
 ### Feature request
-If you propose a new feature or have an idea, please create an issue [here](https://github.com/tier4/AWSIM/issues/new?assignees=&labels=&template=feature_request.yaml)
+If you propose a new feature or have an idea, please create an issue [here](https://github.com/autowarefoundation/AWSIM/issues/new?assignees=&labels=&template=feature_request.yaml)
 
 ### Task
-If you have plan to contribute AWSIM, please create an issue [here](https://github.com/tier4/AWSIM/issues/new?assignees=&labels=&template=task.yaml).
+If you have plan to contribute AWSIM, please create an issue [here](https://github.com/autowarefoundation/AWSIM/issues/new?assignees=&labels=&template=task.yaml).
 
 ### Question
 - If you need a general support, please open a discussion in the [Q&A category](https://github.com/autowarefoundation/autoware/discussions/new?category=q-a).
@@ -35,5 +35,5 @@ The following process should be followed:
 
 Please keep the following in mind, while developing new features:
 
-- [Git branching guidelines](https://tier4.github.io/AWSIM/ProjectGuide/GitBranch/)
+- [Git branching guidelines](https://autowarefoundation.github.io/AWSIM/ProjectGuide/GitBranch/)
 - [C# coding convention](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions?redirectedfrom=MSDN).

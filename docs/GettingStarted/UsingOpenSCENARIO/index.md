@@ -10,7 +10,7 @@ Below you can find instructions on how to setup the OpenSCENARIO execution using
 The instruction assumes using the Ubuntu OS.
 
 ## Prerequisites
-Follow [Setup Unity Project tutorial](https://tier4.github.io/AWSIM/GettingStarted/SetupUnityProject/)
+Follow [Setup Unity Project tutorial](https://tier4.autowarefoundation.io/AWSIM/GettingStarted/SetupUnityProject/)
 
 ## Build Autoware with `scenario_simulator_v2`
 

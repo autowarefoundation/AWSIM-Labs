@@ -4,9 +4,9 @@ Below you can find instructions on how to setup the scenario execution using `sc
 The instruction assumes using the Ubuntu OS.
 
 ## Prerequisites
-1. Build Autoware by following ["Build Autoware with `scenario_simulator_v2`" section from the scenario simulator and AWSIM quick start guide](https://tier4.github.io/AWSIM/GettingStarted/UsingOpenSCENARIO)
+1. Build Autoware by following ["Build Autoware with `scenario_simulator_v2`" section from the scenario simulator and AWSIM quick start guide](https://autowarefoundation.github.io/AWSIM/GettingStarted/UsingOpenSCENARIO)
 
-2. Follow [Setup Unity Project tutorial](https://tier4.github.io/AWSIM/GettingStarted/SetupUnityProject/)
+2. Follow [Setup Unity Project tutorial](https://autowarefoundation.github.io/AWSIM/GettingStarted/SetupUnityProject/)
 
 ## Running the demo
 

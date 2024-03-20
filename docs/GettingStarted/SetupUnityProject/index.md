@@ -99,7 +99,7 @@ To open the Unity AWSIM project in Unity Editor:
 === "Using Unity Hub"
     1. Make sure you have the AWSIM repository cloned and ROS 2 is not sourced.
         ```
-        git clone git@github.com:tier4/AWSIM.git
+        git clone git@github.com:autowarefoundation/AWSIM.git
         ```
 
     2. Launch UnityHub.

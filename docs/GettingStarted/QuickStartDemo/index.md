@@ -117,9 +117,9 @@ To run the simulator, please follow the steps below.
 3. Download and Run AWSIM Demo binary.
 
     1. Download `AWSIM_v1.2.0.zip`.
-
-        [Download AWSIM Demo for ubuntu](https://github.com/tier4/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0.zip){.md-button .md-button--primary}
-
+        We don't have a release yet. Please follow the Setup Guide to build the AWSIM binary.
+        [Download AWSIM Demo for ubuntu](){.md-button .md-button--primary}
+    
     2. Unzip the downloaded file.
 
     3. Make the `AWSIM_v1.2.0.x86_64` file executable.
@@ -151,7 +151,7 @@ In order to configure and run the Autoware software with the AWSIM demo, please:
 
 1. Download `map files (pcd, osm)` and unzip them.
 
-    [Download Map files (pcd, osm)](https://github.com/tier4/AWSIM/releases/download/v1.1.0/nishishinjuku_autoware_map.zip){.md-button .md-button--primary}
+    [Download Map files (pcd, osm)](https://drive.google.com/drive/folders/15D5s2m3A7_wtCPio8ewRy0wL_xQtmqss){.md-button .md-button--primary}
 
 2. Clone [Autoware](https://github.com/autowarefoundation/autoware) and move to the directory.
 ```
@@ -226,7 +226,7 @@ The self-driving simulation demo has been successfully launched!
 
 ## Troubleshooting
 
-In case of any problems with running the sample AWSIM binary with Autoware, start with checking our [Troubleshooting page](https://tier4.github.io/AWSIM/DeveloperGuide/TroubleShooting/) with the most common problems.
+In case of any problems with running the sample AWSIM binary with Autoware, start with checking our [Troubleshooting page](https://autowarefoundation.github.io/AWSIM/DeveloperGuide/TroubleShooting/) with the most common problems.
 
 ## Appendix
 - [AWSIM ROS2 topic list](../../Components/ROS2/ROS2TopicList/index.md)
