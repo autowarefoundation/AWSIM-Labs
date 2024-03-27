@@ -20,14 +20,14 @@ jobs:
         unity_version:
           - 2021.1.7f1
     steps:
-    - uses: actions/checkout@v2-beta
+    - uses: actions/checkout@v4
       with:
         lfs: true
-    - uses: game-ci/unity-builder@v2
+    - uses: game-ci/unity-builder@v4
       env:
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
       with:
         targetPlatform: ${{ matrix.target_platform }}
         unityVersion: ${{ matrix.unity_version }}
