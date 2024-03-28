@@ -37,6 +37,7 @@ jobs:
           exit 1
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha }} # This is dangerous without the first access check
           lfs: true
       - uses: game-ci/unity-builder@v4
         env:
