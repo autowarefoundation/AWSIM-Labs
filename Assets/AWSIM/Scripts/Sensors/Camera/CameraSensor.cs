@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using AWSIM.Scripts.UI;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -112,22 +111,6 @@ namespace AWSIM
             public CameraParameters cameraParameters;
         }
 
-        [System.Serializable]
-        public class ImageOnGui
-        {
-            /// <summary>
-            /// If camera image should be show on GUI
-            /// </summary>
-            public bool show = true;
-
-            [Range(1, 50)] public uint scale = 1;
-
-            [Range(0, 2048)] public uint xAxis = 0;
-            [Range(0, 2048)] public uint yAxis = 0;
-        }
-
-        [SerializeField] ImageOnGui imageOnGui = new ImageOnGui();
-
         [SerializeField] CameraParameters cameraParameters;
 
         /// <summary>
@@ -164,13 +147,15 @@ namespace AWSIM
             Fy
         }
 
+        private UICameraBridge uiCameraBridge;
+
         private int distortionShaderGroupSizeX;
         private int distortionShaderGroupSizeY;
         private int rosImageShaderGroupSizeX;
 
         private int bytesPerPixel = 3;
 
-        void Start()
+        private void Start()
         {
             if (cameraObject == null)
             {
@@ -207,12 +192,14 @@ namespace AWSIM
 
             distortionShaderGroupSizeX = ((distortedRenderTexture.width + (int)distortionShaderThreadsPerGroupX - 1) / (int)distortionShaderThreadsPerGroupX);
             distortionShaderGroupSizeY = ((distortedRenderTexture.height + (int)distortionShaderthreadsPerGroupY - 1) / (int)distortionShaderthreadsPerGroupY);
-            rosImageShaderGroupSizeX = (((cameraParameters.width * cameraParameters.height) * sizeof(uint)) / ((int)rosImageShaderThreadsPerGroupX * sizeof(uint)));
+            rosImageShaderGroupSizeX = ((cameraParameters.width * cameraParameters.height) * sizeof(uint)) / ((int)rosImageShaderThreadsPerGroupX * sizeof(uint));
+
+            uiCameraBridge = gameObject.GetComponent<UICameraBridge>();
         }
 
         public void DoRender()
         {
-            // Reander Unity Camera
+            // Render Unity Camera
             cameraObject.Render();
 
             // Set data to shader
@@ -227,7 +214,7 @@ namespace AWSIM
             // Get data from shader
             AsyncGPUReadback.Request(computeBuffer, OnGPUReadbackRequest);
 
-            // Callback called once the AsyncGPUReadback request is fullfield.
+            // Callback called once the AsyncGPUReadback request is fulfilled.
             void OnGPUReadbackRequest(AsyncGPUReadbackRequest request)
             {
                 if (request.hasError)
@@ -261,15 +248,14 @@ namespace AWSIM
             }
         }
 
-        void OnGUI()
+        // TODO: Disabling and re-enabling CameraSensorHolder in editor freezes distortedRenderTexture. Investigate further.
+        private void OnGUI()
         {
-            if (imageOnGui.show)
+            if (uiCameraBridge.enabled)
             {
-                GUI.DrawTexture(new Rect(imageOnGui.xAxis, imageOnGui.yAxis,
-                    distortedRenderTexture.width / imageOnGui.scale, distortedRenderTexture.height / imageOnGui.scale),
-                    distortedRenderTexture);
+                uiCameraBridge.RenderCameraToUI(cameraParameters, distortedRenderTexture);
             }
-        }
+        } 
 
         private bool FloatEqual(float value1, float value2, float epsilon = 0.001f)
         {
