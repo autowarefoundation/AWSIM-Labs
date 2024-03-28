@@ -4,7 +4,6 @@ on:
     types: [ assigned, opened, synchronize, reopened ]
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build_test:
