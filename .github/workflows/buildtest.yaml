@@ -29,7 +29,7 @@ jobs:
           echo "Current permission level is ${{ steps.checkAccess.outputs.user-permission }}"
           echo "Job originally triggered by ${{ github.actor }}"
           exit 1
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }} # This is dangerous without the first access check
           lfs: true
