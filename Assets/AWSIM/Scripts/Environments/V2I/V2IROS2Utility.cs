@@ -15,7 +15,7 @@ namespace AWSIM
         /// </summary>
         /// <param name="type"></param>
         /// <returns>Converted BulbType.</returns>
-        /// 
+        ///
         public static byte UnityToRosBulbShape(TrafficLight.BulbType type)
         {
             if (type == TrafficLight.BulbType.ANY_CIRCLE_BULB || type == TrafficLight.BulbType.RED_BULB || type == TrafficLight.BulbType.YELLOW_BULB || type == TrafficLight.BulbType.GREEN_BULB)
@@ -43,7 +43,7 @@ namespace AWSIM
         /// </summary>
         /// <param name="status"></param>
         /// <returns>Converted BulbStatus.</returns>
-        /// 
+        ///
         public static byte UnityToRosBulbStatus(TrafficLight.BulbStatus status)
         {
             if (status == TrafficLight.BulbStatus.SOLID_OFF)
@@ -61,7 +61,7 @@ namespace AWSIM
         /// </summary>
         /// <param name="color"></param>
         /// <returns>Converted BulbColor.</returns>
-        /// 
+        ///
         public static byte UnityToRosBulbColor(TrafficLight.BulbColor color)
         {
             if (color == TrafficLight.BulbColor.RED)

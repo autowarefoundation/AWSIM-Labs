@@ -137,5 +137,5 @@ There are several types of [colliders](https://docs.unity3d.com/ScriptReference/
 
 !!! example "Capsule Collider"
     An example of a `CapsuleCollider` that covers almost the entire pedestrian.
-    
+
     ![](collider_example.png)

@@ -3,7 +3,7 @@
 # Combination with Autoware and Scenario simulator v2
 ![](ss.png)
 
-[*Scenario Simulator v2*](https://tier4.github.io/scenario_simulator_v2-docs/) (*SS2*) is a scenario testing framework specifically developed for [*Autoware*](../Autoware/), an open-source self-driving software platform. It serves as a tool for *Autoware* developers to conveniently create and execute scenarios across different simulators. 
+[*Scenario Simulator v2*](https://tier4.github.io/scenario_simulator_v2-docs/) (*SS2*) is a scenario testing framework specifically developed for [*Autoware*](../Autoware/), an open-source self-driving software platform. It serves as a tool for *Autoware* developers to conveniently create and execute scenarios across different simulators.
 
 The primary goal of [*SS2*](https://tier4.github.io/scenario_simulator_v2-docs/developer_guide/About/) is to provide *Autoware* developers with an efficient means of writing scenarios once and then executing them in multiple simulators. By offering support for different simulators and scenario description formats, the framework ensures flexibility and compatibility.
 
@@ -20,7 +20,7 @@ The framework uses [*ZeroMQ*](https://tier4.github.io/scenario_simulator_v2-docs
 
 *AWSIM* scene architecture used in combination with *SS2* changes considerably compared to the [default scene](../AWSIM/). Here `traffic_simulator` from *SS2* replaces `TrafficSimulator` implementation in *AWSIM* - for this reason it and its `StopLines`, `TrafficLanes` and `TrafficIntersection` components are removed. Also, `NPCPedestrian` and `NPCVehicles` are not added as aggregators of *NPCs* in `Environment`.
 
-Instead, their counterparts are added in `ScenarioSimulatorConnector` object that is responsible for spawning `Entities` of the scenario. `Entity` can be: `Pedestrian`, `Vehicle`, `MiscObject` and `Ego`. 
+Instead, their counterparts are added in `ScenarioSimulatorConnector` object that is responsible for spawning `Entities` of the scenario. `Entity` can be: `Pedestrian`, `Vehicle`, `MiscObject` and `Ego`.
 `EgoEntity` is the equivalent of `EgoVehicle` - which is also removed from the default scene. However, it has the same components - it still communicates with *Autoware* as described [here](../CombinationWithAutoware/). So it can be considered that `EgoVehicle` has not changed and `NPCPedestrians` and `NPCVehicles` are now controlled directly by the *SS2*.
 
 
@@ -37,7 +37,7 @@ Communication between *SS2* and *AWSIM* takes place via *Request-Response* messa
 3. *opt Ego spawn* - optional, `EgoEntity` (with sensors) is spawned in the configuration defined in the scenario.
 4. *opt NPC spawn loop* - optional, all `Entities` (*NPCs*) defined in the scenario are spawned, the scenario may contain any number of each `Entity` type, it may not contain them at all or it may also be any combination of the available ones.
 5. *update loop* - this is the main loop where scenario commands are executed, first `EgoEntity` is updated - *SS2* gets its status, and then every other `Entity` is updated - the status of each *NPCs* is set according to the scenario. Next, the simulation frame is updated - here the communication between *Autoware* and *AWSIM* takes place. The last step of the loop is to update the traffic light state.
-6. *despawn loop* - after the end of the scenario, all `Entities` spawned on the scene are despawned (including `EgoEnity`) 
+6. *despawn loop* - after the end of the scenario, all `Entities` spawned on the scene are despawned (including `EgoEnity`)
 7. *Terminate* - *Autoware* is terminated.
 
 Documentation of the commands used in the sequence is available [here](https://tier4.github.io/scenario_simulator_v2-docs/proto_doc/protobuf/).

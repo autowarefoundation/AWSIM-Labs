@@ -1,9 +1,9 @@
 
 
 # Using OpenSCENARIO
-  
+
 !!! warning
-    
+
     Running AWSIM with scenario_simulator_v2 is still a prototype, so stable running is not guaranteed.
 
 Below you can find instructions on how to setup the OpenSCENARIO execution using [scenario_simulator_v2](https://github.com/tier4/scenario_simulator_v2) with AWSIM as a simulator
@@ -36,8 +36,8 @@ In order to configure the Autoware software with the AWSIM demo, please:
    vcs import src < simulator.repos
    ```
 5. Download `shinjuku_map.zip`  
-   [archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/shinjuku_map.zip){.md-button .md-button--primary} 
- 
+   [archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/shinjuku_map.zip){.md-button .md-button--primary}
+
 6. Unzip it to `src/simulator` directory
    ```
    unzip <Download directory>/shinjuku_map.zip -d src/simulator
@@ -56,7 +56,7 @@ In order to configure the Autoware software with the AWSIM demo, please:
 ## Running the demo
 
 1. Download `AWSIM_v1.2.0_ss2.zip` & Run  
-   [archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0_ss2.zip){.md-button .md-button--primary} 
+   [archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0_ss2.zip){.md-button .md-button--primary}
 
 2. Launch `scenario_test_runner`.
    ```

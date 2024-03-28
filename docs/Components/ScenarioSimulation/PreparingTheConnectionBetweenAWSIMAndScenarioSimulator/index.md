@@ -16,7 +16,7 @@ Match the parameters of the configured vehicle to match the entities parameters 
 
 ### Default AWSIM asset catalog
 
-AWSIM currently supports the following asset key values. 
+AWSIM currently supports the following asset key values.
 
 The list can be extended if required. Appropriate values should be added to asst key list in the `ScenarioSimulatorConnector` component and the vehicle parameters in scenario simulator should match them.
 
@@ -79,7 +79,7 @@ If those features are curcial for the scenario's execution, the scenario might n
 
   ![follow_camera.png](follow_camera.png)
 
-6. If necessary update the asset_id to prefab mapping - key in the map can be used in the scenario 
+6. If necessary update the asset_id to prefab mapping - key in the map can be used in the scenario
 
   ![entities.png](entities.png)
 
@@ -90,6 +90,3 @@ If those features are curcial for the scenario's execution, the scenario might n
 8. Configure Type in the TimeSourceSelector component to SS2
 
   ![time_selector_ss2.png](time_selector_ss2.png)
-
-
-

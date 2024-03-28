@@ -104,7 +104,7 @@ The pipeline consists of:
     - `Max H Angle` - maximum horizontal angle, right (default: `0`)
     - `Laser Array Cycle Time` - time between two consecutive firings of the whole laser array in milliseconds (default: `0`); used for velocity distortion feature.
     - `Beam Divergence` - represents the deviation of photons from a single beam emitted by a LiDAR sensor (in degrees); used for simulating snow only (private feature).
-    - *Noise Params*: 
+    - *Noise Params*:
         - `Angular Noise Type` - angular noise type<br>(default: `Ray Based`)
         - `Angular Noise St Dev` - angular noise standard deviation in degree<br>(default: `0.05729578`)
         - `Angular Noise Mean` - angular noise mean in degrees<br>(default: `0`)
@@ -208,7 +208,7 @@ To ensure the publication of the information described in this section, *GameObj
 
 ### Intensity Texture
 
-`RGL Unity Plugin` allows assigning an `Intensity Texture` to the *GameObjects* to produce a point cloud containing information about the lidar ray intensity of hit. It can be used to distinguish different levels of an object's reflectivity. 
+`RGL Unity Plugin` allows assigning an `Intensity Texture` to the *GameObjects* to produce a point cloud containing information about the lidar ray intensity of hit. It can be used to distinguish different levels of an object's reflectivity.
 
 #### Output data
 
@@ -238,4 +238,3 @@ To enable saving dictionary mapping set output file path to the `Semantic Catego
 <img src="InstanceSegDictMapping.png" width="400">
 
 The dictionary mapping file will be saved at the end of the simulation.
-

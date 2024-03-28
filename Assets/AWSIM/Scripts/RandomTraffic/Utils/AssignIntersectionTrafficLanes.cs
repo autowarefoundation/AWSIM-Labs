@@ -9,9 +9,9 @@ using ROS2;
 namespace AWSIM.TrafficSimulation
 {
     /// <summary>
-    /// To make the yielding rules work properly, it is necessary to catagorize the TrafficLanes. 
+    /// To make the yielding rules work properly, it is necessary to catagorize the TrafficLanes.
     /// The ones that belong to an intersection have the IntersectionLane variable set to true.
-    /// To automate the assignment of the corresponding IntersectionLane to each TrafficLane, this script can be used. 
+    /// To automate the assignment of the corresponding IntersectionLane to each TrafficLane, this script can be used.
     /// </summary>
     [ExecuteInEditMode]
     public class AssignIntersectionTrafficLanes : MonoBehaviour
@@ -37,7 +37,7 @@ namespace AWSIM.TrafficSimulation
             // checks if the reference to the parent of objects containing TrafficLanes has been assigned
             if (CheckReferences())
             {
-                // allows to remove current intersectionLane assignments in all children 
+                // allows to remove current intersectionLane assignments in all children
                 if (removeCurrentAssignment)
                     CleanUpIntersectionLanesVariable();
 
@@ -164,5 +164,3 @@ namespace AWSIM.TrafficSimulation
         }
     }
 }
-
-

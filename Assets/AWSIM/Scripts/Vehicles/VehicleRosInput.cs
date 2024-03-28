@@ -6,7 +6,7 @@ using ROS2;
 namespace AWSIM
 {
     /// <summary>
-    /// This class subscribes to the vehicleCommand and turnSignal  msg output from Autoware to ROS, 
+    /// This class subscribes to the vehicleCommand and turnSignal  msg output from Autoware to ROS,
     /// and after converting the msg, it inputs it to the Vehicle class of E2ESimualtor.
     /// </summary>
     [RequireComponent(typeof(Vehicle))]

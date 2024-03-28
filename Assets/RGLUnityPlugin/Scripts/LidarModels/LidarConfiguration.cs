@@ -149,7 +149,7 @@ namespace RGLUnityPlugin
 
         public override Vector2[] GetRayRanges()
         {
-            return new Vector2[1] {new Vector2(minRange, maxRange)};
+            return new Vector2[1] { new Vector2(minRange, maxRange) };
         }
     }
 

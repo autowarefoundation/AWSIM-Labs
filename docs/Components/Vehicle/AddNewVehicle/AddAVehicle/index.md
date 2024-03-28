@@ -93,11 +93,11 @@ To be able to control your `EgoVehicle` you need a `Vehicle` Script.
 
 !!! note "Testing"
     It is not possible to test this Script alone, but you can test the following
-    
+
     - [Vehicle Keyboard Input Script](#add-a-vehicle-keyboard-input-script)
     - [Vehicle Visual Effects Script](#add-a-vehicle-visual-effect-script)
     - [Vehicle Ros Input Script](#add-a-vehicle-ros-input-script)
-    
+
     If components listed above work correctly this means the `Vehicle` Script works correctly too.
 
 ## Add a Vehicle Keyboard Input Script
@@ -207,5 +207,3 @@ First you will have to save the Vehicle you created as a *prefab*, to easily add
 ![save vehicle as prefab](vehicle_save_prefab.gif)
 
 After that, you can add the Vehicle you created to different Scenes by dragging it from Vehicles directory to the *Hierarchy* of different Scenes.
-
-

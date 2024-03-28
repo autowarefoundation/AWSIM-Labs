@@ -182,7 +182,7 @@ namespace AWSIM.TrafficSimulation
                         // If the stop line is at the first waypoint, it is associated with the previous lane.
                         var distanceToStopLine =
                             HandleUtility.DistancePointLine(
-                                trafficLanes[id].Waypoints[0], 
+                                trafficLanes[id].Waypoints[0],
                                 stopLine.Points[0],
                                 stopLine.Points[1]);
                         if (distanceToStopLine < 1f)
@@ -215,7 +215,9 @@ namespace AWSIM.TrafficSimulation
                         stopLine.transform.parent = stopLineHolder.transform;
                         stopLines.Add(entry.Key, stopLine);
                     }
-                } else {
+                }
+                else
+                {
                     continue;
                 }
             }

@@ -20,7 +20,7 @@ namespace AWSIM.Loader
 
         private Vector3 egoEulerAngles;
 
-        public EgoConfiguration egoConfiguration {private set; get; }
+        public EgoConfiguration egoConfiguration { private set; get; }
 
         private GameObject egoModel;
 
@@ -37,7 +37,7 @@ namespace AWSIM.Loader
         /// <summary>
         /// Log callback action.
         /// </summary>
-        public Action<LogLevel, string> Log  { get; set; }
+        public Action<LogLevel, string> Log { get; set; }
 
         /// <summary>
         /// Load and validate config.
@@ -84,7 +84,8 @@ namespace AWSIM.Loader
         /// </summary>
         public Vector3 GetPositionFromUI()
         {
-            return new Vector3() {
+            return new Vector3()
+            {
                 x = float.Parse(positionInputFields[0].text),
                 y = float.Parse(positionInputFields[1].text),
                 z = float.Parse(positionInputFields[2].text)
@@ -96,7 +97,8 @@ namespace AWSIM.Loader
         /// </summary>
         public Vector3 GetEulersFromUI()
         {
-            return new Vector3() {
+            return new Vector3()
+            {
                 x = float.Parse(rotationInputFields[0].text),
                 y = float.Parse(rotationInputFields[1].text),
                 z = float.Parse(rotationInputFields[2].text)
@@ -119,7 +121,9 @@ namespace AWSIM.Loader
                 egoInstance.gameObject.transform.SetParent(hierarchyParent);
 
                 return egoInstance;
-            } else {
+            }
+            else
+            {
                 Log(LogLevel.LOG_ERROR, $"No ego prefab set.");
                 return null;
             }

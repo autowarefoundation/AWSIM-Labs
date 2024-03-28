@@ -15,12 +15,12 @@
 namespace ROS2
 {
 
-/// <summary>
-/// Interace for acquiring time
-/// </summary>
-public interface ITimeSource
-{
-  public void GetTime(out int seconds, out uint nanoseconds);
-}
+    /// <summary>
+    /// Interace for acquiring time
+    /// </summary>
+    public interface ITimeSource
+    {
+        public void GetTime(out int seconds, out uint nanoseconds);
+    }
 
 }  // namespace ROS2

@@ -54,7 +54,7 @@ namespace AWSIM.PointCloudMapping
         }
 
         // Empty function to make enable checkbox appear in the Inspector
-        public void Start() {}
+        public void Start() { }
 
         public void Initialize(Vector3 worldOriginROS, string outputPcdFilePath)
         {
@@ -67,11 +67,11 @@ namespace AWSIM.PointCloudMapping
 
             // Create and connect subgraph
             Matrix4x4 worldTransform = ROS2.Transformations.Unity2RosMatrix4x4();
-            worldTransform.SetColumn(3, worldTransform.GetColumn(3) + (Vector4) worldOriginROS);
+            worldTransform.SetColumn(3, worldTransform.GetColumn(3) + (Vector4)worldOriginROS);
             rglSubgraphMapping = new RGLNodeSequence()
                 .AddNodePointsTransform(rosWorldTransformNodeId, worldTransform)
                 .AddNodePointsDownsample(downsampleNodeId, new Vector3(leafSize, leafSize, leafSize))
-                .AddNodePointsTemporalMerge(temporalMergeNodeId, new RGLField[1] {RGLField.XYZ_VEC3_F32});
+                .AddNodePointsTemporalMerge(temporalMergeNodeId, new RGLField[1] { RGLField.XYZ_VEC3_F32 });
 
             rglSubgraphMapping.SetActive(downsampleNodeId, enableDownsampling);
 

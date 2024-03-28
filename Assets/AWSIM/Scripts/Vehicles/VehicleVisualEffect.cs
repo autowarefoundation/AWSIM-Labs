@@ -9,9 +9,9 @@ namespace AWSIM
     /// Set the VisualEffect of the vehicle.
     /// Includes steering, brake light, reverse light, and turn signal light.
     /// </summary>
-    
-    //TODO: Implement proper lighting system for vehicle. 
-    
+
+    //TODO: Implement proper lighting system for vehicle.
+
     [RequireComponent(typeof(Vehicle))]
     public class VehicleVisualEffect : MonoBehaviour
     {

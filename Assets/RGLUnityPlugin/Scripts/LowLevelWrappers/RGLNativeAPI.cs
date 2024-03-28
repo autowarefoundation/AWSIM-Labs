@@ -23,7 +23,7 @@ namespace RGLUnityPlugin
         // Public RGL API
         [DllImport("RobotecGPULidar")]
         public static extern int rgl_get_version_info(out int major, out int minor, out int patch);
-        
+
         [DllImport("RobotecGPULidar")]
         public static extern int rgl_get_extension_info(RGLExtension extension, out int available);
 
@@ -284,7 +284,7 @@ namespace RGLUnityPlugin
 
         public static float[] IntoVec3f(Vector3 vec)
         {
-            return new[] {vec.x, vec.y, vec.z};
+            return new[] { vec.x, vec.y, vec.z };
         }
 
         public static float[] IntoMat3x4f(Matrix4x4[] mats)
@@ -308,7 +308,7 @@ namespace RGLUnityPlugin
 
         public static float[] IntoMat3x4f(Matrix4x4 mat)
         {
-            return IntoMat3x4f(new[]{mat});
+            return IntoMat3x4f(new[] { mat });
         }
 
         public static float[] IntoVec2f(Vector2[] vecs)
@@ -330,7 +330,7 @@ namespace RGLUnityPlugin
             {
                 fixed (float* rayFloatsPtr = rayFloats)
                 {
-                    CheckErr(rgl_node_rays_from_mat3x4f(ref node, (IntPtr) rayFloatsPtr, rays.Length));
+                    CheckErr(rgl_node_rays_from_mat3x4f(ref node, (IntPtr)rayFloatsPtr, rays.Length));
                 }
             }
         }
@@ -343,7 +343,7 @@ namespace RGLUnityPlugin
             {
                 fixed (float* rangesFloatsPtr = rangesFloats)
                 {
-                    CheckErr(rgl_node_rays_set_range(ref node, (IntPtr) rangesFloatsPtr, ranges.Length));
+                    CheckErr(rgl_node_rays_set_range(ref node, (IntPtr)rangesFloatsPtr, ranges.Length));
                 }
             }
         }
@@ -354,7 +354,7 @@ namespace RGLUnityPlugin
             {
                 fixed (int* ringIdsPtr = ringIds)
                 {
-                    CheckErr(rgl_node_rays_set_ring_ids(ref node, (IntPtr) ringIdsPtr, ringIds.Length));
+                    CheckErr(rgl_node_rays_set_ring_ids(ref node, (IntPtr)ringIdsPtr, ringIds.Length));
                 }
             }
         }
@@ -365,7 +365,7 @@ namespace RGLUnityPlugin
             {
                 fixed (float* offsetsPtr = offsets)
                 {
-                    CheckErr(rgl_node_rays_set_time_offsets(ref node, (IntPtr) offsetsPtr, offsets.Length));
+                    CheckErr(rgl_node_rays_set_time_offsets(ref node, (IntPtr)offsetsPtr, offsets.Length));
                 }
             }
         }
@@ -377,7 +377,7 @@ namespace RGLUnityPlugin
             {
                 fixed (float* tfFloatsPtr = tfFloats)
                 {
-                    CheckErr(rgl_node_rays_transform(ref node, (IntPtr) tfFloatsPtr));
+                    CheckErr(rgl_node_rays_transform(ref node, (IntPtr)tfFloatsPtr));
                 }
             }
         }
@@ -389,7 +389,7 @@ namespace RGLUnityPlugin
             {
                 fixed (float* tfFloatsPtr = tfFloats)
                 {
-                    CheckErr(rgl_node_points_transform(ref node, (IntPtr) tfFloatsPtr));
+                    CheckErr(rgl_node_points_transform(ref node, (IntPtr)tfFloatsPtr));
                 }
             }
         }
@@ -411,7 +411,7 @@ namespace RGLUnityPlugin
                 {
                     fixed (float* angularVelocityFloatsPtr = angularVelocityFloats)
                     {
-                        CheckErr(rgl_node_raytrace_in_motion(ref node, IntPtr.Zero, (IntPtr) linearVelocityFloatsPtr, (IntPtr) angularVelocityFloatsPtr, applyRayDistortion));
+                        CheckErr(rgl_node_raytrace_in_motion(ref node, IntPtr.Zero, (IntPtr)linearVelocityFloatsPtr, (IntPtr)angularVelocityFloatsPtr, applyRayDistortion));
                     }
                 }
             }
@@ -423,7 +423,7 @@ namespace RGLUnityPlugin
             {
                 fixed (RGLField* fieldsPtr = fields)
                 {
-                    CheckErr(rgl_node_points_format(ref node, (IntPtr) fieldsPtr, fields.Length));
+                    CheckErr(rgl_node_points_format(ref node, (IntPtr)fieldsPtr, fields.Length));
                 }
             }
         }
@@ -434,7 +434,7 @@ namespace RGLUnityPlugin
             {
                 fixed (RGLField* fieldsPtr = fields)
                 {
-                    CheckErr(rgl_node_points_yield(ref node, (IntPtr) fieldsPtr, fields.Length));
+                    CheckErr(rgl_node_points_yield(ref node, (IntPtr)fieldsPtr, fields.Length));
                 }
             }
         }
@@ -455,7 +455,7 @@ namespace RGLUnityPlugin
             {
                 fixed (RGLField* fieldsPtr = fields)
                 {
-                    CheckErr(rgl_node_points_temporal_merge(ref node, (IntPtr) fieldsPtr, fields.Length));
+                    CheckErr(rgl_node_points_temporal_merge(ref node, (IntPtr)fieldsPtr, fields.Length));
                 }
             }
         }
@@ -514,7 +514,7 @@ namespace RGLUnityPlugin
             Int32 pointCount = 0;
             Int32 pointSize = 0;
             CheckErr(rgl_graph_get_result_size(node, field, out pointCount, out pointSize));
-            return (int) pointCount;
+            return (int)pointCount;
         }
 
         public static int GraphGetResult<T>(IntPtr node, RGLField field, ref T[] data, int expectedPointSize) where T : unmanaged
@@ -543,9 +543,9 @@ namespace RGLUnityPlugin
                 }
                 fixed (T* dataPtr = data)
                 {
-                    CheckErr(rgl_graph_get_result_data(node, field, (IntPtr) dataPtr));
+                    CheckErr(rgl_graph_get_result_data(node, field, (IntPtr)dataPtr));
                 }
-                return (int) pointCount;
+                return (int)pointCount;
             }
         }
 

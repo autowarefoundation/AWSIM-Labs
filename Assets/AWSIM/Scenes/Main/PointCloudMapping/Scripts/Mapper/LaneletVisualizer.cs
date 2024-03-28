@@ -13,7 +13,7 @@ namespace AWSIM.PointCloudMapping
     {
         [SerializeField]
         private Material material;
-        
+
         [SerializeField]
         private float width;
 

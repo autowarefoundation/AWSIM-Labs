@@ -8,7 +8,7 @@ namespace AWSIM.TrafficSimulation
 
         public static uint Generate()
         {
-            return  _nextId++;
+            return _nextId++;
         }
     }
 }

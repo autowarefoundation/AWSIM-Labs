@@ -73,7 +73,8 @@ namespace AWSIM
 
         void Start()
         {
-            if(!ReadConfig()) {
+            if (!ReadConfig())
+            {
                 this.gameObject.SetActive(false);
                 return;
             }
@@ -89,7 +90,9 @@ namespace AWSIM
             if (scrollView.activeInHierarchy)
             {
                 toggleVisibilityText.text = "Hide diagnostics";
-            } else {
+            }
+            else
+            {
                 toggleVisibilityText.text = "Show diagnostics";
             }
         }
@@ -120,7 +123,7 @@ namespace AWSIM
                 }
                 catch (System.Exception exception)
                 {
-                    
+
                     Debug.LogError("Couldn't parse diagnostics config file. Details: " + exception.Message);
                     return false;
                 }
@@ -133,10 +136,12 @@ namespace AWSIM
                         + "\"" + entry.Value.alias + "\" and log level: " + entry.Value.level);
                 }
 
-                if(!diagnosticsCanvas.gameObject.activeInHierarchy) diagnosticsCanvas.gameObject.SetActive(true);
+                if (!diagnosticsCanvas.gameObject.activeInHierarchy) diagnosticsCanvas.gameObject.SetActive(true);
 
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
 
@@ -155,10 +160,12 @@ namespace AWSIM
                     entry.hardwareId = status.Hardware_id;
                     entry.timestampSec = msg.Header.Stamp.Sec;
                     entry.timestampNsec = msg.Header.Stamp.Nanosec;
-                    if(entry.content != null) 
+                    if (entry.content != null)
                     {
                         entry.content.Clear();
-                    } else {
+                    }
+                    else
+                    {
                         entry.content = new Dictionary<string, string>();
                     }
                     foreach (var value in status.Values)
@@ -177,7 +184,7 @@ namespace AWSIM
 
             // Transfer diagnostic entries from ROS2 thread to main Unity thread
             DiagnosticEntry entryDequeued;
-            if(concurrentQueue.TryDequeue(out entryDequeued))
+            if (concurrentQueue.TryDequeue(out entryDequeued))
             {
                 diagnosticEntries[entryDequeued.name] = entryDequeued;
             }
@@ -193,10 +200,12 @@ namespace AWSIM
                     continue;
                 }
 
-                if (!firstSeparator) 
+                if (!firstSeparator)
                 {
                     message += "----------------------------" + System.Environment.NewLine;
-                } else {
+                }
+                else
+                {
                     firstSeparator = false;
                 }
 
@@ -228,9 +237,12 @@ namespace AWSIM
 
                 // Handle displays
                 string alias = diagnosticConfigEntries[entry.Key].alias;
-                if (alias != null) {
+                if (alias != null)
+                {
                     message += alias + " " + System.Environment.NewLine;
-                } else {
+                }
+                else
+                {
                     message += entry.Value.name + ": " + System.Environment.NewLine;
                 }
 

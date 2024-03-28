@@ -3,7 +3,7 @@
 Everyone is welcome!
 
 ## How can I get help?
-Do not open issues for general support questions as we want to keep GitHub issues for confirmed bug reports. 
+Do not open issues for general support questions as we want to keep GitHub issues for confirmed bug reports.
 Instead, open a discussion in the [Q&A category](https://github.com/autowarefoundation/autoware/discussions/new?category=q-a).
 The trouble shooting page at [AWSIM](../TroubleShooting/index.md) and at [Autoware](https://autowarefoundation.github.io/autoware-documentation/main/support/troubleshooting/) will be also helpful.
 

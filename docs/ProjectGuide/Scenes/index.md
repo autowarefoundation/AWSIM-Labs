@@ -120,4 +120,3 @@ To run demo scene:
     - Topic `QoS` as in the screen above.
     - Channel name: `enitity_id`,
     - To better visualization disable `Autocompute` intensity and set min to `0` and max to `50`.
-

@@ -1,5 +1,5 @@
 # Documentation
-This document uses [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). 
+This document uses [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
 ## Local hosting
 

@@ -81,7 +81,7 @@ namespace AWSIM
             msg.Pose.Pose.Orientation.Z = rosRotation.z;
             msg.Pose.Pose.Orientation.W = rosRotation.w;
 
-             // Converts data output from Twist to ROS2 msg
+            // Converts data output from Twist to ROS2 msg
             var rosLinearVelocity = ROS2Utility.UnityToRosPosition(outputData.linearVelocity);
             var rosAngularVelocity = ROS2Utility.UnityToRosAngularVelocity(outputData.angularVelocity);
             msg.Twist.Twist.Linear.X = rosLinearVelocity.x;

@@ -15,7 +15,7 @@ namespace AWSIM.Loader
     public class MapManager : MonoBehaviour, IConfigurableManager
     {
         [Tooltip("Scene names that can't be used and aren't shown in a GUI selector.")]
-        public List<string> forbiddenSceneNames = new List<string>(){"AWSIMSimulation"};
+        public List<string> forbiddenSceneNames = new List<string>() { "AWSIMSimulation" };
 
         [HideInInspector]
         public string spawnedMapName;
@@ -23,7 +23,7 @@ namespace AWSIM.Loader
         [HideInInspector]
         public string loaderSceneName = "LoaderScene";
 
-        public MapConfiguration mapConfiguration {private set; get; }
+        public MapConfiguration mapConfiguration { private set; get; }
 
         /// <summary>
         /// Map configuration.

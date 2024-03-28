@@ -27,10 +27,10 @@ This sensor is added directly to the [*URDF*](https://docs.ros.org/en/humble/Tut
 
 A detailed description of the `URDF` structure and sensors added to prefab `Lexus RX450h 2015` is available in this [section](../../../Components/Vehicle/URDFAndSensors/).
 
-### Components 
+### Components
 ![components](components.png)
 
-All features are implemented within the *Vehicle Report Ros2 Publisher* (script) which can be found under the following path: 
+All features are implemented within the *Vehicle Report Ros2 Publisher* (script) which can be found under the following path:
 
 ```
 Assets/AWSIM/Prefabs/Sensors/*
@@ -68,4 +68,3 @@ Therefore, it has 6 publishers publishing the appropriate type of message with a
 | *Turn indicators status* | `/vehicle/status/turn_indicators_status` | [`autoware_auto_vehicle_msgs/TurnIndicatorsReport`](https://github.com/tier4/autoware_auto_msgs/blob/tier4/main/autoware_auto_vehicle_msgs/msg/TurnIndicatorsReport.idl) |      -      |
 |  *Hazard lights status*  | `/vehicle/status/hazard_lights_status`   | [`autoware_auto_vehicle_msgs/HazardLightsReport`](https://github.com/tier4/autoware_auto_msgs/blob/tier4/main/autoware_auto_vehicle_msgs/msg/HazardLightsReport.idl)     |      -      |
 |    *Velocity status*     | `/vehicle/status/velocity_status`        | [`autoware_auto_vehicle_msgs/VelocityReport`](https://github.com/tier4/autoware_auto_msgs/blob/tier4/main/autoware_auto_vehicle_msgs/msg/VelocityReport.idl)             | `base_line` |
-

@@ -42,7 +42,7 @@ namespace AWSIM
         }
 
         private void Initialize()
-        {       
+        {
             requestProcessor.Initialize();
         }
 
@@ -70,7 +70,7 @@ namespace AWSIM
         #region [Life Cycle - Thread]
 
         private void StartServerResponseThread()
-        {            
+        {
             thread = ServerResponseThread();
         }
 
@@ -94,7 +94,7 @@ namespace AWSIM
                 using (ZContext context = new ZContext())
                 {
                     using (ZSocket responseSocket = new ZSocket(context, ZSocketType.REP))
-                    {            
+                    {
                         responseSocket.Bind(serverResponseAdress);
 
                         ZPollItem pollItem = ZPollItem.CreateReceiver();
@@ -138,7 +138,7 @@ namespace AWSIM
                                     Debug.LogWarning("[ZMQ ERROR] " + zError);
                                 }
                             }
-                        }                       
+                        }
                    }
                 }
             });

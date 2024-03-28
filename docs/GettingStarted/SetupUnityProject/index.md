@@ -57,7 +57,7 @@ AWSIM comes with a *standalone* flavor of [`Ros2ForUnity`](../../Components/ROS2
     - It is common to have ROS 2 sourced automatically with `~/.bashrc` or `~/.profile`. Make sure it is not obscuring your working environment:
         - Running Unity Hub from the Ubuntu GUI menu takes the environment configuration from `~/.profile`.
         - Running Unity Hub from the terminal uses the current terminal configuration from `~/.profile` and `~/.bashrc`.
-        - Running Unity Editor from the UnityHub inherits the environment setup from the Unity Hub. 
+        - Running Unity Editor from the UnityHub inherits the environment setup from the Unity Hub.
 
 === "Windows"
     - Make sure your Windows environment variables are ROS 2 free.
@@ -168,7 +168,7 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
 ## Import Graphy Asset
 
-Import Graphy by following these instructions: [Graphy Asset Setup](../../DeveloperGuide/EditorSetup/Graphy/index.md) 
+Import Graphy by following these instructions: [Graphy Asset Setup](../../DeveloperGuide/EditorSetup/Graphy/index.md)
 
 ## Run the demo in Editor
 

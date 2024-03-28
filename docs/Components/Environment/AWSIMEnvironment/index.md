@@ -27,7 +27,7 @@ The architecture of an `Environment` - with dependencies between components - is
 
 ### Prefabs
 
-Prefabs can be found under the following path: 
+Prefabs can be found under the following path:
 
 | Name                          | Description                                              | Path                                                                   |
 | :---------------------------- | :------------------------------------------------------- | :--------------------------------------------------------------------- |
@@ -35,7 +35,7 @@ Prefabs can be found under the following path:
 | *Nishishinjuku RandomTraffic* | Stationary visual elements along with random traffic     | `Assets/AWSIM/Prefabs/Environments/Nishishinjuku RandomTraffic.prefab` |
 | *Nishishinjuku Traffic*       | Stationary visual elements along with non-random traffic | `Assets/AWSIM/Prefabs/Environments/Nishishinjuku Traffic.prefab`       |
 
-!!! note "Environment prefab" 
+!!! note "Environment prefab"
     Due to the similarity of the above prefabs, this section focuses on prefab `Nishishinjuku RandomTraffic`.
     The exact differences between `Nishishinjuku RandomTraffic` and `Nishishinjuku Traffic` will be described in the future.
 
@@ -96,7 +96,7 @@ In the project physics settings, it is ensured that collisions between objects i
 Due to the specificity of the use of `RandomTrafficSimulator`, `TrafficIntersections`, `TrafficLanes`, `StopLines` objects, they have been described in a separate section [*Traffic Components*](../../Traffic/TrafficComponents/) - where all the elements necessary in simulated random traffic are presented.
 
 ## Visual Elements (SJK)
-The visuals elements have been loaded and organized using the `*.fbx` files which can be found under the path: 
+The visuals elements have been loaded and organized using the `*.fbx` files which can be found under the path:
 
 ```
 Assets/AWSIM/Externals/Nishishinjuku/Nishishinjuku_optimized/Models/*
@@ -106,7 +106,7 @@ Assets/AWSIM/Externals/Nishishinjuku/Nishishinjuku_optimized/Models/*
 
 - `SJK01_P01` - contains all objects constituting the ground of the environment, these are roads and green fields - each of them contains a `MeshColliders` and layer set as `Ground` to ensure collisions with `NPCVehicles` and `EgoVehicle`.
 
-    ![sjk1](sjk1.png) 
+    ![sjk1](sjk1.png)
 
 - `SJK01_P02` - contains all road surface markings on roads added to the environment.
 The objects of this group do not have `MeshColliders` and their layer is `Default`.
@@ -159,7 +159,7 @@ while lights used by pedestrians are aggregated at object `TrafficLightB01_Root0
 `Assets/AWSIM/Externals/Nishishinjuku/Nishishinjuku_opimized/Models/TrafficLights/Models/*`
 
 #### Classic TrafficLights
-![light](lights/light.png) 
+![light](lights/light.png)
 
 `TrafficLights` lights, outside their housing, always contain 3 signaling light sources of different colors  - from left to right: green, yellow, red.
 Optionally, they can have additional sources of signaling the ability to drive in a specific direction in the form of one or three signaling arrows.

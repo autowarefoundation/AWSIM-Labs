@@ -13,7 +13,7 @@ namespace AWSIM.Lanelet
         public const string Area = "area";
         public const string Type = "type";
         public const string Subtype = "subtype";
-        public const string Location= "location";
+        public const string Location = "location";
         public const string SpeedLimit = "speed_limit";
         public const string Height = "height";
         public const string TurnDirection = "turn_direction";

@@ -167,14 +167,14 @@ namespace RGLUnityPlugin
                 uploadedRGLObjects.Remove(rglObject.RepresentedGO);
             }
             Profiler.EndSample();
-            
+
             Profiler.BeginSample("Mark spawned objects as updated");
             foreach (var rglObject in toAdd)
             {
                 // Game Objects must not have duplicate representations.
                 // Occasionally, this assertion may fail due to disabled Read/Write setting of the prefab's mesh.
                 Assert.IsFalse(uploadedRGLObjects.ContainsKey(rglObject.RepresentedGO));
-                
+
                 uploadedRGLObjects.Add(rglObject.RepresentedGO, rglObject);
             }
             Profiler.EndSample();
@@ -207,7 +207,7 @@ namespace RGLUnityPlugin
             {
                 rglObject.Value.DestroyInRGL();
             }
-            
+
             RGLMeshSharingManager.Clear();
             RGLTextureSharingManager.Clear();
             uploadedRGLObjects.Clear();
@@ -240,7 +240,7 @@ namespace RGLUnityPlugin
             var serializer = new SerializerBuilder().Build();
             var yaml = serializer.Serialize(semanticDict);
             File.WriteAllText(semanticCategoryDictionaryFile, yaml);
-                Debug.Log($"Saved semantic category dictionary with {semanticDict.Count} objects at {semanticCategoryDictionaryFile}");
+            Debug.Log($"Saved semantic category dictionary with {semanticDict.Count} objects at {semanticCategoryDictionaryFile}");
         }
 
         /// <summary>

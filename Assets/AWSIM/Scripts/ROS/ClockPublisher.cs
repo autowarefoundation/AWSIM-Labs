@@ -76,7 +76,7 @@ namespace AWSIM
 
         void UpdateClock()
         {
-            while(isRunning)
+            while (isRunning)
             {
                 Thread.Sleep(1000 / publishHz);
                 PublishClock();

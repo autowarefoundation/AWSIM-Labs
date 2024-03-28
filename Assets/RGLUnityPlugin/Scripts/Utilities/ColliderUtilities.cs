@@ -32,7 +32,7 @@ namespace RGLUnityPlugin
         {
             var type = collider.GetType();
             return type == typeof(MeshCollider)
-                ? ((MeshCollider) collider).sharedMesh
+                ? ((MeshCollider)collider).sharedMesh
                 : GetPrimitiveMesh(ColliderPrimitiveType[type]);
         }
 
@@ -50,7 +50,7 @@ namespace RGLUnityPlugin
 
             if (type == typeof(BoxCollider))
             {
-                var bc = (BoxCollider) collider;
+                var bc = (BoxCollider)collider;
                 return Matrix4x4.TRS(
                     bc.center,
                     Quaternion.identity,
@@ -59,7 +59,7 @@ namespace RGLUnityPlugin
 
             if (type == typeof(CapsuleCollider))
             {
-                var cc = (CapsuleCollider) collider;
+                var cc = (CapsuleCollider)collider;
                 return Matrix4x4.TRS(
                     cc.center,
                     RotateToYAxis[cc.direction],
@@ -69,7 +69,7 @@ namespace RGLUnityPlugin
 
             if (type == typeof(SphereCollider))
             {
-                var cs = (SphereCollider) collider;
+                var cs = (SphereCollider)collider;
                 var s = cs.radius / 0.5f;
                 return Matrix4x4.TRS(
                     cs.center,

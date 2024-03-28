@@ -29,7 +29,7 @@ namespace AWSIM
         /// </summary>
         public static void DoUpdate()
         {
-            lock(lockObject)
+            lock (lockObject)
             {
                 timeScale = Time.timeScale;
             }
@@ -38,4 +38,3 @@ namespace AWSIM
         #endregion
     }
 }
-

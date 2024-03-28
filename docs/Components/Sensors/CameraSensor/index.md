@@ -23,10 +23,10 @@ A detailed description of the `URDF` structure and sensors added to prefab `Lexu
 
 
 
-## CameraSensorHolder (script) 
+## CameraSensorHolder (script)
 ![InspectorSetup](InspectorSetup.png)
 
-*CameraSensorHolder* (script) allows the sequential rendering of multiple camera sensors. 
+*CameraSensorHolder* (script) allows the sequential rendering of multiple camera sensors.
 To utilize it, each `CameraSensor` object should be attached as a child object of the `CameraSensorHolder`.
 ![SceneObjectHierarchy](SceneObjectHierarchy.png)
 
@@ -109,10 +109,10 @@ The sensor computation output format is presented below:
 | *ImageDataBuffer*  |     byte[ ]      | Buffer with image data.       |
 | *CameraParameters* | CameraParameters | Set of the camera parameters. |
 
-## CameraRos2Publisher (script) 
+## CameraRos2Publisher (script)
 ![script_ros2](script_ros2.png)
 
-Converts the data output from `CameraSensor` to *ROS2* [Image][image_msg] 
+Converts the data output from `CameraSensor` to *ROS2* [Image][image_msg]
 and [CameraInfo][camera_info_msg] type messages and publishes them.
 The conversion and publication is performed using the `Publish(CameraSensor.OutputData outputData)` method,
 which is the `callback` triggered by *Camera Sensor* (script) for the current output.

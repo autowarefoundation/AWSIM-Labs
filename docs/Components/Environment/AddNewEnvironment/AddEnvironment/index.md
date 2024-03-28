@@ -1,7 +1,7 @@
 # Add an Environment
 
 *Environment* is an important part of a *Scene* in *AWSIM*.
-Every aspect of the simulated surrounding world needs to be included in the `Environment` prefab - in this section you will learn how to develop it. 
+Every aspect of the simulated surrounding world needs to be included in the `Environment` prefab - in this section you will learn how to develop it.
 However, first [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/Lanelet2) needs to be developed along with *3D* models of the world, which will be the main elements of this prefab.
 
 !!! tip
@@ -138,16 +138,16 @@ You can group Objects as you like.
 
     ??? example
         In this example we will
-        
+
         - Place the model on the Scene.
         - Then intentionally **not** unpack the model
         - Only then change the materials of the original fbx model, **not** the instance on the scene
-        
+
         ![drag model](fbx_drag.gif)
 
         Watch what happens, the instance on the Scene changes the materials together with the model.
         This only happens if you don't unpack the model.
-        
+
         ![change material in model](fbx_change.gif)
 
 !!! example "Example Environment after adding 3D models"
@@ -190,7 +190,7 @@ It does not change the appearance of the Environment, but is necessary for the s
 
     ![add directional light](directional_light_add_object.gif)
 
-2. Click `Add Component` button, search for `Light` and select it. 
+2. Click `Add Component` button, search for `Light` and select it.
 
     ![directional light search](directional_light_search.png)
 

@@ -9,7 +9,7 @@ namespace AWSIM.TrafficSimulation
     {
         [SerializeField, Tooltip("Line data consists of 2 points.")]
         private Vector3[] points = new Vector3[2];
-        [SerializeField, Tooltip("Indicates whether the stop sign exists.")] 
+        [SerializeField, Tooltip("Indicates whether the stop sign exists.")]
         private bool hasStopSign = false;
         [SerializeField, Tooltip("Traffic light ")]
         private TrafficLight trafficLight;

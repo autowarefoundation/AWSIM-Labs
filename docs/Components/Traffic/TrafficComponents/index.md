@@ -15,9 +15,9 @@ The random traffic system consists of the following components:
     `TrafficManager` runs all elements needed for a successful traffic simulation.
     This component manages all `TrafficSimulators` so they don't work against each other.
     It gives you the possibility to configure the `TrafficSimulators`.
-    
-- `TrafficSimulator` 
-  
+
+- `TrafficSimulator`
+
     Technically it is not a component, it is crucial to understand what it is and what it does in order to correctly configure the `TrafficManager`.
     `TrafficSimulator` manages `NPCVehicles` spawning.
     There can be many `TrafficSimulators` on the scene.
@@ -64,7 +64,7 @@ You may also see us referring to the actual map data file (`*.osm`) as a *Lanele
 ## RandomTrafficSimulator
 !!! note "Nomenclature"
     Please note that
-    
+
     - a [*GameObject*](#link-in-the-default-scene)
     - an [element spawning `NPCVehicles` randomly](#random-traffic) and
     - the [whole system of traffic control](#randomtrafficsimulator)
@@ -470,7 +470,7 @@ On the Scene they are visible as cuboid contours indicating which TrafficLanes w
     *Gizmos* have a high computational load.
     Please disable them if the simulation is laggy.
 
-<!-- 
+<!--
 !!! node "Draft note"
     (description of what it is and how spawned NPCs behave in the environment)
 
@@ -513,5 +513,3 @@ On the Scene they are visible as cuboid contours indicating which TrafficLanes w
         - Right of Way Lanes (**gifs**: a few examples with explanations regarding to Random Traffic)
         - Stop Line (**screen**)
         - Speed Limit -->
-
-

@@ -58,13 +58,13 @@ namespace AWSIM
         public static ITimeSource GetTimeSource()
         {
             // lazy initialization
-            if(!isInitalized)
+            if (!isInitalized)
             {
                 Initialize();
             }
 
             // default time source
-            if(currentTimeSource == null)
+            if (currentTimeSource == null)
             {
                 currentTimeSource = new UnityTimeSource();
             }
@@ -81,15 +81,15 @@ namespace AWSIM
         public static void SetTimeSource(TimeSourceType type)
         {
             // lazy initialization
-            if(!isInitalized)
+            if (!isInitalized)
             {
                 Initialize();
             }
 
             // ss2 time source
-            if(type == TimeSourceType.SS2)
+            if (type == TimeSourceType.SS2)
             {
-                if(currentTimeSource == null || !(currentTimeSource is ExternalTimeSource))
+                if (currentTimeSource == null || !(currentTimeSource is ExternalTimeSource))
                 {
                     currentTimeSource = new ExternalTimeSource();
                     onTimeSourceChanged?.Invoke();
@@ -99,9 +99,9 @@ namespace AWSIM
             }
 
             // dot net system time source
-            if(type == TimeSourceType.DOTNET_SYSTEM)
+            if (type == TimeSourceType.DOTNET_SYSTEM)
             {
-                if(currentTimeSource == null || !(currentTimeSource is DotNetSystemTimeSource))
+                if (currentTimeSource == null || !(currentTimeSource is DotNetSystemTimeSource))
                 {
                     currentTimeSource = new DotNetSystemTimeSource();
                     onTimeSourceChanged?.Invoke();
@@ -111,9 +111,9 @@ namespace AWSIM
             }
 
             // dot net simulation time source
-            if(type == TimeSourceType.DOTNET_SIMULATION)
+            if (type == TimeSourceType.DOTNET_SIMULATION)
             {
-                if(currentTimeSource == null || !(currentTimeSource is DotNetSimulationTimeSource))
+                if (currentTimeSource == null || !(currentTimeSource is DotNetSimulationTimeSource))
                 {
                     currentTimeSource = new DotNetSimulationTimeSource();
                     onTimeSourceChanged?.Invoke();
@@ -123,9 +123,9 @@ namespace AWSIM
             }
 
             // ros2 time source
-            if(type == TimeSourceType.ROS2)
+            if (type == TimeSourceType.ROS2)
             {
-                if(currentTimeSource == null || !(currentTimeSource is ROS2TimeSource))
+                if (currentTimeSource == null || !(currentTimeSource is ROS2TimeSource))
                 {
                     currentTimeSource = new ROS2TimeSource();
                     onTimeSourceChanged?.Invoke();
@@ -135,7 +135,7 @@ namespace AWSIM
             }
 
             // default time source
-            if(currentTimeSource == null || !(currentTimeSource is UnityTimeSource))
+            if (currentTimeSource == null || !(currentTimeSource is UnityTimeSource))
             {
                 currentTimeSource = new UnityTimeSource();
                 onTimeSourceChanged?.Invoke();

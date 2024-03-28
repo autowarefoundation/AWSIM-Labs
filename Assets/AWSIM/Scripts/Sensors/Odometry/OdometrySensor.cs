@@ -99,7 +99,7 @@ namespace AWSIM
             outputData.linearVelocity = localVelocity;
             outputData.angularVelocity = localAngularVelocity;
 
-             // Calls registered callbacks
+            // Calls registered callbacks
             OnOutputData.Invoke(outputData);
         }
     }

@@ -18,7 +18,7 @@ namespace AWSIM
         private TrafficLight[] allTrafficLights;
 
         public double egoDistanceToTrafficSignals = 150.0;
-        
+
         public class OutputData
         {
             public TrafficLight[] trafficLights;

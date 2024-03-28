@@ -9,7 +9,7 @@ namespace AWSIM.Loader
     {
         public string simulationSceneName = "AWSIMSimulation";
         [HideInInspector]
-        public SimulationConfiguration simulationConfiguration  {private set; get; }
+        public SimulationConfiguration simulationConfiguration { private set; get; }
         public Toggle mapTrafficToggle;
         public Action<LogLevel, string> Log { get; set; }
 

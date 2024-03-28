@@ -42,7 +42,7 @@ namespace AWSIM
         /// <summary>
         /// How much UpdateFrame step is covered by TimeScale > 0, the rest part has TimeScale = 0.
         /// </summary>
-        [Range(0f,1f)]
+        [Range(0f, 1f)]
         [SerializeField] private float stepDurationInPercentage = 0.5f;
 
         #endregion
@@ -51,7 +51,7 @@ namespace AWSIM
 
         // Prefab is in Unity Editor.
         private Dictionary<string, GameObject> entityPrefabDic = new Dictionary<string, GameObject>();      // <unique_id, entity asset>
-        
+
         // Instance is game object in Scene.
         private Dictionary<string, GameObject> entityInstanceDic = new Dictionary<string, GameObject>();    // <unique_id, entity instance>
 
@@ -64,75 +64,87 @@ namespace AWSIM
 
         // time source
         private ExternalTimeSource timeSource = default;
-  
+
         #endregion
 
         #region [Traffic lights]
 
         private Dictionary<long, TrafficLight> trafficLights;
         private List<long> modifiedTrafficLights;
-        private void preprocessTrafficLights() {
+        private void preprocessTrafficLights()
+        {
             modifiedTrafficLights = new List<long>();
             trafficLights = new Dictionary<long, TrafficLight>();
             var trafficLightObjects = FindObjectsOfType<TrafficLightLaneletID>();
-            for (int i = 0; i < trafficLightObjects.Length; i++) {
+            for (int i = 0; i < trafficLightObjects.Length; i++)
+            {
                 AWSIM.TrafficLightLaneletID laneletId = trafficLightObjects[i];
                 GameObject obj = laneletId.gameObject;
                 TrafficLight tl = obj.GetComponent<TrafficLight>();
-                if (tl != null && laneletId != null) {
+                if (tl != null && laneletId != null)
+                {
                     trafficLights.Add(laneletId.wayID, tl);
                 }
             }
         }
 
-        private void resetSingleTraffcLight(TrafficLight light) {
+        private void resetSingleTraffcLight(TrafficLight light)
+        {
             light.SetBulbData(
-                new TrafficLight.BulbData(TrafficLight.BulbType.GREEN_BULB,  TrafficLight.BulbColor.GREEN, TrafficLight.BulbStatus.SOLID_OFF));
+                new TrafficLight.BulbData(TrafficLight.BulbType.GREEN_BULB, TrafficLight.BulbColor.GREEN, TrafficLight.BulbStatus.SOLID_OFF));
             light.SetBulbData(
                 new TrafficLight.BulbData(TrafficLight.BulbType.RED_BULB, TrafficLight.BulbColor.RED, TrafficLight.BulbStatus.SOLID_OFF));
             light.SetBulbData(
                 new TrafficLight.BulbData(TrafficLight.BulbType.YELLOW_BULB, TrafficLight.BulbColor.YELLOW, TrafficLight.BulbStatus.SOLID_OFF));
         }
 
-        private void resetModifiedTrafficLights() {
-            foreach(var trafficLightId in modifiedTrafficLights) {
+        private void resetModifiedTrafficLights()
+        {
+            foreach (var trafficLightId in modifiedTrafficLights)
+            {
                 resetSingleTraffcLight(trafficLights[trafficLightId]);
             }
             modifiedTrafficLights.Clear();
         }
 
-        private void resetAllTrafficLights() {
-            foreach(var light in trafficLights) {
+        private void resetAllTrafficLights()
+        {
+            foreach (var light in trafficLights)
+            {
                 resetSingleTraffcLight(light.Value);
             }
         }
 
-        private TrafficLight.BulbData fromProto(SimulationApiSchema.TrafficLight proto) {
+        private TrafficLight.BulbData fromProto(SimulationApiSchema.TrafficLight proto)
+        {
             var t = new TrafficLight.BulbType();
-            switch (proto.Shape) {
-                case SimulationApiSchema.TrafficLight.Types.Shape.Circle:            t = TrafficLight.BulbType.ANY_CIRCLE_BULB;        break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.LeftArrow:         t = TrafficLight.BulbType.LEFT_ARROW_BULB;        break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.RightArrow:        t = TrafficLight.BulbType.RIGHT_ARROW_BULB;       break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.UpArrow:           t = TrafficLight.BulbType.UP_ARROW_BULB;          break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.DownArrow:         t = TrafficLight.BulbType.DOWN_ARROW_BULB;        break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.DownLeftArrow:     t = TrafficLight.BulbType.DOWN_LEFT_ARROW_BULB;   break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.DownRightArrow:    t = TrafficLight.BulbType.DOWN_RIGHT_ARROW_BULB;  break;
-                case SimulationApiSchema.TrafficLight.Types.Shape.Cross:             t = TrafficLight.BulbType.CROSS_BULB;             break;
+            switch (proto.Shape)
+            {
+                case SimulationApiSchema.TrafficLight.Types.Shape.Circle: t = TrafficLight.BulbType.ANY_CIRCLE_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.LeftArrow: t = TrafficLight.BulbType.LEFT_ARROW_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.RightArrow: t = TrafficLight.BulbType.RIGHT_ARROW_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.UpArrow: t = TrafficLight.BulbType.UP_ARROW_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.DownArrow: t = TrafficLight.BulbType.DOWN_ARROW_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.DownLeftArrow: t = TrafficLight.BulbType.DOWN_LEFT_ARROW_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.DownRightArrow: t = TrafficLight.BulbType.DOWN_RIGHT_ARROW_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Shape.Cross: t = TrafficLight.BulbType.CROSS_BULB; break;
             }
 
             var c = new TrafficLight.BulbColor();
-            switch (proto.Color) {
-                case SimulationApiSchema.TrafficLight.Types.Color.Red:   c = TrafficLight.BulbColor.RED;    t = TrafficLight.BulbType.RED_BULB;    break;
+            switch (proto.Color)
+            {
+                case SimulationApiSchema.TrafficLight.Types.Color.Red: c = TrafficLight.BulbColor.RED; t = TrafficLight.BulbType.RED_BULB; break;
                 case SimulationApiSchema.TrafficLight.Types.Color.Amber: c = TrafficLight.BulbColor.YELLOW; t = TrafficLight.BulbType.YELLOW_BULB; break;
-                case SimulationApiSchema.TrafficLight.Types.Color.Green: c = TrafficLight.BulbColor.GREEN;  t = TrafficLight.BulbType.GREEN_BULB;  break;
-                case SimulationApiSchema.TrafficLight.Types.Color.White: c = TrafficLight.BulbColor.WHITE;                                         break;
-            } 
+                case SimulationApiSchema.TrafficLight.Types.Color.Green: c = TrafficLight.BulbColor.GREEN; t = TrafficLight.BulbType.GREEN_BULB; break;
+                case SimulationApiSchema.TrafficLight.Types.Color.White: c = TrafficLight.BulbColor.WHITE; break;
+            }
 
             var s = new TrafficLight.BulbStatus();
-            switch (proto.Status) {
+            switch (proto.Status)
+            {
                 case SimulationApiSchema.TrafficLight.Types.Status.SolidOff: s = TrafficLight.BulbStatus.SOLID_OFF; break;
-                case SimulationApiSchema.TrafficLight.Types.Status.SolidOn:  s = TrafficLight.BulbStatus.SOLID_ON;  break;
-                case SimulationApiSchema.TrafficLight.Types.Status.Flashing: s = TrafficLight.BulbStatus.FLASHING;  break;
+                case SimulationApiSchema.TrafficLight.Types.Status.SolidOn: s = TrafficLight.BulbStatus.SOLID_ON; break;
+                case SimulationApiSchema.TrafficLight.Types.Status.Flashing: s = TrafficLight.BulbStatus.FLASHING; break;
             }
             return new TrafficLight.BulbData(t, c, s);
         }
@@ -145,7 +157,7 @@ namespace AWSIM
 
         // time - both of values below should be overwritten in Initialize ZeroMQ call
         private float realtimeFactor = 0f;
-        private float stepTime = 0f; 
+        private float stepTime = 0f;
 
         #endregion
 
@@ -155,19 +167,19 @@ namespace AWSIM
 
         public void Initialize()
         {
-             // get time source from time source provide
+            // get time source from time source provide
             timeSource = TimeSourceProvider.GetTimeSource() as ExternalTimeSource;
-            if(timeSource == null)
+            if (timeSource == null)
             {
                 Debug.LogError("Scenario Simulator requires time source of type SS2. Check if TimeSourceSelector is on the scene and SS2 is the selected as the Time Source");
             }
             timeSource.Initialize();
-            
+
             mainContext = SynchronizationContext.Current;
 
-            Time.timeScale = stepExecution? 0f : 1f;
+            Time.timeScale = stepExecution ? 0f : 1f;
 
-            entityPrefabDic = new Dictionary<string, GameObject>(); 
+            entityPrefabDic = new Dictionary<string, GameObject>();
             entityPrefabDic = entityPrefabs.ToDictionary(x => x.AssetKey, y => y.Prefab);
 
             entityInstanceDic = new Dictionary<string, GameObject>();
@@ -177,13 +189,13 @@ namespace AWSIM
 
         public void Dispose()
         {
-            if(entityPrefabDic != null)
+            if (entityPrefabDic != null)
             {
                 entityPrefabDic.Clear();
                 entityPrefabDic = null;
             }
 
-            if(entityInstanceDic != null)
+            if (entityInstanceDic != null)
             {
                 entityInstanceDic.Clear();
                 entityInstanceDic = null;
@@ -203,7 +215,7 @@ namespace AWSIM
         {
             SimulationResponse response = new SimulationResponse();
 
-            switch(request.RequestCase) 
+            switch (request.RequestCase)
             {
                 case SimulationRequest.RequestOneofCase.Initialize:
                     response.Initialize = Initialize(request.Initialize);
@@ -257,11 +269,11 @@ namespace AWSIM
 
         #region [Private Methods]
 
-        private InitializeResponse Initialize(InitializeRequest request) 
+        private InitializeResponse Initialize(InitializeRequest request)
         {
             realtimeFactor = (float)request.RealtimeFactor;
             stepTime = (float)request.StepTime;
-            if(stepExecution)
+            if (stepExecution)
             {
                 realtimeFactor *= (1f / stepDurationInPercentage);
             }
@@ -273,7 +285,7 @@ namespace AWSIM
             {
                 lock (lockOnFrameUpdate)
                 {
-                    Time.timeScale = stepExecution? 0f : realtimeFactor;
+                    Time.timeScale = stepExecution ? 0f : realtimeFactor;
                 }
             }, null);
 
@@ -286,15 +298,15 @@ namespace AWSIM
                     Description = "AWSIM initialized",
                 }
             };
-            
+
             isInitialized = true;
             return initializeResponse;
         }
 
         private UpdateFrameResponse UpdateFrame(UpdateFrameRequest request)
-        {            
+        {
             BuiltinInterfaces.Time currentRosTime = request.CurrentRosTime;
-            timeSource.SetTime(currentRosTime.Sec, currentRosTime.Nanosec);   
+            timeSource.SetTime(currentRosTime.Sec, currentRosTime.Nanosec);
 
             // calculate how many frames to update
             if (stepExecution)
@@ -308,19 +320,19 @@ namespace AWSIM
                     }
                 }, null);
 
-                int waitTime = Mathf.CeilToInt((float) (stepTime * 1000.0 * stepDurationInPercentage));
+                int waitTime = Mathf.CeilToInt((float)(stepTime * 1000.0 * stepDurationInPercentage));
                 Thread.Sleep(waitTime);
 
                 // freez time flow
                 mainContext.Send(_ =>
                 {
-                    lock(lockOnFrameUpdate)
+                    lock (lockOnFrameUpdate)
                     {
                         Time.timeScale = 0f;
                     }
                 }, null);
             }
-      
+
             var frameUpdateResponse = new UpdateFrameResponse()
             {
                 Result = new Result()
@@ -332,13 +344,13 @@ namespace AWSIM
             return frameUpdateResponse;
         }
 
-        private UpdateEntityStatusResponse UpdateEntityStatus(UpdateEntityStatusRequest request) 
+        private UpdateEntityStatusResponse UpdateEntityStatus(UpdateEntityStatusRequest request)
         {
             var updateEntityStatusResponse = new UpdateEntityStatusResponse();
 
             mainContext.Send(_ =>
             {
-                for (int i = 0; i < request.Status.Count; i++) 
+                for (int i = 0; i < request.Status.Count; i++)
                 {
                     var reqStatus = request.Status[i];
 
@@ -369,7 +381,7 @@ namespace AWSIM
                         status.Pose = GetRosPose(instance.transform);
                         status.ActionStatus = GetEgoActionStatus(ego_vehicle, reqStatus.ActionStatus);
                     }
-                    else 
+                    else
                     {
                         instance.transform.position = unityPose.position;
                         instance.transform.rotation = unityPose.rotation;
@@ -378,25 +390,25 @@ namespace AWSIM
                         status.ActionStatus = reqStatus.ActionStatus;
                     }
 
-                    lock(lockObject) 
+                    lock (lockObject)
                     {
                         updateEntityStatusResponse.Status.Add(status);
                     }
                 }
-                
+
             }, null);
 
             updateEntityStatusResponse.Result = new Result()
             {
                 Success = true,
                 Description = "",
-  
+
             };
 
             return updateEntityStatusResponse;
         }
 
-        private SpawnVehicleEntityResponse SpawnVehicleEntity(SpawnVehicleEntityRequest request) 
+        private SpawnVehicleEntityResponse SpawnVehicleEntity(SpawnVehicleEntityRequest request)
         {
             var asset_key = request.AssetKey;
             var pose = request.Pose;
@@ -426,7 +438,7 @@ namespace AWSIM
             return spawnVehicleResponse;
         }
 
-        private SpawnPedestrianEntityResponse SpawnPedestrianEntity(SpawnPedestrianEntityRequest request) 
+        private SpawnPedestrianEntityResponse SpawnPedestrianEntity(SpawnPedestrianEntityRequest request)
         {
             var asset_key = request.AssetKey;
             var pose = request.Pose;
@@ -453,7 +465,7 @@ namespace AWSIM
             return spawnPedestrianResponse;
         }
 
-        private SpawnMiscObjectEntityResponse SpawnMiscObjectEntity(SpawnMiscObjectEntityRequest request) 
+        private SpawnMiscObjectEntityResponse SpawnMiscObjectEntity(SpawnMiscObjectEntityRequest request)
         {
             var asset_key = request.AssetKey;
             var pose = request.Pose;
@@ -480,7 +492,7 @@ namespace AWSIM
             return spawnMiscObjectResponse;
         }
 
-        private DespawnEntityResponse DespawnEntity(DespawnEntityRequest request) 
+        private DespawnEntityResponse DespawnEntity(DespawnEntityRequest request)
         {
             mainContext.Send(_ =>
             {
@@ -503,7 +515,7 @@ namespace AWSIM
             return despawnEntityResponse;
         }
 
-        private AttachLidarSensorResponse AttachLidarSensor(AttachLidarSensorRequest request) 
+        private AttachLidarSensorResponse AttachLidarSensor(AttachLidarSensorRequest request)
         {
             var attachLidarSensorResponse = new AttachLidarSensorResponse()
             {
@@ -516,7 +528,7 @@ namespace AWSIM
             return attachLidarSensorResponse;
         }
 
-        private AttachDetectionSensorResponse AttachDetectionSensor(AttachDetectionSensorRequest request) 
+        private AttachDetectionSensorResponse AttachDetectionSensor(AttachDetectionSensorRequest request)
         {
             var attachDetectionSensorResponse = new AttachDetectionSensorResponse()
             {
@@ -529,7 +541,7 @@ namespace AWSIM
             return attachDetectionSensorResponse;
         }
 
-        private AttachOccupancyGridSensorResponse AttachOccupancyGridSensor(AttachOccupancyGridSensorRequest request) 
+        private AttachOccupancyGridSensorResponse AttachOccupancyGridSensor(AttachOccupancyGridSensorRequest request)
         {
             var attachOccupancyGridSensorResponse = new AttachOccupancyGridSensorResponse()
             {
@@ -541,16 +553,18 @@ namespace AWSIM
             };
             return attachOccupancyGridSensorResponse;
         }
-        
-        private UpdateTrafficLightsResponse UpdateTrafficLights(UpdateTrafficLightsRequest request) 
+
+        private UpdateTrafficLightsResponse UpdateTrafficLights(UpdateTrafficLightsRequest request)
         {
             var states = request.States;
 
             mainContext.Send(_ =>
             {
                 resetModifiedTrafficLights();
-                foreach (var state in states) {
-                    foreach(var signal in state.TrafficLightStatus) {
+                foreach (var state in states)
+                {
+                    foreach (var signal in state.TrafficLightStatus)
+                    {
                         var bulb = fromProto(signal);
                         trafficLights[state.Id].SetBulbData(bulb);
                         modifiedTrafficLights.Add(state.Id);
@@ -569,7 +583,7 @@ namespace AWSIM
             return updateTrafficLightsResponse;
         }
 
-        private AttachPseudoTrafficLightDetectorResponse UpdateTrafficLights(AttachPseudoTrafficLightDetectorRequest request) 
+        private AttachPseudoTrafficLightDetectorResponse UpdateTrafficLights(AttachPseudoTrafficLightDetectorRequest request)
         {
             var attachPseudoTrafficLightDetectorResponse = new AttachPseudoTrafficLightDetectorResponse()
             {
@@ -582,7 +596,7 @@ namespace AWSIM
             return attachPseudoTrafficLightDetectorResponse;
         }
 
-        private UpdateStepTimeResponse UpdateStepTime(UpdateStepTimeRequest request) 
+        private UpdateStepTimeResponse UpdateStepTime(UpdateStepTimeRequest request)
         {
             stepTime = (float)request.SimulationStepTime;
             var updateStepTimeResponse = new UpdateStepTimeResponse()
@@ -629,7 +643,7 @@ namespace AWSIM
             return pose;
         }
 
-        private static TrafficSimulatorMsgs.ActionStatus GetEgoActionStatus(Vehicle instance, TrafficSimulatorMsgs.ActionStatus oldActionStatus) 
+        private static TrafficSimulatorMsgs.ActionStatus GetEgoActionStatus(Vehicle instance, TrafficSimulatorMsgs.ActionStatus oldActionStatus)
         {
             var actionStatus = new TrafficSimulatorMsgs.ActionStatus();
             actionStatus.CurrentAction = oldActionStatus.CurrentAction;

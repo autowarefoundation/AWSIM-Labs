@@ -17,38 +17,38 @@ using UnityEngine;
 namespace ROS2
 {
 
-/// <summary>
-/// ros2 time source (system time by default).
-/// </summary>
-public class ROS2TimeSource : ITimeSource
-{
-  private ROS2.Clock clock;
-
-  public void GetTime(out int seconds, out uint nanoseconds)
-  {
-    if (!ROS2.Ros2cs.Ok())
+    /// <summary>
+    /// ros2 time source (system time by default).
+    /// </summary>
+    public class ROS2TimeSource : ITimeSource
     {
-      seconds = 0;
-      nanoseconds = 0;
-      Debug.LogWarning("Cannot acquire valid ros time, ros either not initialized or shut down already");
-      return;
-    }
+        private ROS2.Clock clock;
 
-    if (clock == null)
-    { // Create clock which uses system time by default (unless use_sim_time is set in ros2)
-      clock = new ROS2.Clock();
-    }
-  
-    TimeUtils.TimeFromTotalSeconds(clock.Now.Seconds, out seconds, out nanoseconds);
-  }
+        public void GetTime(out int seconds, out uint nanoseconds)
+        {
+            if (!ROS2.Ros2cs.Ok())
+            {
+                seconds = 0;
+                nanoseconds = 0;
+                Debug.LogWarning("Cannot acquire valid ros time, ros either not initialized or shut down already");
+                return;
+            }
 
-  ~ROS2TimeSource()
-  {
-    if (clock != null)
-    {
-      clock.Dispose();
+            if (clock == null)
+            { // Create clock which uses system time by default (unless use_sim_time is set in ros2)
+                clock = new ROS2.Clock();
+            }
+
+            TimeUtils.TimeFromTotalSeconds(clock.Now.Seconds, out seconds, out nanoseconds);
+        }
+
+        ~ROS2TimeSource()
+        {
+            if (clock != null)
+            {
+                clock.Dispose();
+            }
+        }
     }
-  }
-}
 
 }  // namespace ROS2

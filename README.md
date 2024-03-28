@@ -46,7 +46,7 @@ See also [LICENSE](./LICENSE)
 
 日本語/English OK
 
-e-mail : takatoki.makino@tier4.jp 
+e-mail : takatoki.makino@tier4.jp
 discord : mackie#6141
 twitter : https&#58;//twitter.com/mackierx111
 

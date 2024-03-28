@@ -40,7 +40,7 @@ public class SmokeGenerator : MonoBehaviour
     {
         for (int i = 0; i < maxParticle; i++)
             this.CreateSmokeParticle();
-        
+
         print(GetComponent<MeshRenderer>().material);
     }
 

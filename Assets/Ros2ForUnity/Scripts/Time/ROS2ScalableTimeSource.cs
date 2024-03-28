@@ -18,76 +18,76 @@ using UnityEngine;
 namespace ROS2
 {
 
-/// <summary>
-/// ros2 time source (system time by default).
-/// </summary>
-[System.Obsolete("This TimeSource is deprecated and will be removed in the future versions. Please use DotNetSystemTimeSource instead.")]
-public class ROS2ScalableTimeSource : ITimeSource
-{
-  private Thread mainThread;
-  private double lastReadingSecs;
-  private ROS2.Clock clock;
-  private double initialTime = 0;
-  private double initialTimeScale = 0;
-  private bool initialTimeAcquired = false;
-  private bool initialTimeScaleAcquired = false;
-  private bool timeScaleChanged = false;
-
-  public ROS2ScalableTimeSource()
-  {
-    mainThread = Thread.CurrentThread;
-  }
-
-  public void GetTime(out int seconds, out uint nanoseconds)
-  {
-    if (!ROS2.Ros2cs.Ok())
+    /// <summary>
+    /// ros2 time source (system time by default).
+    /// </summary>
+    [System.Obsolete("This TimeSource is deprecated and will be removed in the future versions. Please use DotNetSystemTimeSource instead.")]
+    public class ROS2ScalableTimeSource : ITimeSource
     {
-      seconds = 0;
-      nanoseconds = 0;
-      Debug.LogWarning("Cannot acquire valid ros time, ros either not initialized or shut down already");
-      return;
-    }
+        private Thread mainThread;
+        private double lastReadingSecs;
+        private ROS2.Clock clock;
+        private double initialTime = 0;
+        private double initialTimeScale = 0;
+        private bool initialTimeAcquired = false;
+        private bool initialTimeScaleAcquired = false;
+        private bool timeScaleChanged = false;
 
-    if (clock == null)
-    { // Create clock which uses system time by default (unless use_sim_time is set in ros2)
-      clock = new ROS2.Clock();
-    }
+        public ROS2ScalableTimeSource()
+        {
+            mainThread = Thread.CurrentThread;
+        }
 
-    if (!initialTimeScaleAcquired)
-    {
-      initialTimeScaleAcquired = true;
-      initialTimeScale = Time.timeScale;
-    }
+        public void GetTime(out int seconds, out uint nanoseconds)
+        {
+            if (!ROS2.Ros2cs.Ok())
+            {
+                seconds = 0;
+                nanoseconds = 0;
+                Debug.LogWarning("Cannot acquire valid ros time, ros either not initialized or shut down already");
+                return;
+            }
 
-    if (initialTimeScale != Time.timeScale)
-    {
-      timeScaleChanged = true;
-    }
+            if (clock == null)
+            { // Create clock which uses system time by default (unless use_sim_time is set in ros2)
+                clock = new ROS2.Clock();
+            }
 
-    lastReadingSecs = mainThread.Equals(Thread.CurrentThread) ? Time.timeAsDouble : lastReadingSecs;
+            if (!initialTimeScaleAcquired)
+            {
+                initialTimeScaleAcquired = true;
+                initialTimeScale = Time.timeScale;
+            }
 
-    if (initialTimeScale == 1.0 && !timeScaleChanged)
-    {
-      TimeUtils.TimeFromTotalSeconds(clock.Now.Seconds, out seconds, out nanoseconds);
-    }
-    else
-    {
-      if (!initialTimeAcquired)
-      {
-        initialTimeAcquired = true;
-        initialTime = clock.Now.Seconds - Time.timeAsDouble;
-      }
-      TimeUtils.TimeFromTotalSeconds(lastReadingSecs + initialTime, out seconds, out nanoseconds);
-    }
-  }
+            if (initialTimeScale != Time.timeScale)
+            {
+                timeScaleChanged = true;
+            }
 
-  ~ROS2ScalableTimeSource()
-  {
-    if (clock != null)
-    {
-      clock.Dispose();
+            lastReadingSecs = mainThread.Equals(Thread.CurrentThread) ? Time.timeAsDouble : lastReadingSecs;
+
+            if (initialTimeScale == 1.0 && !timeScaleChanged)
+            {
+                TimeUtils.TimeFromTotalSeconds(clock.Now.Seconds, out seconds, out nanoseconds);
+            }
+            else
+            {
+                if (!initialTimeAcquired)
+                {
+                    initialTimeAcquired = true;
+                    initialTime = clock.Now.Seconds - Time.timeAsDouble;
+                }
+                TimeUtils.TimeFromTotalSeconds(lastReadingSecs + initialTime, out seconds, out nanoseconds);
+            }
+        }
+
+        ~ROS2ScalableTimeSource()
+        {
+            if (clock != null)
+            {
+                clock.Dispose();
+            }
+        }
     }
-  }
-}
 
 }  // namespace ROS2

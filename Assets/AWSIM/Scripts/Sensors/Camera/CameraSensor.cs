@@ -255,7 +255,7 @@ namespace AWSIM
             {
                 uiCameraBridge.RenderCameraToUI(cameraParameters, distortedRenderTexture);
             }
-        } 
+        }
 
         private bool FloatEqual(float value1, float value2, float epsilon = 0.001f)
         {

@@ -63,7 +63,7 @@ namespace AWSIM.Tests
             yield return StartCoroutine(MeshFor60FovTestRoutine());
             yield return StartCoroutine(MeshFor89FovTestRoutine());
             yield return StartCoroutine(SwapCameraFovTestRoutine());
-            yield return StartCoroutine(MoveAndRotateVisualizerTestRoutine());       
+            yield return StartCoroutine(MoveAndRotateVisualizerTestRoutine());
             yield return StartCoroutine(ThreeSensorTestRoutine());
             yield return StartCoroutine(ResetTestRoutine());
         }
@@ -72,7 +72,7 @@ namespace AWSIM.Tests
         {
             yield return null;
 
-            if(cameraSensorVisualization.FillMesh == null)
+            if (cameraSensorVisualization.FillMesh == null)
             {
                 LogResult(false, "Fill Mesh has not been initialized.");
             }
@@ -81,7 +81,7 @@ namespace AWSIM.Tests
                 LogResult(true, "Fill Mesh initialized.");
             }
 
-            if(cameraSensorVisualization.EdgeMesh == null)
+            if (cameraSensorVisualization.EdgeMesh == null)
             {
                 LogResult(false, "Edge Mesh has not been initialized.");
             }
@@ -90,7 +90,7 @@ namespace AWSIM.Tests
                 LogResult(true, "Edge Mesh initialized.");
             }
 
-            if(cameraSensorVisualization.DepthMesh == null)
+            if (cameraSensorVisualization.DepthMesh == null)
             {
                 LogResult(false, "Depth Mesh has not been initialized.");
             }
@@ -105,7 +105,7 @@ namespace AWSIM.Tests
         {
             yield return null;
 
-            // set up //    
+            // set up //
             cameraSensorVisualization.transform.localPosition = Vector3.zero;
             cameraSensorVisualization.transform.localRotation = Quaternion.identity;
 
@@ -124,27 +124,27 @@ namespace AWSIM.Tests
             {
                 yield return new WaitForSeconds(0.1f);
 
-                if(cameraSensorVisualization.FillMesh.vertices.Length > 0)
+                if (cameraSensorVisualization.FillMesh.vertices.Length > 0)
                 {
                     break;
                 }
             }
 
-            if(cameraSensorVisualization.FillMesh.vertices.Length != meshVerticesFov60.Length)
+            if (cameraSensorVisualization.FillMesh.vertices.Length != meshVerticesFov60.Length)
             {
                 LogResult(false, "Number of vertices is not correct.");
                 yield break;
             }
 
-            for(int i=0; i<cameraSensorVisualization.FillMesh.vertices.Length; i++)
+            for (int i = 0; i < cameraSensorVisualization.FillMesh.vertices.Length; i++)
             {
-                if(!IsEqual(cameraSensorVisualization.FillMesh.vertices[i],
+                if (!IsEqual(cameraSensorVisualization.FillMesh.vertices[i],
                     meshVerticesFov60[i], 0.001f))
                 {
 
                     LogResult(false, "Mesh for FOV 60 is not correct.");
                     yield break;
-                } 
+                }
             }
 
             LogResult(true, "Mesh for FOV 60 is correct.");
@@ -152,7 +152,7 @@ namespace AWSIM.Tests
 
         private IEnumerator MeshFor89FovTestRoutine()
         {
-            yield return null;  
+            yield return null;
 
             // set up //
             cameraSensorVisualization.transform.localPosition = Vector3.zero;
@@ -166,33 +166,33 @@ namespace AWSIM.Tests
             cameraSensor.sensorSize = new Vector2(70.0f, 39.4f);
             cameraSensor.focalLength = 20f;
 
-            cameraSensorVisualization.gameObject.SetActive(true);     
+            cameraSensorVisualization.gameObject.SetActive(true);
 
             // mesh vertices are created on update, so just after enable number of vertices are zero
             for (int i = 0; i < 5; i++)
             {
                 yield return new WaitForSeconds(0.1f);
 
-                if(cameraSensorVisualization.FillMesh.vertices.Length > 0)
+                if (cameraSensorVisualization.FillMesh.vertices.Length > 0)
                 {
                     break;
                 }
             }
 
-            if(cameraSensorVisualization.FillMesh.vertices.Length != meshVerticesFov89.Length)
+            if (cameraSensorVisualization.FillMesh.vertices.Length != meshVerticesFov89.Length)
             {
                 LogResult(false, "Number of vertices is not correct.");
                 yield break;
             }
-            
-            for(int i=0; i<cameraSensorVisualization.FillMesh.vertices.Length; i++)
+
+            for (int i = 0; i < cameraSensorVisualization.FillMesh.vertices.Length; i++)
             {
-                if(!IsEqual(cameraSensorVisualization.FillMesh.vertices[i],
+                if (!IsEqual(cameraSensorVisualization.FillMesh.vertices[i],
                     meshVerticesFov89[i], 0.001f))
                 {
                     LogResult(false, "Mesh for FOV 89 is not correct.");
                     yield break;
-                } 
+                }
             }
 
             LogResult(true, "Mesh for FOV 89 is correct.");
@@ -211,7 +211,7 @@ namespace AWSIM.Tests
             float duration = 4f;
 
             while (time < duration)
-            {                
+            {
                 value = minFov + swapPath.Evaluate(time / duration) * (maxFov - minFov);
                 cameraSensor.fieldOfView = value;
 
@@ -221,7 +221,7 @@ namespace AWSIM.Tests
 
             time = 0f;
             while (time < duration)
-            {                
+            {
                 value = minFov + (1f - swapPath.Evaluate(time / duration)) * (maxFov - minFov);
                 cameraSensor.fieldOfView = value;
 
@@ -236,13 +236,13 @@ namespace AWSIM.Tests
         {
             LogMessage("Start Camera Fov Movement ...");
 
-            if(cameraSensor.transform.parent == null)
+            if (cameraSensor.transform.parent == null)
             {
                 LogMessage("For testing purpose please attach camera to ForwardSensor gameobject.", 1);
                 yield break;
             }
 
-            if(cameraSensor.transform.parent.parent != dummyCar)
+            if (cameraSensor.transform.parent.parent != dummyCar)
             {
                 LogMessage("For testing purpose please attach camera and ForwardSensor to DummyCar gameobject.", 1);
                 yield break;
@@ -253,19 +253,19 @@ namespace AWSIM.Tests
 
             float duration = 4f;
             float speed = 2f;
-            
+
             float time = 0f;
             Vector3 direction = new Vector3(0.3f, 0.1f, 0.7f).normalized;
 
             Quaternion startQuaternion = dummyCar.rotation;
             Quaternion targetQuaternion = Quaternion.Euler(-17f, 36f, 0f);
 
-            while(time < duration)
+            while (time < duration)
             {
                 time += Time.deltaTime;
 
                 dummyCar.position += direction * speed * Time.deltaTime;
-                dummyCar.rotation = Quaternion.Lerp(startQuaternion, targetQuaternion, time / duration); 
+                dummyCar.rotation = Quaternion.Lerp(startQuaternion, targetQuaternion, time / duration);
 
                 yield return null;
             }
@@ -276,12 +276,12 @@ namespace AWSIM.Tests
             startQuaternion = dummyCar.rotation;
             targetQuaternion = Quaternion.Euler(13f, -74f, 3f);
 
-            while(time < duration)
+            while (time < duration)
             {
                 time += Time.deltaTime;
 
                 dummyCar.position += direction * speed * Time.deltaTime;
-                dummyCar.rotation = Quaternion.Lerp(startQuaternion, targetQuaternion, time / duration); 
+                dummyCar.rotation = Quaternion.Lerp(startQuaternion, targetQuaternion, time / duration);
 
                 yield return null;
             }
@@ -290,7 +290,7 @@ namespace AWSIM.Tests
             dummyCar.position = new Vector3(0f, 1f, 0f);
             dummyCar.rotation = Quaternion.identity;
 
-            LogMessage("Camera Fov Movement Completed", 0);    
+            LogMessage("Camera Fov Movement Completed", 0);
 
         }
 
@@ -320,25 +320,25 @@ namespace AWSIM.Tests
         }
 
 
-        private void LogResult(bool success, string message) 
+        private void LogResult(bool success, string message)
         {
-            if(success)
+            if (success)
             {
                 Debug.Log("<color=green>TEST SUCCESS </color>" + message);
             }
             else
             {
                 Debug.Log("<color=red>TEST FAILED </color>" + message);
-            }            
+            }
         }
 
         private void LogMessage(string message, int colorId = -1)
         {
-            if(colorId == 0)
+            if (colorId == 0)
             {
                 Debug.Log("<color=green>TEST </color>" + message);
             }
-            else if(colorId == 1)
+            else if (colorId == 1)
             {
                 Debug.Log("<color=red>TEST </color>" + message);
             }
@@ -349,7 +349,7 @@ namespace AWSIM.Tests
         }
 
         private bool IsEqual(Vector3 a, Vector3 b, float precision)
-        {        
+        {
             if (Vector3.Magnitude(a - b) < precision)
             {
                 return true;
@@ -361,7 +361,7 @@ namespace AWSIM.Tests
 #if UNITY_EDITOR
 
     [CustomEditor(typeof(CameraSensorVisualizationTest), true)]
-    public class CameraSensorVisualizationTest_Inspector : Editor 
+    public class CameraSensorVisualizationTest_Inspector : Editor
     {
 
         public override void OnInspectorGUI()
@@ -375,7 +375,7 @@ namespace AWSIM.Tests
             {
                 test.StartTest();
             }
-            
+
             GUILayout.Space(5f);
             EditorGUILayout.HelpBox("To test features the editor has to be in PLAY mode.", MessageType.Info);
 

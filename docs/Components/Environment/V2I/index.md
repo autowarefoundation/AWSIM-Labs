@@ -17,15 +17,15 @@
 If for some reason, `Traffic Light Lanelet ID` component is not added to `Traffic Light` object.
 
 1. Add component manually
-   
+
     ![add component 1](add_component_1.gif)
 
 2. Fill Way ID
-   
+
     ![add component 2](add_component_2.gif)
 
 3. Fill Relation ID
-   
+
     ![add component 3](add_component_3.gif)
 
 ### Add V2I prefab
@@ -33,7 +33,7 @@ If for some reason, `Traffic Light Lanelet ID` component is not added to `Traffi
 ![add prefab](add_prefab.gif)
 
 ### Select EGO transform
-   
+
 ![select ego transform 1](select_ego_transform_1.png)
 ![select ego transform 2](select_ego_transform_2.gif)
 ![select ego transform 3](select_ego_transform_3.png)
@@ -43,10 +43,10 @@ If for some reason, `Traffic Light Lanelet ID` component is not added to `Traffi
 Name                            | Type      | Description
 ------------------------------- | --------- | -----------
 Output Hz                       | int       | Topic publication frequency
-Ego Vehicle Transform           | transform | Ego Vehicle object transform 
+Ego Vehicle Transform           | transform | Ego Vehicle object transform
 Ego Distance To Traffic Signals | double    | Maximum distance between Traffic Light and Ego
 Traffic Signal ID               | enum      | Possibility to select if as `traffic_signal_id` field in msg is `Relation ID` or `Way ID`
 Traffic Signals Topic           | string    | Topic name
 
-!!! note 
+!!! note
     V2I feature can be used as Traffic Light ground truth information, and for that usage `Way ID` is supposed to be selected.

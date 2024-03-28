@@ -14,7 +14,7 @@ namespace AWSIM
         {
             get
             {
-                lock(lockObject)
+                lock (lockObject)
                 {
                     return timeAsDouble;
                 }
@@ -29,7 +29,7 @@ namespace AWSIM
         /// </summary>
         public static void DoUpdate()
         {
-            lock(lockObject)
+            lock (lockObject)
             {
                 timeAsDouble = Time.timeAsDouble;
             }
@@ -38,4 +38,3 @@ namespace AWSIM
         #endregion
     }
 }
-

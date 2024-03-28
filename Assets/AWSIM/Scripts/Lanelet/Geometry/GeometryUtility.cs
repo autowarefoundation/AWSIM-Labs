@@ -103,10 +103,10 @@ namespace AWSIM.Lanelet
                 var deltaAngle = Vector3.Angle(candidateEdge, lastEdge);
 
                 // Skip a redundant point
-                if (deltaLength < minDeltaLength && 
+                if (deltaLength < minDeltaLength &&
                     deltaAngle < minDeltaAngle)
                     continue;
-                
+
                 lastVertex = points[i];
                 lastEdge = candidateEdge;
                 resampledPoints.Add(lastVertex);

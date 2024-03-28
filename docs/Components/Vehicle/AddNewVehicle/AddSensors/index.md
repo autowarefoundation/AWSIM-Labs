@@ -25,7 +25,7 @@ ROS orientation described with roll, pitch and yaw `(r, p, y)` can be translated
     Please remember to convert the rotation units.
     *ROS* uses radians and *Unity* uses degrees.
     The conversion from radians (`rad`) to degrees (`deg`) is as follows.
-    
+
     ```
     deg = rad * 180 / PI
     ```
@@ -42,7 +42,7 @@ Add a `base_link` *Object* as a child to the `URDF` *Object*.
 
 !!!info "`base_link` transformation"
     Please remember to set an appropriate transformation of the `base_link` *Object* so that it is identical as the `base_link` used in *ROS* in reference to the Vehicle.
-    
+
     This is very important, as a mistake here will result in all subsequent sensors being misplaced.
 
 Inside the `base_link` we will represent all transformations contained in the *ROS* transformations tree.
@@ -52,7 +52,7 @@ You can do this in many ways, for example:
 
 - Check the ROS specific `.yaml` parameter files containing information about each transformation.
 
-    
+
     !!! example
         Here we see an example `.yaml` file containing transformation from the `base_link` to the `sensor_kit_base_link`:
 
@@ -195,7 +195,7 @@ After [adding links for all sensors](#add-links-for-sensors) you need to add the
 When adding sensors almost all of them will have some common fields.
 
 - Frame Id
-    
+
     Frame Id is the name of frame of reference against which the received data will be interpreted by the autonomous driving software stack.
 
     **Remember** that the Frame Id must exist internally in the ROS transformations tree.
@@ -204,7 +204,7 @@ When adding sensors almost all of them will have some common fields.
 
     Topics are names of broadcasting channels.
     You can set the names of topics as you like and the data from sensors will be broadcasted on these topics.
-    
+
     **Remember** to configure your receiving end to listen on the same topics as broadcasting ones.
 
 - Quality Of Service settings (QOS settings)
@@ -229,7 +229,7 @@ Next in the *Inspector* View select your *Vehicle*.
     In this example you can see what a valid message from the Vehicle Status Sensor can look like.
 
     ```log
-    $ ros2 topic echo --once /vehicle/status/velocity_status 
+    $ ros2 topic echo --once /vehicle/status/velocity_status
     header:
       stamp:
         sec: 17
@@ -266,7 +266,7 @@ Assets/AWSIM/Prefabs/Sensors/RobotecGPULidars
     You can configure the noise parameters in the *Inspector* View under `Configuration -> Noise Params` fields.
 
     You can optionally remove the noise simulation by unchecking the `Apply Distance/Angular Gaussian Noise`.
-    
+
     You can also change the ranges of the LiDAR detection.
 
     ![lidar noise configuration](lidar_sensor_script_configuration.png)
@@ -464,7 +464,7 @@ Assets/AWSIM/Prefabs/Sensors
     In this example you can see what a valid message from the IMU Sensor can look like.
 
     ```log
-    $ ros2 topic echo --once /sensing/imu/tamagawa/imu_raw 
+    $ ros2 topic echo --once /sensing/imu/tamagawa/imu_raw
     header:
       stamp:
         sec: 20
@@ -589,13 +589,13 @@ Move the preview on the screen by changing the `X Axis` and `Y Axis` values on t
 
 !!! tip "Testing camera with traffic light recognition"
     You can test the Camera Sensor traffic light recognition by positioning the vehicle on the *Unity* Scene in such a way that on the *Camera preview* you can see the traffic lights.
-    
+
     Remember to lock the *Inspector* view on Camera *Object* before dragging the whole Vehicle - this way you can see the preview while moving the vehicle.
 
     <!-- ![position the vehicle](vehicle_position.gif) -->
 
     ![position the vehicle](vehicle_position.gif)
-    
+
     Run the *Scene* the same as [on this page](../../../../GettingStarted/SetupUnityProject/#run-the-demo-in-editor).
 
     Launch **only** the *Autoware* like [on this page](../../../../GettingStarted/QuickStartDemo/#launching-autoware).
@@ -609,7 +609,7 @@ Move the preview on the screen by changing the `X Axis` and `Y Axis` values on t
     In this example you can see what a valid message from the Camera Sensor can look like.
 
     ```log
-    $ ros2 topic echo --once /sensing/camera/traffic_light/image_raw 
+    $ ros2 topic echo --once /sensing/camera/traffic_light/image_raw
     header:
       stamp:
         sec: 14
@@ -766,7 +766,7 @@ Assets/AWSIM/Prefabs/Sensors
     In this example you can see what a valid message from the Pose Sensor can look like.
 
     ```log
-    $ ros2 topic echo --once /awsim/ground_truth/vehicle/pose 
+    $ ros2 topic echo --once /awsim/ground_truth/vehicle/pose
     header:
       stamp:
         sec: 5

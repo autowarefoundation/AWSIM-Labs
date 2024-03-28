@@ -146,7 +146,8 @@ namespace RGLUnityPlugin
             material.SetFloat("_PointSize", pointSize);
             material.SetInt("_PointShape", (int)pointShape);
 
-            if (!autoComputeColoringHeights) {
+            if (!autoComputeColoringHeights)
+            {
                 material.SetFloat("_MinColoringHeight", minColoringHeight);
                 material.SetFloat("_MaxColoringHeight", maxColoringHeight);
             }

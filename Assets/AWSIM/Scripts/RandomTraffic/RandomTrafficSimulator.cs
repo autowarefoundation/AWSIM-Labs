@@ -4,14 +4,14 @@ using System;
 namespace AWSIM.TrafficSimulation
 {
     [Serializable]
-    public struct RandomTrafficSimulatorConfiguration 
+    public struct RandomTrafficSimulatorConfiguration
     {
         /// <summary>
         /// Available NPC prefabs
         /// </summary>
         [Tooltip("NPCs to be spawned.")]
         public GameObject[] npcPrefabs;
-        
+
         [Tooltip("TrafficLanes where NPC vehicles can spawn.")]
         public TrafficLane[] spawnableLanes;
 
@@ -55,7 +55,8 @@ namespace AWSIM.TrafficSimulation
             return spawnPriority;
         }
 
-        public void ResetPriority() {
+        public void ResetPriority()
+        {
             spawnPriority = 0;
         }
 
@@ -82,8 +83,8 @@ namespace AWSIM.TrafficSimulation
         public void GetRandomSpawnInfo(out NPCVehicleSpawnPoint spawnPoint, out GameObject prefab)
         {
             // NPC prefab is randomly chosen and is fixed until it is spawned. This is due to avoid prefab "bound" race conditions
-            // when smaller cars will always be chosen over larger ones while the spawning process checks if the given prefab can be 
-            // put in the given position. 
+            // when smaller cars will always be chosen over larger ones while the spawning process checks if the given prefab can be
+            // put in the given position.
             if (nextPrefabToSpawn == null)
             {
                 nextPrefabToSpawn = npcVehicleSpawner.GetRandomPrefab();
@@ -97,7 +98,8 @@ namespace AWSIM.TrafficSimulation
 
         public bool Spawn(GameObject prefab, NPCVehicleSpawnPoint spawnPoint, out NPCVehicle spawnedVehicle)
         {
-            if(IsMaximumSpawnsNumberReached()) { 
+            if (IsMaximumSpawnsNumberReached())
+            {
                 spawnedVehicle = null;
                 return false;
             };
@@ -112,7 +114,7 @@ namespace AWSIM.TrafficSimulation
             npcVehicleSimulator.Register(vehicle, spawnPoint.Lane, spawnPoint.WaypointIndex);
             nextPrefabToSpawn = null;
 
-            if(maximumSpawns > 0)
+            if (maximumSpawns > 0)
                 currentSpawnNumber++;
 
             spawnedVehicle = vehicle;

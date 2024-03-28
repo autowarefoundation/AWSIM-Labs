@@ -66,7 +66,7 @@ For each right turn lane that yields to the opposite straight or left turn lane,
 If there is no visible stop line, a `StopLine` component should be added to the scene, near the center of the intersection and associated with `TrafficLane`.
 
 ## Assign Intersection TrafficLanes
-To make the yielding rules work properly, it is necessary to catagorize the `TrafficLanes`. 
+To make the yielding rules work properly, it is necessary to catagorize the `TrafficLanes`.
 The ones that belong to an intersection have the `IntersectionLane` variable set to true.
 
 To automate the assignment of the corresponding `IntersectionLane` to each `TrafficLane`, the script `AssignIntersectionTrafficLanes` can be used.

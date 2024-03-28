@@ -261,7 +261,7 @@ Thanks to them, the *Vehicle* (script) is able to set their steering angle and a
 - `Max Acceleration Input` -  maximum steering angle of the wheels set by the script (also negative).
 
 `Inputs` - are only used as a preview of the currently set values in the script input:
-    
+
 ![input](input.gif)
 
 #### Input Data
@@ -272,7 +272,7 @@ Thanks to them, the *Vehicle* (script) is able to set their steering angle and a
 | *AutomaticShiftInput* | enumeration | Vehicle gear shift input (AT).<br>Values: `PARKING`, `REVERSE`, `NEUTRAL`, `DRIVE`.                                                                                                   |
 | *SignalInput*         | enumeration | Vehicle turn signal input.<br>Values: `NONE`, `LEFT`, `RIGHT`, `HAZARD`.                                                                                                              |
 
-#### Output data 
+#### Output data
 | Category            | Type        | Description                                                       |
 | :------------------ | :---------- | :---------------------------------------------------------------- |
 | *LocalAcceleration* | Vector3     | Acceleration(m/s^2) in the local coordinate system of the vehicle |
@@ -374,7 +374,7 @@ The table below shows the available control options.
 - `Max Acceleration `- maximum value of acceleration set by the script (also negative)
 - `Max Steer Angle` - maximum steering angle of the wheels set by the script (also negative)
 
-!!! warning "Value limits" 
+!!! warning "Value limits"
     `Max Acceleration` and `Max Steer Angle` values greater than those set in the *Vehicle* (script) are limited by the script itself - they will not be exceeded.
 
 ## Vehicle Visual Effect (script)

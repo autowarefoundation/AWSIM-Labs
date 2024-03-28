@@ -27,7 +27,7 @@ namespace ROS2
 {
 
 /// <summary>
-/// An internal class responsible for installing ros2-for-unity metadata files 
+/// An internal class responsible for installing ros2-for-unity metadata files
 /// </summary>
 internal class PostInstall : IPostprocessBuildWithReport
 {
@@ -38,7 +38,7 @@ internal class PostInstall : IPostprocessBuildWithReport
         var r2csMetadataName = "metadata_ros2cs.xml";
 
         // FileUtil.CopyFileOrDirectory: All file separators should be forward ones "/".
-        var r2fuMeta = ROS2ForUnity.GetRos2ForUnityPath() + "/" + r2fuMetadataName; 
+        var r2fuMeta = ROS2ForUnity.GetRos2ForUnityPath() + "/" + r2fuMetadataName;
         var r2csMeta = ROS2ForUnity.GetPluginPath() + "/" + r2csMetadataName;
         var outputDir = Directory.GetParent(report.summary.outputPath);
         var execFilename = Path.GetFileNameWithoutExtension(report.summary.outputPath);

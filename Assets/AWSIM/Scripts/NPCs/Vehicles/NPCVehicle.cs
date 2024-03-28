@@ -411,7 +411,7 @@ namespace AWSIM
             visualObjectRoot.SetActive(isActive);
         }
 
-        // Draw bounding box 
+        // Draw bounding box
         private void OnDrawGizmos()
         {
             // Cache Gizmos default values.

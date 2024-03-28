@@ -52,5 +52,3 @@ sensor_model:=awsim_sensor_kit  vehicle_model:=sample_vehicle                   
 launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml"           \
 initialize_duration:=260 port:=8080
 ```
-
-

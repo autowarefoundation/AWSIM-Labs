@@ -26,9 +26,9 @@ namespace RGLUnityPlugin
             {
                 for (var x = 0; x < heightmapResolution; x++)
                 {
-                    vertices[x * heightmapResolution + z].x =  x * scale.x;
+                    vertices[x * heightmapResolution + z].x = x * scale.x;
                     vertices[x * heightmapResolution + z].y = heights[z, x] * scale.y;
-                    vertices[x * heightmapResolution + z].z =  z * scale.z;
+                    vertices[x * heightmapResolution + z].z = z * scale.z;
                 }
             }
 

@@ -30,9 +30,9 @@ namespace AWSIM
 
         float timer = 0;
 
-        private void Awake() 
+        private void Awake()
         {
-            if(cameraSensors == null || cameraSensors.Count < 1)
+            if (cameraSensors == null || cameraSensors.Count < 1)
             {
                 Debug.LogError("Camera sensor list should have at least one camera to render.");
                 return;
@@ -45,7 +45,7 @@ namespace AWSIM
         {
             timer = 0f;
 
-            while(true)
+            while (true)
             {
                 yield return new WaitForFixedUpdate();
 
@@ -61,7 +61,7 @@ namespace AWSIM
                 timer = 0f;
 
                 // sensors render at different frames one after another
-                if(renderInQueue)
+                if (renderInQueue)
                 {
                     for (int i = 0; i < cameraSensors.Count; i++)
                     {
@@ -79,19 +79,19 @@ namespace AWSIM
             }
         }
 
-    /// <summary>
-    /// Call camera sensor to do a render.
-    /// </summary>
-    /// <param name="cameraSensor">Camera sensor to render.</param>
-    /// <param name="wait">Set True if wait to end of the frame after render.</param>
-        private IEnumerator RenderCamera(CameraSensor cameraSensor, bool wait) 
+        /// <summary>
+        /// Call camera sensor to do a render.
+        /// </summary>
+        /// <param name="cameraSensor">Camera sensor to render.</param>
+        /// <param name="wait">Set True if wait to end of the frame after render.</param>
+        private IEnumerator RenderCamera(CameraSensor cameraSensor, bool wait)
         {
-            if(cameraSensor.gameObject.activeInHierarchy)
+            if (cameraSensor.gameObject.activeInHierarchy)
             {
                 cameraSensor.DoRender();
             }
 
-            if(wait)
+            if (wait)
             {
                 yield return new WaitForEndOfFrame();
             }

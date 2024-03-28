@@ -18,59 +18,58 @@ using System.Diagnostics;
 namespace ROS2
 {
 
-/// <summary>
-/// DateTime based clock that has resolution increased using Stopwatch.
-/// DateTime is used to synchronize since Stopwatch tends to drift.
-/// </summary>
-[System.Obsolete("This TimeSource is deprecated and will be removed in the future versions. Please use DotNetSystemTimeSource instead.")]
-public class DotnetTimeSource : ITimeSource
-{
-    private readonly double maxUnsyncedSeconds = 10;
-
-    private Stopwatch stopwatch = new Stopwatch();
-
-    private readonly object mutex = new object();
-
-    private double systemTimeIntervalStart = 0;
-
-    private double stopwatchStartTimeStamp;
-
-    private double TotalSystemTimeSeconds()
+    /// <summary>
+    /// DateTime based clock that has resolution increased using Stopwatch.
+    /// DateTime is used to synchronize since Stopwatch tends to drift.
+    /// </summary>
+    [System.Obsolete("This TimeSource is deprecated and will be removed in the future versions. Please use DotNetSystemTimeSource instead.")]
+    public class DotnetTimeSource : ITimeSource
     {
-        return TimeSpan.FromTicks(DateTime.UtcNow.Ticks).TotalSeconds;
-    }
+        private readonly double maxUnsyncedSeconds = 10;
 
-    private void UpdateSystemTime()
-    {
-        systemTimeIntervalStart = TotalSystemTimeSeconds();
-        stopwatchStartTimeStamp = Stopwatch.GetTimestamp();
-    }
+        private Stopwatch stopwatch = new Stopwatch();
 
-    public DotnetTimeSource()
-    {
-        UpdateSystemTime();
-    }
+        private readonly object mutex = new object();
 
-    public void GetTime(out int seconds, out uint nanoseconds)
-    {
-        lock(mutex) // Threading
+        private double systemTimeIntervalStart = 0;
+
+        private double stopwatchStartTimeStamp;
+
+        private double TotalSystemTimeSeconds()
         {
-            double endTimestamp = Stopwatch.GetTimestamp();
-            var durationInSeconds = endTimestamp - stopwatchStartTimeStamp;
-            double timeOffset = 0;
-            if (durationInSeconds >= maxUnsyncedSeconds)
-            {   // acquire DateTime to sync
-                UpdateSystemTime();
+            return TimeSpan.FromTicks(DateTime.UtcNow.Ticks).TotalSeconds;
+        }
+
+        private void UpdateSystemTime()
+        {
+            systemTimeIntervalStart = TotalSystemTimeSeconds();
+            stopwatchStartTimeStamp = Stopwatch.GetTimestamp();
+        }
+
+        public DotnetTimeSource()
+        {
+            UpdateSystemTime();
+        }
+
+        public void GetTime(out int seconds, out uint nanoseconds)
+        {
+            lock (mutex) // Threading
+            {
+                double endTimestamp = Stopwatch.GetTimestamp();
+                var durationInSeconds = endTimestamp - stopwatchStartTimeStamp;
+                double timeOffset = 0;
+                if (durationInSeconds >= maxUnsyncedSeconds)
+                {   // acquire DateTime to sync
+                    UpdateSystemTime();
+                }
+                else
+                {   // use Stopwatch offset
+                    timeOffset = durationInSeconds;
+                }
+
+                TimeUtils.TimeFromTotalSeconds(systemTimeIntervalStart + timeOffset, out seconds, out nanoseconds);
             }
-            else
-            {   // use Stopwatch offset
-                timeOffset = durationInSeconds;
-            }
-            
-            TimeUtils.TimeFromTotalSeconds(systemTimeIntervalStart + timeOffset, out seconds, out nanoseconds);
         }
     }
-}
 
 }  // namespace ROS2
-

@@ -45,7 +45,7 @@ It is initialized at the moment of running the scene in *Unity* - thanks to the 
 Each publisher in *AWSIM* is created in *ROS2Node* object of class *SimulatorROS2Node*.
 - *Subscriber* - it is the equivalent of the subscriber in *ROS2*, it uses a single topic from which it subscribes to the selected type of message, and it has a selected [*QoS*][qos] profile.
 Each subscriber in *AWSIM* is created in *ROS2Node* object of class *SimulatorROS2Node*.
- 
+
 <!-- - TODO: *Service Server* -  -->
 <!-- - TODO: *Service Client* - -->
 
@@ -146,7 +146,7 @@ string frame_id
 
 !!! warning "ROS2 directive"
     In order to work with *ROS2* in *Unity*, remember to add the directive `using ROS2;` at the top of the file to import types from this namespace.
-    
+
 ### Create an object
 The simplest way to create an object of [`Header`][header] type is:
 
@@ -161,7 +161,7 @@ It is not required to define the value of each field.
 As you can see, it creates an object, filling only `frame_id` field - and left the field of complex [`builtin_interfaces/msg/Time`][time] type initialized by default.
 Time is an important element of any message, how to fill it is written [here](#filling-a-time).
 
-### Accessing and filling in message fields 
+### Accessing and filling in message fields
 As you might have noticed in the previous example, a *ROS2* message in *Unity* is just a structure containing the same fields - keep the same names and types.
 Access to its fields for reading and filling is the same as for any *C#* structure.
 

@@ -28,9 +28,9 @@ To add a new *LiDAR* model, perform the following steps:
 
     1. Laser distribution is represented by `LaserArray` consists of:
         - `centerOfMeasurementLinearOffsetMm` - 3D translation from the game object's origin to *LiDAR's* origin. Preview in 2D:
-            
+
             <img src="img/LidarOriginParameter.png" width="300">
-        
+
         - `focalDistanceMm` - Distance from the sensor center to the focal point where all laser beams intersect.
 
             <img src="img/LidarFocalDistanceParamter.png" width="300">
@@ -52,7 +52,7 @@ To add a new *LiDAR* model, perform the following steps:
         - Add a new public static instance of `LaserArray` with the definition.
 
         In this example, `NewLidarModel` laser distribution consists of 5 lasers with
-        
+
             - elevations: 15, 10, 0, -10, -15 degrees
             - azimuths: 1.4, -1.4, 1.4, -1.4, 1.4 degrees
             - ring Ids: 1, 2, 3, 4, 5

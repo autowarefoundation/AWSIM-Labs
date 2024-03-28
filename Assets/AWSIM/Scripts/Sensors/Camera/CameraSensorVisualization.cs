@@ -26,7 +26,7 @@ namespace AWSIM
         [SerializeField]
         [Range(1, 10)] private int depthIndicatorStepSize = 4;
 
-        [SerializeField] 
+        [SerializeField]
         [Range(0.01f, 0.1f)] private float edgeThickness = 0.02f;
 
         [Space(10)]
@@ -66,7 +66,7 @@ namespace AWSIM
         private float farDrawDistance = 100f;
 
         private readonly int visualizationLayerID = 11;
-        
+
         #endregion
 
         #region Mutables
@@ -92,7 +92,7 @@ namespace AWSIM
 
         #region Life Cycle
 
-        private void OnEnable() 
+        private void OnEnable()
         {
             InitVars();
             InitiliseMeshes();
@@ -110,7 +110,7 @@ namespace AWSIM
         private void InitVars()
         {
             nearDrawDistance = cameraObject.nearClipPlane;
-            farDrawDistance = cameraObject.farClipPlane > maxDrawDistance? maxDrawDistance : cameraObject.farClipPlane;
+            farDrawDistance = cameraObject.farClipPlane > maxDrawDistance ? maxDrawDistance : cameraObject.farClipPlane;
 
             currSensorSizeX = cameraObject.sensorSize.x;
             currSensorSizeY = cameraObject.sensorSize.y;
@@ -122,7 +122,7 @@ namespace AWSIM
             currThickness = edgeThickness;
         }
 
-        private void InitiliseMeshes() 
+        private void InitiliseMeshes()
         {
             edgeMesh = new Mesh();
             edgeMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
@@ -139,8 +139,8 @@ namespace AWSIM
             depthMesh.Clear();
             depthMesh.name = "Depth";
         }
-     
-     
+
+
         private void Dispose()
         {
             edgeMesh.Clear();
@@ -157,45 +157,45 @@ namespace AWSIM
 
         #region Unity Messages - Update
 
-        private void Update() 
-        {         
-            if(!initialized)
+        private void Update()
+        {
+            if (!initialized)
             {
                 return;
             }
 
             // check if render texture from camera sensor object is ready
-            if(!IsCamereSensorValid())
+            if (!IsCamereSensorValid())
             {
                 return;
             }
 
-            if(Mathf.Abs(currImageWidth - GetCameraSensorImageWidth()) > 0.001f || Mathf.Abs(currImageHeight - GetCameraSensorImageHeight()) > 0.001f)
+            if (Mathf.Abs(currImageWidth - GetCameraSensorImageWidth()) > 0.001f || Mathf.Abs(currImageHeight - GetCameraSensorImageHeight()) > 0.001f)
             {
                 currImageWidth = GetCameraSensorImageWidth();
                 currImageHeight = GetCameraSensorImageHeight();
                 UpdateMesh();
             }
 
-            if(Mathf.Abs(currSensorSizeX - cameraObject.sensorSize.x) > 0.001f)
+            if (Mathf.Abs(currSensorSizeX - cameraObject.sensorSize.x) > 0.001f)
             {
                 UpdateMesh();
                 currSensorSizeX = cameraObject.sensorSize.x;
             }
 
-            if(Mathf.Abs(currSensorSizeY - cameraObject.sensorSize.y) > 0.001f)
+            if (Mathf.Abs(currSensorSizeY - cameraObject.sensorSize.y) > 0.001f)
             {
                 UpdateMesh();
                 currSensorSizeY = cameraObject.sensorSize.y;
             }
 
-            if(Mathf.Abs(currFocalLength - cameraObject.focalLength) > 0.001f)
+            if (Mathf.Abs(currFocalLength - cameraObject.focalLength) > 0.001f)
             {
                 UpdateMesh();
                 currFocalLength = cameraObject.focalLength;
             }
 
-            if(Mathf.Abs(currThickness - edgeThickness) > 0.001f)
+            if (Mathf.Abs(currThickness - edgeThickness) > 0.001f)
             {
                 UpdateMesh();
                 currThickness = edgeThickness;
@@ -216,10 +216,10 @@ namespace AWSIM
 
             float vertFov = GetVerticalFOV();
             float horzFov = GetHorizontalFOV();
-            
+
             Vector3[] nearPoints = GetFovVertices(horzFov, vertFov, nearDrawDistance);
             Vector3[] farPoints = GetFovVertices(horzFov, vertFov, farDrawDistance);
-            
+
             Vector3[] points = GetFovVertices(horzFov, vertFov, nearDrawDistance, farDrawDistance);
 
             // fill mesh
@@ -235,10 +235,10 @@ namespace AWSIM
             edgeMesh.vertices = lineMesh.Vertices;
             edgeMesh.triangles = lineMesh.Triangles;
 
-            // depth mesh      
-            MeshInfo depthLine= GetDepthIndicatorMesh(nearDrawDistance, farDrawDistance, depthIndicatorStepSize);
+            // depth mesh
+            MeshInfo depthLine = GetDepthIndicatorMesh(nearDrawDistance, farDrawDistance, depthIndicatorStepSize);
             depthMesh.vertices = depthLine.Vertices;
-            depthMesh.triangles = depthLine.Triangles;      
+            depthMesh.triangles = depthLine.Triangles;
         }
 
         private void UpdateTransform()
@@ -319,7 +319,7 @@ namespace AWSIM
 
             Vector3[] vertices = Get3DLineAlongYDirection(halfThickness, length);
 
-            for(int i=0; i < vertices.Length; i++)
+            for (int i = 0; i < vertices.Length; i++)
             {
                 vertices[i] = q * vertices[i];
                 vertices[i] += startPoint;
@@ -327,7 +327,7 @@ namespace AWSIM
 
             MeshInfo meshInfo = new MeshInfo();
             meshInfo.Vertices = vertices;
-            meshInfo.Triangles = new int[] { 0, 2, 1, 0, 3, 2, 0, 1, 4, 4, 1, 5, 5, 1, 6, 6, 1, 2, 
+            meshInfo.Triangles = new int[] { 0, 2, 1, 0, 3, 2, 0, 1, 4, 4, 1, 5, 5, 1, 6, 6, 1, 2,
             2, 3, 6, 6, 3, 7, 7, 3, 0, 0, 4, 7, 7, 4, 6, 6, 4, 5};
 
             return meshInfo;
@@ -369,19 +369,19 @@ namespace AWSIM
             float fovHorz = GetHorizontalFOV();
 
             MeshInfo lines = new MeshInfo();
-            
-            int counter = Mathf.FloorToInt( (maxDistance - minDistance) / spacing);
+
+            int counter = Mathf.FloorToInt((maxDistance - minDistance) / spacing);
 
             // near clip plane
-            Vector3[] points = GetFovVertices(fovHorz, fovVert, minDistance);     
+            Vector3[] points = GetFovVertices(fovHorz, fovVert, minDistance);
             lines = GetLineBetween(points[1], points[2], edgeThickness * 0.5f);
             lines.Join(GetLineBetween(points[2], points[3], edgeThickness * 0.5f));
             lines.Join(GetLineBetween(points[3], points[4], edgeThickness * 0.5f));
             lines.Join(GetLineBetween(points[4], points[1], edgeThickness * 0.5f));
 
-            if(counter > 1)
+            if (counter > 1)
             {
-                for(int i=1; i<counter+1; i++)
+                for (int i = 1; i < counter + 1; i++)
                 {
                     points = GetFovVertices(fovHorz, fovVert, minDistance + spacing * i);
                     lines.Join(GetLineBetween(points[1], points[2], edgeThickness * 0.5f));
@@ -402,15 +402,15 @@ namespace AWSIM
 
         private float GetHorizontalFOV()
         {
-            float fov = Mathf.Atan2((cameraObject.sensorSize.x * 0.5f ), cameraObject.focalLength) * Mathf.Rad2Deg * 2f;
+            float fov = Mathf.Atan2((cameraObject.sensorSize.x * 0.5f), cameraObject.focalLength) * Mathf.Rad2Deg * 2f;
             return fov;
         }
 
         private bool IsCamereSensorValid()
         {
-            if(cameraObject.targetTexture != null && GetCameraSensorImageWidth() > 0f && GetCameraSensorImageHeight() > 0f) 
+            if (cameraObject.targetTexture != null && GetCameraSensorImageWidth() > 0f && GetCameraSensorImageHeight() > 0f)
             {
-                return true;                
+                return true;
             }
 
             return false;
@@ -418,7 +418,7 @@ namespace AWSIM
 
         private float GetCameraSensorImageWidth()
         {
-            if(cameraObject.targetTexture != null)
+            if (cameraObject.targetTexture != null)
             {
                 return cameraObject.targetTexture.width;
             }
@@ -428,7 +428,7 @@ namespace AWSIM
 
         private float GetCameraSensorImageHeight()
         {
-            if(cameraObject.targetTexture != null)
+            if (cameraObject.targetTexture != null)
             {
                 return cameraObject.targetTexture.height;
             }
@@ -470,7 +470,7 @@ namespace AWSIM
                 meshA.Triangles.CopyTo(meshInfo.Triangles, 0);
 
                 int[] triangle = new int[meshB.Triangles.Length];
-                for(int i=0; i<meshB.Triangles.Length; i++)
+                for (int i = 0; i < meshB.Triangles.Length; i++)
                 {
                     triangle[i] = meshB.Triangles[i] + meshA.Vertices.Length;
                 }
@@ -480,7 +480,7 @@ namespace AWSIM
                 return meshInfo;
             }
         }
-        
+
         #endregion
     }
 

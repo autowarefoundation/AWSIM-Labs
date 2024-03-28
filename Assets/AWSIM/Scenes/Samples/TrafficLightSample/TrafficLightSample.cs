@@ -22,7 +22,7 @@ namespace AWSIM.Samples
             Debug.Log("Green");
             // create input bulb data.
             input = new TrafficLight.BulbData(TrafficLight.BulbType.GREEN_BULB, TrafficLight.BulbColor.GREEN, TrafficLight.BulbStatus.SOLID_ON);
-            
+
             // applay input blub data.
             trafficLight.SetBulbData(input);
             yield return new WaitForSeconds(4f);

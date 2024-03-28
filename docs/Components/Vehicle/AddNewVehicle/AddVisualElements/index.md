@@ -149,7 +149,7 @@ This means you need to shift the whole `Models` *Object* accordingly (change the
 
 !!!tip
     Add a `dummy` *Object* as a child to the `EgoVehicle` *Object* (the same as in steps before) so it is located in the origin of the `EgoVehicle`.
-    
+
     Now move `Models` around relative to the `dummy` - change *position* in the *Inspector* view.
     The `dummy` will help you see when the **fixed** axis (in case of the Lexus from example it is the rear axis) is aligned with origin of `EgoVehicle`.
 

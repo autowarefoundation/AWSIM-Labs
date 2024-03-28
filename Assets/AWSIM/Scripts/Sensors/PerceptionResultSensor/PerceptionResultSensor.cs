@@ -16,7 +16,7 @@ namespace AWSIM
         /// <summary>
         /// This data is output from ObjectSensor at the OutputHz cycle.
         /// </summary>
-        /// 
+        ///
 
         public class DetectedObject
         {
@@ -89,9 +89,11 @@ namespace AWSIM
             return footprint;
         }
 
-        void CreateDetectedObjectData(){
+        void CreateDetectedObjectData()
+        {
             outputData.objects = new DetectedObject[cachedObjectsWithClassification.Length];
-            for (int i = 0; i < cachedObjectsWithClassification.Length; i++) {
+            for (int i = 0; i < cachedObjectsWithClassification.Length; i++)
+            {
                 ObjectClassification obj = cachedObjectsWithClassification[i];
                 outputData.objects[i] = new DetectedObject();
                 // add classification
@@ -99,12 +101,14 @@ namespace AWSIM
                 var gameObject = obj.gameObject;
                 // Note: object without rigidbody is considered above
                 var rb = gameObject.GetComponent<Rigidbody>();
-                if(rb == null){
+                if (rb == null)
+                {
                     Debug.Log("Please Attach RigidBody to NPC");
                 }
                 outputData.objects[i].rigidBody = rb;
                 MeshFilter[] meshFilters = gameObject.GetComponentsInChildren<MeshFilter>();
-                if(meshFilters.Length > 0){
+                if (meshFilters.Length > 0)
+                {
                     Vector3 localMinBounds = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
                     Vector3 localMaxBounds = new Vector3(float.MinValue, float.MinValue, float.MinValue);
                     // mesh filter bounds is in local coordinate
@@ -116,18 +120,20 @@ namespace AWSIM
                     }
                     outputData.objects[i].dimension = ROS2Utility.UnityToRosScale(localMaxBounds - localMinBounds);
                     outputData.objects[i].bounds = GenerateFootprint(outputData.objects[i].dimension, outputData.objects[i].rigidBody);
-                } else {
-                    outputData.objects[i].dimension = new Vector3(0.5f, 0.5f, 1.5f);
-                    outputData.objects[i].bounds = new Vector2[]{};
                 }
-            }            
+                else
+                {
+                    outputData.objects[i].dimension = new Vector3(0.5f, 0.5f, 1.5f);
+                    outputData.objects[i].bounds = new Vector2[] { };
+                }
+            }
         }
 
         void Start()
         {
             outputData.origin = this.transform;
             // Check if cachedObjectsWithClassification is empty
-            if(cachedObjectsWithClassification == null || cachedObjectsWithClassification.Length == 0)
+            if (cachedObjectsWithClassification == null || cachedObjectsWithClassification.Length == 0)
             {
                 cachedObjectsWithClassification = FindObjectsOfType<ObjectClassification>();
                 manuallyCached = false;
@@ -145,9 +151,11 @@ namespace AWSIM
                 return;
             timer = 0;
             outputData.origin = this.transform;
-            if(!manuallyCached){
+            if (!manuallyCached)
+            {
                 var currentObjectsWithClassification = FindObjectsOfType<ObjectClassification>();
-                if (!Enumerable.SequenceEqual(cachedObjectsWithClassification, currentObjectsWithClassification)) {
+                if (!Enumerable.SequenceEqual(cachedObjectsWithClassification, currentObjectsWithClassification))
+                {
                     cachedObjectsWithClassification = currentObjectsWithClassification;
                     CreateDetectedObjectData();
                 }
@@ -155,8 +163,8 @@ namespace AWSIM
             for (int i = 0; i < cachedObjectsWithClassification.Length; i++)
             {
                 var o = outputData.objects[i];
-                if(o == null) continue;
-                outputData.objects[i].bounds = GenerateFootprint(o.dimension,o.rigidBody);
+                if (o == null) continue;
+                outputData.objects[i].bounds = GenerateFootprint(o.dimension, o.rigidBody);
             }
             // Calls registered callbacks
             OnOutputData.Invoke(outputData);

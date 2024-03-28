@@ -27,7 +27,7 @@ namespace AWSIM
             {
                 DateTime currDateTime = DateTime.UtcNow;
 
-                if(!hasStarted)
+                if (!hasStarted)
                 {
                     hasStarted = true;
 

@@ -28,28 +28,28 @@ namespace AWSIM
         /// <param name="type">Type of requested time source.</param>
         public void SetType(string type)
         {
-            if(type == null || type == "")
+            if (type == null || type == "")
             {
                 return;
             }
 
-            if(string.CompareOrdinal(type.ToLower(), "unity") == 0)
+            if (string.CompareOrdinal(type.ToLower(), "unity") == 0)
             {
                 SetType(TimeSourceProvider.TimeSourceType.UNITY);
             }
-            else if(string.CompareOrdinal(type.ToLower(), "simulation") == 0)
+            else if (string.CompareOrdinal(type.ToLower(), "simulation") == 0)
             {
                 SetType(TimeSourceProvider.TimeSourceType.DOTNET_SIMULATION);
             }
-            else if(string.CompareOrdinal(type.ToLower(), "system") == 0)
+            else if (string.CompareOrdinal(type.ToLower(), "system") == 0)
             {
                 SetType(TimeSourceProvider.TimeSourceType.DOTNET_SYSTEM);
             }
-            else if(string.CompareOrdinal(type.ToLower(), "ss2") == 0)
+            else if (string.CompareOrdinal(type.ToLower(), "ss2") == 0)
             {
                 SetType(TimeSourceProvider.TimeSourceType.SS2);
             }
-            else if(string.CompareOrdinal(type.ToLower(), "ros2") == 0)
+            else if (string.CompareOrdinal(type.ToLower(), "ros2") == 0)
             {
                 SetType(TimeSourceProvider.TimeSourceType.ROS2);
             }

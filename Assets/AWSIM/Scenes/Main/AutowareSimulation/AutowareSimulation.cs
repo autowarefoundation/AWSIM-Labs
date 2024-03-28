@@ -47,7 +47,7 @@ namespace AWSIM
         void Awake()
         {
             // check if time source selector is present
-            if(timeSourceSelector == null)
+            if (timeSourceSelector == null)
             {
                 Debug.LogWarning("TimeSource: There is no TimeSourceSelector object assigned in the inspector. The default time source will be used.");
             }

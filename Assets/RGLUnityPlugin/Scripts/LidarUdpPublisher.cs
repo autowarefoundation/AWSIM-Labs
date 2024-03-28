@@ -183,7 +183,7 @@ namespace RGLUnityPlugin
             }
 
             LidarModel? detectedUnityLidarModel = null;
-            foreach(var unityLidarModel in UnityToRGLLidarModelsMapping.Keys)
+            foreach (var unityLidarModel in UnityToRGLLidarModelsMapping.Keys)
             {
                 var unityLidarConfig = LidarConfigurationLibrary.ByModel[unityLidarModel]();
                 if (modelToValidate.laserArray.lasers.SequenceEqual(unityLidarConfig.laserArray.lasers))

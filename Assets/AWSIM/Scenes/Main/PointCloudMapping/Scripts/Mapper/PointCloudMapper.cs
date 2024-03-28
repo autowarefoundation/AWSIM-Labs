@@ -60,7 +60,7 @@ namespace AWSIM.PointCloudMapping
 
             var start = Time.realtimeSinceStartup;
             capturePoseQueue = new Queue<Pose>(LaneletMapToPoses(laneletMap, captureLocationInterval));
-            var computeTimeMs = (Time.realtimeSinceStartup - start) * 1000f; 
+            var computeTimeMs = (Time.realtimeSinceStartup - start) * 1000f;
             Debug.Log($"Will visit {capturePoseQueue.Count} points; computed in {computeTimeMs} ms");
 
             laneletVisualizer.Initialize(laneletMap);

@@ -1,6 +1,6 @@
 `RGL Unity Plugin` allows to:
 
-- assigning an `Intensity Texture` to the *GameObjects* to produce a point cloud containing information about the lidar ray intensity of hit. It can be used to distinguish different levels of an object's reflectivity. 
+- assigning an `Intensity Texture` to the *GameObjects* to produce a point cloud containing information about the lidar ray intensity of hit. It can be used to distinguish different levels of an object's reflectivity.
 - assigning an ID to *GameObjects* to produce a point cloud containing information about hit objects. It can be used for instance/semantic segmentation tasks.
 Below describes how to ensure the publication of this information.
 
@@ -16,7 +16,7 @@ The texture has to be in `R8` format. That means `8bit` in the red channel (`255
 
 <img src="IntensityTextureProperties.png" width="400">
 
-When the texture is assigned, the intensity values will be read from the texture and added to the point cloud if and only if the mesh component in the `GameObject` has a set of properly created texture coordinates. 
+When the texture is assigned, the intensity values will be read from the texture and added to the point cloud if and only if the mesh component in the `GameObject` has a set of properly created texture coordinates.
 
 The expected number of texture coordinates is equal to the number of vertices in the mesh. The quantity of indices is not relevant. In other cases, the texture will be no read properly.
 

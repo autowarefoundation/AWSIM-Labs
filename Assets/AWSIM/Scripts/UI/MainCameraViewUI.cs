@@ -26,7 +26,7 @@ namespace AWSIM
 
         void OnEnable()
         {
-            if(followCamera != null)
+            if (followCamera != null)
             {
                 followCamera.onActivateRotateCameraAround += Show;
             }
@@ -34,7 +34,7 @@ namespace AWSIM
 
         void OnDisable()
         {
-            if(followCamera != null)
+            if (followCamera != null)
             {
                 followCamera.onActivateRotateCameraAround -= Show;
             }
@@ -42,7 +42,7 @@ namespace AWSIM
 
         private void Show(bool active)
         {
-            canvasGroup.alpha = active? 1.0f : 0.0f;
+            canvasGroup.alpha = active ? 1.0f : 0.0f;
         }
 
     }

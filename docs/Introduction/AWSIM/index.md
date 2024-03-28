@@ -2,8 +2,8 @@
 <video width="1920" controls autoplay muted loop>
 <source src="awsim_video.mp4" type="video/mp4">
 </video>
-[*AWSIM*](https://github.com/tier4/AWSIM) is an open-source simulator made with [*Unity*](https://unity.com/) for autonomous driving research and development. 
-It is developed for self-driving software like [*Autoware*](../Autoware/). This simulator aims to bridge the gap between the virtual and real worlds, enabling users to train and evaluate their autonomous systems in a safe and controlled environment before deploying them on real vehicles. It provides a realistic virtual environment for training, testing, and evaluating various aspects of autonomous driving systems. 
+[*AWSIM*](https://github.com/tier4/AWSIM) is an open-source simulator made with [*Unity*](https://unity.com/) for autonomous driving research and development.
+It is developed for self-driving software like [*Autoware*](../Autoware/). This simulator aims to bridge the gap between the virtual and real worlds, enabling users to train and evaluate their autonomous systems in a safe and controlled environment before deploying them on real vehicles. It provides a realistic virtual environment for training, testing, and evaluating various aspects of autonomous driving systems.
 
 *AWSIM* simulates a variety of real-world scenarios, with accurate physics and sensor models. It offers a wide range of sensors, such as: *Cameras*, *GNSS*, *IMU* and  *LiDARs*, allowing developers to simulate their  autonomous vehicle's interactions with the environment accurately. The simulator also models dynamic objects, such as pedestrians, other vehicles, and traffic lights, making it possible to study interactions and decision-making in complex traffic scenarios. This enables the testing and evaluation of perception, planning, and control algorithms under different sensor configurations and scenarios.
 
@@ -30,7 +30,7 @@ The main objectives of *AWSIM* are to facilitate research and development in aut
 
 To describe the architecture of *AWSIM*, first of all, it is necessary to mention the `Scene`. It contains all the objects occurring in the simulation of a specific scenario and their configurations. The default *AWSIM* scene that is developed to work with [*Autoware*](https://github.com/autowarefoundation/autoware) is called *AutowareSimulation*.
 
-In the scene we can distinguish basics components such like `MainCamera`, `ClockPublisher`, `EventSystem` and `Canvas`. A detailed description of the scene and its components can be found [here](../../ProjectGuide/Scenes/). 
+In the scene we can distinguish basics components such like `MainCamera`, `ClockPublisher`, `EventSystem` and `Canvas`. A detailed description of the scene and its components can be found [here](../../ProjectGuide/Scenes/).
 
 Besides the elements mentioned above, the scene contains two more, very important and complex components: `Environment` and `EgoVehicle` - described below.
 
@@ -55,7 +55,7 @@ Detailed description of mentioned components is in [this section](../../Componen
 
 `EgoVehicle` is a component responsible for simulating an autonomous vehicle moving around the scene. It includes:
 
-- `Models` and `Reflection Probe` components related to its visual appearance. 
+- `Models` and `Reflection Probe` components related to its visual appearance.
 - `Colliders` providing collisions and the ability to move on roads.
 - `Sensors` providing data related to the state of the vehicle, including its position and speed in `Environment` and the state of its surroundings.
 - `Vehicle` component that simulates dynamics, controls `**Wheel` and is responsible for ensuring their movement.

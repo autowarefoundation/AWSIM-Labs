@@ -19,7 +19,8 @@ namespace AWSIM.Scripts.UI
 
         private void Start()
         {
-            if (EgoTransform) {
+            if (EgoTransform)
+            {
                 initialEgoPosition = EgoTransform.position;
                 initialEgoRotation = EgoTransform.rotation;
             }

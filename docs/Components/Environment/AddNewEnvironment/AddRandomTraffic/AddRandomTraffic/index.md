@@ -57,7 +57,7 @@ These settings can to be adjusted to your preference.
 
     !!! tip "Control NPC Vehicle spawning"
         Random Traffic Simulator Script will **on random** select one prefab from `Npc Prefabs` list every time when there  are not enough vehicles on the scene (the number of vehicles on the scene is smaller than the number specified in the `Max Vehicle Count` field).
-        
+
         You can control the odds of selecting one vehicle prefab over another by adding more than one instance of the same prefab to this list.
 
 ## Add spawnable lanes

@@ -39,7 +39,7 @@ namespace AWSIM
             this.seconds = seconds;
             this.nanoseconds = nanoseconds;
         }
-    
+
         #endregion
     }
 }

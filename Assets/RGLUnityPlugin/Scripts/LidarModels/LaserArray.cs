@@ -54,7 +54,7 @@ namespace RGLUnityPlugin
 
         /// <summary>
         /// List of lasers constituting this array.
-        /// Note: Set minRange and maxRange of the lasers if ranges for them differ. If not, range can be specified in the LidarConfiguration. 
+        /// Note: Set minRange and maxRange of the lasers if ranges for them differ. If not, range can be specified in the LidarConfiguration.
         /// </summary>
         public Laser[] lasers;
 
@@ -89,7 +89,7 @@ namespace RGLUnityPlugin
 
         /// <summary>
         /// Generates LaserArray with uniformly distributed vertical angular offsets.
-        /// Note: angles follow Unity convention, looking above the horizon is negative angle! 
+        /// Note: angles follow Unity convention, looking above the horizon is negative angle!
         /// </summary>
         public static LaserArray Uniform(float minVAngle, float maxVAngle, int vIncrements)
         {
@@ -111,7 +111,7 @@ namespace RGLUnityPlugin
             for (int incr = 0; incr < vIncrements; incr++)
             {
                 float angle = minVAngle + incr * vertIncrAngle;
-                lasers[incr] = new Laser {verticalAngularOffsetDeg = angle, ringId = incr + 1};
+                lasers[incr] = new Laser { verticalAngularOffsetDeg = angle, ringId = incr + 1 };
             }
 
             return new LaserArray()

@@ -21,7 +21,7 @@ namespace AWSIM
         /// Object sensor frame id.
         /// </summary>
         public string frameId = "base_link";
-        
+
         /// <summary>
         /// max distance that lidar can detect
         /// </summary>
@@ -65,11 +65,11 @@ namespace AWSIM
             var objectsList = new List<autoware_auto_perception_msgs.msg.DetectedObject>();
             foreach (var detectedObject in outputData.objects)
             {
-                if(detectedObject ==null || detectedObject.rigidBody == null || detectedObject.dimension == null || detectedObject.bounds == null) continue;
+                if (detectedObject == null || detectedObject.rigidBody == null || detectedObject.dimension == null || detectedObject.bounds == null) continue;
                 var rb = detectedObject.rigidBody;
                 var dim = detectedObject.dimension;
                 var bou = detectedObject.bounds;
-                // Check if detectedObject.dimension and detectedObject.bounds are null                
+                // Check if detectedObject.dimension and detectedObject.bounds are null
                 float distance = Vector3.Distance(outputData.origin.position, rb.transform.position);
                 if (distance > maxDistance) continue;
 
@@ -77,39 +77,39 @@ namespace AWSIM
                 obj.Existence_probability = 1.0f;
                 var classification = new autoware_auto_perception_msgs.msg.ObjectClassification();
                 {
-                switch (detectedObject.classification)
-                {
-                    case ObjectClassification.ObjectType.UNKNOWN:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.UNKNOWN;
-                        break;
-                    case ObjectClassification.ObjectType.CAR:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.CAR;
-                        break;
-                    case ObjectClassification.ObjectType.TRUCK:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.TRUCK;
-                        break;
-                    case ObjectClassification.ObjectType.BUS:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.BUS;
-                        break;
-                    case ObjectClassification.ObjectType.TRAILER:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.TRAILER;
-                        break;
-                    case ObjectClassification.ObjectType.MOTORCYCLE:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.MOTORCYCLE;
-                        break;
-                    case ObjectClassification.ObjectType.BICYCLE:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.BICYCLE;
-                        break;
-                    case ObjectClassification.ObjectType.PEDESTRIAN:
-                        classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.PEDESTRIAN;
-                        break;
-                    default:
-                        Debug.LogWarning("Unknown classification type");
-                        break;
-                }
+                    switch (detectedObject.classification)
+                    {
+                        case ObjectClassification.ObjectType.UNKNOWN:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.UNKNOWN;
+                            break;
+                        case ObjectClassification.ObjectType.CAR:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.CAR;
+                            break;
+                        case ObjectClassification.ObjectType.TRUCK:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.TRUCK;
+                            break;
+                        case ObjectClassification.ObjectType.BUS:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.BUS;
+                            break;
+                        case ObjectClassification.ObjectType.TRAILER:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.TRAILER;
+                            break;
+                        case ObjectClassification.ObjectType.MOTORCYCLE:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.MOTORCYCLE;
+                            break;
+                        case ObjectClassification.ObjectType.BICYCLE:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.BICYCLE;
+                            break;
+                        case ObjectClassification.ObjectType.PEDESTRIAN:
+                            classification.Label = autoware_auto_perception_msgs.msg.ObjectClassification.PEDESTRIAN;
+                            break;
+                        default:
+                            Debug.LogWarning("Unknown classification type");
+                            break;
+                    }
                     classification.Probability = 1.0f;
                 }
-                obj.Classification = new List<autoware_auto_perception_msgs.msg.ObjectClassification>{classification}.ToArray();
+                obj.Classification = new List<autoware_auto_perception_msgs.msg.ObjectClassification> { classification }.ToArray();
 
                 var kinematics = new autoware_auto_perception_msgs.msg.DetectedObjectKinematics();
                 // Add pose
@@ -121,7 +121,7 @@ namespace AWSIM
                     kinematics.Pose_with_covariance.Pose.Position.Y = p.y;
                     kinematics.Pose_with_covariance.Pose.Position.Z = p.z;
                     // add initial rotation of object
-                    var r = ROS2Utility.UnityToRosRotation(Quaternion.Inverse(outputData.origin.rotation) *rb.transform.rotation);
+                    var r = ROS2Utility.UnityToRosRotation(Quaternion.Inverse(outputData.origin.rotation) * rb.transform.rotation);
                     kinematics.Pose_with_covariance.Pose.Orientation.X = r.x;
                     kinematics.Pose_with_covariance.Pose.Orientation.Y = r.y;
                     kinematics.Pose_with_covariance.Pose.Orientation.Z = r.z;
@@ -162,7 +162,8 @@ namespace AWSIM
                     shape.Dimensions.Z = dim.z;
                     var footprints = new geometry_msgs.msg.Polygon();
                     // Assuming Point32 has X, Y, Z properties
-                    if(bou.Length > 0){
+                    if (bou.Length > 0)
+                    {
                         var point1 = new geometry_msgs.msg.Point32() { X = bou[0].x, Y = bou[0].y, Z = 0 };
                         var point2 = new geometry_msgs.msg.Point32() { X = bou[1].x, Y = bou[1].y, Z = 0 };
                         var point3 = new geometry_msgs.msg.Point32() { X = bou[2].x, Y = bou[2].y, Z = 0 };
@@ -187,7 +188,7 @@ namespace AWSIM
 
         void OnDestroy()
         {
-           SimulatorROS2Node.RemovePublisher<autoware_auto_perception_msgs.msg.DetectedObjects>(objectPublisher);
+            SimulatorROS2Node.RemovePublisher<autoware_auto_perception_msgs.msg.DetectedObjects>(objectPublisher);
         }
     }
 }

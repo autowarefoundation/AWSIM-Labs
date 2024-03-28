@@ -5,18 +5,18 @@ namespace AWSIM.TrafficSimulation
 
 /// <summary>
 /// Interface for traffic simulators
-/// </summary>  
+/// </summary>
 public interface ITrafficSimulator
 {
     /// <summary>
-    /// Try to spawn a prefab in a given spawn location. 
+    /// Try to spawn a prefab in a given spawn location.
     /// </summary>
     /// <param name="prefab"></param>
     /// <param name="spawnPoint"></param>
     /// <param name="spawnedVehicle"></param>
     /// <returns>True if spawned, False is failed to spawn.</returns>
     public bool Spawn(GameObject prefab, NPCVehicleSpawnPoint spawnPoint, out NPCVehicle spawnedVehicle);
-    
+
     /// <summary>
     /// Gets random spawn point and NPC prefab.
     /// </summary>

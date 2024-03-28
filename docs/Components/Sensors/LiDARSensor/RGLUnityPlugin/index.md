@@ -85,7 +85,7 @@ Mesh source can be changed in the `SceneManager` script properties:
 
 !!! warning "Performance"
     `SceneManager` performance depends on mesh source option selected.
-    
+
 ### Usage requirements
 Objects, to be detectable by `RGL`, must fulfill the following requirements:
 

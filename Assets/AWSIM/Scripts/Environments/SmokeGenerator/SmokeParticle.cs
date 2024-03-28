@@ -12,7 +12,7 @@ public class SmokeParticle : MonoBehaviour
 	private double lifeTime;
 	private Vector3 velocity = new Vector3(0.0f, -0.05f, 0.0f);
 	private Vector3 acceleration = new Vector3(0.0f, 0.05f, 0.0f);
-	
+
     void Start()
     {
         this.CreateCube();
@@ -64,7 +64,7 @@ public class SmokeParticle : MonoBehaviour
 			0, 6, 7,
 			0, 1, 6
 		};
-			
+
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 		mesh.Clear ();
 		mesh.vertices = vertices;
@@ -122,7 +122,7 @@ public class SmokeParticle : MonoBehaviour
 
         particle.AddComponent(typeof(MeshFilter));
         particle.AddComponent(typeof(MeshRenderer));
-		
+
         particle.AddComponent<SmokeParticle>();
 		particle.GetComponent<SmokeParticle>().SetParentComp(gameObject);
 		particle.GetComponent<SmokeParticle>().SetVelAcc(angleRad);

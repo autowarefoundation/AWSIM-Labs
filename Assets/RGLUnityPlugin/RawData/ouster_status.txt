@@ -30,4 +30,3 @@ get_beam_intrinsics
 
 get_lidar_intrinsics
 {"lidar_to_sensor_transform": [-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 36.18, 0, 0, 0, 1]}
-

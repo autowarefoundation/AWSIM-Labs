@@ -61,7 +61,7 @@ namespace RGLUnityPlugin
 		// Dynamic fields
 		DYNAMIC_FORMAT = 13842,
 	}
-	
+
 	public enum RGLLogLevel : Int32
 	{
 		ALL = 0,
@@ -117,7 +117,7 @@ namespace RGLUnityPlugin
 		QOS_POLICY_HISTORY_KEEP_LAST = 1,
 		QOS_POLICY_HISTORY_KEEP_ALL = 2,
 	};
-	
+
 	public enum RGLExtension : Int32
 	{
 		RGL_EXTENSION_PCL = 0,

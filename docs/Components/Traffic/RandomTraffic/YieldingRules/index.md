@@ -15,7 +15,7 @@ The `RandomTrafficSimulator` assumes that there are 10 phases of yielding priori
 ![image](INTERSECTION_BLOCKED.png)
 
 
-1. `LEFT_HAND_RULE_ENTERING_INTERSECTION` -  vehicle A, before entering the intersection where the traffic lights are off, yields priority to vehicles (ex. B) that are approaching to the intersection and are on the left side of vehicle A. 
+1. `LEFT_HAND_RULE_ENTERING_INTERSECTION` -  vehicle A, before entering the intersection where the traffic lights are off, yields priority to vehicles (ex. B) that are approaching to the intersection and are on the left side of vehicle A.
 Until now, situations in which the lights are off were not handled. If a vehicle didn't have a red light and was going straight - it just entered the intersection. Now vehicle A checks if the vehicles on the left (ex. B) have a red light, if not it yields them priority.
 <br>**(vehicle A is truck car with gray sphere, B is the white car to which it points)**
 ![image](LEFT_HAND_RULE_ENTERING_INTERSECTION.png)
@@ -35,14 +35,13 @@ Until now, situations in which the lights are off were not handled. If a vehicle
 ![image](LANES_RULES_AT_INTERSECTION.png)
 
 
-1. `FORCING_PRIORITY` -  state in which some vehicle B should yield priority to a vehicle A but doesn't - for some reason, most likely it could be some unusual situation in which all other rules have failed. Then vehicle A which is at intersection yields priority to a vehicle that is forcing priority. In such a situation, vehicle A transitions to state `FORCING_PRIORITY`. It is very rare to achieve this state, but it does happen. 
+1. `FORCING_PRIORITY` -  state in which some vehicle B should yield priority to a vehicle A but doesn't - for some reason, most likely it could be some unusual situation in which all other rules have failed. Then vehicle A which is at intersection yields priority to a vehicle that is forcing priority. In such a situation, vehicle A transitions to state `FORCING_PRIORITY`. It is very rare to achieve this state, but it does happen.
 
 ## Gizmos Markings
 - **No sphere** means the vehicle is in one of the following states - `NONE`, `ENTERING_INTERSECTION` or `AT_INTERSECTION`.
 - The **gray** sphere means that the vehicle is approaching the intersection and yields priority to the vehicle on the left side - `LEFT_HAND_RULE_ENTERING_INTERSECTION`.
 - The **black** sphere means that the vehicle is at the intersection and yields priority to a vehicle on the left side - `LEFT_HAND_RULE_AT_INTERSECTION`.
-- The **yellow** sphere means that the vehicle yields due to lanes rules before entering the intersection - `LANES_RULES_ENTERING_INTERSECTION`. 
+- The **yellow** sphere means that the vehicle yields due to lanes rules before entering the intersection - `LANES_RULES_ENTERING_INTERSECTION`.
 - The **red** sphere means that it yields due to lanes rules but is already at the intersection - `LANES_RULES_AT_INTERSECTION`.
 - The **blue** sphere means that a vehicle is approaching the intersection and yields priority to a vehicle that is forcing priority - `INTERSECTION_BLOCKED` - when the turning vehicle begins to yield, then the blue sphere disappears. However, if the turning vehicle continues to turn (does not yield because it has passed the stopping point), then the vehicle going straight stops before the intersection and allows the turning vehicle to leave the intersection.
 - The **pink** sphere means that a vehicle is at intersection and yields priority to a vehicle that is forcing priority - `FORCING_PRIORITY`.
-

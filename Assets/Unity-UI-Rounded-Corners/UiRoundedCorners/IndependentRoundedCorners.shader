@@ -1,8 +1,8 @@
 ﻿Shader "UI/RoundedCorners/IndependentRoundedCorners" {
-    
+
     Properties {
         [HideInInspector] _MainTex ("Texture", 2D) = "white" {}
-        
+
         // --- Mask support ---
         [HideInInspector] _StencilComp ("Stencil Comparison", Float) = 8
         [HideInInspector] _Stencil ("Stencil ID", Float) = 0
@@ -17,13 +17,13 @@
         _rect2props ("rect2props", Vector) = (0,0,0,0)
         // ---
     }
-    
+
     SubShader {
-        Tags { 
+        Tags {
             "RenderType"="Transparent"
-            "Queue"="Transparent" 
+            "Queue"="Transparent"
         }
-        
+
         // --- Mask support ---
         Stencil {
             Ref [_Stencil]
@@ -31,36 +31,36 @@
             Pass [_StencilOp]
             ReadMask [_StencilReadMask]
             WriteMask [_StencilWriteMask]
-        }    
+        }
         Cull Off
         Lighting Off
         ZTest [unity_GUIZTestMode]
         ColorMask [_ColorMask]
         // ---
-        
+
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off
 
         Pass {
             CGPROGRAM
-            
+
             #include "UnityCG.cginc"
             #include "SDFUtils.cginc"
             #include "ShaderSetup.cginc"
-            
+
             #pragma vertex vert
             #pragma fragment frag
-            
+
             float4 _r;
             float4 _halfSize;
             float4 _rect2props;
             sampler2D _MainTex;
-            
+
             fixed4 frag (v2f i) : SV_Target {
                 float alpha = CalcAlphaForIndependentCorners(i.uv, _halfSize.xy, _rect2props, _r);
                 return mixAlpha(tex2D(_MainTex, i.uv), i.color, alpha);
             }
-            
+
             ENDCG
         }
     }

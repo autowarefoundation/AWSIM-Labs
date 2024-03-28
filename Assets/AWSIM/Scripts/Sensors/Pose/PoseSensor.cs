@@ -68,8 +68,8 @@ namespace AWSIM
 
             var rosRotation = ROS2Utility.UnityToRosRotation(m_transform.rotation);
             outputData.Rotation = rosRotation;
-            
-             // Calls registered callbacks
+
+            // Calls registered callbacks
             OnOutputData.Invoke(outputData);
         }
     }

@@ -20,27 +20,27 @@ using UnityEngine;
 namespace ROS2
 {
 
-/// <summary>
-/// Acquires Unity time. Note that Time API only allows main thread access,
-/// but this class object also stores last acquired value for other threads.
-/// This is done without a warning, so the class will not behave as expected
-/// when not used by main thread.
-/// </summary>
-public class UnityTimeSource : ITimeSource
-{
-  private Thread mainThread;
-  private double lastReadingSecs;
+    /// <summary>
+    /// Acquires Unity time. Note that Time API only allows main thread access,
+    /// but this class object also stores last acquired value for other threads.
+    /// This is done without a warning, so the class will not behave as expected
+    /// when not used by main thread.
+    /// </summary>
+    public class UnityTimeSource : ITimeSource
+    {
+        private Thread mainThread;
+        private double lastReadingSecs;
 
-  public UnityTimeSource()
-  {
-    mainThread = Thread.CurrentThread;
-  }
+        public UnityTimeSource()
+        {
+            mainThread = Thread.CurrentThread;
+        }
 
-  public void GetTime(out int seconds, out uint nanoseconds)
-  {
-    lastReadingSecs = mainThread.Equals(Thread.CurrentThread) ? Time.timeAsDouble : TimeAsDoubleProvider.TimeAsDouble;
-    TimeUtils.TimeFromTotalSeconds(lastReadingSecs, out seconds, out nanoseconds);
-  }
-}
+        public void GetTime(out int seconds, out uint nanoseconds)
+        {
+            lastReadingSecs = mainThread.Equals(Thread.CurrentThread) ? Time.timeAsDouble : TimeAsDoubleProvider.TimeAsDouble;
+            TimeUtils.TimeFromTotalSeconds(lastReadingSecs, out seconds, out nanoseconds);
+        }
+    }
 
 }  // namespace ROS2

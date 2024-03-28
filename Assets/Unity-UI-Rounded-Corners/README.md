@@ -10,7 +10,7 @@ These components and shaders allow you to add rounded corners to UI elements!
 ## How to install
 ### Option 1: Package Manager (Unity 2019.3 and higher)
 ![](how-to-install.gif)
-URL to copypaste: 
+URL to copypaste:
 ```
 https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git
 ```

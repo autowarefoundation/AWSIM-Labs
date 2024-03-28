@@ -8,72 +8,72 @@ using System.Linq;
 
 namespace AWSIM.Loader
 {
-static class SimConfiguration
-{
-    static public void Configure(EgosManager egoManager, MapManager mapManager, SimulationManager simulationManager)
+    static class SimConfiguration
     {
-        //////////////////////
-        // Levels load order:
-        // LoaderScene -> MapScene -> SimulationScene
-        //
-        // Code in this section activates after all "Start()" and "Awake()" from map and simulation scenes.
-
-        //////////////////////
-        // Configuration resources
-
-        // Get our scene handles
-        Scene simulationScene = SceneManager.GetSceneByName(simulationManager.simulationSceneName);
-        Scene mapScene = SceneManager.GetSceneByName(mapManager.spawnedMapName);
-        
-        // We set the map scene to active to get its environment parameters (skybox and ambient lighting)
-        SceneManager.SetActiveScene(mapScene);
-
-        // Get configurations
-        var simulationConfiguration = simulationManager.simulationConfiguration;
-        var mapConfiguration = mapManager.mapConfiguration;
-        var egoConfiguration = egoManager.egoConfiguration;
-        
-        //////////////////////
-        // Ego Spawn
-
-        // We want our ego to spawn under the Simulation scene root object
-        var ego = egoManager.SpawnEgo(egoManager.gameObject.transform);
-
-        //////////////////////
-        // Core initialization
-
-        // Set camera GUI
-        FollowCamera followCamera = GameObject.FindObjectOfType<FollowCamera>();
-        GameObject.FindObjectOfType<MainCameraViewUI>().SetFollowCamera(followCamera);
-
-        // Set Ego position manager
-        Scripts.UI.EgoVehiclePositionManager positionManager = GameObject.FindObjectOfType<Scripts.UI.EgoVehiclePositionManager>();
-        positionManager.InitializeEgoTransform(ego.transform);
-
-        // Set scene time scale
-        DemoUI demoUi = GameObject.FindObjectOfType<DemoUI>();
-        demoUi.SetTimeScale(simulationConfiguration.timeScale);
-        demoUi.TimeScaleSlider.value = simulationConfiguration.timeScale;
-
-        // Set traffic on/off
-        var trafficSims = GameObject.FindObjectsOfType<TrafficSimulation.TrafficManager>();
-        foreach (var trafficSim in trafficSims)
+        static public void Configure(EgosManager egoManager, MapManager mapManager, SimulationManager simulationManager)
         {
-            trafficSim.gameObject.SetActive(simulationConfiguration.useTraffic);
-        }
+            //////////////////////
+            // Levels load order:
+            // LoaderScene -> MapScene -> SimulationScene
+            //
+            // Code in this section activates after all "Start()" and "Awake()" from map and simulation scenes.
 
-        // Turn shadows for directional light
-        if (mapConfiguration.useShadows)
-        {
-            var lights = GameObject.FindObjectsOfType<Light>();
-            foreach (Light light in lights)
+            //////////////////////
+            // Configuration resources
+
+            // Get our scene handles
+            Scene simulationScene = SceneManager.GetSceneByName(simulationManager.simulationSceneName);
+            Scene mapScene = SceneManager.GetSceneByName(mapManager.spawnedMapName);
+
+            // We set the map scene to active to get its environment parameters (skybox and ambient lighting)
+            SceneManager.SetActiveScene(mapScene);
+
+            // Get configurations
+            var simulationConfiguration = simulationManager.simulationConfiguration;
+            var mapConfiguration = mapManager.mapConfiguration;
+            var egoConfiguration = egoManager.egoConfiguration;
+
+            //////////////////////
+            // Ego Spawn
+
+            // We want our ego to spawn under the Simulation scene root object
+            var ego = egoManager.SpawnEgo(egoManager.gameObject.transform);
+
+            //////////////////////
+            // Core initialization
+
+            // Set camera GUI
+            FollowCamera followCamera = GameObject.FindObjectOfType<FollowCamera>();
+            GameObject.FindObjectOfType<MainCameraViewUI>().SetFollowCamera(followCamera);
+
+            // Set Ego position manager
+            Scripts.UI.EgoVehiclePositionManager positionManager = GameObject.FindObjectOfType<Scripts.UI.EgoVehiclePositionManager>();
+            positionManager.InitializeEgoTransform(ego.transform);
+
+            // Set scene time scale
+            DemoUI demoUi = GameObject.FindObjectOfType<DemoUI>();
+            demoUi.SetTimeScale(simulationConfiguration.timeScale);
+            demoUi.TimeScaleSlider.value = simulationConfiguration.timeScale;
+
+            // Set traffic on/off
+            var trafficSims = GameObject.FindObjectsOfType<TrafficSimulation.TrafficManager>();
+            foreach (var trafficSim in trafficSims)
             {
-                if(light.type == LightType.Directional)
+                trafficSim.gameObject.SetActive(simulationConfiguration.useTraffic);
+            }
+
+            // Turn shadows for directional light
+            if (mapConfiguration.useShadows)
+            {
+                var lights = GameObject.FindObjectsOfType<Light>();
+                foreach (Light light in lights)
                 {
-                    light.shadows = LightShadows.Hard;
+                    if (light.type == LightType.Directional)
+                    {
+                        light.shadows = LightShadows.Hard;
+                    }
                 }
             }
         }
     }
-}
 }

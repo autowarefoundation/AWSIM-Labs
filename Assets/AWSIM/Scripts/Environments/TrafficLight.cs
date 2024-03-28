@@ -98,7 +98,7 @@ namespace AWSIM
             public BulbColor BulbColor => color;
 
             [SerializeField] BulbType bulbType;
-            [SerializeField, Tooltip("Specifies the index of the material to be used for the bulb.")] 
+            [SerializeField, Tooltip("Specifies the index of the material to be used for the bulb.")]
             int materialIndex;
 
             // const parameters.
@@ -107,7 +107,7 @@ namespace AWSIM
             //const string Emission = "Emission";
             const float flashIntervalSec = 0.5f;                // flash bulb lighting interval(sec).
 
-            float timer = 0;                            // used for flashing status.     NOTE: Might as well make it static and refer to the same time. 
+            float timer = 0;                            // used for flashing status.     NOTE: Might as well make it static and refer to the same time.
             Color defaultEmissionColor;                 // default bulb material  color.
             float defaultEmission;        // default bulb mateiral  exposure weight
             Dictionary<BulbColor, EmissionConfig> bulbColorConfigPairs;
@@ -172,7 +172,7 @@ namespace AWSIM
             }
 
             /// <summary>
-            /// Called from TrafficLight class. 
+            /// Called from TrafficLight class.
             /// Update timer for bulb flashing.
             /// </summary>
             /// <param name="deltaTime"></param>
@@ -190,7 +190,7 @@ namespace AWSIM
             }
 
             /// <summary>
-            ///  Called from TrafficLight class. 
+            ///  Called from TrafficLight class.
             ///  Discard the material instance.
             /// </summary>
             public void Destroy()
@@ -223,7 +223,7 @@ namespace AWSIM
             }
         }
 
-        [SerializeField, Tooltip("Set the Renderer containing the bulb material.")] 
+        [SerializeField, Tooltip("Set the Renderer containing the bulb material.")]
         new Renderer renderer;
 
         /// <summary>

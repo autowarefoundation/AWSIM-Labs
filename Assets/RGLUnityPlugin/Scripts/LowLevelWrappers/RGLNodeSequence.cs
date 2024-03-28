@@ -186,7 +186,7 @@ namespace RGLUnityPlugin
         {
             CheckNodeNotExist(identifier);
             RGLNodeHandle handle = new RGLNodeHandle();
-            RGLNativeAPI.NodePointsYield(ref handle.Node, new [] {field});
+            RGLNativeAPI.NodePointsYield(ref handle.Node, new[] { field });
             handle.Type = RGLNodeType.POINTS_YIELD;
             handle.OutputField = field;
             handle.Identifier = identifier;
@@ -553,7 +553,7 @@ namespace RGLUnityPlugin
         }
 
         // Returns RGLNodeHandle to the output node in this NodeSequence.
-        // Throws an exception when output node was not found. 
+        // Throws an exception when output node was not found.
         private RGLNodeHandle ValidateOutputNode()
         {
             RGLNodeHandle outputNode = GetLastNodeOrNull(true);

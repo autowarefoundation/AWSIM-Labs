@@ -56,7 +56,7 @@ namespace AWSIM.Lanelet
 
         private readonly Dictionary<long, LaneletGameObject> laneletBoundsLeft = new Dictionary<long, LaneletGameObject>();
         private readonly Dictionary<long, LaneletGameObject> laneletBoundsRight = new Dictionary<long, LaneletGameObject>();
-        
+
         private LaneletMap laneletMap;
         private GameObject laneletBoundsHolder;
         private WaypointSettings settings = WaypointSettings.Default();
@@ -112,9 +112,9 @@ namespace AWSIM.Lanelet
         [DrawGizmo(GizmoType.InSelectionHierarchy | GizmoType.Pickable)]
         private static void DrawGizmoNonSelected(LaneletGameObject lanelet, GizmoType gizmoType)
         {
-            for (int i=1; i < lanelet.Waypoints.Length; i++)
+            for (int i = 1; i < lanelet.Waypoints.Length; i++)
             {
-                Gizmos.DrawLine(lanelet.Waypoints[i-1], lanelet.Waypoints[i]);
+                Gizmos.DrawLine(lanelet.Waypoints[i - 1], lanelet.Waypoints[i]);
                 Gizmos.DrawSphere(lanelet.Waypoints[i], 0.15f);
             }
         }

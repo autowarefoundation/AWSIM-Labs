@@ -84,7 +84,7 @@ For every Lighting Sequences Element you have to specify the following
     2. List of orders (Bulb Data)
 
         In other words - what bulbs should be turned on, their color and pattern.
-        
+
         - Type - What type of bulb should be turned on
         - Color - What color this bulb should have (in most cases this will be the same as color of the bulb if specified)
         - Status - How the bulb should light up (selecting `SOLID_OFF` is necessary only when you want to turn the Traffic Light completely off, meaning **no** bulb will light up)

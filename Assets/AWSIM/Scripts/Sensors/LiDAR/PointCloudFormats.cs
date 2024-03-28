@@ -24,7 +24,7 @@ namespace AWSIM.PointCloudFormats
     /// 24-byte format used by Autoware
     /// </summary>
     public static class FormatPCL24
-    { 
+    {
         public static RGLField[] GetRGLFields()
         {
             return new[]

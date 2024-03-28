@@ -19,7 +19,7 @@ namespace ROS2
 {
 
 /// <summary>
-/// A ros2 clock class that for interfacing between a time source (unity or ros2 system time) and ros2cs messages, structs. 
+/// A ros2 clock class that for interfacing between a time source (unity or ros2 system time) and ros2cs messages, structs.
 /// </summary>
 public class ROS2Clock
 {

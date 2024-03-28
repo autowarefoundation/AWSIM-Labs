@@ -71,7 +71,7 @@ To run the simulator, please follow the steps below.
     ```
 
         !!! warning
-        
+
             Currently, there are cases where the Nvidia driver version is too high, resulting in Segmentation fault. In that case, please lower the Nvidia driver version (525 is recommended.)
 
     3. Reboot your machine to make the installed driver detected by the system.
@@ -80,8 +80,8 @@ To run the simulator, please follow the steps below.
     ```
     4. Open terminal and check if `nvidia-smi` command is available and outputs summary similar to the one presented below.
     ```
-    $ nvidia-smi 
-    Fri Oct 14 01:41:05 2022       
+    $ nvidia-smi
+    Fri Oct 14 01:41:05 2022  
     +-----------------------------------------------------------------------------+
     | NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
     |-------------------------------+----------------------+----------------------+
@@ -119,7 +119,7 @@ To run the simulator, please follow the steps below.
     1. Download `AWSIM_v1.2.0.zip`.
 
         [Download AWSIM Demo for ubuntu](https://github.com/tier4/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0.zip){.md-button .md-button--primary}
-    
+
     2. Unzip the downloaded file.
 
     3. Make the `AWSIM_v1.2.0.x86_64` file executable.
@@ -137,10 +137,10 @@ To run the simulator, please follow the steps below.
     4. Launch `AWSIM_v1.2.0.x86_64`.
         ```
         ./<path to AWSIM folder>/AWSIM_v1.2.0.x86_64
-        ``` 
-        
+        ```
+
         !!! warning
-        
+
             It may take some time for the application to start the so please wait until image similar to the one presented below is visible in your application window.
 
         ![](Image_0.png)

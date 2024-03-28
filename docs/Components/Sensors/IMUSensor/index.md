@@ -20,7 +20,7 @@ The `tamagawa/imu_link` link is added to the `sensor_kit_base_link` in the `base
 
 A detailed description of the `URDF` structure and sensors added to prefab `Lexus RX450h 2015` is available in this [section](../../../Components/Vehicle/URDFAndSensors/).
 
-### Components 
+### Components
 ![components](components.png)
 
 The `IMUSensor` functionality is split into two scripts:
@@ -43,19 +43,19 @@ This is the main script in which all calculations are performed:
 - acceleration is calculated as the second derivative of position with respect to time,
 - in the calculation of acceleration, the gravitational vector is considered - which is added.
 
-!!! warning 
+!!! warning
     If the angular velocity about any axis is `NaN` (infinite), then  angular velocity is published as vector zero.
 
 #### Elements configurable from the editor level
 - `Output Hz` - frequency of output calculation and callback (default: `30Hz`)
-      
+
 #### Output Data
 |       Category       |  Type   | Description                       |
 | :------------------: | :-----: | :-------------------------------- |
 | *LinearAcceleration* | Vector3 | Measured acceleration (m/s^2)     |
 |  *AngularVelocity*   | Vector3 | Measured angular velocity (rad/s) |
 
-## Imu Ros2 Publisher (script) 
+## Imu Ros2 Publisher (script)
 ![script_ros2](script_ros2.png)
 
 Converts the data output from `IMUSensor` to *ROS2* [Imu](https://docs.ros2.org/latest/api/sensor_msgs/msg/Imu.html) type message and publishes it.

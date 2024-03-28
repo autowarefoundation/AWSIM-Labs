@@ -47,7 +47,7 @@ namespace AWSIM
     //   AccelerationInput < 0
     // it will continuous stop.
     //--
-    // 
+    //
     // ----- VEHICLE DYNAMICS PARAMETER -----
     // For more advanced vehicle configuration, the following parameters need to be provided.
     //   [Need Vehicle Params]                            [Using With Unity]
@@ -159,7 +159,7 @@ namespace AWSIM
         // Coefficient for prevent skidding while stopping.
         // Applies to each wheel.
         // TODO: A more accurate calculation method.
-        [Range(0.05f, 1f)] [SerializeField] float SkiddingCancelRate;
+        [Range(0.05f, 1f)][SerializeField] float SkiddingCancelRate;
 
         [Space()]
         [Header("Axles Settings")]

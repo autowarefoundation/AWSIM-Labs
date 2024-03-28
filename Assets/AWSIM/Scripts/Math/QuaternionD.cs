@@ -68,7 +68,7 @@ namespace AWSIM
         }
 
         /// <summary>
-        /// Returns a quaternion that represents a neutral operation (no rotation). 
+        /// Returns a quaternion that represents a neutral operation (no rotation).
         /// </summary>
         public static QuaternionD Identity
         {
@@ -102,13 +102,13 @@ namespace AWSIM
         public QuaternionD Normalize()
         {
             double invNorm = 1.0 / this.Length();
- 
+
             QuaternionD q;
             q.x = x * invNorm;
             q.y = y * invNorm;
             q.z = z * invNorm;
             q.w = w * invNorm;
- 
+
             return q;
         }
 
@@ -118,17 +118,17 @@ namespace AWSIM
         /// <param name="q">The quaternion that will be inverted.</param>
         /// <returns>The inverted Quaternion.</returns>
         public static QuaternionD Inverse(QuaternionD q)
-        { 
+        {
             QuaternionD result;
- 
+
             double squaredLength = q.SquaredLength();
             double invNorm = 1.0 / squaredLength;
- 
+
             result.x = -q.x * invNorm;
             result.y = -q.y * invNorm;
             result.z = -q.z * invNorm;
             result.w = q.w * invNorm;
- 
+
             return result;
         }
 
@@ -140,12 +140,12 @@ namespace AWSIM
         public static QuaternionD Conjugate(QuaternionD q)
         {
             QuaternionD result;
- 
+
             result.x = -q.x;
             result.y = -q.y;
             result.z = -q.z;
             result.w = q.w;
- 
+
             return result;
         }
 
@@ -160,20 +160,20 @@ namespace AWSIM
         {
             var sr = Math.Sin(roll * 0.5);
             var cr = Math.Cos(roll * 0.5);
- 
+
             var sp = Math.Sin(pitch * 0.5);
             var cp = Math.Cos(pitch * 0.5);
- 
+
             var sy = Math.Sin(yaw * 0.5);
             var cy = Math.Cos(yaw * 0.5);
- 
+
             QuaternionD result;
- 
+
             result.x = cy * sp * cr + sy * cp * sr;
             result.y = sy * cp * cr - cy * sp * sr;
             result.z = cy * cp * sr - sy * sp * cr;
             result.w = cy * cp * cr + sy * sp * sr;
- 
+
             return result;
         }
 
@@ -186,15 +186,15 @@ namespace AWSIM
         public static QuaternionD FromAngleAxis(double angle, UnityEngine.Vector3 axis)
         {
             QuaternionD result;
- 
+
             double halfAngle = angle * 0.5;
             double s = Math.Sin(halfAngle);
- 
+
             result.x = axis.x * s;
             result.y = axis.y * s;
             result.z = axis.z * s;
             result.w = Math.Cos(halfAngle);
- 
+
             return result;
         }
 
@@ -212,9 +212,9 @@ namespace AWSIM
             double sin = Math.Asin(angle / 2.0);
 
             axis = new UnityEngine.Vector3();
-            axis.x = (float) (x / sin);
-            axis.y = (float) (y / sin);
-            axis.z = (float) (z / sin);
+            axis.x = (float)(x / sin);
+            axis.y = (float)(y / sin);
+            axis.z = (float)(z / sin);
         }
 
         /// <summary>
@@ -226,12 +226,12 @@ namespace AWSIM
         public static QuaternionD operator +(QuaternionD q1, QuaternionD q2)
         {
             QuaternionD result;
- 
+
             result.x = q1.x + q2.x;
             result.y = q1.y + q2.y;
             result.z = q1.z + q2.z;
             result.w = q1.w + q2.w;
- 
+
             return result;
         }
 
@@ -244,12 +244,12 @@ namespace AWSIM
         public static QuaternionD operator -(QuaternionD q1, QuaternionD q2)
         {
             QuaternionD result;
- 
+
             result.x = q1.x - q2.x;
             result.y = q1.y - q2.y;
             result.z = q1.z - q2.z;
             result.w = q1.w - q2.w;
- 
+
             return result;
         }
 
@@ -266,7 +266,7 @@ namespace AWSIM
             double cx = q1.y * q2.z - q1.z * q2.y;
             double cy = q1.z * q2.x - q1.x * q2.z;
             double cz = q1.x * q2.y - q1.y * q2.x;
- 
+
             double dot = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z;
 
             result.x = q1.x * q2.w + q2.x * q1.w + cx;
@@ -310,7 +310,7 @@ namespace AWSIM
             {
                 return (QuaternionD)q == this;
             }
- 
+
             return false;
         }
 

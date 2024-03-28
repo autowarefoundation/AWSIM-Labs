@@ -15,13 +15,13 @@ The combination of *Autoware* and *AWSIM* provides the opportunity to check the 
 ### Engagement
 
 - Driving straight through an intersection with priority
-  
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/DRIVE_STRAIGHT.mp4" type="video/mp4">
     </video>
 
 - Turning at the intersection
- 
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/DRIVE_TURN.mp4" type="video/mp4">
     </video>
@@ -29,13 +29,13 @@ The combination of *Autoware* and *AWSIM* provides the opportunity to check the 
 ### Traffic light recognition
 
 - Stopping at a red light
-  
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/WAIT_RED.mp4" type="video/mp4">
     </video>
 
 - Driving on a green light
- 
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/DRIVE_GREEN.mp4" type="video/mp4">
     </video>
@@ -60,19 +60,19 @@ The combination of *Autoware* and *AWSIM* provides the opportunity to check the 
     </video>
 
 - Following the vehicles ahead
- 
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/vehicle_following.mp4" type="video/mp4">
     </video>
 
-- Stopping behind the vehicles ahead 
- 
+- Stopping behind the vehicles ahead
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/vehicle_sudden.mp4" type="video/mp4">
     </video>
 
 - Cutting-in to a different traffic lane
-  
+
     <video width="1920" controls autoplay muted loop>
     <source src="features/vehicle_cut_in.mp4" type="video/mp4">
     </video>
@@ -111,7 +111,7 @@ The combination of *Autoware* and *AWSIM* provides the opportunity to check the 
 
 The combination of *AWSIM* with *Autoware* is possible thanks to *Vehicle Interface* and *Sensing* modules of [*Autoware*](../Autoware/) architecture. The component responsible for ensuring connection with these modules from the *AWSIM* side is `EgoVehicle`. It has been adapted to the *Autoware* architecture and provides *ROS2* topic-based communication. However, the other essential component is `ClockPublisher`, which provides simulation time for *Autoware* - also published on the topic - more details [here](../../Components/ROS2/ROS2ForUnity/#extension-scripts).
 
-`EgoVehicle` component provides the publication of the current vehicle status through a script working within `Vehicle Status`. It provides real-time information such as: current speed, current steering of the wheels or current states of lights - these are outputs from *AWSIM*. 
+`EgoVehicle` component provides the publication of the current vehicle status through a script working within `Vehicle Status`. It provides real-time information such as: current speed, current steering of the wheels or current states of lights - these are outputs from *AWSIM*.
 
 On the other hand, `Vehicle Ros Input` is responsible for providing the values of the outputs from *Autoware*. It subscribes to the current commands related to the given acceleration, gearbox gear or control of the specified lights.  
 
@@ -134,4 +134,3 @@ Next in the diagram is the main information update loop in which:
 The order of information exchange presented in the diagram is a simplification. The exchange of information takes place through the publish-subscribe model and each data is sent with a predefined frequency.
 
 ![](autoware_awsim_sequence.png)
-

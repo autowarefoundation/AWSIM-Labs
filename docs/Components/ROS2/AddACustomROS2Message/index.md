@@ -16,13 +16,13 @@ Please select your system and resolve all prerequisites:
     - [`ros2cs` prerequisites for *Ubuntu*](https://github.com/RobotecAI/ros2cs/blob/master/README-UBUNTU.md#prerequisites)
     - *ROS2* version is `humble` and is located in `/opt/ros/humble`
     - Your package with custom message is located in the home directory `~/custom_msgs` or is hosted on *git* repository.
-    - *Shell* - commands have to be executed from the `bash` shell 
+    - *Shell* - commands have to be executed from the `bash` shell
 === "Windows"
     - [`ros2cs` prerequisites for *Windows*](https://github.com/RobotecAI/ros2cs/blob/1.2.0/README-WINDOWS.md#prerequisites)
 
         !!! question
             Tests are not working (`'charmap'` codec can't decode byte) on *Windows* - look at troubleshooting [here](https://github.com/RobotecAI/ros2cs/blob/master/README-UBUNTU.md#prerequisites)
-            
+
     - *ROS2* version is `humble` and is located in  `C:\ros2_humble`
     - Your package with custom message package is located in the home directory `C:\custom_msgs` or is hosted on *git* repository.
     - *Shell* - commands should be executed from the `powershell` shell
@@ -35,13 +35,13 @@ Please select your system and resolve all prerequisites:
         ```
         git clone https://github.com/RobotecAI/ros2-for-unity ~/
         ```
-        !!! warning 
+        !!! warning
             The cloned `ROS 2 For Unity` repository must be located in the home directory `~/`.
     === "Windows"
         ```
         git clone https://github.com/RobotecAI/ros2-for-unity /C
         ```
-        !!! warning 
+        !!! warning
             The cloned `ROS 2 For Unity` repository must be located in the home directory `C:\`.
 
 2. Pull dependent repositories by execute commands:
@@ -52,7 +52,7 @@ Please select your system and resolve all prerequisites:
         . /opt/ros/humble/setup.bash
         ./pull_repositories.sh
         ```
-   
+
 
     === "Windows"
         ```powershell
@@ -60,7 +60,7 @@ Please select your system and resolve all prerequisites:
         C:\ros2_humble\local_setup.ps1
         .\pull_repositories.ps1
         ```
-        
+
 
 ## 2. Setup `custom_msgs` package
 The method to add a custom package to build depends on where it is located. The package can be on your local machine or just be hosted on a *git* repository.<br>
@@ -72,7 +72,7 @@ Please, choose the appropriate option and follow the instructions.
 ### 2.1. Package contained on local machine
 
 1. Copy the `custom_msgs` package with custom message to the folder to `src/ros2cs/custom_messages` directory
-    
+
     === "Ubuntu"
         ```bash
         cp -r ~/custom_msgs ~/ros2-for-unity/src/ros2cs/custom_messages/
@@ -118,7 +118,7 @@ Please, choose the appropriate option and follow the instructions.
         ```
 
 3. Now pull the repositories again (also the `custom_msgs` package repository)
-    
+
     === "Ubuntu"
         ```bash
         cd ~/ros2-for-unity
@@ -159,7 +159,7 @@ You can find them in following directories and simply copy to the analogous dire
 === "Ubuntu"
     - `ros2-for-unity/install/asset/Ros2ForUnity/Plugins` which names matches `custom_msgs_*`
     - `ros2-for-unity/install/asset/Ros2ForUnity/Plugins/Linux/x86_64/` which names matches `libcustom_msgs_*`
-    
+
 
 === "Windows"
       - `ros2-for-unity/install/asset/Ros2ForUnity/Plugins` which names matches `custom_msgs_*`
@@ -197,7 +197,7 @@ You can find them in following directories and simply copy to the analogous dire
 
 === "Windows"
     To automate the process, you can use these commands with changed:
-    
+
     - `<CUSTOM_MSGS_PACKAGE_NAME>` - the name of your package with messages - in this case `custom_msgs`,
     - `<AWSIM_DIR_PATH>` - to path to the cloned *AWSIM* repository
     ```powershell

@@ -8,7 +8,8 @@ namespace AWSIM
     [RequireComponent(typeof(V2I))]
     public class V2IRos2Publisher : MonoBehaviour
     {
-        public enum TrafficSignalID{
+        public enum TrafficSignalID
+        {
             RelationID,
             WayID
         }
@@ -17,7 +18,7 @@ namespace AWSIM
 
         [SerializeField, Tooltip("On this topic, the traffic_signals are published (as a ")]
         string trafficSignalsTopic = "/v2x/traffic_signals";
-        
+
         public QoSSettings qosSettings = new QoSSettings()
         {
             ReliabilityPolicy = ReliabilityPolicy.QOS_POLICY_RELIABILITY_RELIABLE,
@@ -25,7 +26,7 @@ namespace AWSIM
             HistoryPolicy = HistoryPolicy.QOS_POLICY_HISTORY_KEEP_LAST,
             Depth = 1,
         };
-        
+
         IPublisher<autoware_perception_msgs.msg.TrafficSignalArray> trafficSignalsPublisher;
         autoware_perception_msgs.msg.TrafficSignalArray trafficSignalArrayMsg;
 

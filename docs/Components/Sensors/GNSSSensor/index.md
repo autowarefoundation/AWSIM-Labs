@@ -48,7 +48,7 @@ This is the main script in which all calculations are performed:
 
 ### Elements configurable from the editor level
 - `Output Hz` - frequency of output calculation and callback (default: `100Hz`)
-                                                                       
+
 ### Output Data
 
 |  Category  |  Type   | Description                               |
@@ -81,4 +81,3 @@ The conversion and publication is performed using the `Publish(GnssSensor.Output
 | :--------------------: | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :---------: |
 |         *Pose*         | `/sensing/gnss/pose`                 | [`geometry_msgs/Pose`](https://docs.ros2.org/latest/api/geometry_msgs/msg/Pose.html)                                    | `gnss_link` |
 | *Pose with Covariance* | `/sensing/gnss/pose_with_covariance` | [`geometry_msgs/PoseWithCovarianceStamped`](https://docs.ros2.org/latest/api/geometry_msgs/msg/PoseWithCovariance.html) | `gnss_link` |
-

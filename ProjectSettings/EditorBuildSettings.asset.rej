@@ -17,5 +17,5 @@ diff a/ProjectSettings/EditorBuildSettings.asset b/ProjectSettings/EditorBuildSe
 +    path: Assets/AWSIM/Scenes/Composition/Shinjuku.unity
 +    guid: 51cd051db4a340ee3af1d999dbbfcc36
    m_configObjects: {}
-+  
++
 \ No newline at end of file

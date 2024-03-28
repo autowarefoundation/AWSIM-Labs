@@ -47,4 +47,3 @@ This document describes how to use the `Smoke Simulator`.
 
 #### Heavy Smoke
 <img src=image_4.png>
-

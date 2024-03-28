@@ -215,27 +215,27 @@ namespace AWSIM
                 return;
 
             // calculate additional rotation, height and distance for camera
-            if(rotateCameraAroundActive)
+            if (rotateCameraAroundActive)
             {
                 // include additional rotation for camera rotating around target
                 currentCameraDirection += rotateAroundSpeed * Time.deltaTime / Time.timeScale;
-                if(currentCameraDirection > 360)
+                if (currentCameraDirection > 360)
                 {
                     currentCameraDirection -= 360f;
                 }
-                if(currentCameraDirection < -360f)
+                if (currentCameraDirection < -360f)
                 {
                     currentCameraDirection += 360f;
                 }
 
                 // include additional height for camera above target
                 deltaHeight = heightAdjustmentSpeed * Time.deltaTime / Time.timeScale;
-                if(currentHeight + deltaHeight > MaxHeight)
+                if (currentHeight + deltaHeight > MaxHeight)
                 {
                     deltaHeight = MaxHeight - currentHeight;
                     currentHeight = MaxHeight;
                 }
-                else if(currentHeight + deltaHeight < Height)
+                else if (currentHeight + deltaHeight < Height)
                 {
                     deltaHeight = Height - currentHeight;
                     currentHeight = Height;
@@ -282,7 +282,7 @@ namespace AWSIM
 
         void OnGUI()
         {
-            if(rotateCameraAroundActive)
+            if (rotateCameraAroundActive)
             {
                 GUIStyle style = new GUIStyle()
                 {
