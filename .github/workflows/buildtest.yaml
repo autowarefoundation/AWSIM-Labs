@@ -2,7 +2,8 @@ name: buildtest
 on:
   schedule:
     - cron: 0 0 * * *
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize]
   push:
     branches:
       - master
