@@ -1,4 +1,4 @@
-name: buildtest
+name: build-and-test
 on:
   pull_request_target:
     types: [ assigned, opened, synchronize, reopened ]
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_test:
+  build-and-test:
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false

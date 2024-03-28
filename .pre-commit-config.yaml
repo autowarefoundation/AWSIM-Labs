@@ -1,0 +1,41 @@
+ci:
+  autofix_commit_msg: "style(pre-commit): autofix"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [ --fix=lf ]
+      - id: trailing-whitespace
+        args: [ --markdown-linebreak-ext=md ]
+      - id: check-yaml
+        args: [--unsafe]
+
+  - repo: local
+    hooks:
+      - id: dotnet-format
+        name: dotnet-format
+        language: system
+        entry: dotnet format whitespace
+        args:
+          - --folder
+          - --include
+        types_or: [ "c#", "vb" ]
+
+# https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/.pre-commit-config.yaml
+exclude: >
+  (?x)^(
+      .*.css|
+      .*.meta|
+      .*.mat|
+      .*.preset|
+      .*.lighting|
+      .*.dae|
+      .*.unity|
+      .*.asset|
+      .*.prefab|
+      .*.controller
+  )$

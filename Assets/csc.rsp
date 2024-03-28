@@ -1,2 +1,4 @@
--unsafe
-
+-unsafe -warn:4
+-warnaserror-
+-nowarn:CS1702
+-nowarn:CS0649
