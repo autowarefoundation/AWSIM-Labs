@@ -6,8 +6,8 @@ namespace AWSIM.Scripts.UI
     public class UICameraBridge : MonoBehaviour
     {
         [SerializeField] private Canvas cameraOutputCanvas;
-        [SerializeField] private float xOffset;
-        [SerializeField] private float yOffset;
+        [SerializeField] private float startXOffset;
+        [SerializeField] private float startYOffset;
         [SerializeField] private float height;
 
         private RawImage rawImage;
@@ -34,7 +34,7 @@ namespace AWSIM.Scripts.UI
             var rectTransform = cameraOutput.GetComponent<RectTransform>();
             rectTransform.anchorMin = Vector2.zero;
             rectTransform.anchorMax = Vector2.zero;
-            rectTransform.anchoredPosition = new Vector2(xOffset, yOffset);
+            rectTransform.anchoredPosition = new Vector2(startXOffset, startYOffset);
             // Width will be adjusted by AspectRatioFitter, only set height here
             rectTransform.sizeDelta = new Vector2(0, height);
 
@@ -42,7 +42,6 @@ namespace AWSIM.Scripts.UI
             aspectRatioFitter = cameraOutput.GetComponent<AspectRatioFitter>();
             aspectRatioFitter.aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
         }
-
 
         public void RenderCameraToUI(CameraSensor.CameraParameters camParams, Texture camRenderTex)
         {
