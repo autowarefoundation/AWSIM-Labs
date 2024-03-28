@@ -42,6 +42,7 @@ namespace AWSIM
         }
 
         private EgoVehiclePositionManager egoVehiclePositionManager;
+        private TrafficControlManager trafficControlManager;
 
         void Awake()
         {
@@ -77,9 +78,29 @@ namespace AWSIM
                 timeSourceSelector?.SetType(config.TimeSource);
             }
 
-            egoVehiclePositionManager = gameObject.AddComponent<EgoVehiclePositionManager>();
-            egoVehiclePositionManager.EgoTransform = egoTransform;
-            egoVehiclePositionManager.enabled = true;
+            // Add EgoVehiclePositionManager
+            if (!egoTransform)
+            {
+                Debug.LogWarning("Missing EgoTransform reference.");
+            }
+            else
+            {
+                egoVehiclePositionManager = gameObject.AddComponent<EgoVehiclePositionManager>();
+                egoVehiclePositionManager.EgoTransform = egoTransform;
+                egoVehiclePositionManager.enabled = true;
+            }
+
+            // Add TrafficControlManager
+            if (!trafficManager)
+            {
+                Debug.LogWarning("Missing TrafficManager reference. ");
+            }
+            else
+            {
+                trafficControlManager = gameObject.AddComponent<TrafficControlManager>();
+                trafficControlManager.TrafficManager = trafficManager;
+                trafficControlManager.enabled = true;
+            }
         }
     }
 }
