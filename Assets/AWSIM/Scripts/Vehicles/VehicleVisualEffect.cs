@@ -9,6 +9,9 @@ namespace AWSIM
     /// Set the VisualEffect of the vehicle.
     /// Includes steering, brake light, reverse light, and turn signal light.
     /// </summary>
+    
+    //TODO: Implement proper lighting system for vehicle. 
+    
     [RequireComponent(typeof(Vehicle))]
     public class VehicleVisualEffect : MonoBehaviour
     {
@@ -17,13 +20,13 @@ namespace AWSIM
         {
             [SerializeField] MeshRenderer meshRenderer;
             [SerializeField] int materialIndex;
-            [SerializeField] float lightingIntensity;
+            //[SerializeField] float lightingIntensity;
             [SerializeField] Color lightingColor;
-            [SerializeField, Range(0, 1)] float lightingExposureWeight;
+            [SerializeField] float emissionIntensity;
 
             Material material = null;
             Color defaultEmissionColor;
-            float defaultEmission;
+            float defaultEmissionIntensity;
             bool isOn = false;
 
             const string EmissionColor = "_EmissionColor";
@@ -48,13 +51,13 @@ namespace AWSIM
                 this.isOn = isLightOn;
                 if (isLightOn)
                 {
-                    material.SetColor(EmissionColor, lightingColor * lightingIntensity);
-                    material.SetFloat(Emission, lightingExposureWeight);
+                    material.SetColor(EmissionColor, lightingColor);
+                    material.SetFloat(Emission, emissionIntensity);
                 }
                 else
                 {
                     material.SetColor(EmissionColor, defaultEmissionColor);
-                    material.SetFloat(Emission, defaultEmission);
+                    material.SetFloat(Emission, defaultEmissionIntensity);
                 }
             }
 
