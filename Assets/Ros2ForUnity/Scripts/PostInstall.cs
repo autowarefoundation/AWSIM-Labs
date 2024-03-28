@@ -26,44 +26,48 @@ using UnityEditor.Build.Reporting;
 namespace ROS2
 {
 
-/// <summary>
-/// An internal class responsible for installing ros2-for-unity metadata files
-/// </summary>
-internal class PostInstall : IPostprocessBuildWithReport
-{
-    public int callbackOrder { get { return 0; } }
-    public void OnPostprocessBuild(BuildReport report)
+    /// <summary>
+    /// An internal class responsible for installing ros2-for-unity metadata files
+    /// </summary>
+    internal class PostInstall : IPostprocessBuildWithReport
     {
-        var r2fuMetadataName = "metadata_ros2_for_unity.xml";
-        var r2csMetadataName = "metadata_ros2cs.xml";
+        public int callbackOrder { get { return 0; } }
+        public void OnPostprocessBuild(BuildReport report)
+        {
+            var r2fuMetadataName = "metadata_ros2_for_unity.xml";
+            var r2csMetadataName = "metadata_ros2cs.xml";
 
-        // FileUtil.CopyFileOrDirectory: All file separators should be forward ones "/".
-        var r2fuMeta = ROS2ForUnity.GetRos2ForUnityPath() + "/" + r2fuMetadataName;
-        var r2csMeta = ROS2ForUnity.GetPluginPath() + "/" + r2csMetadataName;
-        var outputDir = Directory.GetParent(report.summary.outputPath);
-        var execFilename = Path.GetFileNameWithoutExtension(report.summary.outputPath);
-        FileUtil.CopyFileOrDirectory(
-            r2fuMeta, outputDir + "/" + execFilename + "_Data/" + r2fuMetadataName);
-        if (ROS2ForUnity.GetOS() == ROS2ForUnity.Platform.Linux) {
+            // FileUtil.CopyFileOrDirectory: All file separators should be forward ones "/".
+            var r2fuMeta = ROS2ForUnity.GetRos2ForUnityPath() + "/" + r2fuMetadataName;
+            var r2csMeta = ROS2ForUnity.GetPluginPath() + "/" + r2csMetadataName;
+            var outputDir = Directory.GetParent(report.summary.outputPath);
+            var execFilename = Path.GetFileNameWithoutExtension(report.summary.outputPath);
             FileUtil.CopyFileOrDirectory(
-                r2csMeta, outputDir + "/" + execFilename + "_Data/Plugins/" + r2csMetadataName);
-
-            // Copy versioned libraries (Unity skips them)
-            Regex soWithVersionReg = new Regex(@".*\.so(\.[0-9])+$");
-            var versionedLibs = new List<String>(Directory.GetFiles(ROS2ForUnity.GetPluginPath()))
-                                    .Where(path => soWithVersionReg.IsMatch(path))
-                                    .ToList();
-            foreach (var libPath in versionedLibs) {
+                r2fuMeta, outputDir + "/" + execFilename + "_Data/" + r2fuMetadataName);
+            if (ROS2ForUnity.GetOS() == ROS2ForUnity.Platform.Linux)
+            {
                 FileUtil.CopyFileOrDirectory(
-                    libPath, outputDir + "/" + execFilename + "_Data/Plugins/" + Path.GetFileName(libPath));
-            }
-        } else {
-            FileUtil.CopyFileOrDirectory(
-                r2csMeta, outputDir + "/" + execFilename + "_Data/Plugins/x86_64/" + r2csMetadataName);
-        }
-    }
+                    r2csMeta, outputDir + "/" + execFilename + "_Data/Plugins/" + r2csMetadataName);
 
-}
+                // Copy versioned libraries (Unity skips them)
+                Regex soWithVersionReg = new Regex(@".*\.so(\.[0-9])+$");
+                var versionedLibs = new List<String>(Directory.GetFiles(ROS2ForUnity.GetPluginPath()))
+                                        .Where(path => soWithVersionReg.IsMatch(path))
+                                        .ToList();
+                foreach (var libPath in versionedLibs)
+                {
+                    FileUtil.CopyFileOrDirectory(
+                        libPath, outputDir + "/" + execFilename + "_Data/Plugins/" + Path.GetFileName(libPath));
+                }
+            }
+            else
+            {
+                FileUtil.CopyFileOrDirectory(
+                    r2csMeta, outputDir + "/" + execFilename + "_Data/Plugins/x86_64/" + r2csMetadataName);
+            }
+        }
+
+    }
 
 }
 #endif

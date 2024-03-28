@@ -219,8 +219,8 @@ namespace ROS2
                   + " environment before launching Unity (ROS_DISTRO env variable not found)";
                 Debug.LogError(errMessage);
 #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-            throw new System.InvalidOperationException(errMessage);
+                EditorApplication.isPlaying = false;
+                throw new System.InvalidOperationException(errMessage);
 #else
                 const int ROS_NOT_SOURCED_ERROR_CODE = 33;
                 Application.Quit(ROS_NOT_SOURCED_ERROR_CODE);
@@ -233,8 +233,8 @@ namespace ROS2
                   + ", supported: " + supportedVersionsString + ".";
                 Debug.LogError(errMessage);
 #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-            throw new System.NotSupportedException(errMessage);
+                EditorApplication.isPlaying = false;
+                throw new System.NotSupportedException(errMessage);
 #else
                 const int ROS_BAD_VERSION_CODE = 34;
                 Application.Quit(ROS_BAD_VERSION_CODE);
@@ -249,11 +249,12 @@ namespace ROS2
         private void RegisterCtrlCHandler()
         {
 #if ENABLE_MONO
-        // Il2CPP build does not support Console.CancelKeyPress currently
-        Console.CancelKeyPress += (sender, eventArgs) => {
-            eventArgs.Cancel = true;
-            DestroyROS2ForUnity();
-        };
+            // Il2CPP build does not support Console.CancelKeyPress currently
+            Console.CancelKeyPress += (sender, eventArgs) =>
+            {
+                eventArgs.Cancel = true;
+                DestroyROS2ForUnity();
+            };
 #endif
         }
 
@@ -282,9 +283,9 @@ namespace ROS2
             catch (System.IO.FileNotFoundException)
             {
 #if UNITY_EDITOR
-            var errMessage = "Could not find metadata files.";
-            EditorApplication.isPlaying = false;
-            throw new System.IO.FileNotFoundException(errMessage);
+                var errMessage = "Could not find metadata files.";
+                EditorApplication.isPlaying = false;
+                throw new System.IO.FileNotFoundException(errMessage);
 #else
                 const int NO_METADATA = 1;
                 Application.Quit(NO_METADATA);
@@ -330,8 +331,8 @@ namespace ROS2
             Debug.Log("ROS2 version: " + currentRos2Version + ". Build type: " + standalone + ". RMW: " + rmwImpl);
 
 #if UNITY_EDITOR
-        EditorApplication.playModeStateChanged += this.EditorPlayStateChanged;
-        EditorApplication.quitting += this.DestroyROS2ForUnity;
+            EditorApplication.playModeStateChanged += this.EditorPlayStateChanged;
+            EditorApplication.quitting += this.DestroyROS2ForUnity;
 #endif
             isInitialized = true;
         }
@@ -373,13 +374,13 @@ namespace ROS2
         }
 
 #if UNITY_EDITOR
-    void EditorPlayStateChanged(PlayModeStateChange change)
-    {
-        if (change == PlayModeStateChange.ExitingPlayMode)
+        void EditorPlayStateChanged(PlayModeStateChange change)
         {
-            DestroyROS2ForUnity();
+            if (change == PlayModeStateChange.ExitingPlayMode)
+            {
+                DestroyROS2ForUnity();
+            }
         }
-    }
 #endif
     }
 

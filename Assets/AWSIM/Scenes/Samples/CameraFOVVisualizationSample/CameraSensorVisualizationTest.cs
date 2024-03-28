@@ -368,7 +368,7 @@ namespace AWSIM.Tests
         {
             DrawDefaultInspector();
 
-            CameraSensorVisualizationTest test = (CameraSensorVisualizationTest) target;
+            CameraSensorVisualizationTest test = (CameraSensorVisualizationTest)target;
 
             GUILayout.Space(20f);
             if (GUILayout.Button("TEST"))
