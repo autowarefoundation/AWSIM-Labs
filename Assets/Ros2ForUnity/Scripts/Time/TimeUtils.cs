@@ -15,17 +15,17 @@
 namespace ROS2
 {
 
-/// <summary>
-/// Interace for acquiring time
-/// </summary>
-internal static class TimeUtils
-{
-  public static void TimeFromTotalSeconds(in double secondsIn, out int seconds, out uint nanoseconds)
-  {
-    long nanosec = (long)(secondsIn * 1e9);
-    seconds = (int)(nanosec / 1000000000);
-    nanoseconds = (uint)(nanosec % 1000000000);
-  }
-}
+    /// <summary>
+    /// Interace for acquiring time
+    /// </summary>
+    internal static class TimeUtils
+    {
+        public static void TimeFromTotalSeconds(in double secondsIn, out int seconds, out uint nanoseconds)
+        {
+            long nanosec = (long)(secondsIn * 1e9);
+            seconds = (int)(nanosec / 1000000000);
+            nanoseconds = (uint)(nanosec % 1000000000);
+        }
+    }
 
 }  // namespace ROS2

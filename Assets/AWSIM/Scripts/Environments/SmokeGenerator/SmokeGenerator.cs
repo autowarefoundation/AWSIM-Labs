@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof (MeshRenderer))]
+[RequireComponent(typeof(MeshRenderer))]
 
 /// <summary>
 /// Smoke Generator class.
@@ -53,30 +53,30 @@ public class SmokeGenerator : MonoBehaviour
 
     private void CreateSmokeParticle()
     {
-        float angleRad = Random.Range(0.0f, (float)System.Math.PI*2.0f);
+        float angleRad = Random.Range(0.0f, (float)System.Math.PI * 2.0f);
         float radius = Random.Range(0.0f, particleRangeRadius);
         SmokeParticle.Create(gameObject, particleSize, radius, angleRad);
     }
 
-	/// <summary>
-	/// Returns particle size.
-	/// </summary>
+    /// <summary>
+    /// Returns particle size.
+    /// </summary>
     public float GetParticleSize()
     {
         return this.particleSize;
     }
 
-	/// <summary>
-	/// Returns initial velocity and acceleration of particle.
-	/// </summary>
+    /// <summary>
+    /// Returns initial velocity and acceleration of particle.
+    /// </summary>
     public float[] GetVelAcc()
     {
-        return new float[4] {this.physics.initialPlaneVelocity, this.physics.initialVerticalVelocity, this.physics.planeAcceleration, this.physics.verticalAcceleration};
+        return new float[4] { this.physics.initialPlaneVelocity, this.physics.initialVerticalVelocity, this.physics.planeAcceleration, this.physics.verticalAcceleration };
     }
 
-	/// <summary>
-	/// Returns lifetime of particle.
-	/// </summary>
+    /// <summary>
+    /// Returns lifetime of particle.
+    /// </summary>
     public double GetLifetime()
     {
         return (double)(averageLifetime + Random.Range(-variationLifetime, variationLifetime));

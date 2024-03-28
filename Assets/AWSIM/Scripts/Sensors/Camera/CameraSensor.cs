@@ -188,7 +188,7 @@ namespace AWSIM
             distortionShader.GetKernelThreadGroupSizes(shaderKernelIdx,
                 out var distortionShaderThreadsPerGroupX, out var distortionShaderthreadsPerGroupY, out _);
             rosImageShader.GetKernelThreadGroupSizes(rosShaderKernelIdx,
-                out var rosImageShaderThreadsPerGroupX, out _ , out _);
+                out var rosImageShaderThreadsPerGroupX, out _, out _);
 
             distortionShaderGroupSizeX = ((distortedRenderTexture.width + (int)distortionShaderThreadsPerGroupX - 1) / (int)distortionShaderThreadsPerGroupX);
             distortionShaderGroupSizeY = ((distortedRenderTexture.height + (int)distortionShaderthreadsPerGroupY - 1) / (int)distortionShaderthreadsPerGroupY);

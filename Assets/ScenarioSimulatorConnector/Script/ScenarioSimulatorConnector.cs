@@ -76,7 +76,7 @@ namespace AWSIM
 
         private void StopServerResponseThread()
         {
-            if(thread != null)
+            if (thread != null)
             {
                 thread.Abort();
                 thread = null;
@@ -101,7 +101,7 @@ namespace AWSIM
                         ZError zError;
                         ZMessage zMessage;
 
-                        while(true)
+                        while (true)
                         {
                             // pull message when received or wait 10 sec and check for errors
                             if (responseSocket.PollIn(pollItem, out zMessage, out zError))
@@ -139,7 +139,7 @@ namespace AWSIM
                                 }
                             }
                         }
-                   }
+                    }
                 }
             });
             thread.Name = "ServerResponse";

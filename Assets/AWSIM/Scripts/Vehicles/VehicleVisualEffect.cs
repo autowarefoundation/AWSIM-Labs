@@ -39,7 +39,7 @@ namespace AWSIM
                     material = meshRenderer.materials[materialIndex];
                     material.EnableKeyword("_EMISSION");
                     defaultEmissionColor = material.GetColor(EmissionColor);
-                   // defaultEmission = material.GetFloat(Emission);
+                    // defaultEmission = material.GetFloat(Emission);
                 }
             }
 
@@ -173,7 +173,7 @@ namespace AWSIM
 
             void ApplyLights(EmissionMaterial[] emissionMaterials, bool isOn)
             {
-                foreach(var e in emissionMaterials)
+                foreach (var e in emissionMaterials)
                 {
                     e.Set(isOn);
                 }

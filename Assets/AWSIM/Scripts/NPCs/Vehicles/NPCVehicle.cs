@@ -111,7 +111,7 @@ namespace AWSIM
                     material = meshRenderer.materials[materialIndex];
                     material.EnableKeyword("_EMISSION");
                     defaultEmissionColor = material.GetColor(EmissionColor);
-                  //  defaultExposureWeight = material.GetFloat(EmissionExposureWeight);
+                    //  defaultExposureWeight = material.GetFloat(EmissionExposureWeight);
                 }
             }
 

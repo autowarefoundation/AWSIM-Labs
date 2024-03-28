@@ -154,7 +154,7 @@ namespace AWSIM.Loader
         {
             // Restart the whole simulation with keyboard key.
             // The configuration file is read again.
-            if(Input.GetKeyUp(KeyCode.F12))
+            if (Input.GetKeyUp(KeyCode.F12))
             {
                 // Reload scene
                 StartCoroutine(ReLoadCoroutine());
@@ -170,7 +170,7 @@ namespace AWSIM.Loader
         {
             // Load from config file.
             // Firstly, get the config file path.
-            if(GetConfigFilePath(out string path))
+            if (GetConfigFilePath(out string path))
             {
                 Log(LogLevel.LOG_INFO, $"Configuration file found. Loading configure file: {path}");
                 jsonCanvas.SetActive(true);
@@ -187,11 +187,15 @@ namespace AWSIM.Loader
                         // Configuration went well. Load all scenes.
                         Load();
                     }
-                } else {
+                }
+                else
+                {
                     // There is an error loading config file. Block the Load button.
                     loadButton.SetActive(false);
                 }
-            } else { // If config file is not found, fallback to GUI.
+            }
+            else
+            { // If config file is not found, fallback to GUI.
                 Log(LogLevel.LOG_INFO, "No configuration file provided.");
                 manualCanvas.SetActive(true);
 
@@ -305,7 +309,9 @@ namespace AWSIM.Loader
             {
                 path = configPathArg;
                 return true;
-            } else if (useLocalFile) {
+            }
+            else if (useLocalFile)
+            {
                 char separator = Path.DirectorySeparatorChar;
                 string appPath = Application.dataPath;
                 path = appPath + separator + defaultConfigFilename;
@@ -325,23 +331,23 @@ namespace AWSIM.Loader
             switch (level)
             {
                 case LogLevel.LOG_INFO:
-                {
-                    var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
-                    logField.text += msg;
-                    Debug.Log(message);
-                    break;
-                }
+                    {
+                        var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
+                        logField.text += msg;
+                        Debug.Log(message);
+                        break;
+                    }
                 case LogLevel.LOG_ERROR:
-                {
-                    var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
-                    logField.text += msg;
-                    Debug.LogError(message);
-                    break;
-                }
+                    {
+                        var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
+                        logField.text += msg;
+                        Debug.LogError(message);
+                        break;
+                    }
                 default:
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
             }
         }
     }

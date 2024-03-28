@@ -18,47 +18,47 @@ using UnityEngine;
 namespace ROS2
 {
 
-/// <summary>
-/// A ros2 clock class that for interfacing between a time source (unity or ros2 system time) and ros2cs messages, structs.
-/// </summary>
-public class ROS2Clock
-{
-    private ITimeSource _timeSource;
-
-    public ROS2Clock() : this(new ROS2TimeSource())
-    {   // By default, use ROS2TimeSource
-    }
-
-    public ROS2Clock(ITimeSource ts)
+    /// <summary>
+    /// A ros2 clock class that for interfacing between a time source (unity or ros2 system time) and ros2cs messages, structs.
+    /// </summary>
+    public class ROS2Clock
     {
-        _timeSource = ts;
-    }
+        private ITimeSource _timeSource;
 
-    public void UpdateClockMessage(ref rosgraph_msgs.msg.Clock clockMessage)
-    {
-        int seconds;
-        uint nanoseconds;
-        _timeSource.GetTime(out seconds, out nanoseconds);
-        clockMessage.Clock_.Sec = seconds;
-        clockMessage.Clock_.Nanosec = nanoseconds;
-    }
+        public ROS2Clock() : this(new ROS2TimeSource())
+        {   // By default, use ROS2TimeSource
+        }
 
-    public void UpdateROSClockTime(builtin_interfaces.msg.Time time)
-    {
-        int seconds;
-        uint nanoseconds;
-        _timeSource.GetTime(out seconds, out nanoseconds);
-        time.Sec = seconds;
-        time.Nanosec = nanoseconds;
-    }
+        public ROS2Clock(ITimeSource ts)
+        {
+            _timeSource = ts;
+        }
 
-    public void UpdateROSTimestamp(ref ROS2.MessageWithHeader message)
-    {
-        int seconds;
-        uint nanoseconds;
-        _timeSource.GetTime(out seconds, out nanoseconds);
-        message.UpdateHeaderTime(seconds, nanoseconds);
+        public void UpdateClockMessage(ref rosgraph_msgs.msg.Clock clockMessage)
+        {
+            int seconds;
+            uint nanoseconds;
+            _timeSource.GetTime(out seconds, out nanoseconds);
+            clockMessage.Clock_.Sec = seconds;
+            clockMessage.Clock_.Nanosec = nanoseconds;
+        }
+
+        public void UpdateROSClockTime(builtin_interfaces.msg.Time time)
+        {
+            int seconds;
+            uint nanoseconds;
+            _timeSource.GetTime(out seconds, out nanoseconds);
+            time.Sec = seconds;
+            time.Nanosec = nanoseconds;
+        }
+
+        public void UpdateROSTimestamp(ref ROS2.MessageWithHeader message)
+        {
+            int seconds;
+            uint nanoseconds;
+            _timeSource.GetTime(out seconds, out nanoseconds);
+            message.UpdateHeaderTime(seconds, nanoseconds);
+        }
     }
-}
 
 }  // namespace ROS2

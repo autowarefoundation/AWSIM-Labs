@@ -12,7 +12,7 @@ namespace RGLUnityPlugin
         {
             var textureID = texture.GetInstanceID();
 
-            if(!sharedTextures.ContainsKey(textureID))
+            if (!sharedTextures.ContainsKey(textureID))
             {
                 var rglTextureToAdd = new RGLTexture(texture, textureID);
                 sharedTextures.Add(textureID, rglTextureToAdd);
