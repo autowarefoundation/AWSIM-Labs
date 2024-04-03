@@ -9,23 +9,10 @@ namespace AWSIM.Scripts.UI
         private Vector3 initialEgoPosition;
         private Quaternion initialEgoRotation;
 
-        private void Awake()
-        {
-            if (egoRigidbody)
-            {
-                egoRigidbody = EgoTransform.GetComponent<Rigidbody>();
-            }
-        }
-
         private void Start()
         {
-            if (EgoTransform)
-            {
-                initialEgoPosition = EgoTransform.position;
-                initialEgoRotation = EgoTransform.rotation;
-            }
+            InitializeEgoTransform(EgoTransform);
         }
-
         public void InitializeEgoTransform(Transform egoTransform)
         {
             EgoTransform = egoTransform;
