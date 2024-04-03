@@ -30,9 +30,12 @@ namespace AWSIM.Scripts.UI
             }
 
             // Reset the ego vehicle to the spawn point
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKey(KeyCode.LeftControl))
             {
-                egoVehiclePositionManager.ResetEgoToSpawnPoint();
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    egoVehiclePositionManager.ResetEgoToSpawnPoint();
+                }
             }
         }
     }
