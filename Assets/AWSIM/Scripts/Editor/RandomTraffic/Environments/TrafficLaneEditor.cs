@@ -37,7 +37,7 @@ namespace AWSIM.TrafficSimulation
             var defaultColor = Gizmos.color;
 
             Gizmos.color = Color.blue;
-
+            Gizmos.DrawSphere(trafficLane.Waypoints[0], 0.3f);
             for (int i = 1; i < trafficLane.Waypoints.Length; ++i)
             {
                 Gizmos.DrawLine(trafficLane.Waypoints[i - 1], trafficLane.Waypoints[i]);
@@ -48,6 +48,7 @@ namespace AWSIM.TrafficSimulation
 
             foreach (var lane in trafficLane.RightOfWayLanes)
             {
+                Gizmos.DrawSphere(lane.Waypoints[0], 0.4f);
                 for (int i = 1; i < lane.Waypoints.Length; ++i)
                 {
                     Gizmos.DrawLine(lane.Waypoints[i - 1], lane.Waypoints[i]);
