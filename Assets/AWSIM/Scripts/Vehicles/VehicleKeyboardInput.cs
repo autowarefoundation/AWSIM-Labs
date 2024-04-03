@@ -47,15 +47,17 @@ namespace AWSIM
             vehicle.SteerAngleInput = maxSteerAngle * horizontal;
 
             // set gear
-            if (Input.GetKey(KeyCode.D))
-                vehicle.AutomaticShiftInput = Vehicle.Shift.DRIVE;
-            else if (Input.GetKey(KeyCode.P))
-                vehicle.AutomaticShiftInput = Vehicle.Shift.PARKING;
-            else if (Input.GetKey(KeyCode.R))
-                vehicle.AutomaticShiftInput = Vehicle.Shift.REVERSE;
-            else if (Input.GetKey(KeyCode.N))
-                vehicle.AutomaticShiftInput = Vehicle.Shift.NEUTRAL;
-
+            if (!Input.GetKey(KeyCode.LeftControl))
+            {
+                if (Input.GetKey(KeyCode.D))
+                    vehicle.AutomaticShiftInput = Vehicle.Shift.DRIVE;
+                else if (Input.GetKey(KeyCode.P))
+                    vehicle.AutomaticShiftInput = Vehicle.Shift.PARKING;
+                else if (Input.GetKey(KeyCode.R))
+                    vehicle.AutomaticShiftInput = Vehicle.Shift.REVERSE;
+                else if (Input.GetKey(KeyCode.N))
+                    vehicle.AutomaticShiftInput = Vehicle.Shift.NEUTRAL;
+            }
             // set turn signal
             if (Input.GetKey(KeyCode.Alpha1))
                 vehicle.SignalInput = Vehicle.TurnSignal.LEFT;
