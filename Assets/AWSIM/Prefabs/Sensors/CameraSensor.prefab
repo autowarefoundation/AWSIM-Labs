@@ -59,7 +59,7 @@ MonoBehaviour:
     p1: 0
     p2: 0
     k3: 0
-  cameraObject: {fileID: 0}
+  cameraObject: {fileID: 4375637830271308160}
   distortionShader: {fileID: 7200000, guid: 8ba118ba5fd3df74da56fc7b5c68f16c, type: 3}
   rosImageShader: {fileID: 7200000, guid: ec3733322406d6750a0ad58713c14110, type: 3}
 --- !u!114 &7800869322880189815

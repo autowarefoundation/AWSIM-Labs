@@ -688,10 +688,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5653496621862650956, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: cameraObject
-      value: 
-      objectReference: {fileID: 993401701}
     - target: {fileID: 5709321372887088733, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
@@ -1877,11 +1873,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988705866}
   m_CullTransparentMesh: 1
---- !u!20 &993401701 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2201806139722535076, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-  m_PrefabInstance: {fileID: 161822142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1007966031
 GameObject:
   m_ObjectHideFlags: 0
