@@ -450,9 +450,6 @@ namespace AWSIM
 
                     m_rigidbody.Sleep();
                     m_rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
-                    transform.position = sleepPositon;
-                    transform.rotation = sleepRotation;
                 }
                 else
                 {
