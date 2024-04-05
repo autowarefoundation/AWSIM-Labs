@@ -17,7 +17,7 @@
 |Right arrow| Steering (Right). |
 |Down arrow| Breaking. |
 
-W,A,S,D is also used for vehicle control, just like arrow keys.
+W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
 
 ### [FollowCamera.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/FollowCamera.cs)
 
