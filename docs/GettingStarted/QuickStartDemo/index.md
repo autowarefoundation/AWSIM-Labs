@@ -226,7 +226,7 @@ The self-driving simulation demo has been successfully launched!
 
 ## Troubleshooting
 
-In case of any problems with running the sample AWSIM binary with Autoware, start with checking our [Troubleshooting page](https://autowarefoundation.github.io/AWSIM/DeveloperGuide/TroubleShooting/) with the most common problems.
+In case of any problems with running the sample AWSIM binary with Autoware, start with checking our [Troubleshooting page](../../DeveloperGuide/TroubleShooting/index.md) with the most common problems.
 
 ## Appendix
 - [AWSIM ROS2 topic list](../../Components/ROS2/ROS2TopicList/index.md)

@@ -6,7 +6,7 @@ The instruction assumes using the Ubuntu OS.
 ## Prerequisites
 1. Build Autoware by following ["Build Autoware with `scenario_simulator_v2`" section from the scenario simulator and AWSIM quick start guide](https://autowarefoundation.github.io/AWSIM/GettingStarted/UsingOpenSCENARIO)
 
-2. Follow [Setup Unity Project tutorial](https://autowarefoundation.github.io/AWSIM/GettingStarted/SetupUnityProject/)
+2. Follow [Setup Unity Project tutorial](../../../GettingStarted/SetupUnityProject/index.md)
 
 ## Running the demo
 
