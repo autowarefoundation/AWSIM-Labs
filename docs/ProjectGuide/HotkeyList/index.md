@@ -1,6 +1,6 @@
 # Hotkey List
 
-### [VehicleKeyboardInput.cs](https://github.com/tier4/AWSIM/blob/main/Assets/AWSIM/Scripts/Vehicles/VehicleKeyboardInput.cs)
+### [VehicleKeyboardInput.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/Vehicles/VehicleKeyboardInput.cs)
 
 |key|feature|
 |:--|:--|
@@ -17,10 +17,19 @@
 |Right arrow| Steering (Right). |
 |Down arrow| Breaking. |
 
-### [FollowCamera.cs](https://github.com/tier4/AWSIM/blob/main/Assets/AWSIM/Scripts/FollowCamera.cs)
+W,A,S,D is also used for vehicle control, just like arrow keys.
+
+### [FollowCamera.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/FollowCamera.cs)
 
 |key|feature|
 |:--|:--|
 |C| Camera rotation on/off toggle. |
 |Mouse drag| Rotate Camera angle. |
 |Mouse wheel| Zoom in/out of camera. |
+
+### [HotkeyHandler.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/UI/HotkeyHandler.cs)
+
+| key         | feature           |
+|:------------|:------------------|
+| Esc         | Toggle main menu  |
+| Ctrl + R    | Reset ego vehicle |
