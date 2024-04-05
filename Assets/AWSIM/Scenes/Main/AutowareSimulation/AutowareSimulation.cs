@@ -15,7 +15,7 @@ namespace AWSIM
         [SerializeField] Transform egoTransform;
         [SerializeField] TimeSourceSelector timeSourceSelector;
         [SerializeField] private int targetFramerate;
-        
+
         [Header("Player Config")]
         [SerializeField] string commandLineConfigParam = "--json_path";
 
