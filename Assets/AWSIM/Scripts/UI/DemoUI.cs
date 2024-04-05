@@ -19,7 +19,7 @@ namespace AWSIM
             timeScaleText.text = "x " + timeScaleSlider.value.ToString("F2");
             var version = Application.version;
             print(version);
-            versionText.text = "AWSIMLabs v " + version;
+            versionText.text = "AWSIM Labs v " + version;
         }
 
         public void SetTimeScale(float timeScale)
