@@ -14,7 +14,8 @@ namespace AWSIM
         [SerializeField] TrafficManager trafficManager;
         [SerializeField] Transform egoTransform;
         [SerializeField] TimeSourceSelector timeSourceSelector;
-
+        [SerializeField] private int targetFramerate;
+        
         [Header("Player Config")]
         [SerializeField] string commandLineConfigParam = "--json_path";
 
@@ -101,6 +102,10 @@ namespace AWSIM
                 trafficControlManager.TrafficManager = trafficManager;
                 trafficControlManager.enabled = true;
             }
+        }
+        private void Start()
+        {
+            Application.targetFrameRate = targetFramerate;
         }
     }
 }
