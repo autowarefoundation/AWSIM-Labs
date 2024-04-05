@@ -119,7 +119,7 @@ To run the simulator, please follow the steps below.
     1. Download `AWSIM_v1.2.0.zip`.
         We don't have a release yet. Please follow the Setup Guide to build the AWSIM binary.
         [Download AWSIM Demo for ubuntu](){.md-button .md-button--primary}
-    
+
     2. Unzip the downloaded file.
 
     3. Make the `AWSIM_v1.2.0.x86_64` file executable.
