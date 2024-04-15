@@ -3,12 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - mkdocs.yaml
-      - "**/*.md"
-      - "**/*.svg"
-      - "**/*.png"
-      - "**/*.jpg"
   pull_request_target:
     types:
       - opened
