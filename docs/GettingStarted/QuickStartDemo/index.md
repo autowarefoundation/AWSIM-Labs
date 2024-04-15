@@ -55,7 +55,7 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 ## Start the demo
 
-### Running the AWSIM simulation demo
+### Running the AWSIM demo
 
 To run the simulator, please follow the steps below.
 
@@ -124,7 +124,7 @@ To run the simulator, please follow the steps below.
 
     3. Make the `AWSIM_v1.2.0.x86_64` file executable.
 
-        Rightclick the `AWSIM_v1.2.0.x86_64` file and check the `Execute` checkbox
+        Right click the `AWSIM_v1.2.0.x86_64` file and check the `Execute` checkbox
 
         ![](Image_1.png)
 
@@ -158,7 +158,7 @@ In order to configure and run the Autoware software with the AWSIM demo, please:
 git clone https://github.com/autowarefoundation/autoware.git
 cd autoware
 ```
-3. Switch branche to `awsim-stable`. *NOTE: The latest `main` branch is for [ROS 2 humble](https://docs.ros.org/en/rolling/Releases/Release-Humble-Hawksbill.html).*
+3. Switch branch to `awsim-stable`. *NOTE: The latest `main` branch is for [ROS 2 humble](https://docs.ros.org/en/rolling/Releases/Release-Humble-Hawksbill.html).*
 ```
 git checkout awsim-stable
 ```

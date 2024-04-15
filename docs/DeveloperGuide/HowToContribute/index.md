@@ -19,7 +19,7 @@ If you find a new bug, please create an issue [here](https://github.com/autoware
 If you propose a new feature or have an idea, please create an issue [here](https://github.com/autowarefoundation/AWSIM/issues/new?assignees=&labels=&template=feature_request.yaml)
 
 ### Task
-If you have plan to contribute AWSIM, please create an issue [here](https://github.com/autowarefoundation/AWSIM/issues/new?assignees=&labels=&template=task.yaml).
+If you have plan to contribute AWSIM Labs, please create an issue [here](https://github.com/autowarefoundation/AWSIM/issues/new?assignees=&labels=&template=task.yaml).
 
 ### Question
 - If you need a general support, please open a discussion in the [Q&A category](https://github.com/autowarefoundation/autoware/discussions/new?category=q-a).

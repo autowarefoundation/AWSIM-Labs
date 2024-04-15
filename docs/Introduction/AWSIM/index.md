@@ -6,11 +6,11 @@
 [**AWSIM Labs**](https://github.com/autowarefoundation/AWSIM) is a fork of [**AWSIM by Tier IV**](https://github.com/tier4/AWSIM), an open-source simulator made with [**Unity**](https://unity.com/) for autonomous driving research and development.
 It is developed for self-driving software like [**Autoware**](../Autoware/). This simulator aims to bridge the gap between the virtual and real worlds, enabling users to train and evaluate their autonomous systems in a safe and controlled environment before deploying them on real vehicles. It provides a realistic virtual environment for training, testing, and evaluating various aspects of autonomous driving systems.
 
-**AWSIM Labs** simulates a variety of real-world scenarios, with accurate physics and sensor models. It offers a wide range of sensors, such as: *Cameras*, *GNSS*, *IMU* and  *LiDARs*, allowing developers to simulate their  autonomous vehicle's interactions with the environment accurately. The simulator also models dynamic objects, such as pedestrians, other vehicles, and traffic lights, making it possible to study interactions and decision-making in complex traffic scenarios. This enables the testing and evaluation of perception, planning, and control algorithms under different sensor configurations and scenarios.
+**AWSIM** simulates a variety of real-world scenarios, with accurate physics and sensor models. It offers a wide range of sensors, such as: *Cameras*, *GNSS*, *IMU* and  *LiDARs*, allowing developers to simulate their  autonomous vehicle's interactions with the environment accurately. The simulator also models dynamic objects, such as pedestrians, other vehicles, and traffic lights, making it possible to study interactions and decision-making in complex traffic scenarios. This enables the testing and evaluation of perception, planning, and control algorithms under different sensor configurations and scenarios.
 
-**AWSIM Labs** supports a flexible and modular architecture, making it easy to customize and extend its capabilities. Users can modify the current or add a new environment with their own assets and traffic rules to create custom scenarios to suit their specific research needs. This allows for the development and testing of advanced algorithms in diverse driving conditions.
+**AWSIM** supports a flexible and modular architecture, making it easy to customize and extend its capabilities. Users can modify the current or add a new environment with their own assets and traffic rules to create custom scenarios to suit their specific research needs. This allows for the development and testing of advanced algorithms in diverse driving conditions.
 
-Because **AWSIM Labs** was developed mainly to work with [**Autoware**](../Autoware/), it supports:
+Because **AWSIM** was developed mainly to work with [**Autoware**](../Autoware/), it supports:
 
 - *Ubuntu 22.04* and *Windows 10/11*
 - [*ROS2*](https://docs.ros.org/en/humble/index.html) Humble distribution
