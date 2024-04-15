@@ -108,7 +108,7 @@ nav:
 
   - Introduction:
     - Autoware: Introduction/Autoware/index.md
-    - AWSIM: Introduction/AWSIM/index.md
+    - AWSIM Labs: Introduction/AWSIM/index.md
     - CombinationWithAutoware: Introduction/CombinationWithAutoware/index.md
 
   - Project guide:

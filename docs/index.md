@@ -1,8 +1,8 @@
-# Welcome to AWSIM
+# Welcome to AWSIM Labs
 
-![](E2ESim.png)
+![](AWSIMLabs_Logo.png)
 
-AWSIM is the best scene for [Autoware](https://github.com/autowarefoundation/autoware).
+AWSIM Labs is the best scene for [Autoware](https://github.com/autowarefoundation/autoware).
 
 **Features**
 
@@ -14,7 +14,12 @@ AWSIM is the best scene for [Autoware](https://github.com/autowarefoundation/aut
 
 ## Try the simulation demo yourself!
 We don't have a release yet. Please build it from the source.
+
 [Download AWSIM Demo for Ubuntu](https://github.com/autowarefoundation/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0.zip){.md-button .md-button--primary}
 
 
-To test the AWSIM demo with Autoware please refer to the [Quick start demo](./GettingStarted/QuickStartDemo/index.md) section.
+To test the AWSIMLabs demo with Autoware please refer to the [Quick start demo](./GettingStarted/QuickStartDemo/index.md) section.
+
+## !!! This is a fork of AWSIM developed by Tier IV
+
+You can access the Tier IV's AWSIM from [**here**](https://github.com/tier4/AWSIM).
