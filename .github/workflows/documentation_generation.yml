@@ -33,3 +33,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           latest: ${{ github.event_name != 'pull_request_target' && github.ref_name == github.event.repository.default_branch }}
           mkdocs-requirements-txt: mkdocs-requirements.txt
+
+      - name: Set main branch as default
+        run: mike set-default main
