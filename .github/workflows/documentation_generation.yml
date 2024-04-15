@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v3
-      - run: pip install mkdocs-material
       - name: Check out repository
         uses: actions/checkout@v3
         with:
@@ -33,3 +32,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           latest: ${{ github.event_name != 'pull_request_target' && github.ref_name == github.event.repository.default_branch }}
+          mkdocs-requirements-txt: mkdocs-requirements.txt
