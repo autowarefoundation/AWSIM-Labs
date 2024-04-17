@@ -1,8 +1,13 @@
-# AWSIM
+# AWSIM Labs
 
-![](/README_img/AWSIM.png)
+![](docs/assets/images/E2ESim.png)
 
-AWSIM is the best scene simulator for [Autoware](https://github.com/autowarefoundation/autoware).
+![](docs/assets/images/autoware-foundation.png){: style="height:90px"}
+![](docs/assets/images/awsim-labs-logo.png){: style="height:90px"}
+
+[AWSIM Labs](https://github.com/autowarefoundation/AWSIM) is currently being developed under the [Autoware Labs](https://github.com/orgs/autowarefoundation/discussions/4550) initiative. Main purpose of this fork is to provide faster implementation of features needed by the users of the AWSIM while also ensuring a high-performance simulation environment for the [Autoware](https://github.com/autowarefoundation/autoware).
+
+This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 
 ## Features
 
@@ -11,23 +16,26 @@ AWSIM is the best scene simulator for [Autoware](https://github.com/autowarefoun
 - ROS2 native communication
 - Open source software
 - Made with Unity Game Engine
+- Multiple scene and vehicle setup
+- Interactable simulation and UI
 
 ## Tutorial
 
-First, try the tutorial !  
-[AWSIM Document - Quick Start Demo](https://tier4.github.io/AWSIM/GettingStarted/QuickStartDemo/)
+First, try the tutorial!  
+[AWSIM Document - Quick Start Demo](https://autowarefoundation.github.io/AWSIM/main/GettingStarted/QuickStartDemo/)
 
 ## Documentation
 
-https://tier4.github.io/AWSIM/
+https://autowarefoundation.github.io/AWSIM/main/
 
 ## How to Contribute
 
-Everyone is welcome !
-1. Create a derived branch `feature/***` from the `main` branch.
-2. Create a pull request for the `main` branch.
+Everyone is welcome!
+1. Create a issue [here](https://github.com/autowarefoundation/AWSIM/issues) to discuss the contribution you want to make.
+2. Create a derived branch `feature/***` from the `main` branch.
+3. Create a pull request for the `main` branch.
 
-see also [AWSIM document - Git branch](https://tier4.github.io/AWSIM/ProjectGuide/GitBranch/)
+see also [AWSIM document - Git branch](https://autowarefoundation.github.io/AWSIM/main/ProjectGuide/GitBranch/)
 
 We recommend [microsoft's C# coding convention](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions?redirectedfrom=MSDN).  
 However, if the logic of the code is good, it does not matter if coding conventions are not followed.
@@ -35,7 +43,7 @@ However, if the logic of the code is good, it does not matter if coding conventi
 ## License
 
 AWSIM License
-Applies to `tier4/AWSIM` repositories and all content contained in the [Releases](https://github.com/tier4/AWSIM/releases).
+Applies to `tier4/AWSIM` repositories and all content contained in the [Releases](https://github.com/autowarefoundation/AWSIM/releases).
 
 - code : Apache 2.0
 - assets : CC BY-NC
