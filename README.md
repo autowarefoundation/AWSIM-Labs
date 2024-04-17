@@ -1,6 +1,6 @@
 # AWSIM Labs
 
-<img src="docs/assets/images/E2ESim.png" width="640" height="360">
+<img src="docs/assets/images/E2ESim.png" height="200">
 
 <img src="docs/assets/images/autoware-foundation.png" height="90"> <img src="docs/assets/images/awsim-labs-logo.png" height="90">
 
