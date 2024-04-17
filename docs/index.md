@@ -1,6 +1,6 @@
 # Welcome to AWSIM Labs
 
-![](assets/images/E2ESim.png)
+![](assets/images/E2ESim.png){: style="height:300px"}
 
 ![](assets/images/autoware-foundation.png){: style="height:90px"}
 ![](assets/images/awsim-labs-logo.png){: style="height:90px"}
