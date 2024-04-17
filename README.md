@@ -22,7 +22,7 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 ## Tutorial
 
 First, try the tutorial!  
-[AWSIM Document - Quick Start Demo](https://autowarefoundation.github.io/AWSIM/main/GettingStarted/QuickStartDemo/)
+[AWSIM Labs Documentation - Quick Start Demo](https://autowarefoundation.github.io/AWSIM/main/GettingStarted/QuickStartDemo/)
 
 ## Documentation
 
