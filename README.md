@@ -1,6 +1,6 @@
 # AWSIM Labs
 
-![](docs/assets/images/E2ESim.png)
+<img src="docs/assets/images/E2ESim.png" height="720">
 
 <img src="docs/assets/images/autoware-foundation.png" height="90"> <img src="docs/assets/images/awsim-labs-logo.png" height="90">
 
