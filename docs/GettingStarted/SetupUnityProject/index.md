@@ -154,7 +154,7 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
 1. Download and import `Nishishinjuku_urp.unitypackage`
 
-    [Download Map files (unitypackage)](https://drive.google.com/file/d/1u8vIwTXM4TdxFHWBszJ_-yw11IVKSUKr/view?usp=sharing){.md-button .md-button--primary}
+    [Download Map files (unitypackage)](https://drive.google.com/drive/folders/1Q6PolpCIwiVRdPNMjSBAQ5t2TcCoY-KZ){.md-button .md-button--primary}
 
 2. In Unity Editor, from the menu bar at the top, select `Assets -> Import Package -> Custom Package...` and navigate the `Nishishinjuku_urp.unitypackage` file.
 ![](image_10.png)
