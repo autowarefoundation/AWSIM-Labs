@@ -20,17 +20,13 @@ namespace AWSIM
         {
             [SerializeField] MeshRenderer meshRenderer;
             [SerializeField] int materialIndex;
-            //[SerializeField] float lightingIntensity;
             [SerializeField] Color lightingColor;
             [SerializeField] float emissionIntensity;
 
             Material material = null;
-            Color defaultEmissionColor;
-            float defaultEmissionIntensity;
-            bool isOn = false;
+            private Color defaultEmissionColor;
 
             const string EmissionColor = "_EmissionColor";
-            const string Emission = "_Emission";
 
             public void Initialize()
             {
@@ -38,26 +34,19 @@ namespace AWSIM
                 {
                     material = meshRenderer.materials[materialIndex];
                     material.EnableKeyword("_EMISSION");
-                    defaultEmissionColor = material.GetColor(EmissionColor);
-                    // defaultEmission = material.GetFloat(Emission);
+                    defaultEmissionColor = Color.black;
                 }
             }
 
             public void Set(bool isLightOn)
             {
-                if (this.isOn == isLightOn)
-                    return;
-
-                this.isOn = isLightOn;
                 if (isLightOn)
                 {
-                    material.SetColor(EmissionColor, lightingColor);
-                    material.SetFloat(Emission, emissionIntensity);
+                    material.SetColor(EmissionColor, lightingColor*emissionIntensity);
                 }
                 else
                 {
                     material.SetColor(EmissionColor, defaultEmissionColor);
-                    material.SetFloat(Emission, defaultEmissionIntensity);
                 }
             }
 
