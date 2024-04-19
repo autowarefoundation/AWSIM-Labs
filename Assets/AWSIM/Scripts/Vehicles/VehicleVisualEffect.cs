@@ -42,7 +42,7 @@ namespace AWSIM
             {
                 if (isLightOn)
                 {
-                    material.SetColor(EmissionColor, lightingColor*emissionIntensity);
+                    material.SetColor(EmissionColor, lightingColor * emissionIntensity);
                 }
                 else
                 {
