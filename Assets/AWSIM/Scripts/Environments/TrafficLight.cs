@@ -89,8 +89,7 @@ namespace AWSIM
             {
                 public BulbColor BulbColor;
                 public Color Color;
-                public float Intensity;
-                [Range(0, 1)] public float ExposureWeight;
+                [Range(0, 10)] public float Intensity;
             }
 
             public BulbType BulbType => bulbType;
@@ -132,7 +131,6 @@ namespace AWSIM
 
                 // cache default material parameters.
                 defaultEmissionColor = material.GetColor(EmissionColor);
-                //defaultEmission = material.GetFloat(Emission);
 
                 initialized = true;
             }
@@ -209,14 +207,14 @@ namespace AWSIM
                 {
                     var config = bulbColorConfigPairs[color];
                     material.SetColor(EmissionColor, config.Color * config.Intensity);
-                    //material.SetFloat(Emission, config.ExposureWeight);
+                    //material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;
                     this.isLightOn = true;
                     timer = 0;
                 }
                 else
                 {
-                    material.SetColor(EmissionColor, defaultEmissionColor);
-                    //material.SetFloat(Emission, defaultEmission);
+                    material.SetColor(EmissionColor, Color.black);
+                    //material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
                     this.isLightOn = false;
                     timer = 0;
                 }
@@ -237,29 +235,25 @@ namespace AWSIM
             {
                 BulbColor = BulbColor.GREEN,
                 Color = Color.green,
-                Intensity = 14,
-                ExposureWeight = 0.8f,
+                Intensity = 10,
             },
             new Bulb.EmissionConfig()
             {
                 BulbColor = BulbColor.YELLOW,
                 Color = Color.yellow,
-                Intensity = 14,
-                ExposureWeight = 0.8f,
+                Intensity = 10,
             },
             new Bulb.EmissionConfig()
             {
                 BulbColor = BulbColor.RED,
                 Color = Color.red,
-                Intensity = 14,
-                ExposureWeight = 0.8f,
+                Intensity = 10,
             },
             new Bulb.EmissionConfig()
             {
                 BulbColor = BulbColor.WHITE,
                 Color = Color.white,
-                Intensity = 14,
-                ExposureWeight = 0.8f,
+                Intensity = 10,
             },
         };
 
