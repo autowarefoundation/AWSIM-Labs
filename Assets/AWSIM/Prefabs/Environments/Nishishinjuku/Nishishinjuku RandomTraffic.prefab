@@ -235,16 +235,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -391,16 +391,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -533,16 +533,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -691,16 +691,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -847,16 +847,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -987,16 +987,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -1129,16 +1129,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -1285,16 +1285,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -1427,16 +1427,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -1585,16 +1585,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -1741,16 +1741,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -1884,16 +1884,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -2040,16 +2040,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -2183,16 +2183,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -2339,16 +2339,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -2481,16 +2481,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -2640,16 +2640,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -2798,16 +2798,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -2956,16 +2956,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -3114,16 +3114,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -3270,16 +3270,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -3412,16 +3412,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -3570,16 +3570,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -3726,16 +3726,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -3866,16 +3866,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -4006,16 +4006,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -4146,16 +4146,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -4286,16 +4286,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -4426,16 +4426,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -4569,16 +4569,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -4727,16 +4727,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -4886,16 +4886,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -5042,16 +5042,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -5182,16 +5182,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -5324,16 +5324,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -5483,16 +5483,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -5641,16 +5641,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -5797,16 +5797,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -5937,16 +5937,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -6080,16 +6080,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -6238,16 +6238,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -6394,16 +6394,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -6536,16 +6536,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -6692,16 +6692,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -6832,16 +6832,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -6972,16 +6972,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -7114,16 +7114,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -7272,16 +7272,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -7428,16 +7428,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -7571,16 +7571,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -7729,16 +7729,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -7885,16 +7885,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -8025,16 +8025,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -8203,16 +8203,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -8359,16 +8359,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -8501,16 +8501,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -8659,16 +8659,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -8817,16 +8817,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -8975,16 +8975,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -9131,16 +9131,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -9271,16 +9271,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -9413,16 +9413,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -9640,16 +9640,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -9799,16 +9799,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -9958,16 +9958,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -10119,16 +10119,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -10277,16 +10277,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -10435,16 +10435,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -10591,16 +10591,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -10731,16 +10731,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -10874,16 +10874,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -11030,16 +11030,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -11222,16 +11222,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -11364,16 +11364,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -11505,16 +11505,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -11647,16 +11647,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -11789,16 +11789,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -11950,16 +11950,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -12111,16 +12111,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -12267,16 +12267,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -12409,16 +12409,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -12567,16 +12567,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -12725,16 +12725,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -12883,16 +12883,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -13039,16 +13039,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -13179,16 +13179,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -13319,16 +13319,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -13461,16 +13461,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -13620,16 +13620,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -13778,16 +13778,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -13936,16 +13936,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -14092,16 +14092,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -14235,16 +14235,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 10
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 10
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 10
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -14391,16 +14391,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -14531,16 +14531,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -14671,16 +14671,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -14813,16 +14813,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -14971,16 +14971,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -15127,16 +15127,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -15269,16 +15269,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -15425,16 +15425,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -15568,16 +15568,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -15727,16 +15727,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -15886,16 +15886,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -16044,16 +16044,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -16202,16 +16202,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -16358,16 +16358,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -16501,16 +16501,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -16658,16 +16658,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -16802,16 +16802,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -16958,16 +16958,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -17098,16 +17098,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -17240,16 +17240,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -17398,16 +17398,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -17554,16 +17554,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -17696,16 +17696,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -17854,16 +17854,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -18013,16 +18013,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -18172,16 +18172,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -18328,16 +18328,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -18473,16 +18473,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -18629,16 +18629,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -18770,16 +18770,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -18912,16 +18912,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -19052,16 +19052,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -19194,16 +19194,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -19350,16 +19350,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -19492,16 +19492,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -19648,16 +19648,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -19793,16 +19793,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -19949,16 +19949,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -20091,16 +20091,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -20247,16 +20247,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -20389,16 +20389,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -20548,16 +20548,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -20706,16 +20706,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -20862,16 +20862,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -21002,16 +21002,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -21145,16 +21145,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -21304,16 +21304,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -21460,16 +21460,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -21603,16 +21603,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -21855,16 +21855,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -21998,16 +21998,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -22154,16 +22154,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -22294,16 +22294,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -22436,16 +22436,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -22592,16 +22592,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -22735,16 +22735,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -22891,16 +22891,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -23033,16 +23033,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -23189,16 +23189,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -23331,16 +23331,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -23487,16 +23487,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 2
@@ -23630,16 +23630,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
@@ -23886,16 +23886,16 @@ MonoBehaviour:
   bulbEmissionConfigs:
   - BulbColor: 2
     Color: {r: 0, g: 1, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 1
     Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 0
     Color: {r: 1, g: 0, b: 0, a: 1}
-    Intensity: 30
+    Intensity: 3
   - BulbColor: 3
     Color: {r: 1, g: 1, b: 1, a: 1}
-    Intensity: 30
+    Intensity: 3
   bulbs:
   - bulbType: 3
     materialIndex: 1
