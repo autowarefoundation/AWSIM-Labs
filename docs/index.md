@@ -20,13 +20,16 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 
 ### Feature differences from the main AWSIM
 
-| AWSIM                                      | AWSIM Labs                       |
-|--------------------------------------------|----------------------------------|
-| Using HDRP                                 | Using URP                        |
-| Using Unity 2021.1.7f1                     | Using Unity LTS 2022.3.21f1      |
-| Limited interaction with simulation and UI | Interactable simulation and UI   |
-| Uses more resources                        | Uses less resources              |
-| -                                          | Multiple scene and vehicle setup |
+| Features                              | **AWSIM** 1.2.1  | **AWSIM Labs** 1.0.0-beta |
+|---------------------------------------|------------------|---------------------------|
+| Rendering Pipeline                    | HDRP             | URP                       |
+| Unity Version                         | Unity 2021.1.7f1 | Unity LTS 2022.3.21f1     |
+| Resource usage                        | Heavy            | Light                     |
+| Can reset vehicle position on runtime | ❌                | ✅                         |
+| Multiple scene and vehicle setup      | ❌                | ✅                         |
+| CI for build                          | ❌                | ✅                         |
+| CI for documentation generation       | ❌                | ✅                         |
+| Multi-lidars are enabled by default   | ❌                | ✅                         |
 
 ## Try the simulation demo yourself!
 We don't have a release yet. Please build it from the source.
