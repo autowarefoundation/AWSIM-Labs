@@ -32,8 +32,5 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 | CI for documentation generation within PR | ❌                | ✅                     |
 
 ## Try the simulation demo yourself!
-We don't have a release yet. Please build it from the source.
 
-[Download AWSIM Demo for Ubuntu](https://github.com/autowarefoundation/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0.zip){.md-button .md-button--primary}
-
-To test the AWSIM Labs demo with Autoware please refer to the [Quick start demo](./GettingStarted/QuickStartDemo/index.md) section.
+Run the AWSIM Labs demo with Autoware following the instructions in the [Quick start demo](./GettingStarted/QuickStartDemo/index.md).
