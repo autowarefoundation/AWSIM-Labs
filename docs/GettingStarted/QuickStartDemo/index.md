@@ -19,12 +19,12 @@ The simulation provided in the AWSIM demo is configured as follows:
 
 Please make sure that your machine meets the following requirements in order to run the simulation correctly:
 
-| Required PC Specs         |                                 |
-|:--------------------------|:--------------------------------|
-| OS                        | Ubuntu 22.04                    |
-| CPU                       | 6 cores and 12 thread or higher |
-| GPU                       | RTX 2080Ti or higher            |
-| Nvidia Driver (Ubuntu 22) | >=545                           |
+| Required PC Specs         |                    |
+|:--------------------------|:-------------------|
+| OS                        | Ubuntu 22.04       |
+| CPU                       | 6c12t or higher    |
+| GPU                       | RTX 2080 or higher |
+| Nvidia Driver (Ubuntu 22) | >=545              |
 
 
 ### DDS configuration
