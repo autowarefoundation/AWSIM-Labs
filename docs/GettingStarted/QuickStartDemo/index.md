@@ -97,6 +97,7 @@ Replace `your_username` with your actual username.
 To run the simulator, please follow the steps below.
 
 1. Install Nvidia GPU driver (Skip if already installed).
+
     1. Add Nvidia driver to apt repository
     ```
     sudo add-apt-repository ppa:graphics-drivers/ppa
@@ -131,6 +132,7 @@ To run the simulator, please follow the steps below.
     ```
 
 2. Install Vulkan Graphics Library (Skip if already installed).
+
     1. Update the environment.
     ```
     sudo apt update
@@ -143,6 +145,7 @@ To run the simulator, please follow the steps below.
 3. Download and Run AWSIM Demo binary.
 
     1. Download the latest release from the AWSIM Labs GitHub Release Page.
+
         [AWSIM Labs GitHub Release Page](https://github.com/autowarefoundation/AWSIM/releases){.md-button .md-button--primary}
 
     2. Unzip the downloaded file.
@@ -173,7 +176,6 @@ To run the simulator, please follow the steps below.
 In order to configure and run the Autoware software with the AWSIM demo, please:
 
 1. Download `map files (pcd, osm)` and unzip them.
-
     [Download Map files (pcd, osm)](https://drive.google.com/drive/folders/15D5s2m3A7_wtCPio8ewRy0wL_xQtmqss){.md-button .md-button--primary}
 
 2. Clone [Autoware](https://github.com/autowarefoundation/autoware) and move to the directory.
@@ -216,7 +218,7 @@ ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehic
 ```
 ![](Image_2.png)
 
-## Let's run the self-Driving simulation
+## Let's run the self driving simulation
 
 1. Launch AWSIM and Autoware according to the steps described earlier in this document.
 ![](Image_top.png)

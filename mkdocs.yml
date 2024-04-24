@@ -71,7 +71,7 @@ markdown_extensions:
   - md_in_html
   - mdx_math
   - mdx_truly_sane_lists:
-      nested_indent: 2
+      nested_indent: 4
   - plantuml_markdown:
       server: http://www.plantuml.com/plantuml
       format: svg
