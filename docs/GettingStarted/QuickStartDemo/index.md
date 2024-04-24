@@ -144,9 +144,9 @@ To run the simulator, please follow the steps below.
 
 3. Download and Run AWSIM Demo binary.
 
-    1. Download the latest release from the AWSIM Labs GitHub Release Page.
+    1. Download the latest release from:
 
-        [AWSIM Labs GitHub Release Page](https://github.com/autowarefoundation/AWSIM/releases){.md-button .md-button--primary}
+        [AWSIM Labs GitHub Releases Page](https://github.com/autowarefoundation/AWSIM/releases){.md-button .md-button--primary}
 
     2. Unzip the downloaded file.
 
