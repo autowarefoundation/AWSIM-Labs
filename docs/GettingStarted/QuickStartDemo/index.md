@@ -107,7 +107,7 @@ To run the simulator, please follow the steps below.
     2. Install the recommended version of the driver.
     ```
     sudo ubuntu-drivers autoinstall
-   
+
     # or install a specific version (following was tested)
     sudo apt install nvidia-driver-550
     ```
