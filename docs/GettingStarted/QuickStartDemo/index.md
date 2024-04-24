@@ -159,16 +159,14 @@ To run the simulator, please follow the steps below.
         chmod +x <path to AWSIM folder>/awsim_labs.x86_64
         ```
 
-    4. Launch `awsim_labs.x86_64`.
-        ```
-        ./<path to AWSIM folder>/awsim_labs.x86_64
-        ```
+   4. Launch `awsim_labs.x86_64`.
+       ```
+       ./<path to AWSIM folder>/awsim_labs.x86_64
+       ```
 
-        !!! warning
+       It may take some time for the application to start the so please wait until image similar to the one presented below is visible in your application window.
 
-            It may take some time for the application to start the so please wait until image similar to the one presented below is visible in your application window.
-
-        ![](Image_0.png)
+       ![](Image_0.png)
 
 ### Launching Autoware
 
@@ -207,13 +205,11 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 ```
 8. Launch Autoware.
-
-    !!! warning
-
-        `<your mapfile location>` must be changed arbitrarily. When specifying the path the `~` operator cannot be used - please specify absolute full path.
 ```
 source install/setup.bash
-ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehicle sensor_model:=awsim_labs_sensor_kit map_path:=<your mapfile location>
+ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehicle sensor_model:=awsim_labs_sensor_kit map_path:=<absolute path of map folder>
+
+# Use the absolute path for the map folder, don't use the ~ operator.
 
 # Example:
 ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehicle sensor_model:=awsim_labs_sensor_kit map_path:=/home/your_username/autoware_map/nishishinjuku_autoware_map
