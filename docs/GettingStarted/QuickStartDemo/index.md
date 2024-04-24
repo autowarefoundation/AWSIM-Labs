@@ -144,8 +144,7 @@ To run the simulator, please follow the steps below.
 
 3. Download and Run AWSIM Demo binary.
 
-    1. Download `AWSIM_Labs_v1.0.0-beta.zip`.
-        [Download AWSIM Demo for ubuntu](){.md-button .md-button--primary}
+    1. Download the latest release from the [AWSIM Labs GitHub Release Page](https://github.com/autowarefoundation/AWSIM/releases){.md-button .md-button--primary}
 
     2. Unzip the downloaded file.
 
