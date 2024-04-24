@@ -18,7 +18,7 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 - Multiple scene and vehicle setup
 - Interactable simulation and UI
 
-### Comparison to the main AWSIM
+### Feature differences from the TIER IV/AWSIM
 
 | Features                                  | AWSIM 1.2.1      | AWSIM Labs 1.0.0-beta |
 |-------------------------------------------|------------------|-----------------------|

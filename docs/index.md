@@ -18,7 +18,7 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 - Made with [Unity](https://unity.com/)
 
 
-### Feature differences from the main AWSIM
+### Feature differences from the TIER IV/AWSIM
 
 | Features                                  | AWSIM 1.2.1      | AWSIM Labs 1.0.0-beta |
 |-------------------------------------------|------------------|-----------------------|
