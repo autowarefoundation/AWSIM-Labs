@@ -159,14 +159,14 @@ To run the simulator, please follow the steps below.
         chmod +x <path to AWSIM folder>/awsim_labs.x86_64
         ```
 
-   4. Launch `awsim_labs.x86_64`.
-       ```
-       ./<path to AWSIM folder>/awsim_labs.x86_64
-       ```
+    4. Launch `awsim_labs.x86_64`.
+        ```
+        ./<path to AWSIM folder>/awsim_labs.x86_64
+        ```
 
-       It may take some time for the application to start the so please wait until image similar to the one presented below is visible in your application window.
+        It may take some time for the application to start the so please wait until image similar to the one presented below is visible in your application window.
 
-       ![](Image_0.png)
+        ![](Image_0.png)
 
 ### Launching Autoware
 
