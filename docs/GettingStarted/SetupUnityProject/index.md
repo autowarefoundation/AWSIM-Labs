@@ -152,9 +152,9 @@ To open the Unity AWSIM project in Unity Editor:
 
 To properly run and use AWSIM project in Unity it is required to download map package which is not included in the repository.
 
-1. Download and import `Nishishinjuku_urp.unitypackage`
+1. Download and import `Nishishinjuku_URP_v0.1.0.unitypackage`
 
-    [Download Map files (unitypackage)](https://drive.google.com/drive/folders/1Q6PolpCIwiVRdPNMjSBAQ5t2TcCoY-KZ){.md-button .md-button--primary}
+    [Download Map Package](https://drive.google.com/drive/folders/1Q6PolpCIwiVRdPNMjSBAQ5t2TcCoY-KZ){.md-button .md-button--primary}
 
 2. In Unity Editor, from the menu bar at the top, select `Assets -> Import Package -> Custom Package...` and navigate the `Nishishinjuku_urp.unitypackage` file.
 ![](image_10.png)
