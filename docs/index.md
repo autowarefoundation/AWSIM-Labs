@@ -20,16 +20,16 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 
 ### Feature differences from the main AWSIM
 
-| Features                                  | **AWSIM** 1.2.1  | **AWSIM Labs** 1.0.0-beta |
-|-------------------------------------------|------------------|---------------------------|
-| Rendering Pipeline                        | HDRP             | URP                       |
-| Unity Version                             | Unity 2021.1.7f1 | Unity LTS 2022.3.21f1     |
-| Resource usage                            | Heavy            | Light                     |
-| Can reset vehicle position on runtime     | ❌                | ✅                         |
-| Multiple scene and vehicle setup          | ❌                | ✅                         |
-| Multi-lidars are enabled by default       | ❌                | ✅                         |
-| CI for build                              | ❌                | ✅                         |
-| CI for documentation generation within PR | ❌                | ✅                         |
+| Features                                  | AWSIM 1.2.1      | AWSIM Labs 1.0.0-beta |
+|-------------------------------------------|------------------|-----------------------|
+| Rendering Pipeline                        | HDRP             | URP                   |
+| Unity Version                             | Unity 2021.1.7f1 | Unity LTS 2022.3.21f1 |
+| Resource usage                            | Heavy            | Light                 |
+| Can reset vehicle position on runtime     | ❌                | ✅                     |
+| Multiple scene and vehicle setup          | ❌                | ✅                     |
+| Multi-lidars are enabled by default       | ❌                | ✅                     |
+| CI for build                              | ❌                | ✅                     |
+| CI for documentation generation within PR | ❌                | ✅                     |
 
 ## Try the simulation demo yourself!
 We don't have a release yet. Please build it from the source.
