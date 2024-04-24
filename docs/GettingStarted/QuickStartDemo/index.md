@@ -9,49 +9,88 @@ The instruction assumes using the Ubuntu OS.
 
 The simulation provided in the AWSIM demo is configured as follows:
 
-|AWSIM Demo Settings||
-|:--|:--|
-|Vehicle|Lexus RX 450h|
-|Environment|Japan Tokyo Nishishinjuku|
-|Sensors|Gnss * 1<br> IMU * 1<br> LiDAR * 1<br> Traffic camera * 1|
-|Traffic|Randomized traffic|
-|ROS2|humble|
+| AWSIM Demo Settings |                                            |
+|:--------------------|:-------------------------------------------|
+| Vehicle             | Lexus RX 450h                              |
+| Environment         | Japan Tokyo Nishishinjuku                  |
+| Sensors             | GNSS, IMU, 3 x VLP16, Traffic Light Camera |
+| Traffic             | Randomized traffic                         |
+| ROS2                | humble                                     |
 
 ### PC specs
 
 Please make sure that your machine meets the following requirements in order to run the simulation correctly:
 
-|Required PC Specs||
-|:--|:--|
-|OS|Ubuntu 22.04|
-|CPU|6cores and 12thread or higher|
-|GPU|RTX2080Ti or higher|
-|Nvidia Driver (Windows)|>=472.50|
-|Nvidia Driver (Ubuntu 22)|>=515.43.04|
+| Required PC Specs         |                                 |
+|:--------------------------|:--------------------------------|
+| OS                        | Ubuntu 22.04                    |
+| CPU                       | 6 cores and 12 thread or higher |
+| GPU                       | RTX 2080Ti or higher            |
+| Nvidia Driver (Ubuntu 22) | >=515.43.04                     |
 
 
-### Localhost settings
+### DDS configuration
 
-The simulation is based on the appropriate network setting, which allows for trouble-free communication of the AWSIM simulation with the Autoware software.
-To apply required localhost settings please add the following lines to `~/.bashrc` file:
+In order to run AWSIM Labs with the best performance and without hogging the network, please follow the steps below.
+
+Add the following lines to `~/.bashrc` file:
 
 ``` bash
 if [ ! -e /tmp/cycloneDDS_configured ]; then
 	sudo sysctl -w net.core.rmem_max=2147483647
+	sudo sysctl -w net.ipv4.ipfrag_time=3
+    sudo sysctl -w net.ipv4.ipfrag_high_thresh=134217728     # (128 MB)
 	sudo ip link set lo multicast on
 	touch /tmp/cycloneDDS_configured
 fi
 ```
 
-and these lines to `~/.profile` **or in either of files:** `~/.bash_profile` *or* `~/.bash_login`:
+Every time you restart this machine, and open a new terminal, the above commands will be executed.
+
+Until you restart the machine, they will not be executed again.
+
+#### CycloneDDS configuration
+
+Save the following as `cyclonedds.xml` in your home directory `~`:
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<CycloneDDS xmlns="https://cdds.io/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://cdds.io/config https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
+    <Domain Id="any">
+        <General>
+            <Interfaces>
+                <NetworkInterface name="lo" priority="default" multicast="default" />
+            </Interfaces>
+            <AllowMulticast>default</AllowMulticast>
+            <MaxMessageSize>65500B</MaxMessageSize>
+        </General>
+        <Internal>
+            <SocketReceiveBufferSize min="10MB"/>
+            <Watermarks>
+                <WhcHigh>500kB</WhcHigh>
+            </Watermarks>
+        </Internal>
+    </Domain>
+</CycloneDDS>
+
+```
+
+Make sure the following lines are added to the `~/.bashrc` file:
 
 ``` bash
-export ROS_LOCALHOST_ONLY=1
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI=/home/your_username/cyclonedds.xml
 ```
+
+Replace `your_username` with your actual username.
+
+!!! note
+    You should use the absolute path to the `cyclonedds.xml` file.
 
 !!! warning
     A system restart is required for these changes to work.
+
+!!! warning
+    **DO NOT** set `export ROS_LOCALHOST_ONLY=1`. CycloneDDS configuration will be enough.  
 
 ## Start the demo
 
@@ -68,12 +107,10 @@ To run the simulator, please follow the steps below.
     2. Install the recommended version of the driver.
     ```
     sudo ubuntu-drivers autoinstall
+   
+    # or install a specific version (following was tested)
+    sudo apt install nvidia-driver-550
     ```
-
-        !!! warning
-
-            Currently, there are cases where the Nvidia driver version is too high, resulting in Segmentation fault. In that case, please lower the Nvidia driver version (525 is recommended.)
-
     3. Reboot your machine to make the installed driver detected by the system.
     ```
     sudo reboot
@@ -81,27 +118,18 @@ To run the simulator, please follow the steps below.
     4. Open terminal and check if `nvidia-smi` command is available and outputs summary similar to the one presented below.
     ```
     $ nvidia-smi
-    Fri Oct 14 01:41:05 2022  
-    +-----------------------------------------------------------------------------+
-    | NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
-    |-------------------------------+----------------------+----------------------+
-    | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-    |                               |                      |               MIG M. |
-    |===============================+======================+======================|
-    |   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0  On |                  N/A |
-    | 37%   31C    P8    30W / 250W |    188MiB / 11264MiB |      3%      Default |
-    |                               |                      |                  N/A |
-    +-------------------------------+----------------------+----------------------+
-
-    +-----------------------------------------------------------------------------+
-    | Processes:                                                                  |
-    |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-    |        ID   ID                                                   Usage      |
-    |=============================================================================|
-    |    0   N/A  N/A      1151      G   /usr/lib/xorg/Xorg                133MiB |
-    |    0   N/A  N/A      1470      G   /usr/bin/gnome-shell               45MiB |
-    +-----------------------------------------------------------------------------+
+    +-----------------------------------------------------------------------------------------+
+    | NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+    |-----------------------------------------+------------------------+----------------------+
+    | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+    |                                         |                        |               MIG M. |
+    |=========================================+========================+======================|
+    |   0  NVIDIA GeForce RTX 3080        Off |   00000000:2D:00.0  On |                  N/A |
+    | 30%   40C    P8             35W /  320W |    5299MiB /  10240MiB |      7%      Default |
+    |                                         |                        |                  N/A |
+    +-----------------------------------------+------------------------+----------------------+
+    ...
     ```
 
 2. Install Vulkan Graphics Library (Skip if already installed).
@@ -116,27 +144,26 @@ To run the simulator, please follow the steps below.
 
 3. Download and Run AWSIM Demo binary.
 
-    1. Download `AWSIM_v1.2.0.zip`.
-        We don't have a release yet. Please follow the Setup Guide to build the AWSIM binary.
+    1. Download `AWSIM_Labs_v1.0.0-beta.zip`.
         [Download AWSIM Demo for ubuntu](){.md-button .md-button--primary}
 
     2. Unzip the downloaded file.
 
-    3. Make the `AWSIM_v1.2.0.x86_64` file executable.
+    3. Make the file executable.
 
-        Right click the `AWSIM_v1.2.0.x86_64` file and check the `Execute` checkbox
+        Right click the `awsim_labs.x86_64` file and check the `Execute` checkbox
 
         ![](Image_1.png)
 
         or execute the command below.
 
         ```
-        chmod +x <path to AWSIM folder>/AWSIM_v1.2.0.x86_64
+        chmod +x <path to AWSIM folder>/awsim_labs.x86_64
         ```
 
-    4. Launch `AWSIM_v1.2.0.x86_64`.
+    4. Launch `awsim_labs.x86_64`.
         ```
-        ./<path to AWSIM folder>/AWSIM_v1.2.0.x86_64
+        ./<path to AWSIM folder>/awsim_labs.x86_64
         ```
 
         !!! warning
@@ -158,9 +185,9 @@ In order to configure and run the Autoware software with the AWSIM demo, please:
 git clone https://github.com/autowarefoundation/autoware.git
 cd autoware
 ```
-3. Switch branch to `awsim-stable`. *NOTE: The latest `main` branch is for [ROS 2 humble](https://docs.ros.org/en/rolling/Releases/Release-Humble-Hawksbill.html).*
+3. Switch branch to `main`.
 ```
-git checkout awsim-stable
+git checkout main
 ```
 4. Configure the environment. (Skip if Autoware environment has been configured before)
 ```
@@ -173,14 +200,13 @@ vcs import src < autoware.repos
 ```
 6. Install dependent ROS packages.
 ```
-
 source /opt/ros/humble/setup.bash
 rosdep update
 rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 7. Build the workspace.
 ```
-colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 ```
 8. Launch Autoware.
 
@@ -189,7 +215,10 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_C
         `<your mapfile location>` must be changed arbitrarily. When specifying the path the `~` operator cannot be used - please specify absolute full path.
 ```
 source install/setup.bash
-ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehicle sensor_model:=awsim_sensor_kit map_path:=<your mapfile location>
+ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehicle sensor_model:=awsim_labs_sensor_kit map_path:=<your mapfile location>
+
+# Example:
+ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=sample_vehicle sensor_model:=awsim_labs_sensor_kit map_path:=/home/your_username/autoware_map/nishishinjuku_autoware_map
 ```
 ![](Image_2.png)
 
@@ -212,7 +241,7 @@ The generated path can be seen on the image below.
 
 5. Enable self-driving.
 
-To make the vehicle start navigating please engage it's operation using the command below.
+To make the vehicle start navigating please engage its operation using the command below.
 
 ```
 cd autoware
