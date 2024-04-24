@@ -11,7 +11,7 @@ The simulation provided in the AWSIM demo is configured as follows:
 |:--------------------|:-------------------------------------------|
 | Vehicle             | Lexus RX 450h                              |
 | Environment         | Japan Tokyo Nishishinjuku                  |
-| Sensors             | GNSS, IMU, 3 x VLP16, Traffic Light Camera |
+| Sensors             | GNSS<br>IMU<br>3 x VLP16<br>Traffic Light Camera |
 | Traffic             | Randomized traffic                         |
 | ROS2                | humble                                     |
 
