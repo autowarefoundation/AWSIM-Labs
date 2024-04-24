@@ -3,8 +3,6 @@
 Below you can find instructions on how to setup the self-driving demo of AWSIM simulation controlled by Autoware.
 The instruction assumes using the Ubuntu OS.
 
-![](Image_top.png)
-
 ### Demo configuration
 
 The simulation provided in the AWSIM demo is configured as follows:
@@ -26,7 +24,7 @@ Please make sure that your machine meets the following requirements in order to 
 | OS                        | Ubuntu 22.04                    |
 | CPU                       | 6 cores and 12 thread or higher |
 | GPU                       | RTX 2080Ti or higher            |
-| Nvidia Driver (Ubuntu 22) | >=515.43.04                     |
+| Nvidia Driver (Ubuntu 22) | >=545                           |
 
 
 ### DDS configuration
