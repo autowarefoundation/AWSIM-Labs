@@ -8,12 +8,12 @@ theme:
   name: material
   features:
     - navigation.expand
-    - navigation.indexes
     - navigation.instant
     - navigation.sections
     - navigation.tabs.sticky
     - navigation.top
     - navigation.footer
+    - navigation.path
     - content.tabs.link
   icon:
     logo: fontawesome/solid/car
