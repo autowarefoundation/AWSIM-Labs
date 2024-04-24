@@ -16,26 +16,7 @@ This page is a tutorial for setting up a AWSIM Unity project.
     2. Prepare a desktop PC with Ubuntu 22.04 installed.
     2. Install [Nvidia drivers and Vulkan Graphics API](../QuickStartDemo/#running-the-awsim-simulation-demo).
     3. Install [git](https://git-scm.com/).
-    4. Set the ROS 2 middleware and the localhost only mode in `~/.profile` (or, in `~/.bash_profile` or `~/bash_login` if either of those exists) file:
-    ``` bash
-    export ROS_LOCALHOST_ONLY=1
-    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    ```
-
-        !!! warning
-            A system restart is required for these changes to work.
-
-    4. Set the system optimizations by adding this code to the very bottom of your `~/.bashrc` file:
-    ``` bash
-    if [ ! -e /tmp/cycloneDDS_configured ]; then
-        sudo sysctl -w net.core.rmem_max=2147483647
-        sudo ip link set lo multicast on
-        touch /tmp/cycloneDDS_configured
-    fi
-    ```
-
-        !!! info
-            As a result, each time you run the terminal (`bash` prompt), your OS will be configured for the best ROS 2 performance. Make sure you open your terminal at least one before running any instance of AWSIM (or Editor running the AWSIM).
+    4. Follow [the DDS configuration guide](../QuickStartDemo/index.md#dds-configuration).
 
 === "Windows"
     1. Make sure your machine meets the [required hardware specifications](../QuickStartDemo/#pc-specs).
@@ -66,13 +47,13 @@ AWSIM comes with a *standalone* flavor of [`Ros2ForUnity`](../../Components/ROS2
 
 !!! info
 
-    AWSIM's Unity version is currently **2021.1.7f1**
+    AWSIM's Unity version is currently **2022.3.21f1**
 
 Follow the steps below to install Unity on your machine:
 
 1. Install UnityHub to manage Unity projects. Please go to [Unity download page](https://unity3d.com/get-unity/download) and download latest `UnityHub.AppImage`.
 ![](image_1.png)
-2. Install Unity 2021.1.7f1 via UnityHub.
+2. Install Unity 2022.3.21f1 via UnityHub.
     - Open new terminal, navigate to directory where `UnityHub.AppImage` is download and execute the following command:
 ```
 ./UnityHub.AppImage
@@ -86,7 +67,7 @@ Follow the steps below to install Unity on your machine:
         === "Ubuntu 22"
         - *NOTE: If the installation process has not started after clicking the green button (image above), please copy the hyperlink (by rightclicking the button and selecting `Copy link address`) and add it as a argument for Unity Hub app. An example command:
         ```
-        ./UnityHub.AppImage unityhub://2021.1.7f1/d91830b65d9b
+        ./UnityHub.AppImage unityhub://2022.3.21f1/d91830b65d9b
         ```
 
     - After successful installation the version will be available under the `Installs` tab in Unity Hub.
@@ -133,7 +114,7 @@ To open the Unity AWSIM project in Unity Editor:
 
     2. If your Unity Editor is in default location, run the project using the editor command.
         ```
-        ~/Unity/Hub/Editor/2021.1.7f1/Editor/Unity -projectPath .
+        ~/Unity/Hub/Editor/2022.3.21f1/Editor/Unity -projectPath .
         ```
 
         !!! info
@@ -156,7 +137,7 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
     [Download Map Package](https://drive.google.com/drive/folders/1Q6PolpCIwiVRdPNMjSBAQ5t2TcCoY-KZ){.md-button .md-button--primary}
 
-2. In Unity Editor, from the menu bar at the top, select `Assets -> Import Package -> Custom Package...` and navigate the `Nishishinjuku_urp.unitypackage` file.
+2. In Unity Editor, from the menu bar at the top, select `Assets -> Import Package -> Custom Package...` and navigate the `Nishishinjuku_URP.unitypackage` file.
 ![](image_10.png)
 ![](image_11.png)
 3. `Nishishinjuku` package has been successfully imported under `Assets/AWSIM/Externals/`directory.
