@@ -20,6 +20,8 @@ public class DynamicSensorPlacement : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label ("Base Settings", EditorStyles.boldLabel);
+
+        // ./Assets/AWSIM/Externals/
         sensorKitPath = EditorGUILayout.TextField("Sensor Kit Path", sensorKitPath);
 
         // Button to load YAML file
