@@ -1,32 +1,58 @@
-using System;
 using AWSIM.TrafficSimulation;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AWSIM.Scripts.UI
 {
+    public class TrafficPlayToggleEvent : UnityEvent<bool>
+    {
+    }
+
+    public class TrafficVisibilityToggleEvent : UnityEvent<bool>
+    {
+    }
+
     public class TrafficControlManager : MonoBehaviour
     {
         public TrafficManager TrafficManager { private get; set; }
 
-        public void TrafficManagerPauseResumeToggle()
+        public TrafficPlayToggleEvent trafficPlayToggleEvent;
+        public TrafficVisibilityToggleEvent trafficVisibilityToggleEvent;
+
+        private void Awake()
+        {
+            trafficPlayToggleEvent ??= new TrafficPlayToggleEvent();
+            trafficVisibilityToggleEvent ??= new TrafficVisibilityToggleEvent();
+        }
+
+        public void TrafficManagerPlayToggle()
         {
             if (TrafficManager.gameObject.activeSelf)
             {
                 TrafficManager.enabled = !TrafficManager.enabled;
+                trafficPlayToggleEvent.Invoke(TrafficManager.enabled);
             }
             else
                 Debug.Log("TrafficManager is not active. Can't pause/resume!");
         }
 
-        public void TrafficManagerEnable()
+        public void TrafficManagerVisibilityToggle()
         {
-            TrafficManager.gameObject.SetActive(true);
-            TrafficManager.enabled = true;
-        }
+            if (!TrafficManager.gameObject.activeSelf)
+            {
+                TrafficManager.gameObject.SetActive(true);
+            }
+            else
+            {
+                TrafficManager.enabled = false;
+                TrafficManager.gameObject.SetActive(false);
 
-        public void TrafficManagerDisable()
-        {
-            TrafficManager.gameObject.SetActive(false);
+                // Invoke event
+                trafficPlayToggleEvent.Invoke(TrafficManager.enabled);
+            }
+
+            //Invoke event
+            trafficVisibilityToggleEvent.Invoke(TrafficManager.gameObject.activeSelf);
         }
 
         public void TrafficManagerReset()
@@ -41,7 +67,13 @@ namespace AWSIM.Scripts.UI
                 TrafficManager.gameObject.SetActive(true);
                 TrafficManager.enabled = true;
                 TrafficManager.npcVehicleSimulator.ClearAll();
+
+                // Invoke event
+                trafficVisibilityToggleEvent.Invoke(TrafficManager.gameObject.activeSelf);
             }
+
+            // Invoke event
+            trafficPlayToggleEvent.Invoke(TrafficManager.enabled);
         }
 
         public void TrafficMangerSetSeed(int seed)

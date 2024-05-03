@@ -8,7 +8,8 @@ namespace AWSIM.Scripts.UI
     {
         private EgoVehiclePositionManager egoVehiclePositionManager;
         private TrafficControlManager trafficControlManager;
-        [SerializeField] InputField trafficSeedInputField;
+
+        [SerializeField] private InputField trafficSeedInputField;
 
         private void Awake()
         {
@@ -21,19 +22,14 @@ namespace AWSIM.Scripts.UI
             egoVehiclePositionManager.ResetEgoToSpawnPoint();
         }
 
-        public void TrafficManagerPauseResumeToggle()
+        public void TrafficManagerPlayToggle(bool isOn)
         {
-            trafficControlManager.TrafficManagerPauseResumeToggle();
+            trafficControlManager.TrafficManagerPlayToggle();
         }
 
-        public void TrafficManagerEnable()
+        public void TrafficManagerVisibilityToggle(bool isOn)
         {
-            trafficControlManager.TrafficManagerEnable();
-        }
-
-        public void TrafficManagerDisable()
-        {
-            trafficControlManager.TrafficManagerDisable();
+            trafficControlManager.TrafficManagerVisibilityToggle();
         }
 
         public void TrafficManagerReset()
