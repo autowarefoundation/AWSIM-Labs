@@ -16,13 +16,15 @@ namespace AWSIM.Scripts.UI
     {
         public TrafficManager TrafficManager { private get; set; }
 
-        public TrafficPlayToggleEvent trafficPlayToggleEvent;
-        public TrafficVisibilityToggleEvent trafficVisibilityToggleEvent;
+        public TrafficPlayToggleEvent TrafficPlayToggleEvent;
+        public TrafficVisibilityToggleEvent TrafficVisibilityToggleEvent;
+        public int SeedInput;
+        public int TargetVehicleCount;
 
         private void Awake()
         {
-            trafficPlayToggleEvent ??= new TrafficPlayToggleEvent();
-            trafficVisibilityToggleEvent ??= new TrafficVisibilityToggleEvent();
+            TrafficPlayToggleEvent ??= new TrafficPlayToggleEvent();
+            TrafficVisibilityToggleEvent ??= new TrafficVisibilityToggleEvent();
         }
 
         public void TrafficManagerPlayToggle()
@@ -30,7 +32,7 @@ namespace AWSIM.Scripts.UI
             if (TrafficManager.gameObject.activeSelf)
             {
                 TrafficManager.enabled = !TrafficManager.enabled;
-                trafficPlayToggleEvent.Invoke(TrafficManager.enabled);
+                TrafficPlayToggleEvent.Invoke(TrafficManager.enabled);
             }
             else
                 Debug.Log("TrafficManager is not active. Can't pause/resume!");
@@ -48,11 +50,11 @@ namespace AWSIM.Scripts.UI
                 TrafficManager.gameObject.SetActive(false);
 
                 // Invoke event
-                trafficPlayToggleEvent.Invoke(TrafficManager.enabled);
+                TrafficPlayToggleEvent.Invoke(TrafficManager.enabled);
             }
 
             //Invoke event
-            trafficVisibilityToggleEvent.Invoke(TrafficManager.gameObject.activeSelf);
+            TrafficVisibilityToggleEvent.Invoke(TrafficManager.gameObject.activeSelf);
         }
 
         public void TrafficManagerReset()
@@ -60,30 +62,40 @@ namespace AWSIM.Scripts.UI
             if (TrafficManager.gameObject.activeSelf)
             {
                 TrafficManager.enabled = true;
-                TrafficManager.npcVehicleSimulator.ClearAll();
+                TrafficManager.RestartTraffic();
             }
             else
             {
                 TrafficManager.gameObject.SetActive(true);
                 TrafficManager.enabled = true;
-                TrafficManager.npcVehicleSimulator.ClearAll();
+                TrafficManager.RestartTraffic();
 
                 // Invoke event
-                trafficVisibilityToggleEvent.Invoke(TrafficManager.gameObject.activeSelf);
+                TrafficVisibilityToggleEvent.Invoke(TrafficManager.gameObject.activeSelf);
             }
 
             // Invoke event
-            trafficPlayToggleEvent.Invoke(TrafficManager.enabled);
+            TrafficPlayToggleEvent.Invoke(TrafficManager.enabled);
         }
 
-        public void TrafficMangerSetSeed(int seed)
+        public void TrafficManagerUpdate()
         {
             if (!TrafficManager.gameObject.activeSelf)
             {
-                Debug.LogWarning("TrafficManager is not active. Can't set seed!");
+                Debug.LogWarning("TrafficManager is not active. Can't update traffic density!");
             }
+            else
+            {
+                TrafficManager.enabled = true;
+                TrafficPlayToggleEvent.Invoke(TrafficManager.enabled);
 
-            TrafficManager.seed = seed;
+                TrafficManager.targetVehicleCount = TargetVehicleCount;
+                TrafficManager.seed = SeedInput;
+                TrafficManager.RestartTraffic();
+            }
         }
+
+        public int GetMaxVehicleCount() => TrafficManager.maxVehicleCount;
+        public int GetTargetVehicleCount() => TrafficManager.targetVehicleCount;
     }
 }

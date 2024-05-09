@@ -15,7 +15,7 @@ namespace AWSIM.Scripts.UI.Toggle
         {
             image = GetComponent<Image>();
             trafficControlManager = FindObjectOfType<TrafficControlManager>();
-            trafficControlManager.trafficPlayToggleEvent.AddListener(OnStatusChangeUpdateImage);
+            trafficControlManager.TrafficPlayToggleEvent.AddListener(OnStatusChangeUpdateImage);
         }
 
         private void OnStatusChangeUpdateImage(bool isToggled)
@@ -25,7 +25,7 @@ namespace AWSIM.Scripts.UI.Toggle
 
         private void OnDestroy()
         {
-            trafficControlManager.trafficPlayToggleEvent.RemoveListener(OnStatusChangeUpdateImage);
+            trafficControlManager.TrafficPlayToggleEvent.RemoveListener(OnStatusChangeUpdateImage);
         }
     }
 }
