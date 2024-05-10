@@ -5,7 +5,7 @@
 | Key         | Feature            |
 |:------------|:-------------------|
 | D           | Change drive gear. |
-| P           | parking gear.      |
+| P           | Parking gear.      |
 | R           | Reverse gear.      |
 | N           | Neutral gear.      |
 | 1           | Left turn signal.  |
@@ -29,11 +29,22 @@ W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
 
 ### [HotkeyHandler.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/UI/HotkeyHandler.cs)
 
-| Key      | Feature                   |
-|:---------|:--------------------------|
-| Esc      | Toggle side bar           |
-| Ctrl + R | Reset ego vehicle         |
-| Ctrl + T | Toggle traffic visibility |
+| Key          | Feature                   |
+|:-------------|:--------------------------|
+| Esc          | Toggle side bar           |
+| LeftCtrl + R | Reset ego vehicle         |
+| LeftCtrl + T | Toggle traffic visibility |
+
+### [BirdEyeView.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/UI/BirdEyeView.cs)
+
+| Key                | Feature                   |
+|:-------------------|:--------------------------|
+| B                  | Toggle BEV camera         |
+| WASD / Arrow Keys  | Pan BEV camera            |
+| Mouse Wheel + Drag | Pan BEV camera            |
+| Mouse Wheel        | Zoom in/out               |
+| Space              | Snap camera to vehicle    |
+| LeftCtrl + Space   | Follow ego vehicle on/off |
 
 ### [Graphy Asset](https://github.com/Tayx94/graphy)
 
