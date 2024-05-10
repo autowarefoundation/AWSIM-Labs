@@ -20,7 +20,7 @@ namespace AWSIM.TrafficSimulation
                     this.gameObject,
                     vehiclePrefabs,
                     routeLanes,
-                    tm.npcVehicleSimulator,
+                    tm.NpcVehicleSimulator,
                     1
                 );
                 tm.AddTrafficSimulator(rts);

@@ -20,7 +20,7 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 
 ### Feature differences from the TIER IV/AWSIM
 
-| Features                                  | AWSIM 1.2.1      | AWSIM Labs 1.0.0-beta |
+| Features                                  | AWSIM 1.2.1      | AWSIM Labs 1.0.0 |
 |-------------------------------------------|------------------|-----------------------|
 | Rendering Pipeline                        | HDRP             | URP                   |
 | Unity Version                             | Unity 2021.1.7f1 | Unity LTS 2022.3.21f1 |

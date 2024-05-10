@@ -22,28 +22,26 @@ namespace AWSIM.TrafficSimulation
         private LayerMask groundLayerMask;
 
         [SerializeField, Tooltip("A maximum number of vehicles that can simultaneously live in the scene. Lowering this value results in less dense traffic but improves the simulator's performance.")]
-        public int maxVehicleCount = 40;
+        public int maxVehicleCount = 100;
+        public int targetVehicleCount = 10;
 
         [SerializeField, Tooltip("Ego vehicle handler. If not set, the manager creates a dummy ego. This reference is also set automatically when the Ego spawns via the traffic simulator.")]
         private GameObject _egoVehicle;
 
         public GameObject egoVehicle
         {
-            get
-            {
-                return _egoVehicle;
-            }
+            get => _egoVehicle;
             set
             {
                 _egoVehicle = value;
                 if (_egoVehicle != null)
                 {
-                    npcVehicleSimulator.RegisterEgo(value);
+                    NpcVehicleSimulator.RegisterEgo(value);
                 }
                 else
                 {
-                    npcVehicleSimulator.UnregisterEgo();
-                    _egoVehicle = dummyEgo;
+                    NpcVehicleSimulator.UnregisterEgo();
+                    _egoVehicle = _dummyEgo;
                 }
             }
         }
@@ -55,47 +53,54 @@ namespace AWSIM.TrafficSimulation
         [SerializeField] protected bool showSpawnPoints = false;
         public RandomTrafficSimulatorConfiguration[] randomTrafficSims;
         public RouteTrafficSimulatorConfiguration[] routeTrafficSims;
-        public NPCVehicleSimulator npcVehicleSimulator;
-        private List<ITrafficSimulator> trafficSimulatorNodes;
-        private Dictionary<NPCVehicleSpawnPoint, Dictionary<ITrafficSimulator, GameObject>> spawnLanes;
-        private GameObject dummyEgo;
+        public NPCVehicleSimulator NpcVehicleSimulator;
+        private List<ITrafficSimulator> _trafficSimulatorNodes;
+        private Dictionary<NPCVehicleSpawnPoint, Dictionary<ITrafficSimulator, GameObject>> _spawnLanes;
+        private GameObject _dummyEgo;
 
         /// <summary>
         /// Adds traffic simulator to the manager
         /// </summary>
         public void AddTrafficSimulator(ITrafficSimulator simulator)
         {
-            trafficSimulatorNodes.Add(simulator);
+            _trafficSimulatorNodes.Add(simulator);
         }
 
         /// <summary>
         /// Clears all NPC vehicles running in simulation
         /// </summary>
-        public void ClearAll()
+        private void ClearAll()
         {
-            trafficSimulatorNodes.Clear();
-            npcVehicleSimulator?.ClearAll();
+            _trafficSimulatorNodes.Clear();
+            NpcVehicleSimulator?.ClearAll();
+            Destroy(_dummyEgo);
+            _egoVehicle = null;
+            Despawn();
         }
 
         private void Awake()
         {
-            Random.InitState(seed);
-
-            spawnLanes = new Dictionary<NPCVehicleSpawnPoint, Dictionary<ITrafficSimulator, GameObject>>();
-            dummyEgo = new GameObject("DummyEgo");
-            if (_egoVehicle == null)
-            {
-                _egoVehicle = dummyEgo;
-            }
-            npcVehicleSimulator = new NPCVehicleSimulator(vehicleConfig, vehicleLayerMask, groundLayerMask, maxVehicleCount, _egoVehicle);
-            npcVehicleSimulator.SetDummyEgo(dummyEgo);
+            InitializeTrafficManager(seed, targetVehicleCount);
         }
 
-        void Start()
+        private void InitializeTrafficManager(int seedVal, int vehicleCount)
         {
-            verifyIntegrationEnvironmentElements();
-            trafficSimulatorNodes = new List<ITrafficSimulator>();
-            if (npcVehicleSimulator == null)
+            Random.InitState(seedVal);
+
+            _spawnLanes = new Dictionary<NPCVehicleSpawnPoint, Dictionary<ITrafficSimulator, GameObject>>();
+            _dummyEgo = new GameObject("DummyEgo");
+
+            if (_egoVehicle == null)
+            {
+                _egoVehicle = _dummyEgo;
+            }
+
+            NpcVehicleSimulator = new NPCVehicleSimulator(vehicleConfig, vehicleLayerMask, groundLayerMask, vehicleCount, _egoVehicle);
+            NpcVehicleSimulator.SetDummyEgo(_dummyEgo);
+
+            VerifyIntegrationEnvironmentElements();
+            _trafficSimulatorNodes = new List<ITrafficSimulator>();
+            if (NpcVehicleSimulator == null)
             {
                 Debug.LogError("Traffic manager requires NPC Vehicle Simulator script.");
                 return;
@@ -107,11 +112,11 @@ namespace AWSIM.TrafficSimulation
                     this.gameObject,
                     randomTrafficConf.npcPrefabs,
                     randomTrafficConf.spawnableLanes,
-                    npcVehicleSimulator,
+                    NpcVehicleSimulator,
                     randomTrafficConf.maximumSpawns
                 );
                 randomTs.enabled = randomTrafficConf.enabled;
-                trafficSimulatorNodes.Add(randomTs);
+                _trafficSimulatorNodes.Add(randomTs);
             }
 
             foreach (var routeTrafficSimConf in routeTrafficSims)
@@ -120,14 +125,21 @@ namespace AWSIM.TrafficSimulation
                     this.gameObject,
                     routeTrafficSimConf.npcPrefabs,
                     routeTrafficSimConf.route,
-                    npcVehicleSimulator,
+                    NpcVehicleSimulator,
                     routeTrafficSimConf.maximumSpawns
                 );
                 routeTs.enabled = routeTrafficSimConf.enabled;
-                trafficSimulatorNodes.Add(routeTs);
+                _trafficSimulatorNodes.Add(routeTs);
             }
         }
-        private void verifyIntegrationEnvironmentElements()
+
+        public void RestartTraffic()
+        {
+            ClearAll();
+            InitializeTrafficManager(seed, targetVehicleCount);
+        }
+
+        private void VerifyIntegrationEnvironmentElements()
         {
             GameObject trafficLanesObject = GameObject.Find("TrafficLanes");
             if (trafficLanesObject == null)
@@ -171,32 +183,32 @@ namespace AWSIM.TrafficSimulation
             // Manage NPC spawning with the traffic simulators
 
             // Clear null elements in current list of traffic simulator
-            trafficSimulatorNodes.RemoveAll(item => item == null);
+            _trafficSimulatorNodes.RemoveAll(item => item == null);
 
             // Find out which lanes are used by multiple spawners
             // We can easly spawn vehicle on a lane which only one spawner hooked to that lane.
             // If there are multiple spawners for one lane, we need to manage spawning. Without
             // managing, one spawner might overcome all others because of the vehicle size check.
-            foreach (var trafficSimulator in trafficSimulatorNodes)
+            foreach (var trafficSimulator in _trafficSimulatorNodes)
             {
                 if (!trafficSimulator.IsEnabled()) continue;
 
                 trafficSimulator.GetRandomSpawnInfo(out var spawnPoint, out var prefab);
-                if (spawnLanes.ContainsKey(spawnPoint))
+                if (_spawnLanes.ContainsKey(spawnPoint))
                 {
-                    spawnLanes[spawnPoint].Add(trafficSimulator, prefab);
+                    _spawnLanes[spawnPoint].Add(trafficSimulator, prefab);
                 }
                 else
                 {
                     var tsims = new Dictionary<ITrafficSimulator, GameObject>();
                     tsims.Add(trafficSimulator, prefab);
-                    spawnLanes.Add(spawnPoint, tsims);
+                    _spawnLanes.Add(spawnPoint, tsims);
                 }
             }
 
             // For lane with single vehicle spawner - just spawn it.
             // For lane with multiple vehicle spawners - make priorities and spawn one by one.
-            foreach (var spawnLoc in spawnLanes)
+            foreach (var spawnLoc in _spawnLanes)
             {
                 NPCVehicle spawnedVehicle;
 
@@ -231,30 +243,30 @@ namespace AWSIM.TrafficSimulation
 
                 if (spawnedVehicle && spawnedVehicle.gameObject.tag == "Ego")
                 {
-                    npcVehicleSimulator.EGOVehicle = spawnedVehicle.transform;
+                    NpcVehicleSimulator.EGOVehicle = spawnedVehicle.transform;
                 }
             }
 
-            spawnLanes.Clear();
-            npcVehicleSimulator.StepOnce(Time.fixedDeltaTime);
+            _spawnLanes.Clear();
+            NpcVehicleSimulator.StepOnce(Time.fixedDeltaTime);
 
             Despawn();
         }
         private void Despawn()
         {
-            foreach (var state in npcVehicleSimulator.VehicleStates)
+            foreach (var state in NpcVehicleSimulator.VehicleStates)
             {
                 if (state.ShouldDespawn)
                 {
                     Object.DestroyImmediate(state.Vehicle.gameObject);
                 }
             }
-            npcVehicleSimulator.RemoveInvalidVehicles();
+            NpcVehicleSimulator.RemoveInvalidVehicles();
         }
 
         private void OnDestroy()
         {
-            npcVehicleSimulator?.Dispose();
+            NpcVehicleSimulator?.Dispose();
         }
 
         private void DrawSpawnPoints()
@@ -284,7 +296,7 @@ namespace AWSIM.TrafficSimulation
                 return;
 
             var defaultColor = Gizmos.color;
-            npcVehicleSimulator?.ShowGizmos(showYieldingPhase, showObstacleChecking);
+            NpcVehicleSimulator?.ShowGizmos(showYieldingPhase, showObstacleChecking);
             if (showSpawnPoints)
                 DrawSpawnPoints();
 

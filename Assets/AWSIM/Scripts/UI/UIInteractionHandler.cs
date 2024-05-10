@@ -20,8 +20,8 @@ namespace AWSIM.Scripts.UI
 
         public void OnDrag(PointerEventData eventData)
         {
-            Canvas canvas = GetComponentInParent<Canvas>();
-            RectTransform canvasRectTransform = canvas.GetComponent<RectTransform>();
+            var canvas = GetComponentInParent<Canvas>();
+            var canvasRectTransform = canvas.GetComponent<RectTransform>();
 
             // Convert the current pointer position to local canvas coordinates
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, eventData.position,

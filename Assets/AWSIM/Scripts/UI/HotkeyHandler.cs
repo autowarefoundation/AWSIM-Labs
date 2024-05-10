@@ -4,13 +4,15 @@ namespace AWSIM.Scripts.UI
 {
     public class HotkeyHandler : MonoBehaviour
     {
-        [SerializeField] private Canvas mainMenu;
+        [SerializeField] private UISideBarHandler uiSideBarHandler;
 
         private EgoVehiclePositionManager egoVehiclePositionManager;
+        private TrafficControlManager trafficControlManager;
 
         private void Awake()
         {
             egoVehiclePositionManager = GetComponent<EgoVehiclePositionManager>();
+            trafficControlManager = GetComponent<TrafficControlManager>();
         }
 
         void Update()
@@ -18,14 +20,14 @@ namespace AWSIM.Scripts.UI
             // Toggle the main menu
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (!mainMenu)
+                if (!uiSideBarHandler)
                 {
                     Debug.LogWarning(
                         "The mainMenu reference is null. Please ensure the mainMenu Canvas object is assigned to mainMenu in the Inspector. Without it, the GUI cannot be toggled on/off.");
                 }
                 else
                 {
-                    mainMenu.enabled = !mainMenu.enabled;
+                    uiSideBarHandler.ToggleSideBar();
                 }
             }
 
@@ -35,6 +37,15 @@ namespace AWSIM.Scripts.UI
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     egoVehiclePositionManager.ResetEgoToSpawnPoint();
+                }
+            }
+
+            // Toggle traffic visibility
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    trafficControlManager.TrafficManagerVisibilityToggle();
                 }
             }
         }

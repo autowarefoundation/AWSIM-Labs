@@ -6,39 +6,35 @@ namespace AWSIM.Scripts.UI
 {
     public class UIBridge : MonoBehaviour
     {
-        private EgoVehiclePositionManager egoVehiclePositionManager;
-        private TrafficControlManager trafficControlManager;
-        [SerializeField] InputField trafficSeedInputField;
+        [SerializeField] private InputField trafficSeedInputField;
+
+        private EgoVehiclePositionManager _egoVehiclePositionManager;
+        private TrafficControlManager _trafficControlManager;
 
         private void Awake()
         {
-            egoVehiclePositionManager = GetComponent<EgoVehiclePositionManager>();
-            trafficControlManager = GetComponent<TrafficControlManager>();
+            _egoVehiclePositionManager = GetComponent<EgoVehiclePositionManager>();
+            _trafficControlManager = GetComponent<TrafficControlManager>();
         }
 
         public void ResetEgoToSpawnPoint()
         {
-            egoVehiclePositionManager.ResetEgoToSpawnPoint();
+            _egoVehiclePositionManager.ResetEgoToSpawnPoint();
         }
 
-        public void TrafficManagerPauseResumeToggle()
+        public void TrafficManagerPlayToggle(bool isOn)
         {
-            trafficControlManager.TrafficManagerPauseResumeToggle();
+            _trafficControlManager.TrafficManagerPlayToggle();
         }
 
-        public void TrafficManagerEnable()
+        public void TrafficManagerVisibilityToggle(bool isOn)
         {
-            trafficControlManager.TrafficManagerEnable();
-        }
-
-        public void TrafficManagerDisable()
-        {
-            trafficControlManager.TrafficManagerDisable();
+            _trafficControlManager.TrafficManagerVisibilityToggle();
         }
 
         public void TrafficManagerReset()
         {
-            trafficControlManager.TrafficManagerReset();
+            _trafficControlManager.TrafficManagerReset();
         }
 
         public void TrafficMangerSetSeed()
@@ -49,8 +45,7 @@ namespace AWSIM.Scripts.UI
                 return;
             }
 
-            var seed = Convert.ToInt32(trafficSeedInputField.text);
-            trafficControlManager.TrafficMangerSetSeed(seed);
+            _trafficControlManager.SeedInput = Convert.ToInt32(trafficSeedInputField.textComponent.text);
         }
     }
 }
