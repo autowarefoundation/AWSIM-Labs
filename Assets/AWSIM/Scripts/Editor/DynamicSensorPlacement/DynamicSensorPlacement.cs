@@ -1,89 +1,134 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
-using YamlDotNet.Serialization;
 using System.IO;
+using System.Xml;
 
-public class DynamicSensorPlacement : EditorWindow
+namespace AWSIM.SensorPlacement
 {
-    private string sensorKitPath;
-    private string yamlContent;
-    private List<GameObject> sensors = new List<GameObject>();
-
-
-    [MenuItem("AWSIM/Dynamic Sensor Placement")]
-    public static void ShowWindow()
+    public class DynamicSensorPlacement : EditorWindow
     {
-        GetWindow<DynamicSensorPlacement>("Dynamic Sensor Placement");
-    }
+        private string sensorKitPath;
+        private XmlDocument xmlDoc = new XmlDocument();
 
-    private void OnGUI()
-    {
-        GUILayout.Label ("Base Settings", EditorStyles.boldLabel);
-
-        // ./Assets/AWSIM/Externals/
-        sensorKitPath = EditorGUILayout.TextField("Sensor Kit Path", sensorKitPath);
-
-        // Button to load YAML file
-        if (GUILayout.Button("Load YAML"))
+        [MenuItem("AWSIM/Dynamic Sensor Placement")]
+        public static void ShowWindow()
         {
-            LoadYaml();
+            GetWindow<DynamicSensorPlacement>("Dynamic Sensor Placement");
         }
 
-        EditorGUI.BeginChangeCheck();
-        // Sensors Field (List of GameObjects)
-        GUILayout.Label("Sensors", EditorStyles.boldLabel);
-        for (int i = 0; i < sensors.Count; i++)
+        private void OnGUI()
         {
-            EditorGUILayout.BeginHorizontal();
-            sensors[i] = (GameObject)EditorGUILayout.ObjectField("Sensor " + (i + 1), sensors[i], typeof(GameObject), true);
-            if (GUILayout.Button("Remove", GUILayout.Width(70)))
+            GUILayout.Label ("Base Settings", EditorStyles.boldLabel);
+
+            // ./Assets/AWSIM/Externals/
+            sensorKitPath = EditorGUILayout.TextField("Sensor Kit Path", sensorKitPath);
+
+            // Button to load URDF file
+            if (GUILayout.Button("Place sensors"))
             {
-                sensors.RemoveAt(i);
-                break; // Exiting the loop after removal
+                LoadUrdf();
+                ExtractTransforms();
             }
-            EditorGUILayout.EndHorizontal(); // End of horizontal layout for each sensor
-        }
-        // Button to list files in current path
-        if (GUILayout.Button("List Files in Current Path"))
-        {
-            ListFilesInCurrentPath();
+            
+            EditorGUI.BeginChangeCheck();
         }
 
-        // Button to add a new sensor
-        if (GUILayout.Button("Add Sensor"))
-        {
-            sensors.Add(null); // Add a new null element to the list
+        public void ExtractTransforms(){
+            XmlNodeList linkNodes = xmlDoc.SelectNodes("//link");
+                foreach (XmlNode linkNode in linkNodes)
+                {
+                    string linkName = linkNode.Attributes["name"].Value;
+
+                    // Check if the game object exists in the scene
+                    GameObject gameObject = GameObject.Find(linkName);
+
+                    // Extract and assign the transform
+                    if (gameObject != null)
+                    {
+                        XmlNode originNode = linkNode.SelectSingleNode("origin");
+
+                        // search for origin under link/visual
+                        if(originNode == null){
+                            originNode = linkNode.SelectSingleNode("visual/origin");
+                        }
+                        // search for origin under link/visual
+                        if(originNode == null){
+                            originNode = linkNode.SelectSingleNode("inertial/origin");
+                        }
+
+                        // assign transforms
+                        if(originNode!=null){
+                            if(originNode.Attributes["xyz"]!=null){
+                                Vector3 position = convertPositions(originNode.Attributes["xyz"].Value);
+                                gameObject.transform.localPosition = position;
+                            }
+                            if(originNode.Attributes["rpy"]!=null){
+                                Vector3 rotation = convertRotations(originNode.Attributes["rpy"].Value);
+                                gameObject.transform.localRotation = Quaternion.Euler(rotation);
+                            }                                                
+                        }                   
+                        
+                    }
+                }
         }
 
-    }
-
-    private void LoadYaml()
-    {
-        // Check if the path is valid
-        if (!File.Exists(sensorKitPath))
+        private void LoadUrdf()
         {
-            Debug.LogError("YAML file not found at the specified path.");
-            return;
+            // Check if the path is valid
+            if (!File.Exists(sensorKitPath))
+            {
+                Debug.LogError("URDF file not found at the specified path.");
+                return;
+            }
+
+            // Read the URDF file
+            xmlDoc.Load(sensorKitPath);
+            Debug.Log("URDF file loaded successfully.");
         }
 
-        // Read the YAML file
-        yamlContent = File.ReadAllText(sensorKitPath);
 
-        // Optionally, you can deserialize the YAML content to an object here if needed
-        // For example:
-        // Deserializer deserializer = new DeserializerBuilder().Build();
-        // object yamlObject = deserializer.Deserialize(new StringReader(yamlContent));
-
-        Debug.Log("YAML file loaded successfully.");
-    }
-
-    private void ListFilesInCurrentPath()
-    {
-        string[] files = Directory.GetFiles(sensorKitPath);
-        foreach (string file in files)
+        private Vector3 convertPositions(string vectorString)
         {
-            Debug.Log("File found: " + file);
+            string[] values = vectorString.Split(' ');
+
+            // Check if the values array has at least 3 elements before accessing them
+            if (values.Length >= 3)
+            {
+                float x = float.Parse(values[0]);
+                float y = float.Parse(values[1]);
+                float z = float.Parse(values[2]);
+
+                // convert positions to unity's coordinate system
+                return new Vector3(-y,z,x);
+            }
+            else
+            {
+                Debug.LogError("Invalid vector format: " + vectorString);
+                return Vector3.zero; // Return a default vector or handle the error as needed
+            }
+        }
+
+        private Vector3 convertRotations(string rpyString)
+        {
+            string[] values = rpyString.Split(' ');
+
+            // Check if the values array has at least 3 elements before accessing them
+            if (values.Length >= 3)
+            {
+                float r = float.Parse(values[0]) *Mathf.Deg2Rad;
+                float p = float.Parse(values[1]) *Mathf.Deg2Rad;
+                float y = float.Parse(values[2]) *Mathf.Deg2Rad;
+
+                // convert rotations to unity's coordinate system
+                return new Vector3(p,-y,-r);
+            }
+            else
+            {
+                Debug.LogError("Invalid vector format: " + rpyString);
+                return Vector3.zero; // Return a default vector or handle the error as needed
+            }
         }
     }
 }
+
