@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using System;
 
 namespace AWSIM.SensorPlacement
 {
@@ -34,43 +35,56 @@ namespace AWSIM.SensorPlacement
             EditorGUI.BeginChangeCheck();
         }
 
-        public void ExtractTransforms(){
-            XmlNodeList linkNodes = xmlDoc.SelectNodes("//link");
-                foreach (XmlNode linkNode in linkNodes)
+        public void ExtractTransforms()
+        {
+            // place the objects that are direct children of the 'base_link'
+            XmlNodeList baseLinkNodes = xmlDoc.SelectNodes("//joint[parent/@link='base_link']");
+            
+            foreach (XmlNode child in baseLinkNodes)
+            {
+                XmlNode originNode = child.SelectSingleNode("origin");
+                XmlNode childNode = child.SelectSingleNode("child");
+
+                string childLink = childNode.Attributes["link"].Value;
+                string rpy = originNode.Attributes["rpy"].Value;
+                string xyz = originNode.Attributes["xyz"].Value;
+
+                
+                Vector3 position = convertPositions(xyz);
+                Vector3 rotation = convertRotations(rpy);
+
+                GameObject childObject = GameObject.Find(childLink);
+
+                if (childObject != null)
                 {
-                    string linkName = linkNode.Attributes["name"].Value;
-
-                    // Check if the game object exists in the scene
-                    GameObject gameObject = GameObject.Find(linkName);
-
-                    // Extract and assign the transform
-                    if (gameObject != null)
-                    {
-                        XmlNode originNode = linkNode.SelectSingleNode("origin");
-
-                        // search for origin under link/visual
-                        if(originNode == null){
-                            originNode = linkNode.SelectSingleNode("visual/origin");
-                        }
-                        // search for origin under link/visual
-                        if(originNode == null){
-                            originNode = linkNode.SelectSingleNode("inertial/origin");
-                        }
-
-                        // assign transforms
-                        if(originNode!=null){
-                            if(originNode.Attributes["xyz"]!=null){
-                                Vector3 position = convertPositions(originNode.Attributes["xyz"].Value);
-                                gameObject.transform.localPosition = position;
-                            }
-                            if(originNode.Attributes["rpy"]!=null){
-                                Vector3 rotation = convertRotations(originNode.Attributes["rpy"].Value);
-                                gameObject.transform.localRotation = Quaternion.Euler(rotation);
-                            }                                                
-                        }                   
-                        
-                    }
+                    childObject.transform.localPosition = position;
+                    childObject.transform.localEulerAngles = rotation;
                 }
+            }
+
+            // place the objects that are direct children of 'sensor_kit_base_link'
+            XmlNodeList sensorKitBaseLinkNodes = xmlDoc.SelectNodes("//joint[parent/@link='sensor_kit_base_link']");
+            
+            foreach (XmlNode child in sensorKitBaseLinkNodes)
+            {
+                XmlNode originNode = child.SelectSingleNode("origin");
+                XmlNode childNode = child.SelectSingleNode("child");
+
+                string childLink = childNode.Attributes["link"].Value;
+                string rpy = originNode.Attributes["rpy"].Value;
+                string xyz = originNode.Attributes["xyz"].Value;
+                
+                Vector3 position = convertPositions(xyz);
+                Vector3 rotation = convertRotations(rpy);
+
+                GameObject childObject = GameObject.Find(childLink);
+
+                if (childObject != null)
+                {
+                    childObject.transform.localPosition = position;
+                    childObject.transform.localEulerAngles = rotation;
+                }
+            }
         }
 
         private void LoadUrdf()
@@ -87,10 +101,10 @@ namespace AWSIM.SensorPlacement
             Debug.Log("URDF file loaded successfully.");
         }
 
-
+        // convert ROS2 positions to unity coordinate system
         private Vector3 convertPositions(string vectorString)
         {
-            string[] values = vectorString.Split(' ');
+            string[] values = vectorString.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
             // Check if the values array has at least 3 elements before accessing them
             if (values.Length >= 3)
@@ -99,7 +113,6 @@ namespace AWSIM.SensorPlacement
                 float y = float.Parse(values[1]);
                 float z = float.Parse(values[2]);
 
-                // convert positions to unity's coordinate system
                 return new Vector3(-y,z,x);
             }
             else
@@ -109,18 +122,18 @@ namespace AWSIM.SensorPlacement
             }
         }
 
+        // convert ROS2 rotations to unity coordinate system
         private Vector3 convertRotations(string rpyString)
         {
-            string[] values = rpyString.Split(' ');
+            string[] values = rpyString.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
             // Check if the values array has at least 3 elements before accessing them
             if (values.Length >= 3)
             {
-                float r = float.Parse(values[0]) *Mathf.Deg2Rad;
-                float p = float.Parse(values[1]) *Mathf.Deg2Rad;
-                float y = float.Parse(values[2]) *Mathf.Deg2Rad;
+                float r = float.Parse(values[0]) * Mathf.Rad2Deg;
+                float p = float.Parse(values[1]) * Mathf.Rad2Deg;
+                float y = float.Parse(values[2]) * Mathf.Rad2Deg;
 
-                // convert rotations to unity's coordinate system
                 return new Vector3(p,-y,-r);
             }
             else
