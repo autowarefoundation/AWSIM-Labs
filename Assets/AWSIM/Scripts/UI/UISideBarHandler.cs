@@ -21,7 +21,7 @@ namespace AWSIM.Scripts.UI
         private void Start()
         {
             // Disable sidebar if enabled by default
-            sideBar.SetActive(false);
+            sideBar.SetActive(true);
         }
 
         public void ToggleSideBar()

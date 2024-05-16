@@ -25,6 +25,7 @@ namespace AWSIM.Scripts.UI.Toggle
 
         private void OnDestroy()
         {
+            if (trafficControlManager == null) return;
             trafficControlManager.TrafficVisibilityToggleEvent.RemoveListener(OnStatusChangeUpdateImage);
         }
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 namespace AWSIM.Scripts.UI
@@ -104,20 +105,40 @@ namespace AWSIM.Scripts.UI
         {
             if (_birdEyeCamera == null)
             {
-                _birdEyeCamera = new GameObject("BirdEyeCamera").AddComponent<Camera>();
-                _birdEyeCamera.CopyFrom(_vehicleCamera);
+                // Create object with components
+                var birdEyeObject = new GameObject("BirdEyeCamera",
+                    typeof(Camera),
+                    typeof(Volume),
+                    typeof(BoxCollider)
+                );
 
+                // Setup Camera component
+                _birdEyeCamera = birdEyeObject.GetComponent<Camera>();
+                _birdEyeCamera.tag = "BEVCamera";
+                _birdEyeCamera.gameObject.layer = 0;
                 _birdEyeCamera.depth = 0;
                 _birdEyeCamera.orthographic = true;
                 _birdEyeCamera.allowMSAA = true;
-
                 _birdEyeCamera.GetUniversalAdditionalCameraData().renderShadows = false;
                 _birdEyeCamera.GetUniversalAdditionalCameraData().renderPostProcessing = true;
-
                 _birdEyeCamera.transform.position =
                     new Vector3(_cameraFollowTarget.position.x, _birdEyeCameraInitialHeight,
                         _cameraFollowTarget.position.z);
                 _birdEyeCamera.transform.LookAt(_cameraFollowTarget.position);
+
+                //Setup Volume component
+                var volume = birdEyeObject.GetComponent<Volume>();
+                volume.isGlobal = false;
+                volume.blendDistance = 0;
+                volume.weight = 0.7f;
+                volume.priority = 2;
+                volume.profile = Resources.Load<VolumeProfile>("URP Presets/VolumeProfiles/MainCameraProfile");
+
+                // Setup BoxCollider component
+                var boxCollider = birdEyeObject.GetComponent<BoxCollider>();
+                boxCollider.isTrigger = true;
+                boxCollider.center = Vector3.zero;
+                boxCollider.size = new Vector3(0.5f, 0.5f, 0.5f);
             }
 
             return _birdEyeCamera;
