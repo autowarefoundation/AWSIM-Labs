@@ -20,7 +20,7 @@ namespace AWSIM.SensorPlacement
 
         private void OnGUI()
         {
-            GUILayout.Label ("Base Settings", EditorStyles.boldLabel);
+            GUILayout.Label("Base Settings", EditorStyles.boldLabel);
 
             // ./Assets/AWSIM/Externals/
             sensorKitPath = EditorGUILayout.TextField("Sensor Kit Path", sensorKitPath);
@@ -31,7 +31,7 @@ namespace AWSIM.SensorPlacement
                 LoadUrdf();
                 ExtractTransforms();
             }
-            
+
             EditorGUI.BeginChangeCheck();
         }
 
@@ -39,7 +39,7 @@ namespace AWSIM.SensorPlacement
         {
             // place the objects that are direct children of the 'base_link'
             XmlNodeList baseLinkNodes = xmlDoc.SelectNodes("//joint[parent/@link='base_link']");
-            
+
             foreach (XmlNode child in baseLinkNodes)
             {
                 XmlNode originNode = child.SelectSingleNode("origin");
@@ -49,7 +49,7 @@ namespace AWSIM.SensorPlacement
                 string rpy = originNode.Attributes["rpy"].Value;
                 string xyz = originNode.Attributes["xyz"].Value;
 
-                
+
                 Vector3 position = convertPositions(xyz);
                 Vector3 rotation = convertRotations(rpy);
 
@@ -64,7 +64,7 @@ namespace AWSIM.SensorPlacement
 
             // place the objects that are direct children of 'sensor_kit_base_link'
             XmlNodeList sensorKitBaseLinkNodes = xmlDoc.SelectNodes("//joint[parent/@link='sensor_kit_base_link']");
-            
+
             foreach (XmlNode child in sensorKitBaseLinkNodes)
             {
                 XmlNode originNode = child.SelectSingleNode("origin");
@@ -73,7 +73,7 @@ namespace AWSIM.SensorPlacement
                 string childLink = childNode.Attributes["link"].Value;
                 string rpy = originNode.Attributes["rpy"].Value;
                 string xyz = originNode.Attributes["xyz"].Value;
-                
+
                 Vector3 position = convertPositions(xyz);
                 Vector3 rotation = convertRotations(rpy);
 
@@ -113,7 +113,7 @@ namespace AWSIM.SensorPlacement
                 float y = float.Parse(values[1]);
                 float z = float.Parse(values[2]);
 
-                return new Vector3(-y,z,x);
+                return new Vector3(-y, z, x);
             }
             else
             {
@@ -134,7 +134,7 @@ namespace AWSIM.SensorPlacement
                 float p = float.Parse(values[1]) * Mathf.Rad2Deg;
                 float y = float.Parse(values[2]) * Mathf.Rad2Deg;
 
-                return new Vector3(p,-y,-r);
+                return new Vector3(p, -y, -r);
             }
             else
             {
@@ -144,4 +144,3 @@ namespace AWSIM.SensorPlacement
         }
     }
 }
-
