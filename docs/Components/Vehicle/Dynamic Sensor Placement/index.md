@@ -41,7 +41,7 @@ This tool allows you to dynamically place sensors on a car using positions and r
 
     ![alt text](image-2.png)
 
-2.  Ensure the names of the game objects are exactly the same as those mentioned in the URDF file. Look for the name of the child of sensor_kit_base_link in the URDF file under the <joint> tag. 
+2.  Ensure the names of the game objects are exactly the same as those mentioned in the URDF file. Look for the name of the child of sensor_kit_base_link in the URDF file under the `<joint>` tag. 
    
     For example:
 
