@@ -124,6 +124,7 @@ nav:
     - Vehicle:
       - Ego Vehicle: Components/Vehicle/EgoVehicle/index.md
       - URDF And Sensors: Components/Vehicle/URDFAndSensors/index.md
+      - Dynamic Sensor Placement: Components/Vehicle/DynamicSensorPlacement/index.md
       - Add New Vehicle:
         - Add Vehicle: Components/Vehicle/AddNewVehicle/AddAVehicle/index.md
         - Add Colliders: Components/Vehicle/AddNewVehicle/AddColliders/index.md
