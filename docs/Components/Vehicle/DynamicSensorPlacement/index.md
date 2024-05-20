@@ -27,8 +27,8 @@ This tool allows you to dynamically place sensors on a car using positions and r
     ![alt text](image.png)
 
 
-2. Now, under open up the `Dynamic sensor placement` tool under AWSIM menu. 
-      ![alt text](menu.gif)
+2. Now, under open up the `Dynamic sensor placement` tool under AWSIM menu.
+    ![alt text](menu.gif)
 
 3. Enter the path to the URDF file,
     ![alt text](image-1.png)
