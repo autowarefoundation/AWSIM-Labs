@@ -35,5 +35,5 @@ The following process should be followed:
 
 Please keep the following in mind, while developing new features:
 
-- [Git branching guidelines](https://autowarefoundation.github.io/AWSIM/ProjectGuide/GitBranch/)
+- [Git branching guidelines](https://autowarefoundation.github.io/AWSIM-Labs/main/ProjectGuide/GitBranch/)
 - [C# coding convention](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions?redirectedfrom=MSDN).

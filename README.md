@@ -34,11 +34,11 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 ## Tutorial
 
 First, try the tutorial!  
-[AWSIM Labs Documentation - Quick Start Demo](https://autowarefoundation.github.io/AWSIM/main/GettingStarted/QuickStartDemo/)
+[AWSIM Labs Documentation - Quick Start Demo](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/QuickStartDemo/)
 
 ## Documentation
 
-https://autowarefoundation.github.io/AWSIM/main/
+https://autowarefoundation.github.io/AWSIM-Labs/main/
 
 ## How to Contribute
 
@@ -47,7 +47,7 @@ Everyone is welcome!
 2. Create a derived branch `feature/***` from the `main` branch.
 3. Create a pull request for the `main` branch.
 
-see also [AWSIM Labs Documentation - Git branch](https://autowarefoundation.github.io/AWSIM/main/ProjectGuide/GitBranch/)
+see also [AWSIM Labs Documentation - Git branch](https://autowarefoundation.github.io/AWSIM-Labs/main/ProjectGuide/GitBranch/)
 
 We recommend [microsoft's C# coding convention](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions?redirectedfrom=MSDN).  
 However, if the logic of the code is good, it does not matter if coding conventions are not followed.
@@ -55,7 +55,7 @@ However, if the logic of the code is good, it does not matter if coding conventi
 ## License
 
 AWSIM License
-Applies to `tier4/AWSIM` repositories and all content contained in the [Releases](https://github.com/autowarefoundation/AWSIM/releases).
+Applies to `tier4/AWSIM` repositories and all content contained in the [Releases](https://github.com/autowarefoundation/AWSIM-Labs/releases).
 
 - code : Apache 2.0
 - assets : CC BY-NC

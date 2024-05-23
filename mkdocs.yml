@@ -1,8 +1,8 @@
 site_name: AWSIM Labs Documentation
 
-site_url: https://autowarefoundation.github.io/AWSIM
-repo_url: https://github.com/autowarefoundation/AWSIM
-edit_uri: https://github.com/autowarefoundation/AWSIM/tree/main/docs
+site_url: https://autowarefoundation.github.io/AWSIM-Labs
+repo_url: https://github.com/autowarefoundation/AWSIM-Labs
+edit_uri: https://github.com/autowarefoundation/AWSIM-Labs/tree/main/docs
 
 theme:
   name: material
