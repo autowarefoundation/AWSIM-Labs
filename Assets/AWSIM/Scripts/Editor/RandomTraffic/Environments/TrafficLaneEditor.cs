@@ -48,6 +48,11 @@ namespace AWSIM.TrafficSimulation
 
             foreach (var lane in trafficLane.RightOfWayLanes)
             {
+                if (lane == null)
+                {
+                    continue;
+                }
+
                 Gizmos.DrawSphere(lane.Waypoints[0], 0.4f);
                 for (int i = 1; i < lane.Waypoints.Length; ++i)
                 {
@@ -136,6 +141,7 @@ namespace AWSIM.TrafficSimulation
                         if (isInRightSide)
                             return false;
                     }
+
                     if (AreSameNextLanes(lane, other))
                         return true;
 
@@ -188,11 +194,11 @@ namespace AWSIM.TrafficSimulation
 
         private static bool Intersects(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2)
         {
-            return AreLeftOrder(p1, q1, q2) != AreLeftOrder(p2, q1, q2) && AreLeftOrder(p1, p2, q1) != AreLeftOrder(p1, p2, q2);
+            return AreLeftOrder(p1, q1, q2) != AreLeftOrder(p2, q1, q2) &&
+                   AreLeftOrder(p1, p2, q1) != AreLeftOrder(p1, p2, q2);
 
             static bool AreLeftOrder(Vector3 p, Vector3 q, Vector3 r)
                 => (r.z - p.z) * (q.x - p.x) >= (q.z - p.z) * (r.x - p.x);
-
         }
     }
 }
