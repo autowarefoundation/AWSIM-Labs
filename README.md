@@ -4,7 +4,7 @@
 
 <img src="docs/assets/images/autoware-foundation.png" height="90"> <img src="docs/assets/images/awsim-labs-logo.png" height="90">
 
-[AWSIM Labs](https://github.com/autowarefoundation/AWSIM) is currently being developed under the [Autoware Labs](https://github.com/orgs/autowarefoundation/discussions/4550) initiative. Main purpose of this fork is to provide faster implementation of features needed by the users of the AWSIM while also ensuring a high-performance simulation environment for the [Autoware](https://github.com/autowarefoundation/autoware).
+[AWSIM Labs](https://github.com/autowarefoundation/AWSIM-Labs) is currently being developed under the [Autoware Labs](https://github.com/orgs/autowarefoundation/discussions/4550) initiative. Main purpose of this fork is to provide faster implementation of features needed by the users of the AWSIM while also ensuring a high-performance simulation environment for the [Autoware](https://github.com/autowarefoundation/autoware).
 
 This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 
@@ -43,7 +43,7 @@ https://autowarefoundation.github.io/AWSIM-Labs/main/
 ## How to Contribute
 
 Everyone is welcome!
-1. Create a issue [here](https://github.com/autowarefoundation/AWSIM/issues) to discuss the contribution you want to make.
+1. Create a issue [here](https://github.com/autowarefoundation/AWSIM-Labs/issues) to discuss the contribution you want to make.
 2. Create a derived branch `feature/***` from the `main` branch.
 3. Create a pull request for the `main` branch.
 

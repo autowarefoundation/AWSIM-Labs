@@ -1,6 +1,6 @@
 # Hotkey List
 
-### [VehicleKeyboardInput.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/Vehicles/VehicleKeyboardInput.cs)
+### [VehicleKeyboardInput.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/Vehicles/VehicleKeyboardInput.cs)
 
 | Key         | Feature            |
 |:------------|:-------------------|
@@ -19,7 +19,7 @@
 
 W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
 
-### [FollowCamera.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/FollowCamera.cs)
+### [FollowCamera.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/FollowCamera.cs)
 
 | Key         | Feature                        |
 |:------------|:-------------------------------|
@@ -27,7 +27,7 @@ W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
 | Mouse drag  | Rotate Camera angle.           |
 | Mouse wheel | Zoom in/out of camera.         |
 
-### [HotkeyHandler.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/UI/HotkeyHandler.cs)
+### [HotkeyHandler.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/UI/HotkeyHandler.cs)
 
 | Key          | Feature                   |
 |:-------------|:--------------------------|
@@ -35,7 +35,7 @@ W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
 | LeftCtrl + R | Reset ego vehicle         |
 | LeftCtrl + T | Toggle traffic visibility |
 
-### [BirdEyeView.cs](https://github.com/autowarefoundation/AWSIM/blob/main/Assets/AWSIM/Scripts/UI/BirdEyeView.cs)
+### [BirdEyeView.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/UI/BirdEyeView.cs)
 
 | Key                | Feature                   |
 |:-------------------|:--------------------------|
