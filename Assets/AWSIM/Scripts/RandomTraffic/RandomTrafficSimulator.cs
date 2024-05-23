@@ -35,14 +35,10 @@ namespace AWSIM.TrafficSimulation
         public bool enabled = true;
 
         private int maximumSpawns = 0;
-
         private NPCVehicleSimulator npcVehicleSimulator;
-
         private NPCVehicleSpawner npcVehicleSpawner;
         private int currentSpawnNumber = 0;
-
         private int spawnPriority = 0;
-
         private GameObject nextPrefabToSpawn = null;
 
         public void IncreasePriority(int priority)

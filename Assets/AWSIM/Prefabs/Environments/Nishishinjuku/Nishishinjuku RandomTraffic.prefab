@@ -57732,7 +57732,8 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  maxVehicleCount: 10
+  maxVehicleCount: 100
+  targetVehicleCount: 10
   _egoVehicle: {fileID: 0}
   showGizmos: 1
   showYieldingPhase: 1
