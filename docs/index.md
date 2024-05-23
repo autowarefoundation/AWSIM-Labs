@@ -14,7 +14,7 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 - Many predefined components included (Vehicle dynamic models, Sensor models, Environment configuration, ROS2 communication, etc)
 - Support for Ubuntu 22.04 and windows10/11
 - ROS2 native communication (humble)
-- [Open sourced](https://autowarefoundation.com/autowarefoundation/AWSIM)
+- [Open sourced](https://github.com/autowarefoundation/AWSIM-Labs)
 - Made with [Unity](https://unity.com/)
 
 
