@@ -1,5 +1,4 @@
 using System.Collections;
-using Nobi.UiRoundedCorners;
 using UnityEngine;
 
 namespace AWSIM.Scripts.UI
@@ -37,33 +36,23 @@ namespace AWSIM.Scripts.UI
         {
             var elapsedTime = 0f;
             var currentHeight = uiRect.sizeDelta.y;
-            var roundedCorners = uiRect.gameObject.GetComponent<ImageWithRoundedCorners>();
 
             while (elapsedTime < 1f)
             {
                 elapsedTime += Time.deltaTime * lerpValue;
                 float lerpedHeight = Mathf.Lerp(currentHeight, targetHeight, elapsedTime);
                 uiRect.sizeDelta = new Vector2(uiRect.sizeDelta.x, lerpedHeight);
-                RefreshRoundedImage(roundedCorners);
                 yield return null;
             }
 
             // Ensure the UI element has the target height
             uiRect.sizeDelta = new Vector2(uiRect.sizeDelta.x, targetHeight);
-            RefreshRoundedImage(roundedCorners);
 
             // Disable at end if wanted
             if (willDisableAtEnd)
             {
                 uiRect.gameObject.SetActive(false);
             }
-        }
-
-        // Bad solution for refreshing the rounded corners, smh
-        private static void RefreshRoundedImage(ImageWithRoundedCorners imageWithRoundedCorners)
-        {
-            imageWithRoundedCorners.gameObject.SetActive(false);
-            imageWithRoundedCorners.gameObject.SetActive(true);
         }
     }
 }
