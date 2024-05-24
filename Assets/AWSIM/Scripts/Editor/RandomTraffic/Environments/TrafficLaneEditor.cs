@@ -48,6 +48,7 @@ namespace AWSIM.TrafficSimulation
             {
                 if (lane == null)
                 {
+                    Debug.LogWarning("NullReferenceException! Please check Traffic Editor's RightOfWay fields for empty values.");
                     continue;
                 }
 
