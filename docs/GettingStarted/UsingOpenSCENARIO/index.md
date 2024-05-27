@@ -72,7 +72,7 @@ In order to configure the Autoware software with the AWSIM demo, please:
 
 ## Troubleshooting
 
-In case of problems, make sure that the [regular demo](https://tier4.github.io/AWSIM/GettingStarted/QuickStartDemo/) work well with the Autoware built above. Follow the [troubleshooting page](https://tier4.github.io/AWSIM/DeveloperGuide/TroubleShooting/) there if necessary.
+In case of problems, make sure that the [regular demo](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/QuickStartDemo/) work well with the Autoware built above. Follow the [troubleshooting page](https://autowarefoundation.github.io/AWSIM-Labs/main/DeveloperGuide/TroubleShooting/) there if necessary.
 
 ## Appendix
 - [AWSIM ROS2 topic list](../../Components/ROS2/ROS2TopicList/index.md)
