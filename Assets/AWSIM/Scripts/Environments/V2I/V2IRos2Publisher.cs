@@ -78,21 +78,21 @@ namespace AWSIM
                         //Get bulbData
                         var trafficLightBulbData = trafficLight.GetBulbData();
                         //Fill TrafficSignal with bulbData
-                        var trafficLightElementList = new List<autoware_perception_msgs.msg.TrafficLightElement>();
+                        var trafficSignalElementList = new List<autoware_perception_msgs.msg.TrafficSignalElement>();
                         foreach (var bulbData in trafficLightBulbData)
                         {
                             if (isBulbTurnOn(bulbData.Status))
                             {
-                                var trafficLightElementMsg = new autoware_perception_msgs.msg.TrafficLightElement();
-                                trafficLightElementMsg.Color = V2IROS2Utility.UnityToRosBulbColor(bulbData.Color);
-                                trafficLightElementMsg.Shape = V2IROS2Utility.UnityToRosBulbShape(bulbData.Type);
-                                trafficLightElementMsg.Status = V2IROS2Utility.UnityToRosBulbStatus(bulbData.Status);
-                                trafficLightElementMsg.Confidence = 1.0f;
-                                trafficLightElementList.Add(trafficLightElementMsg);
+                                var trafficSignalElementMsg = new autoware_perception_msgs.msg.TrafficSignalElement();
+                                trafficSignalElementMsg.Color = V2IROS2Utility.UnityToRosBulbColor(bulbData.Color);
+                                trafficSignalElementMsg.Shape = V2IROS2Utility.UnityToRosBulbShape(bulbData.Type);
+                                trafficSignalElementMsg.Status = V2IROS2Utility.UnityToRosBulbStatus(bulbData.Status);
+                                trafficSignalElementMsg.Confidence = 1.0f;
+                                trafficSignalElementList.Add(trafficSignalElementMsg);
                             }
                         }
                         //Add TrafficLight signal to list
-                        trafficSignalMsg.Elements = trafficLightElementList.ToArray();
+                        trafficSignalMsg.Elements = trafficSignalElementList.ToArray();
                         trafficSignalList.Add(trafficSignalMsg);
                         allRelationID.Add(relationID);
                     }
