@@ -242,7 +242,7 @@ To make the vehicle start navigating please engage its operation using the comma
 ```
 cd autoware
 source install/setup.bash
-ros2 topic pub /autoware/engage autoware_auto_vehicle_msgs/msg/Engage '{engage: True}' -1
+ros2 topic pub /autoware/engage autoware_vehicle_msgs/msg/Engage '{engage: True}' -1
 ```
 
 ![](Image_running.png)
