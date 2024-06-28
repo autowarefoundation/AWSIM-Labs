@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
-using Vector4 = UnityEngine.Vector4;
 
 namespace AWSIM
 {
@@ -179,9 +177,9 @@ namespace AWSIM
 
         [Header("Inputs")]
 
-        /// <summary>
-        /// Vehicle gear shift input (AT). PARKING, REVERSE, NEUTRAL, DRIVE.
-        /// </summary>
+        // <summary>
+        // Vehicle gear shift input (AT). PARKING, REVERSE, NEUTRAL, DRIVE.
+        // </summary>
         public Shift AutomaticShiftInput;
 
         /// <summary>
@@ -201,10 +199,7 @@ namespace AWSIM
 
         public Vector3 PositionInput;
         public Quaternion RotationInput;
-
-
         public float maxRayDistance = 100.0f;
-
         private Vector3 previousPositionInput;
         private bool isPositionUpdated = false;
 
@@ -552,7 +547,7 @@ namespace AWSIM
             {
                 PositionInput = new Vector3(PositionInput.x, hit.point.y, PositionInput.z);
                 PositionInput.y = PositionInput.y + 1.33f;
-                Debug.Log("New PositionInput: " + PositionInput);
+               // Debug.Log("New PositionInput: " + PositionInput);
             }
             else
             {

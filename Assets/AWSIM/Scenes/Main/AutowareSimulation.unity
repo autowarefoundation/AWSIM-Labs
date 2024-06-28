@@ -169,7 +169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1041813113, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5984117683371609910, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
       propertyPath: egoVehicleTransform
@@ -229,11 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9027057600016992297, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9027057600357292013, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9027057600502630240, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
       propertyPath: m_IsActive
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9027057600637418030, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1279,12 +1279,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: qosSettings.DurabilityPolicy
+      propertyPath: positionQosInput.HistoryPolicy
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: positionQosInput.DurabilityPolicy
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: positionQosInput.ReliabilityPolicy
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2108079387665500469, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: pointSize

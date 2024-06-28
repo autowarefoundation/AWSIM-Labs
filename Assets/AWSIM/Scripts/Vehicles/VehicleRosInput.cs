@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ROS2;
-using UnityEngine.InputSystem.Android;
 
 namespace AWSIM
 {
