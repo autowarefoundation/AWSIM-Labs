@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
+using Vector4 = UnityEngine.Vector4;
 
 namespace AWSIM
 {
@@ -105,7 +109,8 @@ namespace AWSIM
 
         // Center of mass of rigidbody.
         // If null, the default value will be used.
-        [SerializeField] Transform centerOfMassTransform;
+        [SerializeField]
+        Transform centerOfMassTransform;
 
         // Set inertia?
         [SerializeField] bool useInertia;
@@ -119,10 +124,7 @@ namespace AWSIM
         /// </summary>
         public float ForwardSlipMultipler
         {
-            get
-            {
-                return wheels[0].ForwardSlipMultiplier;
-            }
+            get { return wheels[0].ForwardSlipMultiplier; }
 
             set
             {
@@ -136,10 +138,7 @@ namespace AWSIM
         /// </summary>
         public float SidewaySlipMultipler
         {
-            get
-            {
-                return wheels[0].SidewaySlipMultiplier;
-            }
+            get { return wheels[0].SidewaySlipMultiplier; }
 
             set
             {
@@ -151,7 +150,8 @@ namespace AWSIM
         [Header("Physics Settings (experimental)")]
 
         // Threshold for Rigidbody Sleep (m/s).
-        [SerializeField] float sleepVelocityThreshold;
+        [SerializeField]
+        float sleepVelocityThreshold;
 
         // Time to Rigidbody Sleep (sec).
         [SerializeField] float sleepTimeThreshold;
@@ -159,23 +159,23 @@ namespace AWSIM
         // Coefficient for prevent skidding while stopping.
         // Applies to each wheel.
         // TODO: A more accurate calculation method.
-        [Range(0.05f, 1f)][SerializeField] float SkiddingCancelRate;
+        [Range(0.05f, 1f)] [SerializeField] float SkiddingCancelRate;
 
-        [Space()]
-        [Header("Axles Settings")]
-        [SerializeField] Axle frontAxle;
+        [Space()] [Header("Axles Settings")] [SerializeField]
+        Axle frontAxle;
+
         [SerializeField] Axle rearAxle;
 
         [Header("Input Settings")]
         // Set value to clamp SteerAngleInput (degree).
         // -MaxSteerAngleInput <= SteerAngleInput <= MaxSteerAngleInput.
         [Range(0.01f, 80)]
-        [SerializeField] float MaxSteerAngleInput = 35f;
+        [SerializeField]
+        float MaxSteerAngleInput = 35f;
 
         // Set value to clamp AccelerationInput (m/s^2).
         // -MaxAccelerationInput <= AccelerationInput <= MaxAccelerationInput.
-        [Range(0.01f, 50)]
-        [SerializeField] float MaxAccelerationInput = 10;
+        [Range(0.01f, 50)] [SerializeField] float MaxAccelerationInput = 10;
 
         [Header("Inputs")]
 
@@ -198,6 +198,15 @@ namespace AWSIM
         /// </summary>
         // TODO: Compute first order lag
         public float SteerAngleInput;
+
+        public Vector3 PositionInput;
+        public Quaternion RotationInput;
+
+
+        public float maxRayDistance = 100.0f;
+
+        private Vector3 previousPositionInput;
+        private bool isPositionUpdated = false;
 
         /// <summary>
         /// Vehicle turn signal input. NONE, LEFT, RIGHT, HAZARD.
@@ -255,12 +264,15 @@ namespace AWSIM
         public Vector3 LocalAngularAcceleration => m_transform.InverseTransformDirection(AngularAcceleration);
 
 
-        private float sleepTimer = 0.0f; ///Count the time until CanSleep is switched to true
+        private float sleepTimer = 0.0f;
+
+        ///Count the time until CanSleep is switched to true
 
 
 
         // Cache components.
         Wheel[] wheels;
+
         Rigidbody m_rigidbody;
         Transform m_transform;
 
@@ -311,18 +323,42 @@ namespace AWSIM
             var groundSlipMultiplier = other.GetComponent<GroudSlipMultiplier>();
             if (groundSlipMultiplier != null)
             {
-                ForwardSlipMultipler = 1;       // Default value is 1 if there is no slip.
+                ForwardSlipMultipler = 1; // Default value is 1 if there is no slip.
                 SidewaySlipMultipler = 1;
             }
         }
 
+        void Update()
+        {
+
+            if (PositionInput != previousPositionInput)
+            {
+                UpdatePosition();
+                previousPositionInput = PositionInput;
+                isPositionUpdated = true; 
+            }
+            else
+            {
+                isPositionUpdated = false; 
+            }
+
+        }
+
         void FixedUpdate()
         {
+            if (isPositionUpdated)
+            {
+                transform.position = PositionInput;
+                transform.rotation = RotationInput;
+            }      
+            
+            // Debug.Log(PositionInput);
+            //  Debug.Log(desiredRotation);
             // Clamp input values.
             AccelerationInput = Mathf.Clamp(AccelerationInput, -MaxAccelerationInput, MaxAccelerationInput);
             SteerAngleInput = Mathf.Clamp(SteerAngleInput, -MaxSteerAngleInput, MaxSteerAngleInput);
 
-            // Compute vehicle infomation.
+            // Compute vehicle information.
             ComputeVehicleState();
 
             // Update Steering, WheelHit, CancelForceRate of the wheel.
@@ -360,7 +396,8 @@ namespace AWSIM
 
                 // Angular velocity.
                 lastAngularVelocity = AngularVelocity;
-                AngularVelocity = ((transform.rotation.eulerAngles - lastRotation.eulerAngles) / Time.deltaTime) * Mathf.Deg2Rad;
+                AngularVelocity = ((transform.rotation.eulerAngles - lastRotation.eulerAngles) / Time.deltaTime) *
+                                  Mathf.Deg2Rad;
                 AngularAcceleration = ((AngularVelocity - lastAngularVelocity) / Time.deltaTime);
             }
 
@@ -407,6 +444,7 @@ namespace AWSIM
                         if (wheel.IsGrounded == false)
                             return false;
                     }
+
                     return true;
                 }
 
@@ -427,7 +465,7 @@ namespace AWSIM
                         if (AccelerationInput <= 0)
                             return true;
                         else
-                            return false;           // Negative input in reverse gear.
+                            return false; // Negative input in reverse gear.
                     }
                     else
                         return true;
@@ -503,5 +541,25 @@ namespace AWSIM
                     wheel.UpdateWheelForce(perWheelAcceleration);
             }
         }
+
+        private void UpdatePosition()
+        {
+            // Method to update the position based on PositionInput
+            Vector3 rayOrigin = new Vector3(PositionInput.x, 20.0f, PositionInput.z);
+            Vector3 rayDirection = Vector3.down;
+
+            if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, maxRayDistance))
+            {
+                PositionInput = new Vector3(PositionInput.x, hit.point.y, PositionInput.z);
+                PositionInput.y = PositionInput.y + 1.33f;
+                Debug.Log("New PositionInput: " + PositionInput);
+            }
+            else
+            {
+                Debug.LogWarning("Raycast couldn't find anything.");
+            }
+        }
     }
 }
+
+
