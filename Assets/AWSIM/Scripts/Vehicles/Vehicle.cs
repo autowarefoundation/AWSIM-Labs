@@ -203,7 +203,7 @@ namespace AWSIM
 
         public Vector3 PositionInput;
         public Quaternion RotationInput;
-        public float maxRayDistance = 100.0f;
+        public float maxRayDistance = 5000.0f;
         private Vector3 previousPositionInput;
         private bool isPositionUpdated;
 
@@ -331,11 +331,11 @@ namespace AWSIM
             {
                 UpdatePosition();
                 previousPositionInput = PositionInput;
-                isPositionUpdated = true; 
+                isPositionUpdated = true;
             }
             else
             {
-                isPositionUpdated = false; 
+                isPositionUpdated = false;
             }
 
         }
@@ -346,8 +346,8 @@ namespace AWSIM
             {
                 transform.position = PositionInput;
                 transform.rotation = RotationInput;
-            }      
-            
+            }
+
             // Debug.Log(PositionInput);
             //  Debug.Log(desiredRotation);
             // Clamp input values.
@@ -539,21 +539,21 @@ namespace AWSIM
         private void UpdatePosition()
         {
             // Method to update the position based on PositionInput
-            Vector3 rayOrigin = new Vector3(PositionInput.x, 20.0f, PositionInput.z);
+            Vector3 rayOrigin = new Vector3(PositionInput.x, 1000.0f, PositionInput.z);
             Vector3 rayDirection = Vector3.down;
 
-            if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, maxRayDistance))
+            if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
             {
                 PositionInput = new Vector3(PositionInput.x, hit.point.y, PositionInput.z);
                 PositionInput.y = PositionInput.y + 1.33f;
-               // Debug.Log("New PositionInput: " + PositionInput);
+                Debug.DrawRay(PositionInput, rayDirection * hit.distance, Color.yellow);
+                // Debug.Log("New PositionInput: " + PositionInput);
             }
             else
             {
+                Debug.DrawRay(PositionInput, rayDirection * 1000, Color.yellow);
                 Debug.LogWarning("Raycast couldn't find anything.");
             }
         }
     }
 }
-
-
