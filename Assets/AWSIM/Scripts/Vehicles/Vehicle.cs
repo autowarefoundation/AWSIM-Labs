@@ -203,9 +203,7 @@ namespace AWSIM
 
         public Vector3 PositionInput;
         public Quaternion RotationInput;
-        public float maxRayDistance = 5000.0f;
-        private Vector3 previousPositionInput;
-        private bool isPositionUpdated;
+        public bool WillUpdatePosition;
 
         /// <summary>
         /// Vehicle turn signal input. NONE, LEFT, RIGHT, HAZARD.
@@ -324,32 +322,15 @@ namespace AWSIM
             }
         }
 
-        void Update()
-        {
-
-            if (PositionInput != previousPositionInput)
-            {
-                UpdatePosition();
-                previousPositionInput = PositionInput;
-                isPositionUpdated = true;
-            }
-            else
-            {
-                isPositionUpdated = false;
-            }
-
-        }
-
         void FixedUpdate()
         {
-            if (isPositionUpdated)
+            // Update the ego position depending on RViz Input.
+            if (WillUpdatePosition)
             {
-                transform.position = PositionInput;
-                transform.rotation = RotationInput;
+                UpdateEgoPosition();
+                WillUpdatePosition = false;
             }
 
-            // Debug.Log(PositionInput);
-            //  Debug.Log(desiredRotation);
             // Clamp input values.
             AccelerationInput = Mathf.Clamp(AccelerationInput, -MaxAccelerationInput, MaxAccelerationInput);
             SteerAngleInput = Mathf.Clamp(SteerAngleInput, -MaxSteerAngleInput, MaxSteerAngleInput);
@@ -536,7 +517,7 @@ namespace AWSIM
             }
         }
 
-        private void UpdatePosition()
+        private void UpdateEgoPosition()
         {
             // Method to update the position based on PositionInput
             Vector3 rayOrigin = new Vector3(PositionInput.x, 1000.0f, PositionInput.z);
@@ -544,15 +525,13 @@ namespace AWSIM
 
             if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
             {
-                PositionInput = new Vector3(PositionInput.x, hit.point.y, PositionInput.z);
-                PositionInput.y = PositionInput.y + 1.33f;
-                Debug.DrawRay(PositionInput, rayDirection * hit.distance, Color.yellow);
-                // Debug.Log("New PositionInput: " + PositionInput);
+                PositionInput = new Vector3(PositionInput.x, hit.point.y + 1.33f, PositionInput.z);
+                transform.position = PositionInput;
+                transform.rotation = RotationInput;
             }
             else
             {
-                Debug.DrawRay(PositionInput, rayDirection * 1000, Color.yellow);
-                Debug.LogWarning("Raycast couldn't find anything.");
+                Debug.LogWarning("No mesh or collider detected on target location. Please ensure that the target location is on a mesh or collider.");
             }
         }
     }

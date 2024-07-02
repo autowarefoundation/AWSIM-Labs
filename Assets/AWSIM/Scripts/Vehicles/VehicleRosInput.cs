@@ -37,10 +37,6 @@ namespace AWSIM
         bool isEmergency = false;
         float emergencyDeceleration = -3.0f; // m/s^2
 
-        private Vector3 positionVector;
-        private Quaternion rotationVector;
-        
-        
         // Latest value of TurnSignals.
         // HAZARD and LEFT/RIGHT are different msgs in Autoware.universe.
         // Priority : HAZARD > LEFT/RIGHT > NONE
@@ -83,7 +79,7 @@ namespace AWSIM
         void Start()
         {
             var qos = qosSettings.GetQoSProfile();
-            var qosp = positionQosInput.GetQoSProfile();
+            var positionQoS = positionQosInput.GetQoSProfile();
 
             turnIndicatorsCommandSubscriber
                 = SimulatorROS2Node.CreateSubscription<autoware_vehicle_msgs.msg.TurnIndicatorsCommand>(
@@ -134,19 +130,20 @@ namespace AWSIM
                 = SimulatorROS2Node.CreateSubscription<geometry_msgs.msg.PoseWithCovarianceStamped>(
                     positionTopic, msg =>
                     {
-                        positionVector.x = (float)msg.Pose.Pose.Position.X;
-                        positionVector.y = (float)msg.Pose.Pose.Position.Y;
-                        positionVector.z = (float)msg.Pose.Pose.Position.Z;
-                        
-                        rotationVector.x = (float)msg.Pose.Pose.Orientation.X;
-                        rotationVector.y = (float)msg.Pose.Pose.Orientation.Y;
-                        rotationVector.z = (float)msg.Pose.Pose.Orientation.Z;
-                        rotationVector.w = (float)msg.Pose.Pose.Orientation.W;
-                        
-                        vehicle.PositionInput= ROS2Utility.RosToUnityPosition(positionVector - Environment.Instance.MgrsOffsetPosition);
-                        vehicle.RotationInput = ROS2Utility.RosToUnityRotation(rotationVector);
+                        var positionVector = new Vector3((float)msg.Pose.Pose.Position.X,
+                                                         (float)msg.Pose.Pose.Position.Y,
+                                                         (float)msg.Pose.Pose.Position.Z);
 
-                    }, qosp);
+                        var rotationVector = new Quaternion((float)msg.Pose.Pose.Orientation.X,
+                                                            (float)msg.Pose.Pose.Orientation.Y,
+                                                            (float)msg.Pose.Pose.Orientation.Z,
+                                                            (float)msg.Pose.Pose.Orientation.W);
+
+                        vehicle.PositionInput = ROS2Utility.RosToUnityPosition(positionVector - Environment.Instance.MgrsOffsetPosition);
+                        vehicle.RotationInput = ROS2Utility.RosToUnityRotation(rotationVector);
+                        vehicle.WillUpdatePosition = true;
+
+                    }, positionQoS);
         }
 
         void OnDestroy()
