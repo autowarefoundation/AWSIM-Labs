@@ -20,16 +20,7 @@ This is a fork of [TIER IV's AWSIM](https://github.com/tier4/AWSIM).
 
 ### Feature differences from the TIER IV/AWSIM
 
-| Features                                  | AWSIM 1.2.1      | AWSIM Labs 1.0.0 |
-|-------------------------------------------|------------------|-----------------------|
-| Rendering Pipeline                        | HDRP             | URP                   |
-| Unity Version                             | Unity 2021.1.7f1 | Unity LTS 2022.3.21f1 |
-| Resource usage                            | Heavy            | Light                 |
-| Can reset vehicle position on runtime     | ❌                | ✅                     |
-| Multiple scene and vehicle setup          | ❌                | ✅                     |
-| Multi-lidars are enabled by default       | ❌                | ✅                     |
-| CI for build                              | ❌                | ✅                     |
-| CI for documentation generation within PR | ❌                | ✅                     |
+See [Feature differences from the TIER IV/AWSIM in the Autoware Documentation](https://autowarefoundation.github.io/autoware-documentation/main/tutorials/ad-hoc-simulation/digital-twin-simulation/awsim-tutorial/#feature-differences-from-the-awsim-and-awsim-labs).
 
 ## Tutorial
 
