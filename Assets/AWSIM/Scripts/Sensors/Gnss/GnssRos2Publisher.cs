@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using ROS2;
 
@@ -29,24 +28,33 @@ namespace AWSIM
         /// <summary>
         /// QoS settings.
         /// </summary>
-        public QoSSettings qosSettings;
-
-        IPublisher<geometry_msgs.msg.PoseStamped> posePublisher;
-        IPublisher<geometry_msgs.msg.PoseWithCovarianceStamped> poseWithCovarianceStampedPublisher;
-        geometry_msgs.msg.PoseStamped poseMsg;
-        geometry_msgs.msg.PoseWithCovarianceStamped poseWithCovarianceStampedMsg;
-        GnssSensor gnssSensor;
-
-        void Start()
+        public QoSSettings QosSettings = new QoSSettings()
         {
-            // Get GnssSensor component.
-            gnssSensor = GetComponent<GnssSensor>();
+            ReliabilityPolicy = ReliabilityPolicy.QOS_POLICY_RELIABILITY_BEST_EFFORT,
+            DurabilityPolicy = DurabilityPolicy.QOS_POLICY_DURABILITY_VOLATILE,
+            HistoryPolicy = HistoryPolicy.QOS_POLICY_HISTORY_KEEP_LAST,
+            Depth = 1,
+        };
+        private IPublisher<geometry_msgs.msg.PoseStamped> _posePublisher;
+        private IPublisher<geometry_msgs.msg.PoseWithCovarianceStamped> _poseWithCovarianceStampedPublisher;
+        private geometry_msgs.msg.PoseStamped _poseMsg;
+        private geometry_msgs.msg.PoseWithCovarianceStamped _poseWithCovarianceStampedMsg;
+        private GnssSensor _gnssSensor;
 
-            // Set callback.
-            gnssSensor.OnOutputData += Publish;
+        private void Awake()
+        {
+            CreatePublisher();
+        }
 
+        private void Start()
+        {
+            ConnectSensor();
+        }
+
+        private void CreatePublisher()
+        {
             // Create msg.
-            poseMsg = new geometry_msgs.msg.PoseStamped()
+            _poseMsg = new geometry_msgs.msg.PoseStamped()
             {
                 Header = new std_msgs.msg.Header()
                 {
@@ -54,7 +62,7 @@ namespace AWSIM
                 },
                 Pose = new geometry_msgs.msg.Pose(),
             };
-            poseWithCovarianceStampedMsg = new geometry_msgs.msg.PoseWithCovarianceStamped()
+            _poseWithCovarianceStampedMsg = new geometry_msgs.msg.PoseWithCovarianceStamped()
             {
                 Header = new std_msgs.msg.Header()
                 {
@@ -62,40 +70,60 @@ namespace AWSIM
                 },
                 Pose = new geometry_msgs.msg.PoseWithCovariance(),
             };
-            for (int i = 0; i < poseWithCovarianceStampedMsg.Pose.Covariance.Length; i++)
-                poseWithCovarianceStampedMsg.Pose.Covariance[i] = 0;
+            for (int i = 0; i < _poseWithCovarianceStampedMsg.Pose.Covariance.Length; i++)
+                _poseWithCovarianceStampedMsg.Pose.Covariance[i] = 0;
 
             // Create publisher.
-            var qos = qosSettings.GetQoSProfile();
-            posePublisher = SimulatorROS2Node.CreatePublisher<geometry_msgs.msg.PoseStamped>(poseTopic, qos);
-            poseWithCovarianceStampedPublisher = SimulatorROS2Node.CreatePublisher<geometry_msgs.msg.PoseWithCovarianceStamped>(poseWithCovarianceStampedTopic, qos);
+            var qos = QosSettings.GetQoSProfile();
+            _posePublisher = SimulatorROS2Node.CreatePublisher<geometry_msgs.msg.PoseStamped>(poseTopic, qos);
+            _poseWithCovarianceStampedPublisher =
+                SimulatorROS2Node.CreatePublisher<geometry_msgs.msg.PoseWithCovarianceStamped>(
+                    poseWithCovarianceStampedTopic, qos);
         }
 
-        void Publish(GnssSensor.OutputData outputData)
+        private void ConnectSensor()
+        {
+            // Get GnssSensor component.
+            _gnssSensor = GetComponent<GnssSensor>();
+
+            // Set callback.
+            _gnssSensor.OnOutputData += Publish;
+        }
+
+        private void Publish(GnssSensor.OutputData outputData)
         {
             // Converts data output from GnssSensor to ROS2 msg
-            poseMsg.Pose.Position.X = outputData.MgrsPosition.x;
-            poseMsg.Pose.Position.Y = outputData.MgrsPosition.y;
-            poseMsg.Pose.Position.Z = outputData.MgrsPosition.z;
-            poseWithCovarianceStampedMsg.Pose.Pose.Position.X = outputData.MgrsPosition.x;
-            poseWithCovarianceStampedMsg.Pose.Pose.Position.Y = outputData.MgrsPosition.y;
-            poseWithCovarianceStampedMsg.Pose.Pose.Position.Z = outputData.MgrsPosition.z;
+            _poseMsg.Pose.Position.X = outputData.MgrsPosition.x;
+            _poseMsg.Pose.Position.Y = outputData.MgrsPosition.y;
+            _poseMsg.Pose.Position.Z = outputData.MgrsPosition.z;
+            _poseWithCovarianceStampedMsg.Pose.Pose.Position.X = outputData.MgrsPosition.x;
+            _poseWithCovarianceStampedMsg.Pose.Pose.Position.Y = outputData.MgrsPosition.y;
+            _poseWithCovarianceStampedMsg.Pose.Pose.Position.Z = outputData.MgrsPosition.z;
 
             // Update msg header.
-            var poseWithCovarianceStampedHeader = poseWithCovarianceStampedMsg as MessageWithHeader;
+            var poseWithCovarianceStampedHeader = _poseWithCovarianceStampedMsg as MessageWithHeader;
             SimulatorROS2Node.UpdateROSTimestamp(ref poseWithCovarianceStampedHeader);
-            var poseHeader = poseMsg as MessageWithHeader;
+            var poseHeader = _poseMsg as MessageWithHeader;
             SimulatorROS2Node.UpdateROSTimestamp(ref poseHeader);
 
             // Publish to ROS2.
-            posePublisher.Publish(poseMsg);
-            poseWithCovarianceStampedPublisher.Publish(poseWithCovarianceStampedMsg);
+            _posePublisher.Publish(_poseMsg);
+            _poseWithCovarianceStampedPublisher.Publish(_poseWithCovarianceStampedMsg);
         }
 
-        void OnDestroy()
+        public void ReInitializePublisher()
         {
-            SimulatorROS2Node.RemovePublisher<geometry_msgs.msg.PoseStamped>(posePublisher);
-            SimulatorROS2Node.RemovePublisher<geometry_msgs.msg.PoseWithCovarianceStamped>(poseWithCovarianceStampedPublisher);
+            CreatePublisher();
+            ConnectSensor();
+        }
+
+        private void OnDestroy()
+        {
+            _gnssSensor.OnOutputData -= Publish;
+            SimulatorROS2Node.RemovePublisher<geometry_msgs.msg.PoseStamped>(_posePublisher);
+            SimulatorROS2Node.RemovePublisher<geometry_msgs.msg.PoseWithCovarianceStamped>(
+                _poseWithCovarianceStampedPublisher);
+            GC.Collect();
         }
     }
 }
