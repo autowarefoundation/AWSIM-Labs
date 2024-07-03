@@ -92,26 +92,21 @@ namespace AWSIM.Scripts.UI
             }
         }
 
-        public void ExpensiveChangesToggle(bool value)
-        {
-            _doApplyExpensiveChanges = value;
-        }
-
         public void UISetQuality(int value)
         {
             switch (value)
             {
                 case 0:
-                    GraphicsLowQuality(_doApplyExpensiveChanges);
+                    GraphicsLowQuality(true);
                     break;
                 case 1:
-                    GraphicsMediumQuality(_doApplyExpensiveChanges);
+                    GraphicsMediumQuality(true);
                     break;
                 case 2:
-                    GraphicsHighQuality(_doApplyExpensiveChanges);
+                    GraphicsHighQuality(true);
                     break;
                 case 3:
-                    GraphicsUltraQuality(_doApplyExpensiveChanges);
+                    GraphicsUltraQuality(true);
                     break;
             }
         }
