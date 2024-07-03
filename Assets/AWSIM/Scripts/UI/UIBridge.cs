@@ -46,6 +46,7 @@ namespace AWSIM.Scripts.UI
             }
 
             _trafficControlManager.SeedInput = Convert.ToInt32(trafficSeedInputField.textComponent.text);
+            _trafficControlManager.TrafficManagerUpdate();
         }
     }
 }
