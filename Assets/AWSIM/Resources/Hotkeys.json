@@ -61,11 +61,11 @@
           "description": "Camera control toggle"
         },
         {
-          "key": "Mouse Drag",
+          "key": "Hold LShift + Mouse Drag",
           "description": "Camera rotation"
         },
         {
-          "key": "Mouse Wheel +/-",
+          "key": "Hold LShift + Mouse Wheel +/-",
           "description": "Camera zoom"
         }
       ]
