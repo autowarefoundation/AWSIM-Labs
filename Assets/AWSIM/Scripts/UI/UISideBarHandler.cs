@@ -15,7 +15,7 @@ namespace AWSIM.Scripts.UI
         private RectTransform _sideBarRectTransform;
         private bool _isSideBarActivePos;
         private Color _staticBgDefaultColor;
-        [SerializeField] private Color _staticBgActiveColor = new Color(40, 40, 40, 1);
+        [SerializeField] private Color _staticBgDisabledColor = new Color(40, 40, 40, 0.5f);
 
         private void Start()
         {
@@ -36,7 +36,7 @@ namespace AWSIM.Scripts.UI
             {
                 StartCoroutine(UIFunctions.LerpUIRectPosition(_sideBarRectTransform, _sideBarPositionActive,
                     UIAnimationLerpValue, false));
-                StartCoroutine(UIFunctions.LerpImageColor(_staticBg, _staticBgActiveColor, UIAnimationLerpValue));
+                StartCoroutine(UIFunctions.LerpImageColor(_staticBg, _staticBgDefaultColor, UIAnimationLerpValue));
                 _isSideBarActivePos = true;
             }
             else
@@ -44,7 +44,7 @@ namespace AWSIM.Scripts.UI
                 StartCoroutine(UIFunctions.LerpUIRectPosition(_sideBarRectTransform, SideBarPositionDisabled,
                     UIAnimationLerpValue, false));
                 _isSideBarActivePos = false;
-                StartCoroutine(UIFunctions.LerpImageColor(_staticBg, _staticBgDefaultColor, UIAnimationLerpValue));
+                StartCoroutine(UIFunctions.LerpImageColor(_staticBg, _staticBgDisabledColor, UIAnimationLerpValue));
             }
         }
     }

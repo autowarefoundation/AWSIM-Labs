@@ -8,6 +8,7 @@ namespace AWSIM.Scripts.UI
     {
         [SerializeField] private float _sidebarMinimumWidth = 220;
         [SerializeField] private float _sidebarDragBorderSize = 5;
+        [SerializeField] private RectTransform _staticObjects;
 
         private Vector2 _initialDragPointOffset;
         private Vector2 _initialSizeDelta;
@@ -36,7 +37,7 @@ namespace AWSIM.Scripts.UI
             var areaRightBound = _sideBarRectTransform.rect.xMax * scaleFactor;
             var areaLeftBound = (_sideBarRectTransform.rect.xMin + _sideBarImage.raycastPadding.x) * scaleFactor;
 
-            // Debugs for testing
+            //// Debugs for testing
             // Debug.DrawLine(new Vector3(_sideBarRectTransform.rect.xMax * scaleFactor, 500, 0),
             //     new Vector3((_sideBarRectTransform.rect.xMin + _sideBarImage.raycastPadding.x) *
             //                 scaleFactor, 500, 0), Color.red, 1000f,
@@ -67,6 +68,9 @@ namespace AWSIM.Scripts.UI
                     new Vector2(localPointerPosition.x, _initialSizeDelta.y) -
                     new Vector2(_initialDragPointOffset.x, 0);
 
+                // update static objects rect
+                _staticObjects.sizeDelta = new Vector2(_sideBarRectTransform.sizeDelta.x, _staticObjects.sizeDelta.y);
+
                 var padding = _sideBarImage.raycastPadding;
                 padding.x = _sideBarRectTransform.sizeDelta.x - _sidebarDragBorderSize;
                 _sideBarImage.raycastPadding = padding;
@@ -89,6 +93,9 @@ namespace AWSIM.Scripts.UI
             if (_sideBarRectTransform.sizeDelta.x < _sidebarMinimumWidth)
             {
                 _sideBarRectTransform.sizeDelta = new Vector2(_sidebarMinimumWidth, _initialSizeDelta.y);
+
+                // update static objects rect
+                _staticObjects.sizeDelta = new Vector2(_sideBarRectTransform.sizeDelta.x, _staticObjects.sizeDelta.y);
             }
         }
     }

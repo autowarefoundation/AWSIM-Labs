@@ -18,14 +18,11 @@ namespace AWSIM.Scripts.UI
 
         private readonly List<string> _dropdownOptions = new List<string>
         {
-            "Low",
-            "Medium",
-            "High",
-            "Ultra"
+            "Preset: Low",
+            "Preset: Medium",
+            "Preset: High",
+            "Preset: Ultra"
         };
-
-        // Initialised as true to apply expensive changes on start
-        private bool _doApplyExpensiveChanges = true;
 
         private void Awake()
         {

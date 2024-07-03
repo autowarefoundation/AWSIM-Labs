@@ -2382,7 +2382,7 @@ MonoBehaviour:
   UIAnimationLerpValue: 6
   _sideBar: {fileID: 1194022954}
   _staticBg: {fileID: 1131175672}
-  _staticBgActiveColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
+  _staticBgDisabledColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 0.5882353}
 --- !u!114 &412951389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3394,9 +3394,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1131175671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -20}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -20, y: -20}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785762363
@@ -4650,11 +4650,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1131175671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55, y: -20}
-  m_SizeDelta: {x: -95, y: 20}
-  m_Pivot: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 7.5, y: -20}
+  m_SizeDelta: {x: 125, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &988705868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,6 +5384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sidebarMinimumWidth: 220
   _sidebarDragBorderSize: 5
+  _staticObjects: {fileID: 1131175671}
 --- !u!1 &1194537304
 GameObject:
   m_ObjectHideFlags: 0
@@ -9951,8 +9952,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -40, y: -10}
+  m_AnchoredPosition: {x: -7.5, y: 0}
+  m_SizeDelta: {x: -35, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962112330
 MonoBehaviour:
@@ -10388,8 +10389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -40, y: 30}
+  m_AnchoredPosition: {x: -7.5, y: 0}
+  m_SizeDelta: {x: -35, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109140315
 MonoBehaviour:
