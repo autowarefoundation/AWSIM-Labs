@@ -47,39 +47,39 @@ namespace AWSIM.Scripts.UI
                 switch (sensor.tag)
                 {
                     case "CameraSensor":
-                    {
-                        var publisher = sensor.gameObject.AddComponent<CameraRos2Publisher>();
-                        Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
-                        publisher.ReInitializePublisher();
-                    }
+                        {
+                            var publisher = sensor.gameObject.AddComponent<CameraRos2Publisher>();
+                            Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
+                            publisher.ReInitializePublisher();
+                        }
                         break;
                     case "GNSSSensor":
-                    {
-                        var publisher = sensor.gameObject.AddComponent<GnssRos2Publisher>();
-                        Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
-                        publisher.ReInitializePublisher();
-                    }
+                        {
+                            var publisher = sensor.gameObject.AddComponent<GnssRos2Publisher>();
+                            Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
+                            publisher.ReInitializePublisher();
+                        }
                         break;
                     case "IMUSensor":
-                    {
-                        var publisher = sensor.gameObject.AddComponent<ImuRos2Publisher>();
-                        Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
-                        publisher.ReInitializePublisher();
-                    }
+                        {
+                            var publisher = sensor.gameObject.AddComponent<ImuRos2Publisher>();
+                            Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
+                            publisher.ReInitializePublisher();
+                        }
                         break;
                     case "OdometrySensor":
-                    {
-                        var publisher = sensor.gameObject.AddComponent<OdometryRos2Publisher>();
-                        Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
-                        publisher.ReInitializePublisher();
-                    }
+                        {
+                            var publisher = sensor.gameObject.AddComponent<OdometryRos2Publisher>();
+                            Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
+                            publisher.ReInitializePublisher();
+                        }
                         break;
                     case "PoseSensor":
-                    {
-                        var publisher = sensor.gameObject.AddComponent<PoseRos2Publisher>();
-                        Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
-                        publisher.ReInitializePublisher();
-                    }
+                        {
+                            var publisher = sensor.gameObject.AddComponent<PoseRos2Publisher>();
+                            Ros2PublisherUtilities.ConfigAssigner(publisher, configList);
+                            publisher.ReInitializePublisher();
+                        }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
