@@ -5385,6 +5385,7 @@ MonoBehaviour:
   _sidebarMinimumWidth: 220
   _sidebarDragBorderSize: 5
   _staticObjects: {fileID: 1131175671}
+  _cursorResizeTexture2D: {fileID: 2800000, guid: cfb94b0d55ee3d7acb60c302b9aa7f29, type: 3}
 --- !u!1 &1194537304
 GameObject:
   m_ObjectHideFlags: 0
