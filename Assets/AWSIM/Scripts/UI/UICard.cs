@@ -63,6 +63,7 @@ namespace AWSIM.Scripts.UI
                 StartCoroutine(UIFunctions.LerpUICardPreferredHeight(_cardTopBarButton, GetComponent<LayoutElement>(),
                     _tabOnBgHeight, _lerpValue));
             }
+            Canvas.ForceUpdateCanvases();
         }
 
         private List<RectTransform> BuildChildRectTransformList()
