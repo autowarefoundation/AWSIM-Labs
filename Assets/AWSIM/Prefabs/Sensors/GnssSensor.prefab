@@ -61,7 +61,7 @@ MonoBehaviour:
   poseTopic: /sensing/gnss/pose
   poseWithCovarianceStampedTopic: /sensing/gnss/pose_with_covariance
   frameId: map
-  qosSettings:
+  QosSettings:
     ReliabilityPolicy: 1
     DurabilityPolicy: 2
     HistoryPolicy: 1

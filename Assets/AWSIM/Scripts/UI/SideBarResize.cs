@@ -70,15 +70,6 @@ namespace AWSIM.Scripts.UI
             }
         }
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            if (!_isCursorInDragArea && !_isDragActive)
-            {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                _isCursorInDragArea = false;
-            }
-        }
-
         public void OnPointerDown(PointerEventData eventData)
         {
             if (_isCursorInDragArea)

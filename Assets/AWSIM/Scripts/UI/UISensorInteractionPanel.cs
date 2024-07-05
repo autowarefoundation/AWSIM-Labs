@@ -53,13 +53,17 @@ namespace AWSIM.Scripts.UI
                 _odometrySensors,
                 _poseSensors
             };
+
+            // Setup the UI card
+            SetupUICard(_uiCard);
         }
 
         private void Update()
         {
             if (!_uiTabReady)
             {
-                SetupUICard(_uiCard);
+                // Recalculate the card height
+                _uiCard.RecalculateTabBackgroundHeight();
                 _uiTabReady = true;
             }
         }
@@ -84,9 +88,6 @@ namespace AWSIM.Scripts.UI
                                               _imuSensors.Count + _odometrySensors.Count + _poseSensors.Count) *
                 _horizontalCardGroupHeight + panelVerticalOffsets;
             _togglesPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(0, togglePanelPreferredHeight);
-
-            // Recalculate the card height
-            card.RecalculateTabBackgroundHeight();
         }
 
         /// Create toggle groups

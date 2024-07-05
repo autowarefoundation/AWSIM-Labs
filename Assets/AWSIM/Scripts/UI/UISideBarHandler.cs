@@ -14,8 +14,8 @@ namespace AWSIM.Scripts.UI
 
         private RectTransform _sideBarRectTransform;
         private bool _isSideBarActivePos;
-        private Color _staticBgDefaultColor;
         [SerializeField] private Color _staticBgDisabledColor = new Color(40, 40, 40, 0.5f);
+        [SerializeField] private Color _staticBgActiveColor = new Color(40, 40, 40, 1);
 
         private void Start()
         {
@@ -24,9 +24,7 @@ namespace AWSIM.Scripts.UI
             _sideBarPositionActive = new Vector2(0, 0);
             SideBarPositionDisabled = new Vector2(-_sideBarRectTransform.sizeDelta.x, 0);
             // Move the sidebar to the active position
-            _sideBarRectTransform.anchoredPosition = _sideBarPositionActive;
-            _isSideBarActivePos = true;
-            _staticBgDefaultColor = _staticBg.color;
+            _isSideBarActivePos = false;
         }
 
         public void ToggleSideBar()
@@ -36,7 +34,7 @@ namespace AWSIM.Scripts.UI
             {
                 StartCoroutine(UIFunctions.LerpUIRectPosition(_sideBarRectTransform, _sideBarPositionActive,
                     UIAnimationLerpValue, false));
-                StartCoroutine(UIFunctions.LerpImageColor(_staticBg, _staticBgDefaultColor, UIAnimationLerpValue));
+                StartCoroutine(UIFunctions.LerpImageColor(_staticBg, _staticBgActiveColor, UIAnimationLerpValue));
                 _isSideBarActivePos = true;
             }
             else
