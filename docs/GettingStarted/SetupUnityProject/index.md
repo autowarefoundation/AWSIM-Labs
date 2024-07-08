@@ -52,26 +52,26 @@ AWSIM comes with a *standalone* flavor of [`Ros2ForUnity`](../../Components/ROS2
 Follow the steps below to install Unity on your machine:
 
 1. Install UnityHub to manage Unity projects. Please go to [Unity download page](https://unity3d.com/get-unity/download) and download latest `UnityHub.AppImage`.
-![](image_1.png)
 2. Install Unity 2022.3.36f1 via UnityHub.
     - Open new terminal, navigate to directory where `UnityHub.AppImage` is download and execute the following command:
 ```
 ./UnityHub.AppImage
 ```
-    - To install Unity Editor please proceed as shown on the images below
-![](image_2.png)
-![](image_3.png)
-![](image_4.png)
+    - To install Unity Editor please follow the steps below:
+3. Click `Installs` from the left menu and then click the `Install Editor` button from the top right.
+4. From the new window click the `Official releases` tab and check for the current version of Unity.
+   1. If you can't find the version, click to `Archive` and search for the version in the Unity archives page. It will direct you to [Unity Archive](https://unity3d.com/get-unity/download/archive).
+2. After finding the version, click the download/install button to start the installation process.
     - At this point, your Unity installation process should have started.
 
         === "Ubuntu 22"
-        - *NOTE: If the installation process has not started after clicking the green button (image above), please copy the hyperlink (by rightclicking the button and selecting `Copy link address`) and add it as a argument for Unity Hub app. An example command:
+        - *NOTE: If the installation process has not started after clicking the download/install button, please copy the hyperlink (by right clicking the button and selecting `Copy link address`) and add it as an argument for Unity Hub app. An example command:
         ```
         ./UnityHub.AppImage unityhub://2022.3.21f1/d91830b65d9b
         ```
 
-    - After successful installation the version will be available under the `Installs` tab in Unity Hub.
-![](image_5.png)
+    - After successful installation the version will be available in the `Installs` tab in Unity Hub.
+
 
 ### Open AWSIM project
 
@@ -93,17 +93,12 @@ To open the Unity AWSIM project in Unity Editor:
             If you are launching the Unity Hub from the Ubuntu applications menu (without the terminal), make sure that system optimizations are set. To be sure, run the terminal at least once before running the Unity Hub. This will apply the OS settings.
 
     3. Open the project in UnityHub
-        - Click the `Open` button
-        ![](image_6.png)
+        - Click the `Open` button from the `Projects` tab,
+        - Navigate the directory where the AWSIM repository was cloned to and select the directory,
+        - The project should be added to `Projects` tab in Unity Hub. To launch the project in Unity Editor simply click the `AWSIM` project.
+        - The project is now ready to use.
+        - The project can be opened by double clicking on the project name or selecting it from the list then clicking the `Open` button on the top right.
 
-        - Navigate the directory where the AWSIM repository was cloned to
-        ![](image_7.png)
-
-        - The project should be added to `Projects` tab in Unity Hub. To launch the project in Unity Editor simply click the `AWSIM` item
-        ![](image_8.png)
-
-        - The project is now ready to use
-        ![](image_9.png)
 
 === "Using Terminal"
 
@@ -137,11 +132,9 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
     [Download Map Package](https://drive.google.com/drive/folders/1Q6PolpCIwiVRdPNMjSBAQ5t2TcCoY-KZ){.md-button .md-button--primary}
 
-2. In Unity Editor, from the menu bar at the top, select `Assets -> Import Package -> Custom Package...` and navigate the `Nishishinjuku_URP.unitypackage` file.
-![](image_10.png)
-![](image_11.png)
-3. `Nishishinjuku` package has been successfully imported under `Assets/AWSIM/Externals/`directory.
-![](image_12.png)
+2. In Unity Editor, from the menu bar at the top, select `Assets -> Import Package -> Custom Package...` and navigate the `Nishishinjuku_URP.unitypackage` file you've downloaded and open.
+3. Click `Import` button in the popup window to import the package.
+4. `Nishishinjuku` package should be successfully imported under `Assets/AWSIM/Externals/`directory. You can access the directory from the `Project` window in Unity Editor.
 
 !!! info
 
@@ -157,5 +150,6 @@ The following steps describe how to run the demo in Unity Editor:
 
 1. Open the `AutowareSimulation.unity` scene placed under `Assets/AWSIM/Scenes/Main` directory
 2. Run the simulation by clicking `Play` button placed at the top section of Editor.
-![](image_13.png)
-<br><br><br><br>
+3. Now you should see the simulation running in the Editor.
+
+If you encounter any issues while running the simulation, please refer to the [Troubleshooting](../../DeveloperGuide/TroubleShooting) section or open an issue in the [AWSIM Labs GitHub](https://github.com/autowarefoundation/AWSIM-Labs/issues).
