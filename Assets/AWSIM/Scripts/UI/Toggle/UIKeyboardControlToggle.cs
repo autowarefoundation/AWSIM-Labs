@@ -7,7 +7,7 @@ namespace AWSIM.Scripts.UI.Toggle
         private GameObject _egoVehicle;
         private VehicleKeyboardInput _vehicleKeyboardInput;
 
-        private void Start()
+        public void Activate()
         {
             _egoVehicle = GameObject.FindGameObjectWithTag("Ego");
             _vehicleKeyboardInput = _egoVehicle.GetComponent<VehicleKeyboardInput>();

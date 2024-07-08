@@ -11,7 +11,7 @@ namespace AWSIM.Scripts.UI.Toggle
         private TrafficControlManager trafficControlManager;
         private Image image;
 
-        private void Start()
+        public void Activate()
         {
             image = GetComponent<Image>();
             trafficControlManager = FindObjectOfType<TrafficControlManager>();

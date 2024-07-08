@@ -4,7 +4,7 @@ namespace AWSIM.Scripts.UI
 {
     public class EgoVehiclePositionManager : MonoBehaviour
     {
-        public Transform EgoTransform { private get; set; }
+        [SerializeField] public Transform EgoTransform { private get; set; }
         private Rigidbody egoRigidbody;
         private Vector3 initialEgoPosition;
         private Quaternion initialEgoRotation;

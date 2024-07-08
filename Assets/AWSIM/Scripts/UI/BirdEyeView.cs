@@ -34,7 +34,7 @@ namespace AWSIM.Scripts.UI
 
         private Vector3 _initialMousePosition;
 
-        private void Start()
+        public void Activate()
         {
             // Find the camera follow target
             _willFollowEgo = false;
