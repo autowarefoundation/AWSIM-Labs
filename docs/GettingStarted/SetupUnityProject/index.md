@@ -47,13 +47,13 @@ AWSIM comes with a *standalone* flavor of [`Ros2ForUnity`](../../Components/ROS2
 
 !!! info
 
-    AWSIM's Unity version is currently **2022.3.21f1**
+    AWSIM's Unity version is currently **2022.3.36f1**
 
 Follow the steps below to install Unity on your machine:
 
 1. Install UnityHub to manage Unity projects. Please go to [Unity download page](https://unity3d.com/get-unity/download) and download latest `UnityHub.AppImage`.
 ![](image_1.png)
-2. Install Unity 2022.3.21f1 via UnityHub.
+2. Install Unity 2022.3.36f1 via UnityHub.
     - Open new terminal, navigate to directory where `UnityHub.AppImage` is download and execute the following command:
 ```
 ./UnityHub.AppImage
