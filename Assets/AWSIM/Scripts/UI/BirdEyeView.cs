@@ -37,7 +37,7 @@ namespace AWSIM.Scripts.UI
         private void Start()
         {
             // Find the camera follow target
-            _willFollowEgo = false;
+            _willFollowEgo = true;
             _vehicleTransform = GameObject.FindWithTag("Ego");
             foreach (Transform tf in _vehicleTransform.transform)
             {
