@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace AWSIM
 {
@@ -179,9 +181,9 @@ namespace AWSIM
 
         [Header("Inputs")]
 
-        /// <summary>
-        /// Vehicle gear shift input (AT). PARKING, REVERSE, NEUTRAL, DRIVE.
-        /// </summary>
+        // <summary>
+        // Vehicle gear shift input (AT). PARKING, REVERSE, NEUTRAL, DRIVE.
+        // </summary>
         public Shift AutomaticShiftInput;
 
         /// <summary>
@@ -198,6 +200,10 @@ namespace AWSIM
         /// </summary>
         // TODO: Compute first order lag
         public float SteerAngleInput;
+
+        public Vector3 PositionInput;
+        public Quaternion RotationInput;
+        public bool WillUpdatePosition;
 
         /// <summary>
         /// Vehicle turn signal input. NONE, LEFT, RIGHT, HAZARD.
@@ -311,18 +317,25 @@ namespace AWSIM
             var groundSlipMultiplier = other.GetComponent<GroudSlipMultiplier>();
             if (groundSlipMultiplier != null)
             {
-                ForwardSlipMultipler = 1;       // Default value is 1 if there is no slip.
+                ForwardSlipMultipler = 1; // Default value is 1 if there is no slip.
                 SidewaySlipMultipler = 1;
             }
         }
 
         void FixedUpdate()
         {
+            // Update the ego position depending on RViz Input.
+            if (WillUpdatePosition)
+            {
+                UpdateEgoPosition();
+                WillUpdatePosition = false;
+            }
+
             // Clamp input values.
             AccelerationInput = Mathf.Clamp(AccelerationInput, -MaxAccelerationInput, MaxAccelerationInput);
             SteerAngleInput = Mathf.Clamp(SteerAngleInput, -MaxSteerAngleInput, MaxSteerAngleInput);
 
-            // Compute vehicle infomation.
+            // Compute vehicle information.
             ComputeVehicleState();
 
             // Update Steering, WheelHit, CancelForceRate of the wheel.
@@ -501,6 +514,24 @@ namespace AWSIM
                 // Update the acceleration output by each wheel.
                 foreach (var wheel in wheels)
                     wheel.UpdateWheelForce(perWheelAcceleration);
+            }
+        }
+
+        private void UpdateEgoPosition()
+        {
+            // Method to update the position based on PositionInput
+            Vector3 rayOrigin = new Vector3(PositionInput.x, 1000.0f, PositionInput.z);
+            Vector3 rayDirection = Vector3.down;
+
+            if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
+            {
+                PositionInput = new Vector3(PositionInput.x, hit.point.y + 1.33f, PositionInput.z);
+                transform.position = PositionInput;
+                transform.rotation = RotationInput;
+            }
+            else
+            {
+                Debug.LogWarning("No mesh or collider detected on target location. Please ensure that the target location is on a mesh or collider.");
             }
         }
     }

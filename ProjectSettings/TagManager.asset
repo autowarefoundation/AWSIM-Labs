@@ -8,6 +8,13 @@ TagManager:
   - BEVTarget
   - BEVCamera
   - Sun
+  - CameraSensor
+  - LidarSensor
+  - GNSSSensor
+  - IMUSensor
+  - PoseSensor
+  - OdometrySensor
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

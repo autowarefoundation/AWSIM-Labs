@@ -17,9 +17,11 @@ namespace AWSIM
         [SerializeField] string ackermannControlCommandTopic = "/control/command/control_cmd";
         [SerializeField] string gearCommandTopic = "/control/command/gear_cmd";
         [SerializeField] string vehicleEmergencyStampedTopic = "/control/command/emergency_cmd";
+        [SerializeField] string positionTopic = "/initialpose";
 
         [SerializeField] QoSSettings qosSettings = new QoSSettings();
         [SerializeField] Vehicle vehicle;
+        [SerializeField] private QoSSettings positionQosInput;
 
         // subscribers.
         ISubscription<autoware_vehicle_msgs.msg.TurnIndicatorsCommand> turnIndicatorsCommandSubscriber;
@@ -27,6 +29,7 @@ namespace AWSIM
         ISubscription<autoware_control_msgs.msg.Control> ackermanControlCommandSubscriber;
         ISubscription<autoware_vehicle_msgs.msg.GearCommand> gearCommandSubscriber;
         ISubscription<tier4_vehicle_msgs.msg.VehicleEmergencyStamped> vehicleEmergencyStampedSubscriber;
+        ISubscription<geometry_msgs.msg.PoseWithCovarianceStamped> positionSubscriber;
 
         // Latest Emergency value.
         // If emergency is true, emergencyDeceleration is applied to the vehicle's deceleration.
@@ -76,6 +79,7 @@ namespace AWSIM
         void Start()
         {
             var qos = qosSettings.GetQoSProfile();
+            var positionQoS = positionQosInput.GetQoSProfile();
 
             turnIndicatorsCommandSubscriber
                 = SimulatorROS2Node.CreateSubscription<autoware_vehicle_msgs.msg.TurnIndicatorsCommand>(
@@ -122,6 +126,24 @@ namespace AWSIM
                         if (isEmergency)
                             vehicle.AccelerationInput = emergencyDeceleration;
                     });
+            positionSubscriber
+                = SimulatorROS2Node.CreateSubscription<geometry_msgs.msg.PoseWithCovarianceStamped>(
+                    positionTopic, msg =>
+                    {
+                        var positionVector = new Vector3((float)msg.Pose.Pose.Position.X,
+                                                         (float)msg.Pose.Pose.Position.Y,
+                                                         (float)msg.Pose.Pose.Position.Z);
+
+                        var rotationVector = new Quaternion((float)msg.Pose.Pose.Orientation.X,
+                                                            (float)msg.Pose.Pose.Orientation.Y,
+                                                            (float)msg.Pose.Pose.Orientation.Z,
+                                                            (float)msg.Pose.Pose.Orientation.W);
+
+                        vehicle.PositionInput = ROS2Utility.RosToUnityPosition(positionVector - Environment.Instance.MgrsOffsetPosition);
+                        vehicle.RotationInput = ROS2Utility.RosToUnityRotation(rotationVector);
+                        vehicle.WillUpdatePosition = true;
+
+                    }, positionQoS);
         }
 
         void OnDestroy()
@@ -131,6 +153,8 @@ namespace AWSIM
             SimulatorROS2Node.RemoveSubscription<autoware_control_msgs.msg.Control>(ackermanControlCommandSubscriber);
             SimulatorROS2Node.RemoveSubscription<autoware_vehicle_msgs.msg.GearCommand>(gearCommandSubscriber);
             SimulatorROS2Node.RemoveSubscription<tier4_vehicle_msgs.msg.VehicleEmergencyStamped>(vehicleEmergencyStampedSubscriber);
+            SimulatorROS2Node.RemoveSubscription<geometry_msgs.msg.PoseWithCovarianceStamped>(positionSubscriber);
+
         }
     }
 }

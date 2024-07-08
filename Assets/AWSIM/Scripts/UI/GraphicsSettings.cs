@@ -18,14 +18,11 @@ namespace AWSIM.Scripts.UI
 
         private readonly List<string> _dropdownOptions = new List<string>
         {
-            "Low",
-            "Medium",
-            "High",
-            "Ultra"
+            "Preset: Low",
+            "Preset: Medium",
+            "Preset: High",
+            "Preset: Ultra"
         };
-
-        // Initialised as true to apply expensive changes on start
-        private bool _doApplyExpensiveChanges = true;
 
         private void Awake()
         {
@@ -48,7 +45,7 @@ namespace AWSIM.Scripts.UI
             InitialQualityLevel();
 
             // Populate dropdown with quality settings
-            _dropdown = GetComponentInChildren<Dropdown>();
+            _dropdown = GetComponent<Dropdown>();
             _dropdown.options.Clear();
             foreach (var option in _dropdownOptions)
             {
@@ -92,26 +89,21 @@ namespace AWSIM.Scripts.UI
             }
         }
 
-        public void ExpensiveChangesToggle(bool value)
-        {
-            _doApplyExpensiveChanges = value;
-        }
-
         public void UISetQuality(int value)
         {
             switch (value)
             {
                 case 0:
-                    GraphicsLowQuality(_doApplyExpensiveChanges);
+                    GraphicsLowQuality(true);
                     break;
                 case 1:
-                    GraphicsMediumQuality(_doApplyExpensiveChanges);
+                    GraphicsMediumQuality(true);
                     break;
                 case 2:
-                    GraphicsHighQuality(_doApplyExpensiveChanges);
+                    GraphicsHighQuality(true);
                     break;
                 case 3:
-                    GraphicsUltraQuality(_doApplyExpensiveChanges);
+                    GraphicsUltraQuality(true);
                     break;
             }
         }
