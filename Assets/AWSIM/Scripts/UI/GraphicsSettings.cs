@@ -15,7 +15,7 @@ namespace AWSIM.Scripts.UI
         private int _gpuMemorySize;
         private int _initialQualityLevel;
         private bool _isInitialised;
-        
+
         private readonly List<string> _dropdownOptions = new()
         {
             "Preset: Low",
@@ -45,7 +45,7 @@ namespace AWSIM.Scripts.UI
             // Populate dropdown with quality settings
             _dropdown = GetComponent<Dropdown>();
             _dropdown.options.Clear();
-       
+
             foreach (var option in _dropdownOptions)
             {
                 _dropdown.options.Add(new Dropdown.OptionData(option));
