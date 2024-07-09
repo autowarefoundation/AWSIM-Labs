@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1911152051}
-  m_IndirectSpecularColor: {r: 0.17507917, g: 0.21649955, b: 0.2725915, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1105,9 +1104,9 @@ RectTransform:
   - {fileID: 598773923}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.25, y: -80}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &129670042
@@ -1455,18 +1454,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5709321372887088733, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5709321372887088733, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_RequiresDepthTextureOption
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5709321372887088733, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_RequiresOpaqueTextureOption
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6330550836434274604, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_TagString
       value: GNSSSensor
@@ -1498,7 +1485,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 878625424}
   m_SourcePrefab: {fileID: 100100000, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
 --- !u!1 &175319273
 GameObject:
@@ -3977,6 +3967,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840866494}
   m_CullTransparentMesh: 1
+--- !u!1 &878625416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+  m_PrefabInstance: {fileID: 161822142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1542919678 &878625424
+StreamingController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878625416}
+  m_Enabled: 1
+  m_StreamingMipmapBias: 1
 --- !u!1 &884902995
 GameObject:
   m_ObjectHideFlags: 0
@@ -5351,9 +5355,9 @@ RectTransform:
   - {fileID: 1317468420}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.25, y: -230}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1194537306
@@ -6422,9 +6426,9 @@ RectTransform:
   - {fileID: 1021800942}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.25, y: -345}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1427845714
@@ -7514,8 +7518,8 @@ RectTransform:
   - {fileID: 4359775064103456631}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 96.25, y: 0}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
