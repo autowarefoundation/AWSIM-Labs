@@ -18,6 +18,7 @@ namespace AWSIM.Scripts.UI.Toggle
 
         public void Activate()
         {
+            enabled = true;
             Start();
         }
 

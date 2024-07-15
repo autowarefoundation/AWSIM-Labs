@@ -20,6 +20,7 @@ namespace AWSIM.Scripts.UI
 
         public void Activate()
         {
+            enabled = true;
             if (cameraOutputCanvas == null)
             {
                 UICameraOutputCanvas uiCameraOutputCanvas = GameObject.FindObjectOfType<UICameraOutputCanvas>();

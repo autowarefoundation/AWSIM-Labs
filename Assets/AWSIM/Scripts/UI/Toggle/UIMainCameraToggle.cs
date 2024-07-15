@@ -9,7 +9,7 @@ namespace AWSIM.Scripts.UI.Toggle
         private UnityEngine.UI.Toggle _toggle;
         private Image _mainCanvasImage;
 
-        public void Activate()
+        private void Start()
         {
             // Get components
             _mainCam = Camera.main;
@@ -17,6 +17,12 @@ namespace AWSIM.Scripts.UI.Toggle
             _toggle = GetComponent<UnityEngine.UI.Toggle>();
             if (_mainCam != null) _toggle.isOn = _mainCam.enabled;
             _toggle.onValueChanged.AddListener(ToggleMainCamera);
+        }
+
+        public void Activate()
+        {
+            enabled = true;
+            Start();
         }
 
         // Simple toggle for main camera

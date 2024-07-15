@@ -29,6 +29,7 @@ namespace AWSIM.Scripts.UI
 
         public void Activate()
         {
+            enabled = true;
             Start();
         }
 
