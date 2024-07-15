@@ -51,7 +51,8 @@ namespace AWSIM.Loader
 
             // Set Ego position manager
             Scripts.UI.EgoVehiclePositionManager positionManager = GameObject.FindObjectOfType<Scripts.UI.EgoVehiclePositionManager>();
-            positionManager.InitializeEgoTransform(ego.transform);
+            positionManager.EgoTransform = ego.transform;
+            positionManager.Activate();
 
             // Set scene time scale
             DemoUI demoUi = GameObject.FindObjectOfType<DemoUI>();
