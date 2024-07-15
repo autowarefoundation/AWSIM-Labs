@@ -9,14 +9,14 @@ namespace AWSIM.Scripts.UI
     public class GraphicsSettings : MonoBehaviour
     {
         private Dropdown _dropdown;
-        private Light _sunSource;
         private List<GameObject> _cameraObjectsList;
+        private Light _sunSource;
 
         private int _gpuMemorySize;
-        private bool _isInitialised;
         private int _initialQualityLevel;
+        private bool _isInitialised;
 
-        private readonly List<string> _dropdownOptions = new List<string>
+        private readonly List<string> _dropdownOptions = new()
         {
             "Preset: Low",
             "Preset: Medium",
@@ -26,7 +26,6 @@ namespace AWSIM.Scripts.UI
 
         private void Awake()
         {
-            // Get the size of the device's graphics memory
             _gpuMemorySize = SystemInfo.graphicsMemorySize;
         }
 
@@ -38,7 +37,6 @@ namespace AWSIM.Scripts.UI
                 Camera.main?.gameObject,
                 GameObject.FindGameObjectWithTag("BEVCamera")
             };
-
             _sunSource = GameObject.FindGameObjectWithTag("Sun").GetComponent<Light>();
 
             // Set initial quality level
@@ -47,6 +45,7 @@ namespace AWSIM.Scripts.UI
             // Populate dropdown with quality settings
             _dropdown = GetComponent<Dropdown>();
             _dropdown.options.Clear();
+
             foreach (var option in _dropdownOptions)
             {
                 _dropdown.options.Add(new Dropdown.OptionData(option));
@@ -182,7 +181,7 @@ namespace AWSIM.Scripts.UI
                 var cameraVolumeProfile = cameraVolume.profile;
 
                 cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                cameraData.antialiasingQuality = AntialiasingQuality.Medium;
+                cameraData.antialiasingQuality = AntialiasingQuality.High;
                 cameraData.renderPostProcessing = true;
                 cameraData.renderShadows = true;
                 cameraData.allowHDROutput = true;
@@ -240,9 +239,7 @@ namespace AWSIM.Scripts.UI
             _sunSource.shadows = LightShadows.Soft;
         }
 
-        // TODO: update settings based on user input
-        private void CustomAssetProperties()
-        {
-        }
+        // TODO: custom user settings (mozzz)
+        // private void CustomAssetProperties(){}
     }
 }

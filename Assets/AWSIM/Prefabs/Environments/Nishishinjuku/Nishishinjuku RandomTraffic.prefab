@@ -29714,7 +29714,6 @@ MonoBehaviour:
   - {fileID: 9027057599395583384}
   - {fileID: 9027057600283134540}
   - {fileID: 9027057599242502756}
-  - {fileID: 0}
   stopLine: {fileID: 0}
   speedLimit: 13.888889
   intersectionLane: 1
@@ -32249,7 +32248,6 @@ MonoBehaviour:
   - {fileID: 9027057599395583384}
   - {fileID: 9027057600283134540}
   - {fileID: 9027057599242502756}
-  - {fileID: 0}
   stopLine: {fileID: 0}
   speedLimit: 13.888889
   intersectionLane: 1
@@ -41261,7 +41259,6 @@ MonoBehaviour:
   - {fileID: 9027057599395583384}
   - {fileID: 9027057600283134540}
   - {fileID: 9027057599242502756}
-  - {fileID: 0}
   stopLine: {fileID: 0}
   speedLimit: 13.888889
   intersectionLane: 1
@@ -54035,7 +54032,6 @@ MonoBehaviour:
   - {fileID: 9027057599395583384}
   - {fileID: 9027057600283134540}
   - {fileID: 9027057599242502756}
-  - {fileID: 0}
   stopLine: {fileID: 0}
   speedLimit: 13.888889
   intersectionLane: 1

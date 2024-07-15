@@ -71,3 +71,7 @@ crashlytics-build.properties
 
 # JetBrains
 .idea/
+
+ProjectSettings/CommonBurstAotSettings.json
+
+ProjectSettings/BurstAotSettings_StandaloneLinux64.json
