@@ -11,11 +11,16 @@ namespace AWSIM.Scripts.UI.Toggle
         private TrafficControlManager trafficControlManager;
         private Image image;
 
-        public void Activate()
+        private void Start()
         {
             image = GetComponent<Image>();
             trafficControlManager = FindObjectOfType<TrafficControlManager>();
             trafficControlManager.TrafficVisibilityToggleEvent.AddListener(OnStatusChangeUpdateImage);
+        }
+
+        public void Activate()
+        {
+            Start();
         }
 
         private void OnStatusChangeUpdateImage(bool isToggled)

@@ -34,7 +34,7 @@ namespace AWSIM.Scripts.UI
 
         private Vector3 _initialMousePosition;
 
-        public void Activate()
+        private void Start()
         {
             // Find the camera follow target
             _willFollowEgo = true;
@@ -52,6 +52,11 @@ namespace AWSIM.Scripts.UI
             // Initialize the BEV camera
             _birdEyeCamera = InitializeBirdEyeCamera();
             _birdEyeCamera.enabled = false;
+        }
+
+        public void Activate()
+        {
+            Start();
         }
 
         private void Update()

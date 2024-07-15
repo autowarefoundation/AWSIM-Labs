@@ -30,7 +30,7 @@ namespace AWSIM.Scripts.UI
             _gpuMemorySize = SystemInfo.graphicsMemorySize;
         }
 
-        public void Activate()
+        private void Start()
         {
             // Populate list of cameras. Don't include sensor cameras
             _cameraObjectsList = new List<GameObject>
@@ -54,6 +54,11 @@ namespace AWSIM.Scripts.UI
 
             _dropdown.value = _initialQualityLevel;
             _dropdown.RefreshShownValue();
+        }
+
+        public void Activate()
+        {
+            Start();
         }
 
         private void InitialQualityLevel()

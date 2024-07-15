@@ -35,7 +35,7 @@ namespace AWSIM.Scripts.UI
         private GameObject _togglesPanel;
         private bool _uiTabReady;
 
-        public void Activate()
+        private void Start()
         {
             // Build sensor list based on user preference
             if (!_buildSensorListManually)
@@ -56,6 +56,12 @@ namespace AWSIM.Scripts.UI
 
             // Setup the UI card
             SetupUICard(_uiCard);
+        }
+
+        public void Activate()
+        {
+            Start();
+            _uiCard.RecalculateTabBackgroundHeight();
         }
 
         private void Update()

@@ -21,10 +21,15 @@ namespace AWSIM.Scripts.UI
         public int SeedInput;
         public int TargetVehicleCount;
 
-        public void Activate()
+        private void Start()
         {
             TrafficPlayToggleEvent ??= new TrafficPlayToggleEvent();
             TrafficVisibilityToggleEvent ??= new TrafficVisibilityToggleEvent();
+        }
+
+        public void Activate()
+        {
+            Start();
         }
 
         public void TrafficManagerPlayToggle()

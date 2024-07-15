@@ -12,12 +12,17 @@ namespace AWSIM.Scripts.UI
         private TrafficControlManager _trafficControlManager;
         private Slider _trafficTargetVehicleCountSlider;
 
-        public void Activate()
+        private void Start()
         {
             _trafficTargetVehicleCountSlider = GetComponent<Slider>();
             _trafficControlManager = FindObjectOfType<TrafficControlManager>();
 
             InitializeSlider();
+        }
+
+        public void Activate()
+        {
+            Start();
         }
 
         public void TrafficManagerSetTargetVehicleCount()

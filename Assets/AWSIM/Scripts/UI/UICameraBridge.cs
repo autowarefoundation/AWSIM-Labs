@@ -13,6 +13,11 @@ namespace AWSIM.Scripts.UI
         private RawImage rawImage;
         private AspectRatioFitter aspectRatioFitter;
 
+        private void Start()
+        {
+            SetupCameraOutput();
+        }
+
         public void Activate()
         {
             if (cameraOutputCanvas == null)
@@ -20,7 +25,7 @@ namespace AWSIM.Scripts.UI
                 UICameraOutputCanvas uiCameraOutputCanvas = GameObject.FindObjectOfType<UICameraOutputCanvas>();
                 cameraOutputCanvas = uiCameraOutputCanvas.GetComponent<Canvas>();
             }
-            SetupCameraOutput();
+            Start();
         }
 
         private void SetupCameraOutput()
