@@ -35,7 +35,7 @@ namespace AWSIM.Scripts.UI
         private GameObject _togglesPanel;
         private bool _uiTabReady;
 
-        private void Start()
+        public void Activate()
         {
             // Build sensor list based on user preference
             if (!_buildSensorListManually)

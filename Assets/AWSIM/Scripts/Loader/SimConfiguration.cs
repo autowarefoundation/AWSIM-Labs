@@ -77,6 +77,15 @@ namespace AWSIM.Loader
             BirdEyeView birdEyeView = GameObject.FindObjectOfType<BirdEyeView>();
             birdEyeView.Activate();
 
+            GraphicsSettings graphicsSettings = GameObject.FindObjectOfType<GraphicsSettings>();
+            graphicsSettings.Activate();
+
+            UISensorInteractionPanel uiSensorInteractionPanel = GameObject.FindObjectOfType<UISensorInteractionPanel>();
+            uiSensorInteractionPanel.Activate();
+
+            UICameraBridge uiCameraBridge = GameObject.FindObjectOfType<UICameraBridge>();
+            uiCameraBridge.Activate();
+
             // Set traffic on/off
             var trafficSims = GameObject.FindObjectsOfType<TrafficSimulation.TrafficManager>();
             foreach (var trafficSim in trafficSims)

@@ -1467,18 +1467,6 @@ PrefabInstance:
       value: IMUSensor
       objectReference: {fileID: 0}
     - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: height
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: startXOffset
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: startYOffset
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: cameraOutputCanvas
       value: 
       objectReference: {fileID: 939690763}

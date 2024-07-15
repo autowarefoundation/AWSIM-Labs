@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -29,7 +30,7 @@ namespace AWSIM.Scripts.UI
             _gpuMemorySize = SystemInfo.graphicsMemorySize;
         }
 
-        private void Start()
+        public void Activate()
         {
             // Populate list of cameras. Don't include sensor cameras
             _cameraObjectsList = new List<GameObject>
