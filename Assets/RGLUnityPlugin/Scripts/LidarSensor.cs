@@ -218,6 +218,11 @@ namespace RGLUnityPlugin
         public void OnEnable()
         {
             activeSensors.Add(this);
+            // Sync LidarSimulationTimer with the active sensors
+            if (activeSensors.Count > 0)
+            {
+                this.timer = activeSensors[0].timer;
+            }
         }
 
         public void OnDisable()

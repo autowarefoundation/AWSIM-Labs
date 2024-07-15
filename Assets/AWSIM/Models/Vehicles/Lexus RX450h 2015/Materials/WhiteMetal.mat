@@ -27,7 +27,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _SPECULARHIGHLIGHTS_OFF
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -199,7 +199,7 @@ Material:
     - SSSFresnelPower: 4
     - SSSIntensity: 1
     - SSSPower: 1
-    - Smoothness_Multiplier: 1
+    - Smoothness_Multiplier: 0.8
     - Voronoi_Max: 0.8
     - Voronoi_Min: 0.3
     - _AORemapMax: 1
@@ -335,11 +335,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - Coat_Mask_Smoothnes_0_1: {r: 1, g: 1, b: 0, a: 0}
-    - Color_1: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+    - Coat_Mask_Smoothnes_0_1: {r: 0.5, g: 0.75, b: 0, a: 0}
+    - Color_1: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     - Color_2: {r: 1, g: 1, b: 1, a: 1}
     - SSSColor: {r: 1, g: 1, b: 1, a: 1}
-    - Voronoi_Min_Max: {r: 0.3, g: 0.8, b: 0, a: 0}
+    - Voronoi_Min_Max: {r: 0.25, g: 0.5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
