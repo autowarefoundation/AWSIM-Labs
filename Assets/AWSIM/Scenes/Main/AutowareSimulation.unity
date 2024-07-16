@@ -1633,7 +1633,7 @@ MonoBehaviour:
   - {fileID: 536101250511469494, guid: 433e715a84edbae418fe585f802f3918, type: 3}
   npcBusPrefabs:
   - {fileID: 6850358619771218631, guid: 9bc315af95865dd4bbf4a8f716791609, type: 3}
-  npcPedestrianParent: {fileID: 0}
+  npcPedestrianParent: {fileID: 1822423795}
   npcVehicleParent: {fileID: 10387859}
   despawnTime: 20
 --- !u!1 &221280047
@@ -7816,6 +7816,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814292294}
   m_CullTransparentMesh: 1
+--- !u!4 &1822423795 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1041813114, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
+  m_PrefabInstance: {fileID: 10387858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826199770
 GameObject:
   m_ObjectHideFlags: 0
