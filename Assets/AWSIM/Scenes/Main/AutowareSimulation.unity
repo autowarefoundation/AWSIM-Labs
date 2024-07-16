@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1911152051}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -247,6 +248,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
+--- !u!4 &10387859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9027057600357292003, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
+  m_PrefabInstance: {fileID: 10387858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &12639409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,9 +1110,9 @@ RectTransform:
   - {fileID: 598773923}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96.25, y: -80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 96.25, y: 0}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &129670042
@@ -1574,6 +1580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 203643521}
+  - component: {fileID: 203643522}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -1600,6 +1607,35 @@ Transform:
   - {fileID: 113080103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203643522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203643520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134fb5ad0cefe76c8895739ca367180b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dummyPerceptionTopic: /simulation/dummy_perception_publisher/object_info
+  qosSettings:
+    ReliabilityPolicy: 0
+    DurabilityPolicy: 0
+    HistoryPolicy: 0
+    Depth: 0
+  npcPedestrianPrefab: {fileID: 500668027104458449, guid: 27e8a3736efefa447b1f65b33b30908a, type: 3}
+  npcCarPrefabs:
+  - {fileID: 6604874415271597525, guid: 7e772e9ad7eb79040be629d8d04542ab, type: 3}
+  - {fileID: 3333523281254186578, guid: 589cf2e451adab34eb1332da5701195a, type: 3}
+  - {fileID: 714549001370495616, guid: d0094c5a0e9fb6148873c658dbc61a89, type: 3}
+  - {fileID: 536101250511469494, guid: 433e715a84edbae418fe585f802f3918, type: 3}
+  npcBusPrefabs:
+  - {fileID: 6850358619771218631, guid: 9bc315af95865dd4bbf4a8f716791609, type: 3}
+  npcPedestrianParent: {fileID: 0}
+  npcVehicleParent: {fileID: 10387859}
+  despawnTime: 20
 --- !u!1 &221280047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,9 +5391,9 @@ RectTransform:
   - {fileID: 1317468420}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96.25, y: -230}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 96.25, y: 0}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1194537306
@@ -6426,9 +6462,9 @@ RectTransform:
   - {fileID: 1021800942}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96.25, y: -345}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 96.25, y: 0}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1427845714
@@ -7518,8 +7554,8 @@ RectTransform:
   - {fileID: 4359775064103456631}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 96.25, y: 0}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}

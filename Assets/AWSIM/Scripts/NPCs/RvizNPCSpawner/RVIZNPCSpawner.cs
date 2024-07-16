@@ -27,7 +27,7 @@ namespace AWSIM
         [Header("NPC Config")]
         public Transform npcPedestrianParent;
         public Transform npcVehicleParent;
-        [SerializeField] float despawnTime;
+        [SerializeField] float despawnTime = 30;
     
         private bool _willSpawnNpc = false;
         private bool _willDespawnAllNPCs = false;
