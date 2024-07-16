@@ -23,12 +23,12 @@ namespace AWSIM
         [SerializeField] GameObject npcPedestrianPrefab;
         [SerializeField] GameObject[] npcCarPrefabs;
         [SerializeField] GameObject[] npcBusPrefabs;
-        
+
         [Header("NPC Config")]
         public Transform npcPedestrianParent;
         public Transform npcVehicleParent;
         [SerializeField] float despawnTime = 30;
-    
+
         private bool _willSpawnNpc = false;
         private bool _willDespawnAllNPCs = false;
         private int _npcLabel;
@@ -36,10 +36,10 @@ namespace AWSIM
         private Quaternion _npcSpawnRotation;
         private Vector3 _npcSpawnPosition;
         private List<GameObject> _spawnedNPCs = new List<GameObject>();
-        
+
         // Subscriber
         ISubscription<dummy_perception_publisher.msg.Object> dummyPerceptionSubscriber;
-        
+
         void Start()
         {
             // Initialize the ROS2 node and create the subscription
@@ -47,9 +47,11 @@ namespace AWSIM
                 = SimulatorROS2Node.CreateSubscription<dummy_perception_publisher.msg.Object>(
                         dummyPerceptionTopic, OnObjectInfoReceived, qosSettings.GetQoSProfile());
         }
-        
-        private void FixedUpdate(){
-            if(_willSpawnNpc){
+
+        private void FixedUpdate()
+        {
+            if (_willSpawnNpc)
+            {
                 // check where the ground collider is and spawn the NPC above the ground
                 Vector3 rayOrigin = new Vector3(_npcSpawnPosition.x, 1000.0f, _npcSpawnPosition.z);
                 Vector3 rayDirection = Vector3.down;
@@ -57,9 +59,12 @@ namespace AWSIM
                 if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
                 {
                     _npcSpawnPosition = new Vector3(_npcSpawnPosition.x, hit.point.y + 1.33f, _npcSpawnPosition.z);
-                    if(_npcLabel==7){
+                    if (_npcLabel == 7)
+                    {
                         SpawnPedestrians(_npcSpawnPosition, _npcSpawnRotation);
-                    }else{
+                    }
+                    else
+                    {
                         SpawnVehicles(_npcSpawnPosition, _npcSpawnRotation, _npcLabel);
                     }
                 }
@@ -71,7 +76,8 @@ namespace AWSIM
                 _willSpawnNpc = false;
             }
 
-            if(_willDespawnAllNPCs){
+            if (_willDespawnAllNPCs)
+            {
                 DespawnAllNPCs();
                 _willDespawnAllNPCs = false;
             }
@@ -83,7 +89,8 @@ namespace AWSIM
         /// <param name="msg">Received Object message</param>
         void OnObjectInfoReceived(dummy_perception_publisher.msg.Object msg)
         {
-            if(msg.Classification.Label==0){
+            if (msg.Classification.Label == 0)
+            {
                 // despawn all the rviz NPCs
                 Debug.Log("delete spawned NPCs");
                 _willDespawnAllNPCs = true;
@@ -99,14 +106,15 @@ namespace AWSIM
         /// <summary>
         /// Method to spawn NPC Pedestrians
         /// </summary>
-        private void SpawnPedestrians(Vector3 spawnPoint, Quaternion spawnOrientation){
-            GameObject npcPedestrian = Instantiate(npcPedestrianPrefab, new Vector3(spawnPoint.x,spawnPoint.y,spawnPoint.z), spawnOrientation,npcPedestrianParent);
+        private void SpawnPedestrians(Vector3 spawnPoint, Quaternion spawnOrientation)
+        {
+            GameObject npcPedestrian = Instantiate(npcPedestrianPrefab, new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z), spawnOrientation, npcPedestrianParent);
             SimplePedestrianWalkerController walker = npcPedestrian.AddComponent<SimplePedestrianWalkerController>();
             _spawnedNPCs.Add(npcPedestrian);
 
             walker.GetType().GetField("duration", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, 30);
             walker.GetType().GetField("speed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, 1);
-            StartCoroutine(DespawnNPC(npcPedestrian, despawnTime)); 
+            StartCoroutine(DespawnNPC(npcPedestrian, despawnTime));
         }
 
         /// <summary>
@@ -114,12 +122,13 @@ namespace AWSIM
         /// </summary>
         private void SpawnVehicles(Vector3 spawnPoint, Quaternion spawnOrientation, int vehicleType)
         {
-            GameObject vehiclePrefab = npcCarPrefabs[Random.Range(0, npcCarPrefabs.Length-1)];
-            if(vehicleType==3){
+            GameObject vehiclePrefab = npcCarPrefabs[Random.Range(0, npcCarPrefabs.Length - 1)];
+            if (vehicleType == 3)
+            {
                 vehiclePrefab = npcBusPrefabs[Random.Range(0, npcBusPrefabs.Length)];
             }
 
-            GameObject npcVehicle = Instantiate(vehiclePrefab, new Vector3(spawnPoint.x,spawnPoint.y,spawnPoint.z), spawnOrientation,npcVehicleParent);
+            GameObject npcVehicle = Instantiate(vehiclePrefab, new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z), spawnOrientation, npcVehicleParent);
             _spawnedNPCs.Add(npcVehicle);
 
             SetNPCLayer(npcVehicle, NPC_LAYER);
@@ -128,7 +137,7 @@ namespace AWSIM
             NPCMovement npcMovement = npcVehicle.AddComponent<NPCMovement>();
             npcMovement.Initialize(_npcVelocity);
 
-            StartCoroutine(DespawnNPC(npcVehicle, despawnTime)); 
+            StartCoroutine(DespawnNPC(npcVehicle, despawnTime));
         }
 
         /// <summary>
