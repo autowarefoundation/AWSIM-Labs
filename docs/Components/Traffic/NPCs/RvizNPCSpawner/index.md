@@ -11,7 +11,7 @@ You can change the configuration of the NPCs in the `RVIZNPCSpawner` component i
 
 ## Spawning NPCs from Autoware
 - Open up Autoware.
-- Click the `2D Dummy Car` or `2D Dummy Pedestrian` button in the toolbar.  
+- Click the `2D Dummy Car`,`2D Dummy Bus` or `2D Dummy Pedestrian` button in the toolbar.  
     ![alt text](image-1.png)
 - Set the pose of the dummy object by clicking and dragging on the map.
   ![alt text](spawnPedestrian.gif)
