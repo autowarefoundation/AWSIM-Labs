@@ -162,6 +162,7 @@ nav:
         - Yielding Rules: Components/Traffic/RandomTraffic/YieldingRules/index.md
         - Add Random Traffic Environment: Components/Traffic/RandomTraffic/AddRandomTrafficEnvironment/index.md
       - NPCs:
+        - Spawn NPCs from RVIZ: Components/Traffic/NPCs/RvizNPCSpawner/index.md
         - Pedestrian: Components/Traffic/NPCs/Pedestrian/index.md
         - Vehicle: Components/Traffic/NPCs/Vehicle/index.md
     - ROS2:
