@@ -14,6 +14,6 @@ You can change the configuration of the NPCs in the `RVIZNPCSpawner` component i
 - Click the `2D Dummy Car`,`2D Dummy Bus` or `2D Dummy Pedestrian` button in the toolbar.  
     ![alt text](image-1.png)
 - Set the pose of the dummy object by clicking and dragging on the map.
-  ![alt text](spawnPedestrian.gif)
+    ![alt text](spawnPedestrian.gif)
 - Set the velocity of the object in `Tool Properties` -> `2D Dummy Car/Pedestrian panel`.
-  ![alt text](image-2.png)
+    ![alt text](image-2.png)
