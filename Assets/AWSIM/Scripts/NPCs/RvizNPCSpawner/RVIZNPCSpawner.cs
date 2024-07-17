@@ -113,7 +113,7 @@ namespace AWSIM
             _spawnedNPCs.Add(npcPedestrian);
 
             walker.GetType().GetField("duration", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, 30);
-            walker.GetType().GetField("speed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, 1);
+            walker.GetType().GetField("speed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, _npcVelocity);
             StartCoroutine(DespawnNPC(npcPedestrian, despawnTime));
         }
 
