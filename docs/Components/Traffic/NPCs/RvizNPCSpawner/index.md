@@ -26,6 +26,7 @@ You can change the configuration of the NPCs in the `RVIZNPCSpawner` component i
   ![alt text](spawnPedestrian.gif)
 
 4. Set the velocity of the object in `Tool Properties` -> `2D Dummy Car/Pedestrian panel`.
+
   ![alt text](toolsprop.png)
 
 5. NPCs will not be spawned if the you try to place them outside the map.
