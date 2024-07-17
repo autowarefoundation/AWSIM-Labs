@@ -8,7 +8,6 @@ You can change the configuration of the NPCs in the `RVIZNPCSpawner` component i
 - Then, select the `parent objects` under which the Pedestrians or Vehicles will be spawned.
 - Finally, adjust the `Despawn time` to destroy the NPCs after a delay.
     ![alt text](image.png)
-
 ## Spawning NPCs from Autoware
 - Open up Autoware.
 - Click the `2D Dummy Car`,`2D Dummy Bus` or `2D Dummy Pedestrian` button in the toolbar.  
