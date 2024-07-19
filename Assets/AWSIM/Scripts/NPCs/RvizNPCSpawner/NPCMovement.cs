@@ -5,6 +5,12 @@ using UnityEngine;
 public class NPCMovement : MonoBehaviour
 {
     private float velocity = 0;
+    Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     public void Initialize(float velocity)
     {
@@ -13,7 +19,7 @@ public class NPCMovement : MonoBehaviour
 
     void Update()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
