@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1911152051}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1110,9 +1109,9 @@ RectTransform:
   - {fileID: 598773923}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.25, y: -80}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &129670042
@@ -1734,8 +1733,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743169424}
   m_HandleRect: {fileID: 1743169422}
   m_Direction: 2
-  m_Value: 0.9999677
-  m_Size: 0.9316092
+  m_Value: 0.999977
+  m_Size: 0.904023
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4261,7 +4260,7 @@ GameObject:
   - component: {fileID: 939690761}
   m_Layer: 5
   m_Name: CameraOutputCanvas
-  m_TagString: Untagged
+  m_TagString: CameraOutputCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5391,9 +5390,9 @@ RectTransform:
   - {fileID: 1317468420}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.25, y: -230}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1194537306
@@ -6462,9 +6461,9 @@ RectTransform:
   - {fileID: 1021800942}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.25, y: -345}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1427845714
@@ -7554,8 +7553,8 @@ RectTransform:
   - {fileID: 4359775064103456631}
   m_Father: {fileID: 2100303025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 96.25, y: 0}
   m_SizeDelta: {x: 192.5, y: 0}
   m_Pivot: {x: 0.5, y: 1}
