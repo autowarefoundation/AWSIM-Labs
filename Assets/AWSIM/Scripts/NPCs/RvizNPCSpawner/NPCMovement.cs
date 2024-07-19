@@ -6,7 +6,8 @@ public class NPCMovement : MonoBehaviour
 {
     private float velocity = 0;
     Rigidbody rb;
-
+    Vector3 forwardMovement;
+    Vector3 currentVelocity;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,8 +24,8 @@ public class NPCMovement : MonoBehaviour
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-            Vector3 forwardMovement = transform.forward * velocity;
-            Vector3 currentVelocity = rb.velocity;
+            forwardMovement = transform.forward * velocity;
+            currentVelocity = rb.velocity;
             rb.velocity = new Vector3(forwardMovement.x, rb.velocity.y, forwardMovement.z);
         }
     }
