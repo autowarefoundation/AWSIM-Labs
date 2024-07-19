@@ -1,10 +1,10 @@
-# Running AWSIM from Unity Editor with `scenario_simulator_v2`
+# Running AWSIM Labs from Unity Editor with `scenario_simulator_v2`
 
-Below you can find instructions on how to setup the scenario execution using `scenario_simulator_v2` with AWSIM run from Unity Editor as a simulator
+Below you can find instructions on how to setup the scenario execution using `scenario_simulator_v2` with AWSIM Labs run from Unity Editor as a simulator
 The instruction assumes using the Ubuntu OS.
 
 ## Prerequisites
-1. Build Autoware by following ["Build Autoware with `scenario_simulator_v2`" section from the scenario simulator and AWSIM quick start guide](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/UsingOpenSCENARIO)
+1. Build Autoware by following ["Build Autoware with `scenario_simulator_v2`" section from the scenario simulator and AWSIM Labs quick start guide](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/UsingOpenSCENARIO)
 
 2. Follow [Setup Unity Project tutorial](../../../GettingStarted/SetupUnityProject/index.md)
 
@@ -16,15 +16,12 @@ The instruction assumes using the Ubuntu OS.
    ```
    source install/setup.bash
    ros2 launch scenario_test_runner scenario_test_runner.launch.py                        \
-   architecture_type:=awf/universe  record:=false                                         \
+   architecture_type:=awf/universe/20240605  record:=false                                         \
    scenario:='$(find-pkg-share scenario_test_runner)/scenario/sample_awsim.yaml'          \
-   sensor_model:=awsim_sensor_kit  vehicle_model:=sample_vehicle                          \
+   sensor_model:=awsim_labs_sensor_kit  vehicle_model:=sample_vehicle                          \
    launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml" \
    initialize_duration:=260 port:=8080
    ```
-
-   ![ss2_awsim.png](ss2_awsim.png)
-
 ## Other sample scenarios
 
 ### Conventional traffic lights demo
@@ -33,9 +30,9 @@ This scenario controls traffic signals in the scene based on OpenSCENARIO. It ca
 
 ```
 ros2 launch scenario_test_runner scenario_test_runner.launch.py                                           \
-architecture_type:=awf/universe  record:=false                                                            \
+architecture_type:=awf/universe/20240605  record:=false                                                            \
 scenario:='$(find-pkg-share scenario_test_runner)/scenario/sample_awsim_conventional_traffic_lights.yaml' \
-sensor_model:=awsim_sensor_kit  vehicle_model:=sample_vehicle                                             \
+sensor_model:=awsim_labs_sensor_kit  vehicle_model:=sample_vehicle                                             \
 launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml"                    \
 initialize_duration:=260 port:=8080
 ```
@@ -46,9 +43,9 @@ This scenario publishes V2I traffic signals information based on OpenSCENARIO. I
 
 ```
 ros2 launch scenario_test_runner scenario_test_runner.launch.py                                  \
-architecture_type:=awf/universe  record:=false                                                   \
+architecture_type:=awf/universe/20240605  record:=false                                                   \
 scenario:='$(find-pkg-share scenario_test_runner)/scenario/sample_awsim_v2i_traffic_lights.yaml' \
-sensor_model:=awsim_sensor_kit  vehicle_model:=sample_vehicle                                    \
+sensor_model:=awsim_labs_sensor_kit  vehicle_model:=sample_vehicle                                    \
 launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml"           \
 initialize_duration:=260 port:=8080
 ```

@@ -15,6 +15,7 @@ TagManager:
   - PoseSensor
   - OdometrySensor
   - MainCanvas
+  - CameraOutputCanvas
   layers:
   - Default
   - TransparentFX

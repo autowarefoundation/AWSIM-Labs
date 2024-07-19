@@ -8,7 +8,7 @@ However, first [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/La
     If you want to learn more about the *Environment* at *AWSIM*, please visit [this page](../../../../Components/Environment/AWSIMEnvironment/).
 
 ## Create a *Lanelet2*
-Before you start creating *Lanelet2*, we encourage you to read the [documentation](https://github.com/fzi-forschungszentrum-informatik/Lanelet2/tree/master) to find out what *Lanelet2* is all about. *Lanelet2* can be created using [*VectorMapBuilder*](https://tools.tier4.jp/feature/vector_map_builder/) (`VMP`) based on the *PCD* obtained from real-life *LiDAR* sensor.
+Before you start creating *Lanelet2*, we encourage you to read the [documentation](https://github.com/fzi-forschungszentrum-informatik/Lanelet2/tree/master) to find out what *Lanelet2* is all about. *Lanelet2* can be created using [*VectorMapBuilder*](https://tools.tier4.jp/vector_map_builder_ll2/) (`VMP`) based on the *PCD* obtained from real-life *LiDAR* sensor.
 
 When working with the `VMP`, it is necessary to ensure the most accurate mapping of the road situation using the available elements.
 Especially important are `TrafficLanes` created in `VMB` as connected `Road Nodes` and `StopLines` created in VMB as `Road Surface Stoplines`.

@@ -94,10 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0883c4f62730bd4c90ee9fc4a26c0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOutputCanvas: {fileID: 0}
-  startXOffset: 0
-  startYOffset: 0
-  height: 0
+  startXOffset: 320
+  startYOffset: 180
+  height: 360
 --- !u!1 &8949463558098794085
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,9 +219,9 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
