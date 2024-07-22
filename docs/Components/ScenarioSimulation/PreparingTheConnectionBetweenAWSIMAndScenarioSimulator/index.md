@@ -103,7 +103,7 @@ If those features are curcial for the scenario's execution, the scenario might n
 
   ![entities.png](entities.png)
 
-7. Add TimeSourceSelector prefab to the scene - located in `Assets/AWSIM-Labs/Scripts/Clock/Prefabs`
+7. Add TimeSourceSelector prefab to the scene - located in `Assets/AWSIM/Scripts/Clock/Prefabs`
 
   ![scene_tree_time_selector.png](scene_tree_time_selector.png)
 
