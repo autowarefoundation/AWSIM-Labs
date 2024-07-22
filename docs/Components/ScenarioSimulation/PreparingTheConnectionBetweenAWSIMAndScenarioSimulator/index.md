@@ -88,22 +88,13 @@ If those features are curcial for the scenario's execution, the scenario might n
 
 1. Disable or remove random traffic and any pre-spawned NPCs
 2. Disable or remove V2I traffic lights publishing
-3. Disable or remove the clock publisher 
-
+3. Disable or remove the clock publisher
 ![removed_objects.png](removed_objects.png)
-
 4. Add `ScenarioSimulatorConnector` prefab to the scene - located in `Assets/ScenarioSimulatorConnector`
-
    ![scene_tree.png](scene_tree.png)
-
-5. If necessary update the asset_id to prefab mapping - key in the map can be used in the scenario 
-
+5. If necessary update the asset_id to prefab mapping - key in the map can be used in the scenario
    ![entities.png](entities.png)
-
-6. Add TimeSourceSelector prefab to the scene - located in `Assets/AWSIM/Scripts/Clock/Prefabs` 
-
+6. Add TimeSourceSelector prefab to the scene - located in `Assets/AWSIM/Scripts/Clock/Prefabs`
    ![scene_tree_time_selector.png](scene_tree_time_selector.png)
-
-7. Configure Type in the TimeSourceSelector component to SS2 
-
+7. Configure Type in the TimeSourceSelector component to SS2
    ![time_selector_ss2.png](time_selector_ss2.png)
