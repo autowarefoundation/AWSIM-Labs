@@ -1,6 +1,7 @@
 # Preparing the connection between AWSIM and scenario_simulator_v2
 
-This tutorial describes:
+This tutorial describes
+
 * how to modify scenario to work with AWSIM Labs
 * how to prepare the AWSIM Labs scene to work with `scenario_simulator_v2`
 
@@ -73,7 +74,7 @@ Vast majority of features supported by `scenario_simulator_v2` are supported wit
 
 Features which are not supported when connected with AWSIM Labs are listed below.
 
-1. Controller properties used by `attach_*_sensor`
+* Controller properties used by `attach_*_sensor`
     - `pointcloudPublishingDelay`
     - `isClairvoyant`
     - `detectedObjectPublishingDelay`
@@ -89,11 +90,7 @@ If those features are curcial for the scenario's execution, the scenario might n
 2. Disable or remove V2I traffic lights publishing
 3. Disable or remove the clock publisher 
 ![removed_objects.png](removed_objects.png)
-4. Add `ScenarioSimulatorConnector` prefab to the scene - located in `Assets/ScenarioSimulatorConnector`
-![scene_tree.png](scene_tree.png)
-5. If necessary update the asset_id to prefab mapping - key in the map can be used in the scenario
-![entities.png](entities.png)
-6. Add TimeSourceSelector prefab to the scene - located in `Assets/AWSIM/Scripts/Clock/Prefabs`
-![scene_tree_time_selector.png](scene_tree_time_selector.png)
-7. Configure Type in the TimeSourceSelector component to SS2
-![time_selector_ss2.png](time_selector_ss2.png)
+4. Add `ScenarioSimulatorConnector` prefab to the scene - located in `Assets/ScenarioSimulatorConnector`![scene_tree.png](scene_tree.png)
+5. If necessary update the asset_id to prefab mapping - key in the map can be used in the scenario ![entities.png](entities.png)
+6. Add TimeSourceSelector prefab to the scene - located in `Assets/AWSIM/Scripts/Clock/Prefabs` ![scene_tree_time_selector.png](scene_tree_time_selector.png)
+7. Configure Type in the TimeSourceSelector component to SS2 ![time_selector_ss2.png](time_selector_ss2.png)
