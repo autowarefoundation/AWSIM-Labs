@@ -1604,6 +1604,7 @@ GameObject:
   - component: {fileID: 4981081891045692867}
   - component: {fileID: 4981081891045692868}
   - component: {fileID: 515532636256791959}
+  - component: {fileID: 8242141845828784011}
   m_Layer: 6
   m_Name: Lexus RX450h 2015 Sample Sensor
   m_TagString: Ego
@@ -1771,6 +1772,28 @@ MonoBehaviour:
     DurabilityPolicy: 0
     HistoryPolicy: 0
     Depth: 0
+--- !u!114 &8242141845828784011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981081891045692864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e421f28d2b9935689786530a139f607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _birdEyeCameraInitialHeight: 200
+  _cameraOrthographicSizeMinimum: 3
+  _cameraOrthographicSizeMaximum: 150
+  _zoomChangeMultiplier: 10
+  _zoomTime: 0.1
+  _dragPanMultiplier: 0.2
+  _keyPanSpeed: 50
+  _keyPanLerp: 0.5
+  _targetFollowOffsetX: 0
+  _targetFollowOffsetZ: 0
 --- !u!1 &5383865282617533158
 GameObject:
   m_ObjectHideFlags: 0

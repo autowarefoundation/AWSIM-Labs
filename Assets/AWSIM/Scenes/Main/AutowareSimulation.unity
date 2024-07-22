@@ -1733,8 +1733,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743169424}
   m_HandleRect: {fileID: 1743169422}
   m_Direction: 2
-  m_Value: 0.999977
-  m_Size: 0.904023
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2677,7 +2677,6 @@ GameObject:
   - component: {fileID: 543989982}
   - component: {fileID: 543989983}
   - component: {fileID: 543989984}
-  - component: {fileID: 543989985}
   m_Layer: 0
   m_Name: AutowareSimulation
   m_TagString: Untagged
@@ -2761,28 +2760,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSideBarHandler: {fileID: 412951388}
---- !u!114 &543989985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543989979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e421f28d2b9935689786530a139f607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _birdEyeCameraInitialHeight: 200
-  _cameraOrthographicSizeMinimum: 3
-  _cameraOrthographicSizeMaximum: 150
-  _zoomChangeMultiplier: 10
-  _zoomTime: 0.1
-  _dragPanMultiplier: 0.2
-  _keyPanSpeed: 50
-  _keyPanLerp: 0.5
-  _targetFollowOffsetX: 0
-  _targetFollowOffsetZ: 0
 --- !u!1 &546765079
 GameObject:
   m_ObjectHideFlags: 0
