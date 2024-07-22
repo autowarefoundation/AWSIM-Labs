@@ -38,7 +38,7 @@ To run the created scenario with AWSIM Labs, necessary adjustments need to be ma
 
 AWSIM Labs currently supports the following asset key values.
 
-The list can be extended if required. Appropriate values should be added to asst key list in the `ScenarioSimulatorConnector` component and the vehicle parameters in scenario simulator should match them.
+The list can be extended if required. Appropriate values should be added to asset key list in the `ScenarioSimulatorConnector` component and the vehicle parameters in scenario simulator should match them.
 
 #### Ego Vehicle Entity (with sensor)
 | model3d       | boundingbox size (m)                                  | wheel base(m) | front tread(m) | rear tread(m) | tier diameter(m) | max steer(deg) |
