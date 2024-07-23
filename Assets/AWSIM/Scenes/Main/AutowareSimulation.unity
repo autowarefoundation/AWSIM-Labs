@@ -1371,53 +1371,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1416174297}
     m_Modifications:
-    - target: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionTopic
-      value: /initialpose
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.Depth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.HistoryPolicy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.DurabilityPolicy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.ReliabilityPolicy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108079387665500469, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108079388121624696, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108079388621041707, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3089313591046698684, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4981081891045692864, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_Name
       value: Lexus RX450h 2015 Sample Sensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 5650763240072318842, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5650763240072318842, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1459,65 +1415,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6330550836434274604, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_TagString
-      value: GNSSSensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 6788859865555044665, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310201805054404105, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointCloud2Publishers.Array.data[0].topic
-      value: /left/lidar/pointcloud
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310201805054404105, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointCloud2Publishers.Array.data[1].topic
-      value: /left/lidar/pointcloud_ex
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310201805715545924, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointCloud2Publishers.Array.data[0].topic
-      value: /toplidar/pointcloud
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310201805715545924, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointCloud2Publishers.Array.data[1].topic
-      value: /toplidar/pointcloud_ex
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310201806280433431, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointCloud2Publishers.Array.data[0].topic
-      value: /right/lidar/pointcloud
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310201806280433431, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointCloud2Publishers.Array.data[1].topic
-      value: /right/lidar/pointcloud_ex
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605700156663963339, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_TagString
-      value: IMUSensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: height
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: startXOffset
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: startYOffset
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: cameraOutputCanvas
-      value: 
-      objectReference: {fileID: 939690763}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 878625424}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
 --- !u!1 &175319273
 GameObject:
@@ -1757,8 +1658,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743169424}
   m_HandleRect: {fileID: 1743169422}
   m_Direction: 2
-  m_Value: 0.9999909
-  m_Size: 0.754023
+  m_Value: 0.9999898
+  m_Size: 0.77988505
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4003,20 +3904,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840866494}
   m_CullTransparentMesh: 1
---- !u!1 &878625416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-  m_PrefabInstance: {fileID: 161822142}
-  m_PrefabAsset: {fileID: 0}
---- !u!1542919678 &878625424
-StreamingController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878625416}
-  m_Enabled: 1
-  m_StreamingMipmapBias: 1
 --- !u!1 &884902995
 GameObject:
   m_ObjectHideFlags: 0

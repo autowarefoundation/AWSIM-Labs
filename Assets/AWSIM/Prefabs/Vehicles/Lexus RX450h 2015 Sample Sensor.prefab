@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 5709321372887088733}
   - component: {fileID: 5944059108174647096}
   - component: {fileID: 8532975497371975813}
-  m_Layer: 0
+  - component: {fileID: 5116694460979264389}
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -205,6 +206,15 @@ MonoBehaviour:
   blendDistance: 0
   weight: 0.7
   sharedProfile: {fileID: 11400000, guid: 5a38341ed3c2637fbbc507134841f2ae, type: 2}
+--- !u!1542919678 &5116694460979264389
+StreamingController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122627082}
+  m_Enabled: 1
+  m_StreamingMipmapBias: 1
 --- !u!1 &473408091835705101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,10 +1778,10 @@ MonoBehaviour:
     Depth: 1
   vehicle: {fileID: 4981081891045692866}
   positionQosInput:
-    ReliabilityPolicy: 0
-    DurabilityPolicy: 0
-    HistoryPolicy: 0
-    Depth: 0
+    ReliabilityPolicy: 1
+    DurabilityPolicy: 2
+    HistoryPolicy: 1
+    Depth: 1
 --- !u!114 &8242141845828784011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3700,6 +3710,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4572956135196922574, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointSize
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5179299861945025834, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3710,6 +3724,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: frameID
+      value: velodyne_top_base_link
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: frameId
       value: velodyne_top_base_link
       objectReference: {fileID: 0}
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
@@ -3731,6 +3749,14 @@ PrefabInstance:
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: qosSettings.ReliabilityPolicy
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[0].topic
+      value: /sensing/lidar/top/pointcloud_raw
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[1].topic
+      value: /sensing/lidar/top/pointcloud_raw_ex
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3802,6 +3828,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4572956135196922574, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointSize
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5179299861945025834, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3812,6 +3842,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: frameID
+      value: velodyne_right_base_link
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: frameId
       value: velodyne_right_base_link
       objectReference: {fileID: 0}
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
@@ -3829,6 +3863,14 @@ PrefabInstance:
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: qosSettings.ReliabilityPolicy
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[0].topic
+      value: /sensing/lidar/right/pointcloud_raw
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[1].topic
+      value: /sensing/lidar/right/pointcloud_raw_ex
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3994,6 +4036,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4572956135196922574, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointSize
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5179299861945025834, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4004,6 +4050,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: frameID
+      value: velodyne_left_base_link
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: frameId
       value: velodyne_left_base_link
       objectReference: {fileID: 0}
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
@@ -4021,6 +4071,14 @@ PrefabInstance:
     - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
       propertyPath: qosSettings.ReliabilityPolicy
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[0].topic
+      value: /sensing/lidar/left/pointcloud_raw
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865029131659967986, guid: 9351c3661d105f12f9fe2819a1203053, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[1].topic
+      value: /sensing/lidar/left/pointcloud_raw_ex
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
