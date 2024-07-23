@@ -184,7 +184,7 @@ namespace AWSIM.Scripts.UI
             textRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 140);
             textObject.GetComponent<Text>().text = sensorTf.tag switch
             {
-                "LidarSensor" => sensorTf.GetComponent<RglLidarPublisher>().pcl24Topic,
+                "LidarSensor" => sensorTf.GetComponent<RglLidarPublisher>().pointCloud2Publishers[0].topic,
                 "CameraSensor" => sensorTf.GetComponent<CameraRos2Publisher>().cameraInfoTopic + " & " +
                                   sensorTf.GetComponent<CameraRos2Publisher>().imageTopic,
                 "GNSSSensor" => sensorTf.GetComponent<GnssRos2Publisher>().poseTopic + " & " +

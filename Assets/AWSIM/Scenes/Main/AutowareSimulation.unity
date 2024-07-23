@@ -1467,6 +1467,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8310201805054404105, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[0].topic
+      value: /left/lidar/pointcloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310201805054404105, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[1].topic
+      value: /left/lidar/pointcloud_ex
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310201805715545924, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[0].topic
+      value: /toplidar/pointcloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310201805715545924, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[1].topic
+      value: /toplidar/pointcloud_ex
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310201806280433431, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[0].topic
+      value: /right/lidar/pointcloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310201806280433431, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
+      propertyPath: pointCloud2Publishers.Array.data[1].topic
+      value: /right/lidar/pointcloud_ex
+      objectReference: {fileID: 0}
     - target: {fileID: 8605700156663963339, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_TagString
       value: IMUSensor
@@ -1733,8 +1757,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743169424}
   m_HandleRect: {fileID: 1743169422}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.9999909
+  m_Size: 0.754023
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
