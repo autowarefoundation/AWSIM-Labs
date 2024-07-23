@@ -117,9 +117,9 @@ namespace AWSIM
 
         public override void Initialize(RGLNodeSequence parentSubgraph, string frameId, RglQos qos)
         {
-          //  publisherSubgraph = new RGLNodeSequence()
-          //      .AddNodePublishRos2RadarScan(PublishNodeId, topic, frameId, qos.reliabilityPolicy, qos.durabilityPolicy, qos.historyPolicy, qos.historyDepth);
-          //  RGLNodeSequence.Connect(parentSubgraph, publisherSubgraph);
+            //  publisherSubgraph = new RGLNodeSequence()
+            //      .AddNodePublishRos2RadarScan(PublishNodeId, topic, frameId, qos.reliabilityPolicy, qos.durabilityPolicy, qos.historyPolicy, qos.historyDepth);
+            //  RGLNodeSequence.Connect(parentSubgraph, publisherSubgraph);
         }
     }
 
@@ -232,8 +232,6 @@ namespace AWSIM
             // Only one node in this subgraph so the whole subgraph will be disconnected from the sensor graph
             rglSubgraphUnity2Ros?.SetActive(TransformNodeId, false);
         }
-        
-    
 
         private void OnDestroy()
         {
