@@ -132,6 +132,7 @@ nav:
         - Add Visual Elements: Components/Vehicle/AddNewVehicle/AddVisualElements/index.md
       - Customize Slip: Components/Vehicle/CustomizeSlip/index.md
       - FollowCamera: Components/Vehicle/FollowCamera/index.md
+      - VPP Integration: Components/Vehicle/VPPIntegration/index.md
     - Sensors:
       - LiDAR Sensor:
         - LiDAR Sensor: Components/Sensors/LiDARSensor/LiDARSensor/index.md
@@ -178,6 +179,7 @@ nav:
     - VSCode Configuration: DeveloperGuide/EditorSetup/VSCode/index.md
     - Rider Configuration: DeveloperGuide/EditorSetup/JetBrainsRider/index.md
     - Graphy Asset Setup: DeveloperGuide/EditorSetup/Graphy/index.md
+    - Vehicle Physics Pro CE Setup: DeveloperGuide/EditorSetup/VPPCommunityEdition/index.md
     - Trouble shooting: DeveloperGuide/TroubleShooting/index.md
     - Documentation: DeveloperGuide/Documentation/index.md
     - License : DeveloperGuide/License/index.md

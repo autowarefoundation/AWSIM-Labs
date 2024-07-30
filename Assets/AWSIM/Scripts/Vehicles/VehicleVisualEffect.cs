@@ -11,30 +11,32 @@ namespace AWSIM
     /// </summary>
 
     //TODO: Implement proper lighting system for vehicle.
-
     [RequireComponent(typeof(Vehicle))]
     public class VehicleVisualEffect : MonoBehaviour
     {
         [Serializable]
         public class EmissionMaterial
         {
-            [SerializeField] MeshRenderer meshRenderer;
-            [SerializeField] int materialIndex;
-            [SerializeField] Color lightingColor;
-            [SerializeField] float emissionIntensity;
+            [SerializeField] private MeshRenderer meshRenderer;
+            [SerializeField] private int materialIndex;
 
-            Material material = null;
-            private Color defaultEmissionColor;
+            [ColorUsage(false, true)]
+            [SerializeField]
+            private Color lightingColor;
 
-            const string EmissionColor = "_EmissionColor";
+            [SerializeField] private float emissionIntensity;
+
+            private Material _material;
+            private Color _defaultEmissionColor;
+            private const string EmissionColor = "_EmissionColor";
 
             public void Initialize()
             {
-                if (material == null)
+                if (_material == null)
                 {
-                    material = meshRenderer.materials[materialIndex];
-                    material.EnableKeyword("_EMISSION");
-                    defaultEmissionColor = Color.black;
+                    _material = meshRenderer.materials[materialIndex];
+                    _material.EnableKeyword("_EMISSION");
+                    _defaultEmissionColor = Color.black;
                 }
             }
 
@@ -42,35 +44,40 @@ namespace AWSIM
             {
                 if (isLightOn)
                 {
-                    material.SetColor(EmissionColor, lightingColor * emissionIntensity);
+                    // _material.SetColor(EmissionColor, lightingColor * emissionIntensity);
+                    _material.SetColor(EmissionColor, lightingColor);
                 }
                 else
                 {
-                    material.SetColor(EmissionColor, defaultEmissionColor);
+                    _material.SetColor(EmissionColor, _defaultEmissionColor);
                 }
             }
 
             public void Destroy()
             {
-                if (material != null)
-                    UnityEngine.Object.Destroy(material);
+                if (_material != null)
+                    UnityEngine.Object.Destroy(_material);
             }
         }
 
         [SerializeField] Vehicle vehicle;
 
         [Header("BrakeLight")]
-        [SerializeField] EmissionMaterial[] brakeLights;
+        [SerializeField]
+        EmissionMaterial[] brakeLights;
 
         [Header("TurnSignal")]
-        [SerializeField] EmissionMaterial[] leftTurnSignalLights;
+        [SerializeField]
+        EmissionMaterial[] leftTurnSignalLights;
+
         [SerializeField] EmissionMaterial[] rightTurnSignalLights;
         [SerializeField] float turnSignalTimerIntervalSec = 0.5f;
         float turnSignalTimer = 0;
         bool turnSignalOn = false;
 
         [Header("ReverseLight")]
-        [SerializeField] EmissionMaterial[] reverseLights;
+        [SerializeField]
+        EmissionMaterial[] reverseLights;
 
         void Reset()
         {
@@ -131,7 +138,7 @@ namespace AWSIM
             bool IsBrakeLight()
             {
                 return (vehicle.AutomaticShiftInput == Vehicle.Shift.DRIVE && vehicle.AccelerationInput < 0)
-                    || (vehicle.AutomaticShiftInput == Vehicle.Shift.REVERSE && vehicle.AccelerationInput < 0);
+                       || (vehicle.AutomaticShiftInput == Vehicle.Shift.REVERSE && vehicle.AccelerationInput < 0);
             }
 
             bool IsReverseLight()
@@ -142,22 +149,22 @@ namespace AWSIM
             bool IsTurnSignalOn()
             {
                 return ((vehicle.SignalInput == Vehicle.TurnSignal.LEFT)
-                    || ((vehicle.SignalInput == Vehicle.TurnSignal.RIGHT)
-                    || (vehicle.SignalInput == Vehicle.TurnSignal.HAZARD)));
+                        || ((vehicle.SignalInput == Vehicle.TurnSignal.RIGHT)
+                            || (vehicle.SignalInput == Vehicle.TurnSignal.HAZARD)));
             }
 
             bool IsTurnLeftLight()
             {
                 return ((vehicle.SignalInput == Vehicle.TurnSignal.LEFT)
-                    || (vehicle.SignalInput == Vehicle.TurnSignal.HAZARD))
-                    && turnSignalOn;
+                        || (vehicle.SignalInput == Vehicle.TurnSignal.HAZARD))
+                       && turnSignalOn;
             }
 
             bool IsTurnRightLight()
             {
                 return ((vehicle.SignalInput == Vehicle.TurnSignal.RIGHT)
-                    || (vehicle.SignalInput == Vehicle.TurnSignal.HAZARD))
-                    && turnSignalOn;
+                        || (vehicle.SignalInput == Vehicle.TurnSignal.HAZARD))
+                       && turnSignalOn;
             }
 
             void ApplyLights(EmissionMaterial[] emissionMaterials, bool isOn)

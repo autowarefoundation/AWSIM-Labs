@@ -8,8 +8,6 @@ namespace AWSIM.Scripts.UI
     {
         [SerializeField] private Button _cardTopBarButton;
         [SerializeField] private RectTransform _barChevronRect;
-        [SerializeField] private float _chevronExpandedDegrees = 90f;
-        [SerializeField] private float _chevronCollapsedDegrees = 0f;
 
         [SerializeField] private bool _isCardOpen;
         [SerializeField] public float ElementHeight = 30f;
