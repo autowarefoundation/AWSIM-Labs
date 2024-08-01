@@ -54,6 +54,12 @@ namespace AWSIM.Scripts.UI
             _birdEyeCamera.enabled = false;
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         private void Update()
         {
             // Snap top-down camera to vehicle position

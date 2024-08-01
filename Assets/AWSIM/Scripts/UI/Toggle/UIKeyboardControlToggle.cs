@@ -16,6 +16,12 @@ namespace AWSIM.Scripts.UI.Toggle
             GetComponent<UnityEngine.UI.Toggle>().isOn = _vehicleKeyboardInput.enabled;
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         // Toggle the keyboard control
         public void OnClick(bool isOn)
         {

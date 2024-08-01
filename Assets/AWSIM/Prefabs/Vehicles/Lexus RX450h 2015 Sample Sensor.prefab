@@ -3890,6 +3890,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6087599136518086831}
     m_Modifications:
+    - target: {fileID: 6839870103089997461, guid: c7276496f3d93284c9ac668faf9a39c6, type: 3}
+      propertyPath: height
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839870103089997461, guid: c7276496f3d93284c9ac668faf9a39c6, type: 3}
+      propertyPath: startXOffset
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839870103089997461, guid: c7276496f3d93284c9ac668faf9a39c6, type: 3}
+      propertyPath: startYOffset
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 7800869322880189811, guid: c7276496f3d93284c9ac668faf9a39c6, type: 3}
       propertyPath: m_Name
       value: CameraSensor

@@ -19,6 +19,12 @@ namespace AWSIM.Scripts.UI.Toggle
             _toggle.onValueChanged.AddListener(ToggleMainCamera);
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         // Simple toggle for main camera
         private void ToggleMainCamera(bool value)
         {

@@ -20,6 +20,12 @@ namespace AWSIM.Scripts.UI
             InitializeSlider();
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         public void TrafficManagerSetTargetVehicleCount()
         {
             var targetValue = Convert.ToInt32(_trafficTargetVehicleCountSlider.value);

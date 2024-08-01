@@ -13,6 +13,12 @@ namespace AWSIM.Scripts.UI
         {
             InitializeEgoTransform(EgoTransform);
         }
+
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
         public void InitializeEgoTransform(Transform egoTransform)
         {
             EgoTransform = egoTransform;

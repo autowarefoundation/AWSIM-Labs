@@ -58,6 +58,13 @@ namespace AWSIM.Scripts.UI
             SetupUICard(_uiCard);
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+            _uiCard.RecalculateTabBackgroundHeight();
+        }
+
         private void Update()
         {
             if (!_uiTabReady)
