@@ -4194,7 +4194,7 @@ GameObject:
   - component: {fileID: 820534233}
   m_Layer: 5
   m_Name: CameraOutputCanvas
-  m_TagString: Untagged
+  m_TagString: CameraOutputCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4649,8 +4649,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1668138103}
   m_HandleRect: {fileID: 1668138102}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.741954
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
