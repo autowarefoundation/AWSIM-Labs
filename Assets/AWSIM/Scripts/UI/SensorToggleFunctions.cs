@@ -19,7 +19,7 @@ namespace AWSIM.Scripts.UI
             {
                 var newPublisher = lidarSensor.gameObject.AddComponent<RglLidarPublisher>();
                 Ros2PublisherUtilities.ConfigAssigner(newPublisher, configList);
-                newPublisher.ReInitializePublisher();
+                //    newPublisher.ReInitializePublisher();
 
                 lidarSensor.gameObject.SetActive(true);
                 lidarSensor.enabled = true;

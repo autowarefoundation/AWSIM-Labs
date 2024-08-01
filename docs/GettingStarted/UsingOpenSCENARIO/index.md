@@ -1,8 +1,7 @@
 
 
 # Using OpenSCENARIO
-
-!!! warning
+!!! Warning
 
     Running AWSIM with scenario_simulator_v2 is still a prototype, so stable running is not guaranteed.
 
@@ -10,22 +9,22 @@ Below you can find instructions on how to setup the OpenSCENARIO execution using
 The instruction assumes using the Ubuntu OS.
 
 ## Prerequisites
-Follow [Setup Unity Project tutorial](../SetupUnityProject/index.md)
+- Follow [Setup Unity Project tutorial](../SetupUnityProject/index.md)
 
 ## Build Autoware with `scenario_simulator_v2`
 
-In order to configure the Autoware software with the AWSIM demo, please:
+In order to configure the Autoware software with the AWSIM Labs demo, please:
 
-1. Clone RobotecAI's [Autoware](https://github.com/RobotecAI/autoware-1/tree/awsim-ss2-stable) and move to the directory.
+1. Clone the [Autoware](https://github.com/autowarefoundation/autoware.git) and move to the directory.
    ```
-   git clone git@github.com:RobotecAI/autoware-1.git
+   git clone git@github.com:autowarefoundation/autoware.git
    cd autoware
    ```
-2. Check out to the `awsim-ss2-stable` branch
+2. Check out to the `awsim-labs-stable` branch _(This is a temporary branch, and it will be used in the main branch later on.)_
    ```
-   git checkout awsim-ss2-stable
+   git checkout awsim-labs-stable
    ```
-3. Configure the environment. (Skip if Autoware environment has been configured before)
+3. Configure the environment. _(Skip if Autoware environment has been configured before)_
    ```
    ./setup-dev-env.sh
    ```
@@ -35,8 +34,8 @@ In order to configure the Autoware software with the AWSIM demo, please:
    vcs import src < autoware.repos
    vcs import src < simulator.repos
    ```
-5. Download `shinjuku_map.zip`  
-   [archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/shinjuku_map.zip){.md-button .md-button--primary}
+5. Download `shinjuku_map.zip`
+[archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/shinjuku_map.zip){.md-button .md-button--primary}
 
 6. Unzip it to `src/simulator` directory
    ```
@@ -55,20 +54,17 @@ In order to configure the Autoware software with the AWSIM demo, please:
 
 ## Running the demo
 
-1. Download `AWSIM_v1.2.0_ss2.zip` & Run  
-   [archive](https://github.com/tier4/AWSIM/releases/download/v1.2.0/AWSIM_v1.2.0_ss2.zip){.md-button .md-button--primary}
-
+1. Download and run the latest version of awsim_labs_ss2. [archive](https://github.com/autowarefoundation/AWSIM-Labs/releases){.md-button .md-button--primary}
 2. Launch `scenario_test_runner`.
    ```
    source install/setup.bash
    ros2 launch scenario_test_runner scenario_test_runner.launch.py                        \
-   architecture_type:=awf/universe  record:=false                                         \
+   architecture_type:=awf/universe/20240605  record:=false                                         \
    scenario:='$(find-pkg-share scenario_test_runner)/scenario/sample_awsim.yaml'          \
-   sensor_model:=awsim_sensor_kit  vehicle_model:=sample_vehicle                          \
+   sensor_model:=awsim_labs_sensor_kit  vehicle_model:=sample_vehicle                          \
    launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml" \
    initialize_duration:=260 port:=8080
    ```
-   ![ss2_awsim.png](ss2_awsim.png)
 
 ## Troubleshooting
 

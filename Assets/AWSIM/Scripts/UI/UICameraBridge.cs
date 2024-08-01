@@ -5,7 +5,7 @@ namespace AWSIM.Scripts.UI
 {
     public class UICameraBridge : MonoBehaviour
     {
-        [SerializeField] private Canvas cameraOutputCanvas;
+        private Canvas cameraOutputCanvas;
         [SerializeField] private float startXOffset;
         [SerializeField] private float startYOffset;
         [SerializeField] private float height;
@@ -15,6 +15,7 @@ namespace AWSIM.Scripts.UI
 
         private void Start()
         {
+            cameraOutputCanvas = GameObject.FindWithTag("CameraOutputCanvas").GetComponent<Canvas>();
             SetupCameraOutput();
         }
 

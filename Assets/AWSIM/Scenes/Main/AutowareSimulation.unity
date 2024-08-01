@@ -247,6 +247,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
+--- !u!4 &10387859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9027057600357292003, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
+  m_PrefabInstance: {fileID: 10387858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &12639409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,53 +1371,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1416174297}
     m_Modifications:
-    - target: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionTopic
-      value: /initialpose
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.Depth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.HistoryPolicy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.DurabilityPolicy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532636256791959, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: positionQosInput.ReliabilityPolicy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108079387665500469, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108079388121624696, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108079388621041707, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: pointSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3089313591046698684, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4981081891045692864, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_Name
       value: Lexus RX450h 2015 Sample Sensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 5650763240072318842, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5650763240072318842, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1454,29 +1415,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6330550836434274604, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_TagString
-      value: GNSSSensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 6788859865555044665, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605700156663963339, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: m_TagString
-      value: IMUSensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996813226046187441, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      propertyPath: cameraOutputCanvas
-      value: 
-      objectReference: {fileID: 939690763}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 878625424}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
 --- !u!1 &175319273
 GameObject:
@@ -1562,6 +1504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 203643521}
+  - component: {fileID: 203643522}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -1588,6 +1531,35 @@ Transform:
   - {fileID: 113080103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203643522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203643520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134fb5ad0cefe76c8895739ca367180b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dummyPerceptionTopic: /simulation/dummy_perception_publisher/object_info
+  qosSettings:
+    ReliabilityPolicy: 0
+    DurabilityPolicy: 0
+    HistoryPolicy: 0
+    Depth: 0
+  npcPedestrianPrefab: {fileID: 500668027104458449, guid: 27e8a3736efefa447b1f65b33b30908a, type: 3}
+  npcCarPrefabs:
+  - {fileID: 6604874415271597525, guid: 7e772e9ad7eb79040be629d8d04542ab, type: 3}
+  - {fileID: 3333523281254186578, guid: 589cf2e451adab34eb1332da5701195a, type: 3}
+  - {fileID: 714549001370495616, guid: d0094c5a0e9fb6148873c658dbc61a89, type: 3}
+  - {fileID: 536101250511469494, guid: 433e715a84edbae418fe585f802f3918, type: 3}
+  npcBusPrefabs:
+  - {fileID: 6850358619771218631, guid: 9bc315af95865dd4bbf4a8f716791609, type: 3}
+  npcPedestrianParent: {fileID: 1822423795}
+  npcVehicleParent: {fileID: 10387859}
+  despawnTime: 20
 --- !u!1 &221280047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,8 +1658,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743169424}
   m_HandleRect: {fileID: 1743169422}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.9999898
+  m_Size: 0.77988505
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2630,7 +2602,6 @@ GameObject:
   - component: {fileID: 543989982}
   - component: {fileID: 543989983}
   - component: {fileID: 543989984}
-  - component: {fileID: 543989985}
   m_Layer: 0
   m_Name: AutowareSimulation
   m_TagString: Untagged
@@ -2714,28 +2685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSideBarHandler: {fileID: 412951388}
---- !u!114 &543989985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543989979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e421f28d2b9935689786530a139f607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _birdEyeCameraInitialHeight: 200
-  _cameraOrthographicSizeMinimum: 3
-  _cameraOrthographicSizeMaximum: 150
-  _zoomChangeMultiplier: 10
-  _zoomTime: 0.1
-  _dragPanMultiplier: 0.2
-  _keyPanSpeed: 50
-  _keyPanLerp: 0.5
-  _targetFollowOffsetX: 0
-  _targetFollowOffsetZ: 0
 --- !u!1 &546765079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,20 +3904,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840866494}
   m_CullTransparentMesh: 1
---- !u!1 &878625416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2122627082, guid: 164645b2d105b6b4ab4e3d2e7c65dab2, type: 3}
-  m_PrefabInstance: {fileID: 161822142}
-  m_PrefabAsset: {fileID: 0}
---- !u!1542919678 &878625424
-StreamingController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878625416}
-  m_Enabled: 1
-  m_StreamingMipmapBias: 1
 --- !u!1 &884902995
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,7 +4148,7 @@ GameObject:
   - component: {fileID: 939690761}
   m_Layer: 5
   m_Name: CameraOutputCanvas
-  m_TagString: Untagged
+  m_TagString: CameraOutputCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7768,6 +7703,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814292294}
   m_CullTransparentMesh: 1
+--- !u!4 &1822423795 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1041813114, guid: 58d73df60b244d146bdf5f5896f78355, type: 3}
+  m_PrefabInstance: {fileID: 10387858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826199770
 GameObject:
   m_ObjectHideFlags: 0
