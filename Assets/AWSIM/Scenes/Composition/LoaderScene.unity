@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1911219726}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999971
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2870,7 +2870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useLocalFile: 0
   configParam: --config
-  defaultConfigFilename: config.json
+  defaultConfigFilename: StreamingAssets/config.json
   egoManager: {fileID: 1907938090}
   mapManager: {fileID: 341907789}
   simulationManager: {fileID: 689004847}
@@ -3505,7 +3505,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 81380.72
+  m_Text: 81376.76
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -3913,7 +3913,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 41.57
+  m_Text: 41.2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -6882,7 +6882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.0007372491}
+  m_AnchoredPosition: {x: 0.000061035156, y: -0.0007372491}
   m_SizeDelta: {x: -12.2252, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1558658280
@@ -7168,7 +7168,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 49918.78
+  m_Text: 49916.79
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
