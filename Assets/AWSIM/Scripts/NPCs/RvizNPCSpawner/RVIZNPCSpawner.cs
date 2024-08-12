@@ -31,11 +31,16 @@ namespace AWSIM
 
         private bool _willSpawnNpc = false;
         private bool _willDespawnAllNPCs = false;
+        private bool _willDespawnInteractiveNPCs = false;
         private int _npcLabel;
         private float _npcVelocity;
         private Quaternion _npcSpawnRotation;
         private Vector3 _npcSpawnPosition;
-        private List<GameObject> _spawnedNPCs = new List<GameObject>();
+        public List<GameObject> _spawnedNPCs = new List<GameObject>();
+        public List<GameObject> _interactiveModeNPCs = new List<GameObject>();
+
+        private int _interactiveMode = 0;
+        private GameObject interactiveVehicle;
 
         // Subscriber
         ISubscription<dummy_perception_publisher.msg.Object> dummyPerceptionSubscriber;
@@ -50,6 +55,24 @@ namespace AWSIM
 
         private void FixedUpdate()
         {
+            if(_interactiveMode==1 && _spawnedNPCs != null && _spawnedNPCs.Count>0){
+                int groundLayerMask = LayerMask.GetMask("Ground");
+                // Debug.Log("move");
+                Vector3 rayOrigin = new Vector3(_npcSpawnPosition.x, 1000.0f, _npcSpawnPosition.z);
+                Vector3 rayDirection = Vector3.down;
+
+                if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity,groundLayerMask))
+                {
+                    interactiveVehicle = _spawnedNPCs[_spawnedNPCs.Count-1];
+
+                    if(interactiveVehicle !=null){
+                        interactiveVehicle.transform.position = new Vector3(_npcSpawnPosition.x, hit.point.y , _npcSpawnPosition.z);
+                        interactiveVehicle.transform.rotation = _npcSpawnRotation;
+                    }
+                    return;
+                }
+            }
+
             if (_willSpawnNpc)
             {
                 // check where the ground collider is and spawn the NPC above the ground
@@ -81,6 +104,10 @@ namespace AWSIM
                 DespawnAllNPCs();
                 _willDespawnAllNPCs = false;
             }
+            if(_willDespawnInteractiveNPCs){
+                DespawnInteractiveNPCs();
+                _willDespawnInteractiveNPCs = false;
+            }
         }
 
         /// <summary>
@@ -89,18 +116,34 @@ namespace AWSIM
         /// <param name="msg">Received Object message</param>
         void OnObjectInfoReceived(dummy_perception_publisher.msg.Object msg)
         {
-            if (msg.Classification.Label == 0)
-            {
-                // despawn all the rviz NPCs
-                Debug.Log("delete spawned NPCs");
-                _willDespawnAllNPCs = true;
-                return;
-            }
-            _willSpawnNpc = true;
+            // Action = 0: uninteractive mode, 1: interactive, 2: deleted
+            _interactiveMode = msg.Action;
+            Debug.Log("inter " + _interactiveMode);
             _npcSpawnPosition = ROS2Utility.RosMGRSToUnityPosition(msg.Initial_state.Pose_covariance.Pose.Position);
             _npcSpawnRotation = ROS2Utility.RosToUnityRotation(msg.Initial_state.Pose_covariance.Pose.Orientation);
             _npcLabel = msg.Classification.Label;
             _npcVelocity = (float)msg.Initial_state.Twist_covariance.Twist.Linear.X;
+            
+            if(_interactiveMode==1){
+                return;
+            }
+            if (msg.Classification.Label == 0){
+                    // despawn all the rviz NPCs
+                    Debug.Log("delete spawned NPCs");
+                    _willDespawnAllNPCs = true;
+                    return;
+            }
+                
+            if(_interactiveMode==0){
+                _willSpawnNpc = true;
+                return ;
+            }
+
+            if(_interactiveMode==2){
+                _willDespawnInteractiveNPCs = true;
+                return;
+            }
+            
         }
 
         /// <summary>
@@ -129,7 +172,10 @@ namespace AWSIM
             }
 
             GameObject npcVehicle = Instantiate(vehiclePrefab, new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z), spawnOrientation, npcVehicleParent);
+            Debug.Log("spawn "+_interactiveMode);
+            // _interactiveModeNPCs.Add(npcVehicle);
             _spawnedNPCs.Add(npcVehicle);
+
 
             SetNPCLayer(npcVehicle, NPC_LAYER);
 
@@ -171,7 +217,18 @@ namespace AWSIM
             {
                 Destroy(npc);
             }
+            DespawnInteractiveNPCs();
             _spawnedNPCs.Clear();
+            _interactiveModeNPCs.Clear();
+        }
+
+        private void DespawnInteractiveNPCs()
+        {
+            foreach (var npc in _interactiveModeNPCs)
+            {
+                Destroy(npc);
+            }
+            _interactiveModeNPCs.Clear();
         }
 
         void OnDestroy()
