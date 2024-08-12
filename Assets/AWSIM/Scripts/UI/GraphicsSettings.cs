@@ -14,6 +14,7 @@ namespace AWSIM.Scripts.UI
 
         private int _gpuMemorySize;
         private int _initialQualityLevel;
+        private int _currentQualityLevel;
         private bool _isInitialised;
 
         private readonly List<string> _dropdownOptions = new()
@@ -31,13 +32,15 @@ namespace AWSIM.Scripts.UI
 
         private void Start()
         {
-            // Populate list of cameras. Don't include sensor cameras
+            // add main camera to list (BEV cam is not initialized yet will be added later)
             _cameraObjectsList = new List<GameObject>
             {
                 Camera.main?.gameObject,
-                GameObject.FindGameObjectWithTag("BEVCamera")
             };
             _sunSource = GameObject.FindGameObjectWithTag("Sun").GetComponent<Light>();
+
+            // Subscribe to camera initialization event
+            BirdEyeView.OnCameraInitialized += UpdateGraphicSettingsForAddedCamera;
 
             // Set initial quality level
             InitialQualityLevel();
@@ -64,23 +67,23 @@ namespace AWSIM.Scripts.UI
                 {
                     case <= 2048:
                         _initialQualityLevel = 0;
-                        GraphicsLowQuality(true);
+                        GraphicsLowQuality();
                         break;
                     case <= 4096:
                         _initialQualityLevel = 1;
-                        GraphicsMediumQuality(true);
+                        GraphicsMediumQuality();
                         break;
                     case <= 6144:
                         _initialQualityLevel = 2;
-                        GraphicsHighQuality(true);
+                        GraphicsHighQuality();
                         break;
                     case <= 8192:
                         _initialQualityLevel = 3;
-                        GraphicsUltraQuality(true);
+                        GraphicsUltraQuality();
                         break;
                     default:
                         _initialQualityLevel = 3;
-                        GraphicsUltraQuality(true);
+                        GraphicsUltraQuality();
                         break;
                 }
 
@@ -93,23 +96,24 @@ namespace AWSIM.Scripts.UI
             switch (value)
             {
                 case 0:
-                    GraphicsLowQuality(true);
+                    GraphicsLowQuality();
                     break;
                 case 1:
-                    GraphicsMediumQuality(true);
+                    GraphicsMediumQuality();
                     break;
                 case 2:
-                    GraphicsHighQuality(true);
+                    GraphicsHighQuality();
                     break;
                 case 3:
-                    GraphicsUltraQuality(true);
+                    GraphicsUltraQuality();
                     break;
             }
         }
 
-        private void GraphicsLowQuality(bool doExpensiveChanges)
+        private void GraphicsLowQuality()
         {
-            QualitySettings.SetQualityLevel(0, doExpensiveChanges);
+            _currentQualityLevel = 0;
+            QualitySettings.SetQualityLevel(0);
 
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
@@ -137,9 +141,10 @@ namespace AWSIM.Scripts.UI
             _sunSource.shadows = LightShadows.Hard;
         }
 
-        private void GraphicsMediumQuality(bool doExpensiveChanges)
+        private void GraphicsMediumQuality()
         {
-            QualitySettings.SetQualityLevel(1, doExpensiveChanges);
+            _currentQualityLevel = 1;
+            QualitySettings.SetQualityLevel(1);
 
             // update camera and volume parameters
             foreach (var cam in _cameraObjectsList)
@@ -169,9 +174,10 @@ namespace AWSIM.Scripts.UI
             _sunSource.shadows = LightShadows.Hard;
         }
 
-        private void GraphicsHighQuality(bool doExpensiveChanges)
+        private void GraphicsHighQuality()
         {
-            QualitySettings.SetQualityLevel(2, doExpensiveChanges);
+            _currentQualityLevel = 2;
+            QualitySettings.SetQualityLevel(2);
 
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
@@ -204,35 +210,39 @@ namespace AWSIM.Scripts.UI
             _sunSource.shadows = LightShadows.Soft;
         }
 
-        private void GraphicsUltraQuality(bool doExpensiveChanges)
+        private void GraphicsUltraQuality()
         {
-            QualitySettings.SetQualityLevel(3, doExpensiveChanges);
+            _currentQualityLevel = 3;
+            QualitySettings.SetQualityLevel(3);
 
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
             {
-                cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
-                cam.TryGetComponent<Volume>(out var cameraVolume);
-                var cameraVolumeProfile = cameraVolume.profile;
-
-                cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                cameraData.antialiasingQuality = AntialiasingQuality.High;
-                cameraData.renderPostProcessing = true;
-                cameraData.renderShadows = true;
-                cameraData.allowHDROutput = true;
-
-                if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                if (cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData))
                 {
-                    bloom.active = true;
-                    bloom.intensity.value = 1.0f;
-                    bloom.highQualityFiltering.overrideState = true;
-                    bloom.highQualityFiltering.value = true;
+                    cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                    cameraData.antialiasingQuality = AntialiasingQuality.High;
+                    cameraData.renderPostProcessing = true;
+                    cameraData.renderShadows = true;
+                    cameraData.allowHDROutput = true;
                 }
 
-                if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                if (cam.TryGetComponent<Volume>(out var cameraVolume))
                 {
-                    tonemapping.active = true;
-                    tonemapping.mode.value = TonemappingMode.ACES;
+                    var cameraVolumeProfile = cameraVolume.profile;
+                    if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                    {
+                        bloom.active = true;
+                        bloom.intensity.value = 1.0f;
+                        bloom.highQualityFiltering.overrideState = true;
+                        bloom.highQualityFiltering.value = true;
+                    }
+
+                    if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                    {
+                        tonemapping.active = true;
+                        tonemapping.mode.value = TonemappingMode.ACES;
+                    }
                 }
             }
 
@@ -241,5 +251,17 @@ namespace AWSIM.Scripts.UI
 
         // TODO: custom user settings (mozzz)
         // private void CustomAssetProperties(){}
+
+        // Used for adding new cameras and updating their settings
+        private void UpdateGraphicSettingsForAddedCamera(GameObject cam)
+        {
+            _cameraObjectsList.Add(cam);
+            UISetQuality(_currentQualityLevel);
+        }
+
+        private void OnDestroy()
+        {
+            BirdEyeView.OnCameraInitialized -= UpdateGraphicSettingsForAddedCamera;
+        }
     }
 }

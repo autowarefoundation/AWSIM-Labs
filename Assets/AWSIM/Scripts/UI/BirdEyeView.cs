@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -6,6 +7,7 @@ namespace AWSIM.Scripts.UI
 {
     public class BirdEyeView : MonoBehaviour
     {
+        public static event Action<GameObject> OnCameraInitialized;
         [SerializeField] private float _birdEyeCameraInitialHeight = 200;
 
         [SerializeField] private float _cameraOrthographicSizeMinimum = 3;
@@ -52,6 +54,9 @@ namespace AWSIM.Scripts.UI
             // Initialize the BEV camera
             _birdEyeCamera = InitializeBirdEyeCamera();
             _birdEyeCamera.enabled = false;
+
+            // Add to the list of cameras for GraphicsSettings
+            OnCameraInitialized?.Invoke(_birdEyeCamera.gameObject);
         }
 
         private void Update()
