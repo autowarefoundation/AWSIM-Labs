@@ -83,6 +83,9 @@ namespace AWSIM.Loader
         [SerializeField]
         private GameObject loadingScreen;
 
+        [Header("Parameters")]
+        [SerializeField] private int targetFramerate;
+
         bool usingConfigFile = false;
         bool configFileLoaded = false;
 
@@ -146,6 +149,8 @@ namespace AWSIM.Loader
             mapManager.Log += Log;
             egoManager.Log += Log;
             simulationManager.Log += Log;
+
+            Application.targetFrameRate = targetFramerate;
 
             StartLoader();
         }
