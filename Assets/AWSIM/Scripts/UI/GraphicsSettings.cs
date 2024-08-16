@@ -36,7 +36,10 @@ namespace AWSIM.Scripts.UI
         private void Awake()
         {
             // Initialize PlayerPref Keys
-            PlayerPrefs.SetInt(UserGraphicsQualityKey, -1);
+            if (!PlayerPrefs.HasKey(UserGraphicsQualityKey))
+            {
+                PlayerPrefs.SetInt(UserGraphicsQualityKey, -1);
+            }
         }
 
         private void Start()
