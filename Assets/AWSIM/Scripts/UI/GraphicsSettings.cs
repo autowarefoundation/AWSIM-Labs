@@ -17,11 +17,7 @@ namespace AWSIM.Scripts.UI
 
         /// <summary>
         /// PlayerPref key for graphics quality settings:
-        /// Not set = -1,
-        /// Low = 0,
-        /// Medium = 1,
-        /// High = 2,
-        /// Ultra = 3,
+        /// Not set = -1 | Low = 0 | Medium = 1 | High = 2 | Ultra = 3
         /// </summary>
         private const string UserGraphicsQualityKey = "UserGraphicsQuality";
 
