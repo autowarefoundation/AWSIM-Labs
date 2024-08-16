@@ -57,7 +57,7 @@ namespace AWSIM.Scripts.UI.Toggle
         private void ToggleMainCamera(bool value)
         {
             _mainCam.enabled = value;
-            _mainCanvasImage.enabled = value;
+            _mainCanvasImage.enabled = !value;
 
             // Save user's preference
             PlayerPrefs.SetInt(UserMainCameraRenderKey, value ? 1 : 0);
