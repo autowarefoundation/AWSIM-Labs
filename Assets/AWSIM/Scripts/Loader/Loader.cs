@@ -83,6 +83,9 @@ namespace AWSIM.Loader
         [SerializeField]
         private GameObject loadingScreen;
 
+        [Header("Parameters")]
+        [SerializeField] private int targetFramerate;
+
         bool usingConfigFile = false;
         bool configFileLoaded = false;
 
@@ -146,6 +149,8 @@ namespace AWSIM.Loader
             mapManager.Log += Log;
             egoManager.Log += Log;
             simulationManager.Log += Log;
+
+            Application.targetFrameRate = targetFramerate;
 
             StartLoader();
         }
@@ -227,7 +232,7 @@ namespace AWSIM.Loader
                 simulationConfig.mapConfiguration.mapName = mapManager.mapUISelecor.options[mapManager.mapUISelecor.value].text;
                 simulationConfig.mapConfiguration.useShadows = false; // Set shadows default to false.
                 simulationConfig.simulationConfiguration.useTraffic = simulationManager.mapTrafficToggle.isOn;
-                simulationConfig.simulationConfiguration.timeScale = 1.0f; //TODO: Time scale is not yet implemented on the GUI.
+                simulationConfig.simulationConfiguration.timeScale = 1.0f;
                 simulationConfig.egoConfiguration.egoVehicleName = egoManager.egoUISelecor.options[egoManager.egoUISelecor.value].text;
                 simulationConfig.egoConfiguration.egoPosition = egoManager.GetPositionFromUI();
                 simulationConfig.egoConfiguration.egoEulerAngles = egoManager.GetEulersFromUI();

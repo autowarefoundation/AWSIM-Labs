@@ -59,6 +59,12 @@ namespace AWSIM.Scripts.UI
             OnCameraInitialized?.Invoke(_birdEyeCamera.gameObject);
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         private void Update()
         {
             // Snap top-down camera to vehicle position

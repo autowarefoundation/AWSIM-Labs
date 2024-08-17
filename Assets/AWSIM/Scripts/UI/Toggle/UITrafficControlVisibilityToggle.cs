@@ -18,6 +18,12 @@ namespace AWSIM.Scripts.UI.Toggle
             trafficControlManager.TrafficVisibilityToggleEvent.AddListener(OnStatusChangeUpdateImage);
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         private void OnStatusChangeUpdateImage(bool isToggled)
         {
             image.sprite = isToggled ? sprite1 : sprite2;

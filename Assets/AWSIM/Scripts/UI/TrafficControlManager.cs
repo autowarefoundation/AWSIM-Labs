@@ -27,6 +27,12 @@ namespace AWSIM.Scripts.UI
             TrafficVisibilityToggleEvent ??= new TrafficVisibilityToggleEvent();
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Awake();
+        }
+
         public void TrafficManagerPlayToggle()
         {
             if (TrafficManager.gameObject.activeSelf)

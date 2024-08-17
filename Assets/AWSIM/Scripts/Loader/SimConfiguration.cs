@@ -5,6 +5,9 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using AWSIM.Scripts.UI.Toggle;
+using AWSIM.Scripts.UI;
+using AWSIM.TrafficSimulation;
 
 namespace AWSIM.Loader
 {
@@ -48,12 +51,41 @@ namespace AWSIM.Loader
 
             // Set Ego position manager
             Scripts.UI.EgoVehiclePositionManager positionManager = GameObject.FindObjectOfType<Scripts.UI.EgoVehiclePositionManager>();
-            positionManager.InitializeEgoTransform(ego.transform);
+            positionManager.EgoTransform = ego.transform;
+            positionManager.Activate();
 
             // Set scene time scale
             DemoUI demoUi = GameObject.FindObjectOfType<DemoUI>();
             demoUi.SetTimeScale(simulationConfiguration.timeScale);
             demoUi.TimeScaleSlider.value = simulationConfiguration.timeScale;
+
+            TrafficControlManager trafficControlManager = GameObject.FindObjectOfType<TrafficControlManager>();
+            trafficControlManager.TrafficManager = GameObject.FindObjectOfType<TrafficManager>();
+            trafficControlManager.Activate();
+
+            UIKeyboardControlToggle uiKeyboardControlToggle = GameObject.FindObjectOfType<UIKeyboardControlToggle>();
+            uiKeyboardControlToggle.Activate();
+
+            UITrafficControlVisibilityToggle uiTrafficControlVisibilityToggle = GameObject.FindObjectOfType<UITrafficControlVisibilityToggle>();
+            uiTrafficControlVisibilityToggle.Activate();
+
+            UITrafficControlPlayToggle uiTrafficControlPlayToggle = GameObject.FindObjectOfType<UITrafficControlPlayToggle>();
+            uiTrafficControlPlayToggle.Activate();
+
+            UITrafficVehicleDensity uiTrafficVehicleDensity = GameObject.FindObjectOfType<UITrafficVehicleDensity>();
+            uiTrafficVehicleDensity.Activate();
+
+            BirdEyeView birdEyeView = GameObject.FindObjectOfType<BirdEyeView>();
+            birdEyeView.Activate();
+
+            GraphicsSettings graphicsSettings = GameObject.FindObjectOfType<GraphicsSettings>();
+            graphicsSettings.Activate();
+
+            UISensorInteractionPanel uiSensorInteractionPanel = GameObject.FindObjectOfType<UISensorInteractionPanel>();
+            uiSensorInteractionPanel.Activate();
+
+            UIMainCameraToggle uiMainCameraToggle = GameObject.FindObjectOfType<UIMainCameraToggle>();
+            uiMainCameraToggle.Activate();
 
             // Set traffic on/off
             var trafficSims = GameObject.FindObjectsOfType<TrafficSimulation.TrafficManager>();

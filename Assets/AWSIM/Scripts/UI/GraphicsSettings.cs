@@ -58,6 +58,12 @@ namespace AWSIM.Scripts.UI
             _dropdown.RefreshShownValue();
         }
 
+        public void Activate()
+        {
+            enabled = true;
+            Start();
+        }
+
         private void InitialQualityLevel()
         {
             if (!_isInitialised)
