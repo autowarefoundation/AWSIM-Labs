@@ -16,6 +16,7 @@ TagManager:
   - OdometrySensor
   - MainCanvas
   - CameraOutputCanvas
+  - InteractiveNpcs
   layers:
   - Default
   - TransparentFX

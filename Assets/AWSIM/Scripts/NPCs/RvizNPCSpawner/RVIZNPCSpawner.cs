@@ -55,16 +55,20 @@ namespace AWSIM
 
         private void FixedUpdate()
         {
+            if(_spawnedNPCs.Count>0 && _spawnedNPCs[_spawnedNPCs.Count - 1]==null){
+                DespawnAllNPCs();
+                return;
+            }
             if(_interactiveMode==1 && _spawnedNPCs != null && _spawnedNPCs.Count>0){
                 int groundLayerMask = LayerMask.GetMask("Ground");
-                // Debug.Log("move");
+                
                 Vector3 rayOrigin = new Vector3(_npcSpawnPosition.x, 1000.0f, _npcSpawnPosition.z);
                 Vector3 rayDirection = Vector3.down;
 
                 if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity,groundLayerMask))
                 {
                     interactiveVehicle = _spawnedNPCs[_spawnedNPCs.Count-1];
-
+                    interactiveVehicle.tag = "InteractiveNpcs";
                     if(interactiveVehicle !=null){
                         interactiveVehicle.transform.position = new Vector3(_npcSpawnPosition.x, hit.point.y , _npcSpawnPosition.z);
                         interactiveVehicle.transform.rotation = _npcSpawnRotation;
@@ -224,7 +228,9 @@ namespace AWSIM
 
         private void DespawnInteractiveNPCs()
         {
-            foreach (var npc in _interactiveModeNPCs)
+            GameObject[] npcs = GameObject.FindGameObjectsWithTag("InteractiveNpcs");
+
+            foreach (GameObject npc in _interactiveModeNPCs)
             {
                 Destroy(npc);
             }
