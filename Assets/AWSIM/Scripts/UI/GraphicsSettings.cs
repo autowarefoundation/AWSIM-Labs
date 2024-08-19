@@ -279,18 +279,14 @@ namespace AWSIM.Scripts.UI
         // Used for adding new cameras and updating their settings
         private void UpdateGraphicSettingsForAddedCamera(GameObject cam)
         {
-            if (_isInitialised)
-            {
-                _cameraObjectsList.Add(cam);
-                UISetQuality(_currentQualityLevel);
-            }
+            _cameraObjectsList.Add(cam);
+            UISetQuality(_currentQualityLevel);
         }
 
         private void OnDestroy()
         {
             BirdEyeView.OnCameraInitialized -= UpdateGraphicSettingsForAddedCamera;
             _cameraObjectsList.Clear();
-            _isInitialised = false;
         }
     }
 }
