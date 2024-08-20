@@ -36,13 +36,13 @@ namespace AWSIM
         private float _npcVelocity;
         private int _npcLabel;
         private int _interactiveAction = 0;
-        private int _activeNPCCount=0;
+        private int _activeNPCCount = 0;
         private GameObject interactiveVehicle;
         private List<GameObject> _spawnedNPCs = new List<GameObject>();
         private Quaternion _npcSpawnRotation;
         private Vector3 _npcSpawnPosition;
         private float _raycastStart = 1.33f;
-        
+
         // Subscriber
         ISubscription<dummy_perception_publisher.msg.Object> dummyPerceptionSubscriber;
 
@@ -57,31 +57,35 @@ namespace AWSIM
         private void FixedUpdate()
         {
             // clear the _spawnedNPCs array if all the npcs are despawned
-            if(_allNPCsDespawned){
+            if (_allNPCsDespawned)
+            {
                 DespawnAllNPCs();
                 _allNPCsDespawned = false;
                 return;
             }
 
             // spawn a new NPC
-            if (_willSpawnNpc){
+            if (_willSpawnNpc)
+            {
                 SpawnNewNPC();
             }
-            
 
-            // interactive action = 1: update the position of the last spawned interactive NPC 
-            if(_interactiveAction==1 && _spawnedNPCs != null && _spawnedNPCs.Count>0){
+
+            // interactive action = 1: update the position of the last spawned interactive NPC
+            if (_interactiveAction == 1 && _spawnedNPCs != null && _spawnedNPCs.Count > 0)
+            {
                 MoveNPC();
             }
 
-            
+
             if (_willDespawnAllNPCs)
             {
                 DespawnAllNPCs();
                 _willDespawnAllNPCs = false;
                 return;
             }
-            if(_willDespawnInteractiveNPCs){
+            if (_willDespawnInteractiveNPCs)
+            {
                 DespawnInteractiveNPCs();
                 _willDespawnInteractiveNPCs = false;
                 return;
@@ -99,33 +103,38 @@ namespace AWSIM
             _npcSpawnPosition = ROS2Utility.RosMGRSToUnityPosition(msg.Initial_state.Pose_covariance.Pose.Position);
             _npcSpawnRotation = ROS2Utility.RosToUnityRotation(msg.Initial_state.Pose_covariance.Pose.Orientation);
             _npcVelocity = (float)msg.Initial_state.Twist_covariance.Twist.Linear.X;
-            
-            // interactive mode; 
-            if(_interactiveAction==1){
+
+            // interactive mode;
+            if (_interactiveAction == 1)
+            {
                 return;
             }
-            
-            if (_npcLabel == 0){
+
+            if (_npcLabel == 0)
+            {
                 _willDespawnAllNPCs = true;
                 return;
             }
-                
+
 
             // spawn normal npcs
-            if(_interactiveAction==0){
+            if (_interactiveAction == 0)
+            {
                 _willSpawnNpc = true;
-                return ;
+                return;
             }
 
             // delete only interactive npcs
-            if(_interactiveAction==2){
+            if (_interactiveAction == 2)
+            {
                 _willDespawnInteractiveNPCs = true;
                 return;
             }
-            
+
         }
 
-        private void SpawnNewNPC(){
+        private void SpawnNewNPC()
+        {
             {
                 // check where the ground collider is and spawn the NPC above the ground
                 Vector3 rayOrigin = new Vector3(_npcSpawnPosition.x, _raycastStart, _npcSpawnPosition.z);
@@ -160,13 +169,14 @@ namespace AWSIM
         private void SpawnPedestrians(Vector3 spawnPoint, Quaternion spawnOrientation)
         {
             GameObject npcPedestrian = Instantiate(npcPedestrianPrefab, new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z), spawnOrientation, npcPedestrianParent);
-            
+
             // in interactive mode I don't need the following, but I need it in normal mode
             SimplePedestrianWalkerController walker = npcPedestrian.AddComponent<SimplePedestrianWalkerController>();
             walker.GetType().GetField("duration", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, 30);
-            walker.GetType().GetField("speed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, _interactiveAction==1?0:_npcVelocity);
-            
-            if(_interactiveAction==1){
+            walker.GetType().GetField("speed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(walker, _interactiveAction == 1 ? 0 : _npcVelocity);
+
+            if (_interactiveAction == 1)
+            {
                 NPCPedestrian pedestrianScript = npcPedestrian.GetComponent<NPCPedestrian>();
                 if (pedestrianScript != null)
                 {
@@ -174,7 +184,7 @@ namespace AWSIM
                     Destroy(pedestrianScript);
                 }
             }
-            
+
             _spawnedNPCs.Add(npcPedestrian);
             StartCoroutine(DespawnNPC(npcPedestrian, despawnTime));
         }
@@ -186,7 +196,7 @@ namespace AWSIM
         {
             // default vehicle is car
             GameObject vehiclePrefab = npcCarPrefabs[Random.Range(0, npcCarPrefabs.Length - 1)];
-            
+
             // change the vehicle to bus
             if (vehicleType == 3)
             {
@@ -206,38 +216,40 @@ namespace AWSIM
             StartCoroutine(DespawnNPC(npcVehicle, despawnTime));
         }
 
-        private void MoveNPC(){
+        private void MoveNPC()
+        {
             int groundLayerMask = LayerMask.GetMask("Ground");
-                
-                Vector3 rayOrigin = new Vector3(_npcSpawnPosition.x, _raycastStart, _npcSpawnPosition.z);
-                Vector3 rayDirection = Vector3.down;
 
-                if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity,groundLayerMask))
+            Vector3 rayOrigin = new Vector3(_npcSpawnPosition.x, _raycastStart, _npcSpawnPosition.z);
+            Vector3 rayDirection = Vector3.down;
+
+            if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity, groundLayerMask))
+            {
+                interactiveVehicle = _spawnedNPCs[_spawnedNPCs.Count - 1];
+                interactiveVehicle.tag = "InteractiveNpcs";
+                if (interactiveVehicle != null)
                 {
-                    interactiveVehicle = _spawnedNPCs[_spawnedNPCs.Count-1];
-                    interactiveVehicle.tag = "InteractiveNpcs";
-                    if(interactiveVehicle !=null){
-                        if (_npcLabel == 7)
+                    if (_npcLabel == 7)
+                    {
+                        // remove unwanted components for interactive pedestrians
+                        NPCPedestrian pedestrianScript = interactiveVehicle.GetComponent<NPCPedestrian>();
+                        SimplePedestrianWalkerController walker = interactiveVehicle.GetComponent<SimplePedestrianWalkerController>();
+                        if (walker != null)
                         {
-                            // remove unwanted components for interactive pedestrians
-                            NPCPedestrian pedestrianScript = interactiveVehicle.GetComponent<NPCPedestrian>();
-                            SimplePedestrianWalkerController walker = interactiveVehicle.GetComponent<SimplePedestrianWalkerController>();
-                            if (walker != null)
-                            {
-                                Destroy(walker); // Destroy the SimplePedestrianWalkerController script
-                            }
-
-                            if (pedestrianScript != null)
-                            {
-                                Destroy(pedestrianScript); // Destroy the NPCPedestrian script
-                            }
+                            Destroy(walker); // Destroy the SimplePedestrianWalkerController script
                         }
-                        
-                        interactiveVehicle.transform.position = new Vector3(_npcSpawnPosition.x, hit.point.y , _npcSpawnPosition.z);
-                        interactiveVehicle.transform.rotation = _npcSpawnRotation;
+
+                        if (pedestrianScript != null)
+                        {
+                            Destroy(pedestrianScript); // Destroy the NPCPedestrian script
+                        }
                     }
-                    return;
+
+                    interactiveVehicle.transform.position = new Vector3(_npcSpawnPosition.x, hit.point.y, _npcSpawnPosition.z);
+                    interactiveVehicle.transform.rotation = _npcSpawnRotation;
                 }
+                return;
+            }
         }
 
         /// <summary>
@@ -292,7 +304,8 @@ namespace AWSIM
                 _activeNPCCount--;
                 Destroy(npc);
             }
-            if(_activeNPCCount==0){
+            if (_activeNPCCount == 0)
+            {
                 _allNPCsDespawned = true;
             }
         }
