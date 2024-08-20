@@ -1893,6 +1893,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+      propertyPath: m_keepAlive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496292, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_background
       value: 1
       objectReference: {fileID: 0}
@@ -4649,8 +4653,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1668138103}
   m_HandleRect: {fileID: 1668138102}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.75574714
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

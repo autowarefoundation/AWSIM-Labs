@@ -124,6 +124,15 @@
           "description": "Toggle Graphy visualizer"
         }
       ]
+    },
+    {
+      "name": "Scene Loader",
+      "hotkeys": [
+        {
+          "key": "F12",
+          "description": "Reload the scene"
+        }
+      ]
     }
   ]
 }

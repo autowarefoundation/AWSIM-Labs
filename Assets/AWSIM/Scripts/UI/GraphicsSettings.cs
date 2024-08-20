@@ -12,10 +12,14 @@ namespace AWSIM.Scripts.UI
         private List<GameObject> _cameraObjectsList;
         private Light _sunSource;
 
-        private int _gpuMemorySize;
         private int _initialQualityLevel;
         private int _currentQualityLevel;
-        private bool _isInitialised;
+
+        /// <summary>
+        /// PlayerPref key for graphics quality settings:
+        /// Not set = -1 | Low = 0 | Medium = 1 | High = 2 | Ultra = 3
+        /// </summary>
+        private const string UserGraphicsQualityKey = "UserGraphicsQuality";
 
         private readonly List<string> _dropdownOptions = new()
         {
@@ -27,12 +31,16 @@ namespace AWSIM.Scripts.UI
 
         private void Awake()
         {
-            _gpuMemorySize = SystemInfo.graphicsMemorySize;
+            // Initialize PlayerPref Keys
+            if (!PlayerPrefs.HasKey(UserGraphicsQualityKey))
+            {
+                PlayerPrefs.SetInt(UserGraphicsQualityKey, -1);
+            }
         }
 
         private void Start()
         {
-            // add main camera to list (BEV cam is not initialized yet will be added later)
+            // add main camera to list (BEV cam is not initialized yet, will be when enabled)
             _cameraObjectsList = new List<GameObject>
             {
                 Camera.main?.gameObject,
@@ -43,7 +51,17 @@ namespace AWSIM.Scripts.UI
             BirdEyeView.OnCameraInitialized += UpdateGraphicSettingsForAddedCamera;
 
             // Set initial quality level
-            InitialQualityLevel();
+            if (PlayerPrefs.HasKey(UserGraphicsQualityKey) &&
+                PlayerPrefs.GetInt(UserGraphicsQualityKey) != -1)
+            {
+                _initialQualityLevel = PlayerPrefs.GetInt(UserGraphicsQualityKey);
+                UISetQuality(_initialQualityLevel);
+            }
+            else
+            {
+                // Get GPU memory size
+                InitialQualityLevel(SystemInfo.graphicsMemorySize);
+            }
 
             // Populate dropdown with quality settings
             _dropdown = GetComponent<Dropdown>();
@@ -64,36 +82,31 @@ namespace AWSIM.Scripts.UI
             Start();
         }
 
-        private void InitialQualityLevel()
+        private void InitialQualityLevel(int gpuMemorySize)
         {
-            if (!_isInitialised)
+            // Select Quality settings level (URP Asset) based on the size of the device's graphics memory
+            switch (gpuMemorySize)
             {
-                // Select Quality settings level (URP Asset) based on the size of the device's graphics memory
-                switch (_gpuMemorySize)
-                {
-                    case <= 2048:
-                        _initialQualityLevel = 0;
-                        GraphicsLowQuality();
-                        break;
-                    case <= 4096:
-                        _initialQualityLevel = 1;
-                        GraphicsMediumQuality();
-                        break;
-                    case <= 6144:
-                        _initialQualityLevel = 2;
-                        GraphicsHighQuality();
-                        break;
-                    case <= 8192:
-                        _initialQualityLevel = 3;
-                        GraphicsUltraQuality();
-                        break;
-                    default:
-                        _initialQualityLevel = 3;
-                        GraphicsUltraQuality();
-                        break;
-                }
-
-                _isInitialised = true;
+                case <= 2048:
+                    _initialQualityLevel = 0;
+                    GraphicsLowQuality();
+                    break;
+                case <= 4096:
+                    _initialQualityLevel = 1;
+                    GraphicsMediumQuality();
+                    break;
+                case <= 6144:
+                    _initialQualityLevel = 2;
+                    GraphicsHighQuality();
+                    break;
+                case <= 8192:
+                    _initialQualityLevel = 3;
+                    GraphicsUltraQuality();
+                    break;
+                default:
+                    _initialQualityLevel = 3;
+                    GraphicsUltraQuality();
+                    break;
             }
         }
 
@@ -118,8 +131,10 @@ namespace AWSIM.Scripts.UI
 
         private void GraphicsLowQuality()
         {
+            // Update quality level
             _currentQualityLevel = 0;
             QualitySettings.SetQualityLevel(0);
+            PlayerPrefs.SetInt(UserGraphicsQualityKey, 0);
 
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
@@ -151,6 +166,7 @@ namespace AWSIM.Scripts.UI
         {
             _currentQualityLevel = 1;
             QualitySettings.SetQualityLevel(1);
+            PlayerPrefs.SetInt(UserGraphicsQualityKey, 1);
 
             // update camera and volume parameters
             foreach (var cam in _cameraObjectsList)
@@ -184,6 +200,7 @@ namespace AWSIM.Scripts.UI
         {
             _currentQualityLevel = 2;
             QualitySettings.SetQualityLevel(2);
+            PlayerPrefs.SetInt(UserGraphicsQualityKey, 2);
 
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
@@ -220,6 +237,7 @@ namespace AWSIM.Scripts.UI
         {
             _currentQualityLevel = 3;
             QualitySettings.SetQualityLevel(3);
+            PlayerPrefs.SetInt(UserGraphicsQualityKey, 3);
 
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
@@ -268,6 +286,7 @@ namespace AWSIM.Scripts.UI
         private void OnDestroy()
         {
             BirdEyeView.OnCameraInitialized -= UpdateGraphicSettingsForAddedCamera;
+            _cameraObjectsList.Clear();
         }
     }
 }
