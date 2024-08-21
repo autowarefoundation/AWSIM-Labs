@@ -41,6 +41,7 @@ namespace AWSIM
         private List<GameObject> _spawnedNPCs = new List<GameObject>();
         private Quaternion _npcSpawnRotation;
         private Vector3 _npcSpawnPosition;
+        private Vector3 _previousPosition;
         private float _raycastStart = 1.33f;
 
         // Subscriber
@@ -74,7 +75,10 @@ namespace AWSIM
             // interactive action = 1: update the position of the last spawned interactive NPC
             if (_interactiveAction == 1 && _spawnedNPCs != null && _spawnedNPCs.Count > 0)
             {
-                MoveNPC();
+                if (Mathf.Abs(_previousPosition.x - _npcSpawnPosition.x) >= 0.1f || Mathf.Abs(_previousPosition.z - _npcSpawnPosition.z) >= 0.1f)
+                {
+                    MoveNPC();
+                }
             }
 
 
@@ -246,6 +250,7 @@ namespace AWSIM
                     }
 
                     interactiveVehicle.transform.position = new Vector3(_npcSpawnPosition.x, hit.point.y, _npcSpawnPosition.z);
+                    _previousPosition = interactiveVehicle.transform.position;
                     interactiveVehicle.transform.rotation = _npcSpawnRotation;
                 }
                 return;
