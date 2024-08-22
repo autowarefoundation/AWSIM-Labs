@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 141188791316208376}
   m_Layer: 0
   m_Name: OusterOS1-64
-  m_TagString: Untagged
+  m_TagString: LidarSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,13 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2440576987535774365}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5995076691610956455}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5865029131659967986
 MonoBehaviour:
@@ -104,10 +105,11 @@ MonoBehaviour:
   applyAngularGaussianNoise: 1
   applyVelocityDistortion: 0
   configuration:
-    id: 0
+    rid: 0
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: UniformRangeLidarConfiguration, ns: RGLUnityPlugin, asm: Assembly-CSharp}
       data:
         _laserArray:
@@ -581,6 +583,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3068494487180298279}
     m_Modifications:
     - target: {fileID: 4824364556834783176, guid: bfb91601c53aa4e7691adab30a410cf1, type: 3}
@@ -632,6 +635,9 @@ PrefabInstance:
       value: Ouster OS1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb91601c53aa4e7691adab30a410cf1, type: 3}
 --- !u!4 &5995076691610956455 stripped
 Transform:
