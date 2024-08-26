@@ -10,15 +10,15 @@ _After completing the Quick Start demo, you can proceed to this section._
 2. From the Map option, select **'Parking Area'**.
 
 3. Set the Ego Position to _**'81580.52, 50083.58, 41'**_ to select the starting point. You can later change the position by providing a 2D pose in the RViz2 screen to update the location.
-rotasyoooon 
+rotasyoooon
 4. Uncheck the Traffic Control box.
 
 5. Start the simulation by clicking the **'Load'** button.
 
 
-# Scenarios: 
+# Scenarios:
 Four simple scenarios have been created using the [scenario editor](https://github.com/tier4/scenario_simulator_v2) for use in the Parking Area environment. Before the scenarios can be used with the scenario simulator, the tutorial provided [here](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/UsingOpenSCENARIO/) must be completed.
-Below are illustrated explanations of the scenarios. 
+Below are illustrated explanations of the scenarios.
 
 _The file named 'awsim_labs_parking_area_ss2' should be downloaded from the latest release._
 
