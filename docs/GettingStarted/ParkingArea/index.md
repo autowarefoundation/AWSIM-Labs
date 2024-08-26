@@ -9,8 +9,7 @@ _After completing the Quick Start demo, you can proceed to this section._
 
 2. From the Map option, select **'Parking Area'**.
 
-3. Set the Ego Position to _**'81580.52, 50083.58, 41'**_ to select the starting point. You can later change the position by providing a 2D pose in the RViz2 screen to update the location.
-rotasyoooon
+3. Set the Ego position to _**'81580.52, 50083.58, 41'**_ and rotation to _**'0,0,100'**_ for the starting point. You can later change the position by providing a 2D pose in the RViz2 screen to update the location.
 4. Uncheck the Traffic Control box.
 
 5. Start the simulation by clicking the **'Load'** button.
