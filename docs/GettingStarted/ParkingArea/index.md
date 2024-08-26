@@ -54,8 +54,8 @@ _The file named 'awsim_labs_parking_area_ss2' should be downloaded from the late
 
 The dimensions of the parking spaces were made based on this reference:
 
-   - https://cdn-wordpress.webspec.cloud/intrans.iastate.edu/uploads/sites/15/2018/12/Chapter_08-2018.pdf
-   - https://www.dimensions.com/element/30-degree-parking-spaces-layouts
+   - [https://cdn-wordpress.webspec.cloud/intrans.iastate.edu/uploads/sites/15/2018/12/Chapter_08-2018.pdf](https://cdn-wordpress.webspec.cloud/intrans.iastate.edu/uploads/sites/15/2018/12/Chapter_08-2018.pdf)
+   - [https://www.dimensions.com/element/30-degree-parking-spaces-layouts](https://www.dimensions.com/element/30-degree-parking-spaces-layouts)
 
 
 **Parallel Parking:** 3m x 7.275m   _(The dimensions were set to 1.5 times the size of the Lexus vehicle.)_
