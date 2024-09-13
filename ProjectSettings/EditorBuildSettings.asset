@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AWSIM/Scenes/Parking Area.unity
     guid: 94e4ebca04067b7f6aba727faca15c2f
+  - enabled: 1
+    path: Assets/AWSIM/Scenes/Main/AutowareSimulationScenarioSimulator.unity
+    guid: 13511b748ecff429f8de510369354f8b
   m_configObjects: {}
