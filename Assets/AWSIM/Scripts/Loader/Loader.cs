@@ -410,23 +410,23 @@ namespace AWSIM.Loader
             switch (level)
             {
                 case LogLevel.LOG_INFO:
-                {
-                    var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
-                    logField.text += msg;
-                    Debug.Log(message);
-                    break;
-                }
+                    {
+                      var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
+                      logField.text += msg;
+                      Debug.Log(message);
+                      break;
+                    }
                 case LogLevel.LOG_ERROR:
-                {
-                    var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
-                    logField.text += msg;
+                  {
+                        var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
+                       logField.text += msg;
                     Debug.LogError(message);
-                    break;
-                }
+                       break;
+                  }
                 default:
-                {
-                    break;
-                }
+                 {
+                      break;
+                 }
             }
         }
     }
