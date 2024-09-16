@@ -411,22 +411,22 @@ namespace AWSIM.Loader
             {
                 case LogLevel.LOG_INFO:
                     {
-                      var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
-                      logField.text += msg;
-                      Debug.Log(message);
-                      break;
+                        var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
+                        logField.text += msg;
+                        Debug.Log(message); 
+                        break;
                     }
                 case LogLevel.LOG_ERROR:
-                  {
+                    {
                         var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
-                       logField.text += msg;
-                    Debug.LogError(message);
-                       break;
-                  }
+                        logField.text += msg;
+                        Debug.LogError(message);
+                        break;
+                    }
                 default:
-                 {
-                      break;
-                 }
+                    {
+                        break;
+                    }
             }
         }
     }
