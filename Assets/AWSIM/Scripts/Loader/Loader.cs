@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using System.IO;
+using AWSIM.Scripts.Scene;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -94,6 +95,10 @@ namespace AWSIM.Loader
         bool usingConfigFile = false;
         bool configFileLoaded = false;
 
+        private SceneMetadataDatabase sceneMetadataDatabase;
+        private const string SceneMetaDatabasePath = "SceneMetadata/SceneMetadataDatabase";
+
+
         IEnumerator ReLoadCoroutine()
         {
             // Go back to LoaderScene
@@ -158,6 +163,9 @@ namespace AWSIM.Loader
             simulationManager.Log += Log;
 
             Application.targetFrameRate = targetFramerate;
+
+            // Load the SceneMetadataDatabase from the Resources folder
+            LoadSceneMetadataDatabase(SceneMetaDatabasePath);
 
             StartLoader();
         }
@@ -225,21 +233,24 @@ namespace AWSIM.Loader
         public void OnLoadButtonPressed()
         {
             var configuration = LoadConfigFromGUI();
+            var sceneName = mapManager.mapUISelecor.options[mapManager.mapUISelecor.value].text;
 
-            if (LoadManagersConfig(configuration))
+            // check for ss2 scene then start load process
+            if (IsSceneSs2Scene(sceneName))
             {
-                Load();
+                StartCoroutine(LoadSs2Scene(sceneName));
+            }
+            else
+            {
+                if (LoadManagersConfig(configuration))
+                {
+                    Load();
+                }
             }
         }
 
-        public void LoadSs2Button()
+        private IEnumerator LoadSs2Scene(string sceneName)
         {
-            StartCoroutine(LoadSs2Scene());
-        }
-
-        private IEnumerator LoadSs2Scene()
-        {
-            var sceneName = mapManager.mapUISelecor.options[mapManager.mapUISelecor.value].text;
             // Show loading screen
             loadingScreen.gameObject.GetComponentInChildren<Text>().text =
                 $"Loading map '{sceneName}'...";
@@ -369,28 +380,53 @@ namespace AWSIM.Loader
             StartCoroutine(LoadCoroutine());
         }
 
-        void Log(LogLevel level, string message)
+        private void LoadSceneMetadataDatabase(string path)
+        {
+            sceneMetadataDatabase = Resources.Load<SceneMetadataDatabase>(path);
+
+            if (sceneMetadataDatabase == null)
+            {
+                Debug.LogError("SceneMetadataDatabase not found in Resources folder.");
+                Log(LogLevel.LOG_ERROR, "SceneMetadataDatabase not found in Resources folder");
+            }
+        }
+
+        private bool IsSceneSs2Scene(string sceneName)
+        {
+            var isSs2Scene = false;
+            foreach (var sceneInfo in sceneMetadataDatabase.sceneInfos)
+            {
+                if (sceneInfo.sceneName == sceneName)
+                {
+                    isSs2Scene = sceneInfo.isSs2Scene;
+                }
+            }
+
+            return isSs2Scene;
+        }
+
+        private void Log(LogLevel level, string message)
         {
             switch (level)
             {
                 case LogLevel.LOG_INFO:
-                    {
-                        var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
-                        logField.text += msg;
-                        Debug.Log(message);
-                        break;
-                    }
+                {
+                    var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
+                    logField.text += msg;
+                    Debug.Log(message);
+                    break;
+                }
                 case LogLevel.LOG_ERROR:
-                    {
-                        var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
-                        logField.text += msg;
-                        Debug.LogError(message);
-                        break;
-                    }
+                {
+                    var msg = $"<color=\"red\">{message}</color>" + System.Environment.NewLine;
+                    logField.text += msg;
+                    Debug.LogError(message);
+                    break;
+                }
                 default:
-                    {
-                        break;
-                    }
+                {
+                    break;
+                }
             }
         }
     }
