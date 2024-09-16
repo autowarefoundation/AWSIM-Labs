@@ -413,7 +413,7 @@ namespace AWSIM.Loader
                     {
                         var msg = $"<color=\"#1F2933\">{message}</color>" + System.Environment.NewLine;
                         logField.text += msg;
-                        Debug.Log(message); 
+                        Debug.Log(message);
                         break;
                     }
                 case LogLevel.LOG_ERROR:
