@@ -1,11 +1,9 @@
-
-
 # Using OpenSCENARIO
 !!! Warning
 
     Running AWSIM with scenario_simulator_v2 is still a prototype, so stable running is not guaranteed.
 
-Below you can find instructions on how to setup the OpenSCENARIO execution using [scenario_simulator_v2](https://github.com/tier4/scenario_simulator_v2) with AWSIM as a simulator
+Below you can find instructions on how to set up the OpenSCENARIO execution using [scenario_simulator_v2](https://github.com/tier4/scenario_simulator_v2) with AWSIM as a simulator
 The instruction assumes using the Ubuntu OS.
 
 ## Prerequisites
@@ -54,15 +52,16 @@ In order to configure the Autoware software with the AWSIM Labs demo, please:
 
 ## Running the demo
 
-1. Download and run the latest version of AWSIM Labs. [Releases](https://github.com/autowarefoundation/AWSIM-Labs/releases){.md-button .md-button--primary}
-2. In the `Loader` menu, from the top left, select the `AWSIMSimulationScene` and click the `Load` button.
+1. Download and run the latest version of AWSIM Labs.  
+[Releases](https://github.com/autowarefoundation/AWSIM-Labs/releases){.md-button .md-button--primary}  
+2. In the `Loader` menu, from the top left, select the `AutowareSimulationScenarioSimulator` and click the `Load` button.
 3. Launch `scenario_test_runner`.
    ```
    source install/setup.bash
    ros2 launch scenario_test_runner scenario_test_runner.launch.py                        \
-   architecture_type:=awf/universe/20240605  record:=false                                         \
+   architecture_type:=awf/universe/20240605  record:=false                                \
    scenario:='$(find-pkg-share scenario_test_runner)/scenario/sample_awsim.yaml'          \
-   sensor_model:=awsim_labs_sensor_kit  vehicle_model:=sample_vehicle                          \
+   sensor_model:=awsim_labs_sensor_kit  vehicle_model:=sample_vehicle                     \
    launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml" \
    initialize_duration:=260 port:=8080
    ```

@@ -89,6 +89,7 @@ If those features are crucial for the scenario's execution, the scenario might n
 * Disable or remove random traffic and any pre-spawned NPCs
 * Disable or remove V2I traffic lights publishing
 * Disable or remove the clock publisher
+* Disable or remove the EventSystem object
 
 ![removed_objects.png](removed_objects.png)
 
