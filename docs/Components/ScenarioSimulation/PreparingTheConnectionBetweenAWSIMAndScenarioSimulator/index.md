@@ -82,7 +82,7 @@ Features which are not supported when connected with AWSIM Labs are listed below
     - `detectedObjectMissingProbability`
     - `randomSeed`
 
-If those features are curcial for the scenario's execution, the scenario might not work properly.
+If those features are crucial for the scenario's execution, the scenario might not work properly.
 
 ## AWSIM Labs scene preparation to work with `scenario_simulator_v2`
 

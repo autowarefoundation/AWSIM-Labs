@@ -54,8 +54,9 @@ In order to configure the Autoware software with the AWSIM Labs demo, please:
 
 ## Running the demo
 
-1. Download and run the latest version of awsim_labs_ss2. [archive](https://github.com/autowarefoundation/AWSIM-Labs/releases){.md-button .md-button--primary}
-2. Launch `scenario_test_runner`.
+1. Download and run the latest version of AWSIM Labs. [Releases](https://github.com/autowarefoundation/AWSIM-Labs/releases){.md-button .md-button--primary}
+2. In the `Loader` menu, from the top left, select the `AWSIMSimulationScene` and click the `Load` button.
+3. Launch `scenario_test_runner`.
    ```
    source install/setup.bash
    ros2 launch scenario_test_runner scenario_test_runner.launch.py                        \

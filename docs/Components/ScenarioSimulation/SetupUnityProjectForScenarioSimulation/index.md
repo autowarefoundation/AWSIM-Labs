@@ -10,9 +10,10 @@ The instruction assumes using the Ubuntu OS.
 
 ## Running the demo
 
-1. Open AutowareSimulationScenarioSimulator.unity scene placed under `Assets/AWSIM/Scenes/Main` directory
+1. Open `LoaderScene.unity` scene placed under `Assets/AWSIM/Scenes/Composition` directory.
 2. Run the simulation by clicking `Play` button placed at the top section of Editor.
-3. Launch `scenario_test_runner`.
+3. In the play mode expand the dropdown on the top left, select the `AWSIMSimulationScene` and click the `Load` button.
+4. Launch `scenario_test_runner`.
    ```
    source install/setup.bash
    ros2 launch scenario_test_runner scenario_test_runner.launch.py                        \
