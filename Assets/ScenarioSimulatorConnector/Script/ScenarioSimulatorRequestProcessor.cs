@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimulationApiSchema;
 using System.Threading;
+using AWSIM.Scripts.Vehicles.VPP_Integration;
 
 namespace AWSIM
 {
@@ -350,10 +351,8 @@ namespace AWSIM
 
             mainContext.Send(_ =>
             {
-                for (int i = 0; i < request.Status.Count; i++)
+                foreach (var reqStatus in request.Status)
                 {
-                    var reqStatus = request.Status[i];
-
                     var status = new UpdatedEntityStatus();
 
                     var unityPose = GetUnityPose(reqStatus.Pose);
@@ -375,7 +374,7 @@ namespace AWSIM
                         status.Pose = reqStatus.Pose;
                         status.ActionStatus = reqStatus.ActionStatus;
                     }
-                    else if (instance.TryGetComponent(out Vehicle ego_vehicle))
+                    else if (instance.TryGetComponent(out AutowareVPPAdapter ego_vehicle))
                     {
                         status.Name = reqStatus.Name;
                         status.Pose = GetRosPose(instance.transform);
@@ -395,7 +394,6 @@ namespace AWSIM
                         updateEntityStatusResponse.Status.Add(status);
                     }
                 }
-
             }, null);
 
             updateEntityStatusResponse.Result = new Result()
@@ -628,50 +626,70 @@ namespace AWSIM
             var rosPosition = ROS2Utility.UnityToRosPosition(unityPosition) + Environment.Instance.MgrsOffsetPosition;
             var rosRotation = ROS2Utility.UnityToRosRotation(unityRotation);
 
-            GeometryMsgs.Pose pose = new GeometryMsgs.Pose();
-            pose.Position = new GeometryMsgs.Point();
-            pose.Position.X = rosPosition.x;
-            pose.Position.Y = rosPosition.y;
-            pose.Position.Z = rosPosition.z;
-            pose.Orientation = new GeometryMsgs.Quaternion();
-            pose.Orientation.X = rosRotation.x;
-            pose.Orientation.Y = rosRotation.y;
-            pose.Orientation.Z = rosRotation.z;
-            pose.Orientation.W = rosRotation.w;
+            GeometryMsgs.Pose pose = new GeometryMsgs.Pose
+            {
+                Position = new GeometryMsgs.Point
+                {
+                    X = rosPosition.x,
+                    Y = rosPosition.y,
+                    Z = rosPosition.z
+                },
+                Orientation = new GeometryMsgs.Quaternion
+                {
+                    X = rosRotation.x,
+                    Y = rosRotation.y,
+                    Z = rosRotation.z,
+                    W = rosRotation.w
+                }
+            };
             return pose;
         }
 
-        private static TrafficSimulatorMsgs.ActionStatus GetEgoActionStatus(Vehicle instance, TrafficSimulatorMsgs.ActionStatus oldActionStatus)
+        private static TrafficSimulatorMsgs.ActionStatus GetEgoActionStatus(AutowareVPPAdapter instance, TrafficSimulatorMsgs.ActionStatus oldActionStatus)
         {
-            var actionStatus = new TrafficSimulatorMsgs.ActionStatus();
-            actionStatus.CurrentAction = oldActionStatus.CurrentAction;
+            var actionStatus = new TrafficSimulatorMsgs.ActionStatus
+            {
+                CurrentAction = oldActionStatus.CurrentAction
+            };
             var rosLinearVelocity = ROS2Utility.UnityToRosPosition(instance.LocalVelocity);
-            actionStatus.Twist = new GeometryMsgs.Twist();
-            actionStatus.Twist.Linear = new GeometryMsgs.Vector3();
-            actionStatus.Twist.Linear.X = rosLinearVelocity.x;
-            actionStatus.Twist.Linear.Y = rosLinearVelocity.y;
-            actionStatus.Twist.Linear.Z = rosLinearVelocity.z;
+            actionStatus.Twist = new GeometryMsgs.Twist
+            {
+                Linear = new GeometryMsgs.Vector3
+                {
+                    X = rosLinearVelocity.x,
+                    Y = rosLinearVelocity.y,
+                    Z = rosLinearVelocity.z
+                }
+            };
 
             // instance.AngularVelocity seems to be in global coordinate system
             // But unless ego does not roll it should be mostly fine
             var rosAngularVelocity = ROS2Utility.UnityToRosPosition(instance.LocalAngularVelocity);
-            actionStatus.Twist.Angular = new GeometryMsgs.Vector3();
-            actionStatus.Twist.Angular.X = -rosAngularVelocity.x;
-            actionStatus.Twist.Angular.Y = -rosAngularVelocity.y;
-            actionStatus.Twist.Angular.Z = -rosAngularVelocity.z;
+            actionStatus.Twist.Angular = new GeometryMsgs.Vector3
+            {
+                X = -rosAngularVelocity.x,
+                Y = -rosAngularVelocity.y,
+                Z = -rosAngularVelocity.z
+            };
 
             var rosAccel = ROS2Utility.UnityToRosPosition(instance.LocalAcceleration);
-            actionStatus.Accel = new GeometryMsgs.Accel();
-            actionStatus.Accel.Linear = new GeometryMsgs.Vector3();
-            actionStatus.Accel.Linear.X = rosAccel.x;
-            actionStatus.Accel.Linear.Y = rosAccel.y;
-            actionStatus.Accel.Linear.Z = rosAccel.z;
+            actionStatus.Accel = new GeometryMsgs.Accel
+            {
+                Linear = new GeometryMsgs.Vector3
+                {
+                    X = rosAccel.x,
+                    Y = rosAccel.y,
+                    Z = rosAccel.z
+                }
+            };
 
             var rosAngularAccel = ROS2Utility.UnityToRosPosition(instance.LocalAngularAcceleration);
-            actionStatus.Accel.Angular = new GeometryMsgs.Vector3();
-            actionStatus.Accel.Angular.X = -rosAngularAccel.x;
-            actionStatus.Accel.Angular.Y = -rosAngularAccel.y;
-            actionStatus.Accel.Angular.Z = -rosAngularAccel.z;
+            actionStatus.Accel.Angular = new GeometryMsgs.Vector3
+            {
+                X = -rosAngularAccel.x,
+                Y = -rosAngularAccel.y,
+                Z = -rosAngularAccel.z
+            };
 
             // // In simple sensor simulator acceleration is set as jerk and it works
             // // It should most likely be fixed at some point

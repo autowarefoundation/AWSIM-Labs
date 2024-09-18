@@ -62,6 +62,39 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
         public double VpBrakeStatusReport { get; private set; }
         public double VpSteerStatusReport { get; private set; }
 
+        // For ss2
+        // I feel like some of these are same with the ones used in VPReports but will see (mozzz)
+
+        /// <summary>
+        /// Vehcile local velocity (m/s)
+        /// </summary>
+        public Vector3 LocalVelocity => VpVelocityReport;
+
+        /// <summary>
+        /// Acceleration(m/s^2) in the local coordinate system of the vehicle.
+        /// </summary>
+        public Vector3 LocalAcceleration { get; private set; }
+
+        /// <summary>
+        /// Vehicle angular velocity (rad/s)
+        /// </summary>
+        public Vector3 AngularVelocity { get; private set; }
+
+        /// <summary>
+        /// Vehicle angular velocity in the local coordinate system of the vehicle (rad/s)
+        /// </summary>
+        public Vector3 LocalAngularVelocity => VpAngularVelocityReport;
+
+        /// <summary>
+        /// Vehicle angular acceleration (rad/s^2)
+        /// </summary>
+        public Vector3 AngularAcceleration { get; private set; }
+
+        /// <summary>
+        /// Vehicle angular acceleration in the local coordinate system of the vehicle (rad/s^2)
+        /// </summary>
+        public Vector3 LocalAngularAcceleration => transform.InverseTransformDirection(AngularAcceleration);
+
         // VPP components
         private VPVehicleController _vehicleController;
         private VPStandardInput _standardInput;
@@ -172,6 +205,7 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
             }
 
             // Update the publisher values for VPPToRos2Publisher.cs
+            CalculateCurrentValues();
             ReportVehicleState();
         }
 
@@ -251,9 +285,6 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
 
         public void HandleAcceleration()
         {
-            // Store current values
-            CurrentSpeed = _vehicleController.speed;
-
             SetThrottle((int)(_throttleInput * AutowareToVppMultiplier));
             SetBrake((int)(_brakeInput * AutowareToVppMultiplier));
         }
@@ -274,6 +305,17 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
             _vehicleController.data.bus[Channel.Input][InputData.Brake] = amount;
         }
 
+        private void CalculateCurrentValues()
+        {
+            // Store & calculate current values
+            CurrentSpeed = _vehicleController.speed;
+            LocalAcceleration = _vehicleController.localAcceleration;
+
+            var lastAngularVelocity = AngularVelocity;
+            AngularVelocity = _rigidbody.angularVelocity;
+            AngularAcceleration = (AngularVelocity - lastAngularVelocity) / Time.deltaTime;
+        }
+
         // TODO: report jerk state (mozzz)
         private void ReportVehicleState()
         {
@@ -284,7 +326,7 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
             VpGearReport = _vehicleController.data.bus[Channel.Vehicle][VehicleData.GearboxMode];
             VpVelocityReport =
                 transform.InverseTransformDirection(_rigidbody.velocity.normalized * _vehicleController.speed);
-            VpAngularVelocityReport = transform.InverseTransformDirection(_rigidbody.angularVelocity);
+            VpAngularVelocityReport = transform.InverseTransformDirection(AngularVelocity);
             VpThrottleStatusReport =
                 _vehicleController.data.bus[Channel.Input][InputData.Throttle] * VppToAutowareMultiplier;
             VpBrakeStatusReport = _vehicleController.data.bus[Channel.Input][InputData.Brake] * VppToAutowareMultiplier;
