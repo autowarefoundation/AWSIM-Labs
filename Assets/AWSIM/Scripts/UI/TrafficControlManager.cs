@@ -86,22 +86,48 @@ namespace AWSIM.Scripts.UI
 
         public void TrafficManagerUpdate()
         {
-            if (!TrafficManager.gameObject.activeSelf)
+            if (!TrafficManager)
             {
-                Debug.LogWarning("TrafficManager is not active. Can't update traffic density!");
+                Debug.LogWarning("Traffic Manager does not exist!");
             }
             else
             {
-                TrafficManager.enabled = true;
-                TrafficPlayToggleEvent.Invoke(TrafficManager.enabled);
+                if (!TrafficManager.gameObject.activeSelf)
+                {
+                    Debug.LogWarning("TrafficManager is not active. Can't update traffic density!");
+                }
+                else
+                {
+                    TrafficManager.enabled = true;
+                    TrafficPlayToggleEvent.Invoke(TrafficManager.enabled);
 
-                TrafficManager.targetVehicleCount = TargetVehicleCount;
-                TrafficManager.seed = SeedInput;
-                TrafficManager.RestartTraffic();
+                    TrafficManager.targetVehicleCount = TargetVehicleCount;
+                    TrafficManager.seed = SeedInput;
+                    TrafficManager.RestartTraffic();
+                }
             }
         }
 
-        public int GetMaxVehicleCount() => TrafficManager.maxVehicleCount;
-        public int GetTargetVehicleCount() => TrafficManager.targetVehicleCount;
+        public int GetMaxVehicleCount()
+        {
+            if (!TrafficManager)
+            {
+                Debug.LogWarning("Traffic Manager does not exist!");
+                return -999;
+            }
+
+            return TrafficManager.maxVehicleCount;
+        }
+
+        public int GetTargetVehicleCount()
+        {
+            if (!TrafficManager)
+            {
+                Debug.LogWarning("Traffic Manager does not exist!");
+                return -998;
+            }
+
+            return TrafficManager.targetVehicleCount;
+        }
     }
 }
