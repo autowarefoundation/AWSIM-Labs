@@ -31,7 +31,6 @@ namespace AWSIM.Scripts.UI
             var targetValue = Convert.ToInt32(_trafficTargetVehicleCountSlider.value);
             _trafficControlManager.TargetVehicleCount = targetValue;
             _textField.text = targetValue.ToString();
-            
             _trafficControlManager.TrafficManagerUpdate();
         }
         private void InitializeSlider()
