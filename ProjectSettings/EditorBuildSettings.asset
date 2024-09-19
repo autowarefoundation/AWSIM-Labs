@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AWSIM/Scenes/Environments/ShinjukuNight.unity
     guid: b6fb22600d18cddd884bbf5bf85b45af
-  - enabled: 0
+  - enabled: 1
     path: Assets/AWSIM/Scenes/Parking Area.unity
-    guid: 5532776e2de866ee0bc55ad161b37116
+    guid: 94e4ebca04067b7f6aba727faca15c2f
   m_configObjects: {}
