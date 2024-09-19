@@ -2,17 +2,17 @@
 
 ### Vehicle Controller
 
-| Key                  | Feature           |
-|:---------------------|:------------------|
-| W / Up Arrow         | Throttle.         |
-| S / Down Arrow       | Brake.            |
-| A / Left Arrow       | Steer Left.       |
-| D / Right Arrow      | Steer Right.      |
-| Space                | Handbrake.        |
-| LeftShift / LeftCtrl | Change Gear +/-.  |
-| R                    | Reverse Gear.     |
-| N                    | Neutral Gear.     |
-| Left Alt             | Change Gear Mode. |
+| Key                    | Feature           |
+|:-----------------------|:------------------|
+| W / Up Arrow           | Throttle.         |
+| S / Down Arrow         | Brake.            |
+| A / Left Arrow         | Steer Left.       |
+| D / Right Arrow        | Steer Right.      |
+| Space                  | Handbrake.        |
+| Left Shift / Left Ctrl | Change Gear +/-.  |
+| R                      | Reverse Gear.     |
+| N                      | Neutral Gear.     |
+| Left Alt               | Change Gear Mode. |
 
 ### [VPPVehicleSignalHandler.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/Vehicles/VPP%20Integration/VPPVehicleSignalHandler.cs)
 
