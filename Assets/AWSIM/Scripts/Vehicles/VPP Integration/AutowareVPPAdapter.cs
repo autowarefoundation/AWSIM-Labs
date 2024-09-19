@@ -30,7 +30,7 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
         public float SteeringTireRotationRateInput { get; set; }
 
         // Gear input from Autoware
-        [NonSerialized] public Gearbox.AutomaticGear AutomaticShiftInput;
+        [NonSerialized] public Gearbox.AutomaticGear AutomaticShiftInput = Gearbox.AutomaticGear.P;
         private Gearbox.AutomaticGear _automaticShiftInput => AutomaticShiftInput;
 
         // Signal input from Autoware
