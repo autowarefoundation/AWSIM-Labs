@@ -1489,8 +1489,8 @@ MonoBehaviour:
   throttleAndBrakeAxis: Vertical
   handbrakeAxis: Jump
   clutchAxis: Fire1
-  gearShiftButton: Fire2
-  gearModeSelectButton: Fire3
+  gearShiftButton: GearShift
+  gearModeSelectButton: GearMode
   keyboardNumbersSelectGears: 0
   neutralGear: 110
   reverseGear: 114

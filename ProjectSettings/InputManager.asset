@@ -54,13 +54,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire2
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: left alt
+    m_Name: GearShift
+    descriptiveName: Gear shift up
+    descriptiveNegativeName: Gear shift down
+    negativeButton: left ctrl
+    positiveButton: left shift
     altNegativeButton: 
-    altPositiveButton: mouse 1
+    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -70,13 +70,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire3
-    descriptiveName: 
+    m_Name: GearMode
+    descriptiveName: Change gear mode
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left shift
+    positiveButton: left alt
     altNegativeButton: 
-    altPositiveButton: mouse 2
+    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -485,3 +485,4 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
+  m_UsePhysicalKeys: 1

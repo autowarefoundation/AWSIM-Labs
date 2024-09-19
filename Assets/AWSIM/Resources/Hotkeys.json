@@ -1,40 +1,49 @@
 {
   "keyBinds": [
     {
-      "name": "VehicleKeyboardInput.cs",
+      "name": "Vehicle Controller",
       "hotkeys": [
         {
-          "key": "Up Arrow",
-          "description": "Accelerate"
+          "key": "W / Up Arrow",
+          "description": "Throttle"
         },
         {
-          "key": "Left Arrow",
-          "description": "Steer Left"
-        },
-        {
-          "key": "Right Arrow",
-          "description": "Steer Right"
-        },
-        {
-          "key": "Down Arrow",
+          "key": "S / Down Arrow",
           "description": "Brake"
         },
         {
-          "key": "D",
-          "description": "Gear: Drive"
+          "key": "A / Left Arrow",
+          "description": "Steer Left"
         },
         {
-          "key": "P",
-          "description": "Gear: Parking"
+          "key": "D / Right Arrow",
+          "description": "Steer Right"
+        },
+        {
+          "key": "Space",
+          "description": "Handbrake"
+        },
+        {
+          "key": "LeftShift / LeftCtrl",
+          "description": "Change Gear +/-"
         },
         {
           "key": "R",
-          "description": "Gear: Reverse"
+          "description": "Reverse Gear"
         },
         {
           "key": "N",
-          "description": "Gear: Neutral"
+          "description": "Neutral Gear"
         },
+        {
+          "key": "Left Alt",
+          "description": "Change Gear Mode"
+        }
+      ]
+    },
+    {
+      "name": "VPP Vehicle Signal Handler.cs",
+      "hotkeys": [
         {
           "key": "1",
           "description": "Signal: Left"
@@ -54,19 +63,35 @@
       ]
     },
     {
-      "name": "FollowCamera.cs",
+      "name": "Camera Controller",
       "hotkeys": [
         {
           "key": "C",
-          "description": "Camera control toggle"
+          "description": "Toggle camera mode"
         },
         {
-          "key": "Hold LShift + Mouse Drag",
-          "description": "Camera rotation"
+          "key": "Mouse Drag",
+          "description": "Camera rotation (in certain modes)"
         },
         {
-          "key": "Hold LShift + Mouse Wheel +/-",
-          "description": "Camera zoom"
+          "key": "Mouse Wheel +/-",
+          "description": "Camera zoom (in certain modes)"
+        },
+        {
+          "key": "F1",
+          "description": "Driver View"
+        },
+        {
+          "key": "F2",
+          "description": "Smooth Follow"
+        },
+        {
+          "key": "F3",
+          "description": "Orbit"
+        },
+        {
+          "key": "F4",
+          "description": "Look At"
         }
       ]
     },
