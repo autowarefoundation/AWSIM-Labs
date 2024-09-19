@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -141,27 +140,33 @@ namespace AWSIM.Scripts.UI
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
             {
-                cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
-                cam.TryGetComponent<Volume>(out var cameraVolume);
-                var cameraVolumeProfile = cameraVolume.profile;
-
-                cameraData.antialiasing = AntialiasingMode.None;
-                cameraData.renderPostProcessing = false;
-                cameraData.renderShadows = false;
-                cameraData.allowHDROutput = false;
-
-                if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                if (cam)
                 {
-                    bloom.active = false;
-                }
+                    cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
+                    cam.TryGetComponent<Volume>(out var cameraVolume);
+                    var cameraVolumeProfile = cameraVolume.profile;
 
-                if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
-                {
-                    tonemapping.active = false;
+                    cameraData.antialiasing = AntialiasingMode.None;
+                    cameraData.renderPostProcessing = false;
+                    cameraData.renderShadows = false;
+                    cameraData.allowHDROutput = false;
+
+                    if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                    {
+                        bloom.active = false;
+                    }
+
+                    if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                    {
+                        tonemapping.active = false;
+                    }
                 }
             }
 
-            _sunSource.shadows = LightShadows.Hard;
+            if (_sunSource)
+            {
+                _sunSource.shadows = LightShadows.Hard;
+            }
         }
 
         private void GraphicsMediumQuality()
@@ -173,29 +178,35 @@ namespace AWSIM.Scripts.UI
             // update camera and volume parameters
             foreach (var cam in _cameraObjectsList)
             {
-                cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
-                cam.TryGetComponent<Volume>(out var cameraVolume);
-                var cameraVolumeProfile = cameraVolume.profile;
-
-                cameraData.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
-                cameraData.antialiasingQuality = AntialiasingQuality.Medium;
-                cameraData.renderPostProcessing = true;
-                cameraData.renderShadows = true;
-                cameraData.allowHDROutput = false;
-
-                if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                if (cam)
                 {
-                    bloom.active = false;
-                    bloom.intensity.value = 0.25f;
-                }
+                    cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
+                    cam.TryGetComponent<Volume>(out var cameraVolume);
+                    var cameraVolumeProfile = cameraVolume.profile;
 
-                if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
-                {
-                    tonemapping.active = false;
+                    cameraData.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
+                    cameraData.antialiasingQuality = AntialiasingQuality.Medium;
+                    cameraData.renderPostProcessing = true;
+                    cameraData.renderShadows = true;
+                    cameraData.allowHDROutput = false;
+
+                    if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                    {
+                        bloom.active = false;
+                        bloom.intensity.value = 0.25f;
+                    }
+
+                    if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                    {
+                        tonemapping.active = false;
+                    }
                 }
             }
 
-            _sunSource.shadows = LightShadows.Hard;
+            if (_sunSource)
+            {
+                _sunSource.shadows = LightShadows.Hard;
+            }
         }
 
         private void GraphicsHighQuality()
@@ -207,32 +218,38 @@ namespace AWSIM.Scripts.UI
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
             {
-                cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
-                cam.TryGetComponent<Volume>(out var cameraVolume);
-                var cameraVolumeProfile = cameraVolume.profile;
-
-                cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                cameraData.antialiasingQuality = AntialiasingQuality.High;
-                cameraData.renderPostProcessing = true;
-                cameraData.renderShadows = true;
-                cameraData.allowHDROutput = true;
-
-                if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                if (cam)
                 {
-                    bloom.active = true;
-                    bloom.intensity.value = 0.5f;
-                    bloom.highQualityFiltering.overrideState = false;
-                    bloom.highQualityFiltering.value = false;
-                }
+                    cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
+                    cam.TryGetComponent<Volume>(out var cameraVolume);
+                    var cameraVolumeProfile = cameraVolume.profile;
 
-                if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
-                {
-                    tonemapping.active = true;
-                    tonemapping.mode.value = TonemappingMode.ACES;
+                    cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                    cameraData.antialiasingQuality = AntialiasingQuality.High;
+                    cameraData.renderPostProcessing = true;
+                    cameraData.renderShadows = true;
+                    cameraData.allowHDROutput = true;
+
+                    if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                    {
+                        bloom.active = true;
+                        bloom.intensity.value = 0.5f;
+                        bloom.highQualityFiltering.overrideState = false;
+                        bloom.highQualityFiltering.value = false;
+                    }
+
+                    if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                    {
+                        tonemapping.active = true;
+                        tonemapping.mode.value = TonemappingMode.ACES;
+                    }
                 }
             }
 
-            _sunSource.shadows = LightShadows.Soft;
+            if (_sunSource)
+            {
+                _sunSource.shadows = LightShadows.Soft;
+            }
         }
 
         private void GraphicsUltraQuality()
