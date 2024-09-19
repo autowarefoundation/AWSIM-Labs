@@ -61,7 +61,7 @@ In order to configure the Autoware software with the AWSIM Labs demo, please:
    ros2 launch scenario_test_runner scenario_test_runner.launch.py                        \
    architecture_type:=awf/universe/20240605  record:=false                                \
    scenario:='$(find-pkg-share scenario_test_runner)/scenario/sample_awsim.yaml'          \
-   sensor_model:=awsim_labs_sensor_kit  vehicle_model:=awsimlabs_vehicle                  \
+   sensor_model:=awsim_labs_sensor_kit  vehicle_model:=awsim_labs_vehicle                 \
    launch_simple_sensor_simulator:=false autoware_launch_file:="e2e_simulator.launch.xml" \
    initialize_duration:=260 port:=8080
    ```
