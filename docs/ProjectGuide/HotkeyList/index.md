@@ -1,31 +1,39 @@
 # Hotkey List
 
-### [VehicleKeyboardInput.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/Vehicles/VehicleKeyboardInput.cs)
+### Vehicle Controller
 
-| Key         | Feature            |
-|:------------|:-------------------|
-| D           | Change drive gear. |
-| P           | Parking gear.      |
-| R           | Reverse gear.      |
-| N           | Neutral gear.      |
-| 1           | Left turn signal.  |
-| 2           | Right turn signal. |
-| 3           | Hazard.            |
-| 4           | Turn signal off.   |
-| Up arrow    | Accelerate.        |
-| Left arrow  | Steering (Left).   |
-| Right arrow | Steering (Right).  |
-| Down arrow  | Breaking.          |
+| Key                  | Feature           |
+|:---------------------|:------------------|
+| W / Up Arrow         | Throttle.         |
+| S / Down Arrow       | Brake.            |
+| A / Left Arrow       | Steer Left.       |
+| D / Right Arrow      | Steer Right.      |
+| Space                | Handbrake.        |
+| LeftShift / LeftCtrl | Change Gear +/-.  |
+| R                    | Reverse Gear.     |
+| N                    | Neutral Gear.     |
+| Left Alt             | Change Gear Mode. |
 
-W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
+### [VPPVehicleSignalHandler.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/Vehicles/VPP%20Integration/VPPVehicleSignalHandler.cs)
 
-### [FollowCamera.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/FollowCamera.cs)
+| Key | Feature         |
+|:----|:----------------|
+| 1   | Signal: Left.   |
+| 2   | Signal: Right.  |
+| 3   | Signal: Hazard. |
+| 4   | Signal: Off.    |
 
-| Key         | Feature                        |
-|:------------|:-------------------------------|
-| C           | Camera rotation on/off toggle. |
-| Mouse drag  | Rotate Camera angle.           |
-| Mouse wheel | Zoom in/out of camera.         |
+### Camera Controller
+
+| Key             | Feature                             |
+|:----------------|:------------------------------------|
+| C               | Toggle camera mode.                 |
+| Mouse Drag      | Camera rotation (in certain modes). |
+| Mouse Wheel +/- | Camera zoom (in certain modes)      |
+| F1              | Camera Mode: Driver View.           |
+| F2              | Camera Mode: Smooth Follow.         |
+| F3              | Camera Mode: Orbit.                 |
+| F4              | Camera Mode: Look At.               |
 
 ### [HotkeyHandler.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/UI/HotkeyHandler.cs)
 
@@ -51,3 +59,9 @@ W,A,S,D keys can also be used to control the vehicle, similar to the arrow keys.
 | Key | Feature                  |
 |:----|:-------------------------|
 | F3  | Toggle Graphy Visualizer |
+
+### [Loader.cs](https://github.com/autowarefoundation/AWSIM-Labs/blob/main/Assets/AWSIM/Scripts/Loader/Loader.cs)
+
+| Key | Feature                         |
+|:----|:--------------------------------|
+| F12 | Go back to load scene / Reload. |

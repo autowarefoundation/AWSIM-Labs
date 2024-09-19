@@ -42,7 +42,7 @@
       ]
     },
     {
-      "name": "VPP Vehicle Signal Handler.cs",
+      "name": "VPPVehicleSignalHandler.cs",
       "hotkeys": [
         {
           "key": "1",
@@ -79,19 +79,19 @@
         },
         {
           "key": "F1",
-          "description": "Driver View"
+          "description": "Camera mode: Driver View"
         },
         {
           "key": "F2",
-          "description": "Smooth Follow"
+          "description": "Camera mode: Smooth Follow"
         },
         {
           "key": "F3",
-          "description": "Orbit"
+          "description": "Camera Mode: Orbit"
         },
         {
           "key": "F4",
-          "description": "Look At"
+          "description": "Camera Mode: Look At"
         }
       ]
     },
@@ -151,11 +151,11 @@
       ]
     },
     {
-      "name": "Scene Loader",
+      "name": "Loader.cs",
       "hotkeys": [
         {
           "key": "F12",
-          "description": "Reload the scene"
+          "description": "Go back to the load scene / Reload"
         }
       ]
     }
