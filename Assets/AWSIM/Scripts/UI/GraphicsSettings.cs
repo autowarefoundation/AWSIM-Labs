@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -49,6 +50,7 @@ namespace AWSIM.Scripts.UI
 
             // Subscribe to camera initialization event
             BirdEyeView.OnCameraInitialized += UpdateGraphicSettingsForAddedCamera;
+            BirdEyeView.OnCameraDestroyed += RemoveCameraFromList;
 
             // Set initial quality level
             if (PlayerPrefs.HasKey(UserGraphicsQualityKey) &&
@@ -242,35 +244,41 @@ namespace AWSIM.Scripts.UI
             // update camera parameters
             foreach (var cam in _cameraObjectsList)
             {
-                if (cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData))
+                if (cam)
                 {
-                    cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData.antialiasingQuality = AntialiasingQuality.High;
-                    cameraData.renderPostProcessing = true;
-                    cameraData.renderShadows = true;
-                    cameraData.allowHDROutput = true;
-                }
-
-                if (cam.TryGetComponent<Volume>(out var cameraVolume))
-                {
-                    var cameraVolumeProfile = cameraVolume.profile;
-                    if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                    if (cam.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData))
                     {
-                        bloom.active = true;
-                        bloom.intensity.value = 1.0f;
-                        bloom.highQualityFiltering.overrideState = true;
-                        bloom.highQualityFiltering.value = true;
+                        cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                        cameraData.antialiasingQuality = AntialiasingQuality.High;
+                        cameraData.renderPostProcessing = true;
+                        cameraData.renderShadows = true;
+                        cameraData.allowHDROutput = true;
                     }
 
-                    if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                    if (cam.TryGetComponent<Volume>(out var cameraVolume))
                     {
-                        tonemapping.active = true;
-                        tonemapping.mode.value = TonemappingMode.ACES;
+                        var cameraVolumeProfile = cameraVolume.profile;
+                        if (cameraVolumeProfile.TryGet(out Bloom bloom))
+                        {
+                            bloom.active = true;
+                            bloom.intensity.value = 1.0f;
+                            bloom.highQualityFiltering.overrideState = true;
+                            bloom.highQualityFiltering.value = true;
+                        }
+
+                        if (cameraVolumeProfile.TryGet(out Tonemapping tonemapping))
+                        {
+                            tonemapping.active = true;
+                            tonemapping.mode.value = TonemappingMode.ACES;
+                        }
                     }
                 }
             }
 
-            _sunSource.shadows = LightShadows.Soft;
+            if (_sunSource)
+            {
+                _sunSource.shadows = LightShadows.Soft;
+            }
         }
 
         // TODO: custom user settings (mozzz)
@@ -279,13 +287,22 @@ namespace AWSIM.Scripts.UI
         // Used for adding new cameras and updating their settings
         private void UpdateGraphicSettingsForAddedCamera(GameObject cam)
         {
-            _cameraObjectsList.Add(cam);
-            UISetQuality(_currentQualityLevel);
+            if (cam != null)
+            {
+                _cameraObjectsList.Add(cam);
+                UISetQuality(_currentQualityLevel);
+            }
+        }
+
+        private void RemoveCameraFromList(GameObject cam)
+        {
+            _cameraObjectsList.Remove(cam);
         }
 
         private void OnDestroy()
         {
             BirdEyeView.OnCameraInitialized -= UpdateGraphicSettingsForAddedCamera;
+            BirdEyeView.OnCameraDestroyed -= RemoveCameraFromList;
             _cameraObjectsList.Clear();
         }
     }

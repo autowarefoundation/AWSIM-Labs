@@ -8,25 +8,21 @@ namespace AWSIM.Scripts.UI
     public class BirdEyeView : MonoBehaviour
     {
         public static event Action<GameObject> OnCameraInitialized;
-        [SerializeField] private float _birdEyeCameraInitialHeight = 200;
+        public static event Action<GameObject> OnCameraDestroyed;
 
+        [SerializeField] private float _birdEyeCameraInitialHeight = 200;
         [SerializeField] private float _cameraOrthographicSizeMinimum = 3;
         [SerializeField] private float _cameraOrthographicSizeMaximum = 150;
-
         [SerializeField] private float _zoomChangeMultiplier = 10f;
         [SerializeField] private float _zoomTime = 0.1f;
-
         [SerializeField] private float _dragPanMultiplier = 0.2f;
-
         [SerializeField] private float _keyPanSpeed = 50f;
         [SerializeField] private float _keyPanLerp = 0.5f;
-
         [SerializeField] private float _targetFollowOffsetX;
         [SerializeField] private float _targetFollowOffsetZ;
 
         private Camera _birdEyeCamera;
         private Camera _vehicleCamera;
-
         private Transform _cameraFollowTarget;
         private GameObject _vehicleTransform;
 
@@ -57,6 +53,15 @@ namespace AWSIM.Scripts.UI
 
             // Add to the list of cameras for GraphicsSettings
             OnCameraInitialized?.Invoke(_birdEyeCamera.gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            // Remove the camera from the list of cameras for GraphicsSettings
+            if (_birdEyeCamera != null)
+            {
+                OnCameraDestroyed?.Invoke(_birdEyeCamera.gameObject);
+            }
         }
 
         public void Activate()
