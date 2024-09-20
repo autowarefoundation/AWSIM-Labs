@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 541707468, guid: b8873f7cd5fec6f49a4b37228b9b23ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttleAndBrakeMode: 0
+  throttleAndBrakeMode: 1
   brakeOnThrottleBackwards: 0
   applyClutchOnHandbrake: 1
   unlockDrivelineOnHandbrake: 1
