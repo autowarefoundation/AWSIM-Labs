@@ -337,8 +337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 55, y: -20}
-  m_SizeDelta: {x: 35, y: 30}
+  m_AnchoredPosition: {x: 60, y: -20}
+  m_SizeDelta: {x: 40, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1055218196875473127
 CanvasRenderer:
@@ -551,6 +551,7 @@ GameObject:
   - component: {fileID: 1975691864731210933}
   - component: {fileID: 5985526962340375484}
   - component: {fileID: 8966838792292639768}
+  - component: {fileID: 7049520808121218508}
   m_Layer: 5
   m_Name: Vehicle Dashboard
   m_TagString: Untagged
@@ -618,6 +619,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7049520808121218508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4430727111052778003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6b35ceba677e70283562903989f306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6442091590382499696
 GameObject:
   m_ObjectHideFlags: 0
