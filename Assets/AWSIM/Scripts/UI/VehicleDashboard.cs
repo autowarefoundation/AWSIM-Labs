@@ -41,6 +41,11 @@ namespace AWSIM.Scripts.UI
             }
         }
 
+        public void Activate()
+        {
+            Start();
+        }
+
         private void FixedUpdate()
         {
             if (_vehicleController == null) return;
@@ -103,7 +108,7 @@ namespace AWSIM.Scripts.UI
             return speedVal.ToString("F0");
         }
 
-        private string UpdateTransmissionMode(int modeVal)
+        private static string UpdateTransmissionMode(int modeVal)
         {
             return modeVal switch
             {
