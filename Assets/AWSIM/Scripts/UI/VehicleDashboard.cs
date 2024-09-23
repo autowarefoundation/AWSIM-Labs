@@ -9,6 +9,7 @@ namespace AWSIM.Scripts.UI
     public class VehicleDashboard : MonoBehaviour
     {
         private VPVehicleController _vehicleController;
+        private int[] _vehicleDataBus;
         private AutowareVPPAdapter _adapter;
 
         [SerializeField] private Text _speedText;
@@ -31,71 +32,63 @@ namespace AWSIM.Scripts.UI
         private void Start()
         {
             _vehicleController = FindObjectOfType<VPVehicleController>();
+            _vehicleDataBus = _vehicleController.data.bus[Channel.Vehicle];
             _adapter = FindObjectOfType<AutowareVPPAdapter>();
+
+            if (_vehicleController == null || _adapter == null)
+            {
+                Debug.LogError("VehicleController or AutowareVPPAdapter component not found!");
+            }
         }
 
         private void FixedUpdate()
         {
+            if (_vehicleController == null) return;
+
             UpdateDashboard();
         }
 
         private void UpdateDashboard()
         {
             _speedText.text = UpdateSpeed(_vehicleController);
-            _transmissionModeText.text = UpdateTransmissionMode(_vehicleController);
-            _gearText.text = UpdateGear(_vehicleController);
-            UpdateAbsState(_vehicleController, _absText);
-            UpdateAsrState(_vehicleController, _asrText);
-            UpdateEscState(_vehicleController, _escText);
-            UpdateTcsState(_vehicleController, _tcsText);
-            UpdateControlMode(_adapter, _controlModeText);
+            _transmissionModeText.text = UpdateTransmissionMode(_vehicleDataBus[VehicleData.GearboxMode]);
+            _gearText.text = UpdateGear(_vehicleDataBus[VehicleData.GearboxGear]);
+
+            UpdateSystemState(_vehicleDataBus[VehicleData.AbsEngaged], _absText);
+            UpdateSystemState(_vehicleDataBus[VehicleData.AsrEngaged], _asrText);
+            UpdateSystemState(_vehicleDataBus[VehicleData.EscEngaged], _escText);
+            UpdateSystemState(_vehicleDataBus[VehicleData.TcsEngaged], _tcsText);
+
+            UpdateControlMode();
         }
 
-        private void UpdateControlMode(AutowareVPPAdapter adapter, Text text)
+        private void UpdateControlMode()
         {
-            if (adapter == null)
+            if (_adapter == null)
             {
-                text.text = "N/A";
-                text.color = _systemInactiveColor;
+                SetControlModeText("N/A", _systemInactiveColor);
+                return;
             }
-            else
+
+            var (text, color) = _adapter.ControlModeInput switch
             {
-                switch (adapter.ControlModeInput)
-                {
-                    case VPPControlMode.Autonomous:
-                        text.text = "Autonomous";
-                        text.color = _conrtolModeAutonomousColor;
-                        break;
-                    case VPPControlMode.Manual:
-                        text.text = "Manual";
-                        text.color = _controlModeManualColor;
-                        break;
-                    case VPPControlMode.NoCommand:
-                        text.text = "NoCommand";
-                        text.color = _systemInactiveColor;
-                        break;
-                    case VPPControlMode.AutonomousSteerOnly:
-                        text.text = "AutonomousSteerOnly";
-                        text.color = _systemInactiveColor;
-                        break;
-                    case VPPControlMode.AutonomousVelocityOnly:
-                        text.text = "AutonomousVelocityOnly";
-                        text.color = _systemInactiveColor;
-                        break;
-                    case VPPControlMode.Disengaged:
-                        text.text = "Disengaged";
-                        text.color = _systemInactiveColor;
-                        break;
-                    case VPPControlMode.NotReady:
-                        text.text = "Not Ready";
-                        text.color = _systemInactiveColor;
-                        break;
-                    default:
-                        text.text = "N/A";
-                        text.color = _systemInactiveColor;
-                        break;
-                }
-            }
+                VPPControlMode.Autonomous => ("Autonomous", _conrtolModeAutonomousColor),
+                VPPControlMode.Manual => ("Manual", _controlModeManualColor),
+                VPPControlMode.NoCommand => ("NoCommand", _systemInactiveColor),
+                VPPControlMode.AutonomousSteerOnly => ("AutonomousSteerOnly", _systemInactiveColor),
+                VPPControlMode.AutonomousVelocityOnly => ("AutonomousVelocityOnly", _systemInactiveColor),
+                VPPControlMode.Disengaged => ("Disengaged", _systemInactiveColor),
+                VPPControlMode.NotReady => ("Not Ready", _systemInactiveColor),
+                _ => ("N/A", _systemInactiveColor)
+            };
+
+            SetControlModeText(text, color);
+        }
+
+        private void SetControlModeText(string mode, Color color)
+        {
+            _controlModeText.text = mode;
+            _controlModeText.color = color;
         }
 
         private static string UpdateSpeed(VPVehicleController vehicle)
@@ -105,26 +98,13 @@ namespace AWSIM.Scripts.UI
                 return "N/A";
             }
 
-            var speedVal = (int)(vehicle.speed * MsToKmH);
-            // Always return positive
-            if (speedVal < 0)
-            {
-                speedVal = -speedVal;
-            }
+            var speedVal = Mathf.Abs((int)(vehicle.speed * MsToKmH));
 
-            string speed = speedVal.ToString("F0");
-            return speed;
+            return speedVal.ToString("F0");
         }
 
-        private string UpdateTransmissionMode(VPVehicleController vehicle)
+        private string UpdateTransmissionMode(int modeVal)
         {
-            if (vehicle == null)
-            {
-                return "N/A";
-            }
-
-            int modeVal = _vehicleController.data.bus[Channel.Vehicle][VehicleData.GearboxMode];
-
             return modeVal switch
             {
                 0 => "Manual",
@@ -141,15 +121,8 @@ namespace AWSIM.Scripts.UI
             };
         }
 
-        private string UpdateGear(VPVehicleController vehicle)
+        private static string UpdateGear(int gearVal)
         {
-            if (vehicle == null)
-            {
-                return "N/A";
-            }
-
-            int gearVal = _vehicleController.data.bus[Channel.Vehicle][VehicleData.GearboxGear];
-
             return gearVal switch
             {
                 < 0 => "R",
@@ -158,52 +131,9 @@ namespace AWSIM.Scripts.UI
             };
         }
 
-        private void UpdateAbsState(VPVehicleController vehicle, Text text)
+        private void UpdateSystemState(int systemState, Text systemText)
         {
-            if (vehicle.data.bus[Channel.Vehicle][VehicleData.AbsEngaged] != 0)
-            {
-                text.color = _systemActiveColor;
-            }
-            else
-            {
-                text.color = _systemInactiveColor;
-            }
-        }
-
-        private void UpdateAsrState(VPVehicleController vehicle, Text text)
-        {
-            if (vehicle.data.bus[Channel.Vehicle][VehicleData.AsrEngaged] != 0)
-            {
-                text.color = _systemActiveColor;
-            }
-            else
-            {
-                text.color = _systemInactiveColor;
-            }
-        }
-
-        private void UpdateEscState(VPVehicleController vehicle, Text text)
-        {
-            if (vehicle.data.bus[Channel.Vehicle][VehicleData.EscEngaged] != 0)
-            {
-                text.color = _systemActiveColor;
-            }
-            else
-            {
-                text.color = _systemInactiveColor;
-            }
-        }
-
-        private void UpdateTcsState(VPVehicleController vehicle, Text text)
-        {
-            if (vehicle.data.bus[Channel.Vehicle][VehicleData.TcsEngaged] != 0)
-            {
-                text.color = _systemActiveColor;
-            }
-            else
-            {
-                text.color = _systemInactiveColor;
-            }
+            systemText.color = systemState != 0 ? _systemActiveColor : _systemInactiveColor;
         }
     }
 }
