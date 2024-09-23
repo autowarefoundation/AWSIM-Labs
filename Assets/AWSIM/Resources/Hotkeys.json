@@ -5,11 +5,11 @@
       "hotkeys": [
         {
           "key": "W / Up Arrow",
-          "description": "Throttle"
+          "description": "Forward"
         },
         {
           "key": "S / Down Arrow",
-          "description": "Brake"
+          "description": "Brake & Reverse"
         },
         {
           "key": "A / Left Arrow",
@@ -34,6 +34,10 @@
         {
           "key": "N",
           "description": "Neutral Gear"
+        },
+        {
+          "key": "P",
+          "description": "Park Gear"
         },
         {
           "key": "Left Alt",
