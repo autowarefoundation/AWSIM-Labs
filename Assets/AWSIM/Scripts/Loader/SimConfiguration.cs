@@ -8,7 +8,7 @@ namespace AWSIM.Loader
 {
     static class SimConfiguration
     {
-        static public void Configure(EgosManager egoManager, MapManager mapManager, SimulationManager simulationManager)
+        public static void Configure(EgosManager egoManager, MapManager mapManager, SimulationManager simulationManager)
         {
             //////////////////////
             // Levels load order:

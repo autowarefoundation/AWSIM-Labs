@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace AWSIM.Scripts.Vehicles.VPP_Integration.IVehicleControlModes
 {
     // Vehicle control mode classes

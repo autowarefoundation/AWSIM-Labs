@@ -6,26 +6,36 @@ using VehiclePhysics;
 
 namespace AWSIM.Scripts.UI
 {
+    /// <summary>
+    /// Script for displaying vehicle status in the UI.
+    /// Commented out the text version of ControlMode since is not utilized completely from Autoware side yet.
+    /// Added more simplistic image representation for ControlMode as requested.
+    /// Disabled updating GearBoxMode in UI.
+    /// </summary>
     public class VehicleDashboard : MonoBehaviour
     {
         private VPVehicleController _vehicleController;
         private int[] _vehicleDataBus;
         private AutowareVPPAdapter _adapter;
-
+        [Header("Speed")]
         [SerializeField] private Text _speedText;
-        [SerializeField] private Text _transmissionModeText;
+        [Header("Transmission")]
         [SerializeField] private Text _gearText;
+        [Header("Systems")]
         [SerializeField] private Text _absText;
         [SerializeField] private Text _tcsText;
         [SerializeField] private Text _escText;
         [SerializeField] private Text _asrText;
-        [SerializeField] private Text _controlModeText;
+        // [SerializeField] private Text _transmissionModeText;
+        // [SerializeField] private Text _controlModeText;
 
         [SerializeField] private Color _systemActiveColor = Color.green;
         [SerializeField] private Color _systemInactiveColor = Color.gray;
-
-        [SerializeField] private Color _conrtolModeAutonomousColor = Color.cyan;
-        [SerializeField] private Color _controlModeManualColor = Color.yellow;
+        // [SerializeField] private Color _controlModeAutonomousColor = Color.cyan;
+        // [SerializeField] private Color _controlModeManualColor = Color.yellow;
+        [Header("Control Mode")]
+        [SerializeField] private Image _controlModeImage;
+        [SerializeField] private Sprite[] _controlModeImages;
 
         private const float MsToKmH = 3.6f;
 
@@ -56,7 +66,7 @@ namespace AWSIM.Scripts.UI
         private void UpdateDashboard()
         {
             _speedText.text = UpdateSpeed(_vehicleController);
-            _transmissionModeText.text = UpdateTransmissionMode(_vehicleDataBus[VehicleData.GearboxMode]);
+            // _transmissionModeText.text = UpdateTransmissionMode(_vehicleDataBus[VehicleData.GearboxMode]);
             _gearText.text = UpdateGear(_vehicleDataBus[VehicleData.GearboxGear]);
 
             UpdateSystemState(_vehicleDataBus[VehicleData.AbsEngaged], _absText);
@@ -64,37 +74,62 @@ namespace AWSIM.Scripts.UI
             UpdateSystemState(_vehicleDataBus[VehicleData.EscEngaged], _escText);
             UpdateSystemState(_vehicleDataBus[VehicleData.TcsEngaged], _tcsText);
 
-            UpdateControlMode();
+            // UpdateControlMode();
+            UpdateControlModeImage();
         }
 
-        private void UpdateControlMode()
+        private void UpdateControlModeImage()
         {
             if (_adapter == null)
             {
-                SetControlModeText("N/A", _systemInactiveColor);
+                SetControlModeImage(_controlModeImages[0]);
                 return;
             }
 
-            var (text, color) = _adapter.ControlModeInput switch
+            Sprite texture = _adapter.ControlModeInput switch
             {
-                VPPControlMode.Autonomous => ("Autonomous", _conrtolModeAutonomousColor),
-                VPPControlMode.Manual => ("Manual", _controlModeManualColor),
-                VPPControlMode.NoCommand => ("NoCommand", _systemInactiveColor),
-                VPPControlMode.AutonomousSteerOnly => ("AutonomousSteerOnly", _systemInactiveColor),
-                VPPControlMode.AutonomousVelocityOnly => ("AutonomousVelocityOnly", _systemInactiveColor),
-                VPPControlMode.Disengaged => ("Disengaged", _systemInactiveColor),
-                VPPControlMode.NotReady => ("Not Ready", _systemInactiveColor),
-                _ => ("N/A", _systemInactiveColor)
+                VPPControlMode.NoCommand => _controlModeImages[0],
+                VPPControlMode.Autonomous => _controlModeImages[1],
+                VPPControlMode.Manual => _controlModeImages[0],
+                _ => _controlModeImages[0]
             };
 
-            SetControlModeText(text, color);
+            SetControlModeImage(texture);
         }
 
-        private void SetControlModeText(string mode, Color color)
+        private void SetControlModeImage(Sprite texture)
         {
-            _controlModeText.text = mode;
-            _controlModeText.color = color;
+            _controlModeImage.sprite = texture;
         }
+
+        // private void UpdateControlMode()
+        // {
+        //     if (_adapter == null)
+        //     {
+        //         SetControlModeText("N/A", _systemInactiveColor);
+        //         return;
+        //     }
+        //
+        //     var (text, color) = _adapter.ControlModeInput switch
+        //     {
+        //         VPPControlMode.NoCommand => ("NoCommand", _systemInactiveColor),
+        //         VPPControlMode.Autonomous => ("Autonomous", _conrtolModeAutonomousColor: _controlModeAutonomousColor),
+        //         VPPControlMode.AutonomousSteerOnly => ("AutonomousSteerOnly", _systemInactiveColor),
+        //         VPPControlMode.AutonomousVelocityOnly => ("AutonomousVelocityOnly", _systemInactiveColor),
+        //         VPPControlMode.Manual => ("Manual", _controlModeManualColor),
+        //         VPPControlMode.Disengaged => ("Disengaged", _systemInactiveColor),
+        //         VPPControlMode.NotReady => ("Not Ready", _systemInactiveColor),
+        //         _ => ("N/A", _systemInactiveColor)
+        //     };
+        //
+        //     SetControlModeText(text, color);
+        // }
+
+        // private void SetControlModeText(string mode, Color color)
+        // {
+        //     _controlModeText.text = mode;
+        //     _controlModeText.color = color;
+        // }
 
         private static string UpdateSpeed(VPVehicleController vehicle)
         {
@@ -108,31 +143,36 @@ namespace AWSIM.Scripts.UI
             return speedVal.ToString("F0");
         }
 
-        private static string UpdateTransmissionMode(int modeVal)
-        {
-            return modeVal switch
-            {
-                0 => "Manual",
-                1 => "Park",
-                2 => "Reverse",
-                3 => "Neutral",
-                4 => "Auto",
-                5 => "Auto 1",
-                6 => "Auto 2",
-                7 => "Auto 3",
-                8 => "Auto 4",
-                9 => "Auto 5",
-                _ => "N/A"
-            };
-        }
+        // private static string UpdateTransmissionMode(int modeVal)
+        // {
+        //     return modeVal switch
+        //     {
+        //         0 => "Manual",
+        //         1 => "Park",
+        //         2 => "Reverse",
+        //         3 => "Neutral",
+        //         4 => "Auto",
+        //         5 => "Auto 1",
+        //         6 => "Auto 2",
+        //         7 => "Auto 3",
+        //         8 => "Auto 4",
+        //         9 => "Auto 5",
+        //         _ => "N/A"
+        //     };
+        // }
 
-        private static string UpdateGear(int gearVal)
+        private string UpdateGear(int gearVal)
         {
             return gearVal switch
             {
                 < 0 => "R",
-                0 => "N",
-                > 0 => gearVal.ToString()
+                0 => _vehicleDataBus[VehicleData.GearboxMode] switch
+                {
+                    (int)Gearbox.AutomaticGear.P => "P",
+                    (int)Gearbox.AutomaticGear.N => "N",
+                    _ => "D"
+                },
+                _ => gearVal.ToString()
             };
         }
 
