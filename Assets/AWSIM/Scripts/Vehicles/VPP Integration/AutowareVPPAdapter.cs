@@ -339,11 +339,8 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
 
             if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
             {
-                _rigidbody.velocity.Set(0,0,0);
-                _rigidbody.angularVelocity.Set(0,0,0);
-                _rigidbody.Sleep();
                 PositionInput = new Vector3(PositionInput.x, hit.point.y + _updatePositionOffsetY, PositionInput.z);
-                transform.SetPositionAndRotation(PositionInput, RotationInput);
+                _vehicleController.HardReposition(PositionInput, RotationInput);
             }
             else
             {

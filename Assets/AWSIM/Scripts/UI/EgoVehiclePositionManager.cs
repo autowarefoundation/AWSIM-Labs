@@ -1,11 +1,11 @@
 using UnityEngine;
+using VehiclePhysics;
 
 namespace AWSIM.Scripts.UI
 {
     public class EgoVehiclePositionManager : MonoBehaviour
     {
         public Transform EgoTransform { private get; set; }
-        private Rigidbody egoRigidbody;
         private Vector3 initialEgoPosition;
         private Quaternion initialEgoRotation;
 
@@ -19,10 +19,10 @@ namespace AWSIM.Scripts.UI
             enabled = true;
             Start();
         }
-        public void InitializeEgoTransform(Transform egoTransform)
+
+        private void InitializeEgoTransform(Transform egoTransform)
         {
             EgoTransform = egoTransform;
-            egoRigidbody = EgoTransform.GetComponent<Rigidbody>();
             initialEgoPosition = EgoTransform.position;
             initialEgoRotation = EgoTransform.rotation;
         }
@@ -36,8 +36,8 @@ namespace AWSIM.Scripts.UI
                 return;
             }
 
-            EgoTransform.SetPositionAndRotation(initialEgoPosition, initialEgoRotation);
-            egoRigidbody.Sleep();
+            var vpController = EgoTransform.GetComponent<VPVehicleController>();
+            vpController.HardReposition(initialEgoPosition, initialEgoRotation);
         }
     }
 }
