@@ -25019,6 +25019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7194879542207918461}
   - component: {fileID: 7194879540961746275}
+  - component: {fileID: 1865386616294816128}
   m_Layer: 0
   m_Name: Nishishinjuku RandomTraffic
   m_TagString: Untagged
@@ -25068,6 +25069,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mgrsOffsetPosition: {x: 81655.73, y: 50137.434, z: 42.49998}
   mgrsGridZone: 54SUE
+--- !u!114 &1865386616294816128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194879542207918458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134fb5ad0cefe76c8895739ca367180b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dummyPerceptionTopic: /simulation/dummy_perception_publisher/object_info
+  qosSettings:
+    ReliabilityPolicy: 0
+    DurabilityPolicy: 0
+    HistoryPolicy: 0
+    Depth: 0
+  npcPedestrianPrefab: {fileID: 500668027104458449, guid: 27e8a3736efefa447b1f65b33b30908a, type: 3}
+  npcCarPrefabs:
+  - {fileID: 6604874415271597525, guid: 7e772e9ad7eb79040be629d8d04542ab, type: 3}
+  - {fileID: 3333523281254186578, guid: 589cf2e451adab34eb1332da5701195a, type: 3}
+  - {fileID: 714549001370495616, guid: d0094c5a0e9fb6148873c658dbc61a89, type: 3}
+  - {fileID: 536101250511469494, guid: 433e715a84edbae418fe585f802f3918, type: 3}
+  npcBusPrefabs:
+  - {fileID: 6850358619771218631, guid: 9bc315af95865dd4bbf4a8f716791609, type: 3}
+  npcPedestrianParent: {fileID: 1041813114}
+  npcVehicleParent: {fileID: 9027057600357292003}
+  despawnTime: 30
 --- !u!1 &7285300991010974236
 GameObject:
   m_ObjectHideFlags: 0
