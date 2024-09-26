@@ -24,6 +24,6 @@ MonoBehaviour:
   - sceneName: AutowareSimulationScenarioSimulator
     isSs2Scene: 1
   - sceneName: Parking_Area_ss2
-    isSs2Scene: 0
+    isSs2Scene: 1
   - sceneName: Parking Area
     isSs2Scene: 0
