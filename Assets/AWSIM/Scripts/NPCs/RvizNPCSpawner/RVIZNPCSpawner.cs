@@ -45,13 +45,13 @@ namespace AWSIM
         private float _raycastStart = 1.33f;
 
         // Subscriber
-        ISubscription<dummy_perception_publisher.msg.Object> dummyPerceptionSubscriber;
+        ISubscription<tier4_simulation_msgs.msg.DummyObject> dummyPerceptionSubscriber;
 
         void Start()
         {
             // Initialize the ROS2 node and create the subscription
             dummyPerceptionSubscriber
-                = SimulatorROS2Node.CreateSubscription<dummy_perception_publisher.msg.Object>(
+                = SimulatorROS2Node.CreateSubscription<tier4_simulation_msgs.msg.DummyObject>(
                         dummyPerceptionTopic, OnObjectInfoReceived, qosSettings.GetQoSProfile());
         }
 
@@ -100,7 +100,7 @@ namespace AWSIM
         /// Callback method to handle incoming ROS messages
         /// </summary>
         /// <param name="msg">Received Object message</param>
-        void OnObjectInfoReceived(dummy_perception_publisher.msg.Object msg)
+        void OnObjectInfoReceived(tier4_simulation_msgs.msg.DummyObject msg)
         {
             _npcLabel = msg.Classification.Label; // Label: 0 = delete All Npcs, 7 = Spawn pedestrians, 3 = spawn vehicle
             _interactiveAction = msg.Action; // Action: 0 = uninteractive mode, 1 = interactive mode, 2 = delete interactive NPCs
@@ -321,7 +321,7 @@ namespace AWSIM
         /// </summary>
         void OnDestroy()
         {
-            SimulatorROS2Node.RemoveSubscription<dummy_perception_publisher.msg.Object>(dummyPerceptionSubscriber);
+            SimulatorROS2Node.RemoveSubscription<tier4_simulation_msgs.msg.DummyObject>(dummyPerceptionSubscriber);
         }
     }
 }
