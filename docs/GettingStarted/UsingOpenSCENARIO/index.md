@@ -20,7 +20,7 @@ In order to configure the Autoware software with the AWSIM Labs demo, please:
    ```
 2. Check out to the `awsim-labs-stable` branch _(This is a temporary branch, and it will be used in the main branch later on.)_
    ```
-   git checkout awsim-labs-stable
+   git checkout main
    ```
 3. Configure the environment. _(Skip if Autoware environment has been configured before)_
    ```
