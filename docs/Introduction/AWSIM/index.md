@@ -15,12 +15,15 @@ Because **AWSIM** was developed mainly to work with [**Autoware**](../Autoware/)
 - *Ubuntu 22.04* and *Windows 10/11*
 - [*ROS2*](https://docs.ros.org/en/humble/index.html) Humble distribution
 
+!!! warning "WSL2 Support"
+    **AWSIM Labs** does not support running on Windows Subsystem for Linux 2 (WSL2). It is recommended to use a native Ubuntu 22.04 environment.  
+
 !!! note "Prerequisites"
-    You can read more about the prerequisites and running **AWSIM** [here](../../GettingStarted/QuickStartDemo/).
+    You can read more about the prerequisites and running **AWSIM Labs** [here](../../GettingStarted/QuickStartDemo/).
 
 
 !!! note "Connection with Autoware"
-    Introduction about how the connection between **AWSIM** and **Autoware** works can be read [here](../CombinationWithAutoware/).
+    Introduction about how the connection between **AWSIM Labs** and **Autoware** works can be read [here](../CombinationWithAutoware/).
 
 #### Why was AWSIM developed?
 
