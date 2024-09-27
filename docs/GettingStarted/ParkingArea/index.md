@@ -4,7 +4,7 @@ _After completing the Quick Start demo, you can proceed to this section._
 
 1. Download the hd-map and pointcloud map of the parking area.
 
-    [Parking Are Map](https://drive.google.com/drive/folders/1ly8Z1_SQc9bJ834t_zKCyYSTyKJgj8ho)
+    [Parking Are Map](https://drive.google.com/drive/folders/1ly8Z1_SQc9bJ834t_zKCyYSTyKJgj8ho?usp=sharing)
 
 2. Download the latest release from:
 
