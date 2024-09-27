@@ -38,12 +38,15 @@ namespace AWSIM.Loader
         /// </summary>
         public Action<LogLevel, string> Log { get; set; }
 
+        private EgosManager _egosManager;
+
         public void Start()
         {
             if (!forbiddenSceneNames.Contains(SceneManager.GetActiveScene().name))
             {
                 forbiddenSceneNames.Add(SceneManager.GetActiveScene().name);
             }
+            _egosManager = GameObject.FindObjectOfType<EgosManager>();
         }
 
         /// <summary>
@@ -85,6 +88,7 @@ namespace AWSIM.Loader
             }
             mapUISelecor.value = 0;
             mapUISelecor.RefreshShownValue();
+            mapUISelecor.onValueChanged.AddListener(delegate { UpdateFields(mapUISelecor.options[mapUISelecor.value]); });
         }
 
         /// <summary>
@@ -109,9 +113,39 @@ namespace AWSIM.Loader
                     return false;
                 }
             }
-
             return true;
         }
-    }
 
+        // Sin (other part is in EgosManager.cs)
+        private void UpdateFields(Dropdown.OptionData data)
+        {
+            double mapPosX = 0;
+            double mapPosY = 0;
+            double mapPosZ = 0;
+            double mapRotX = 0;
+            double mapRotY = 0;
+            double mapRotZ = 0;
+
+            switch (data.text)
+            {
+                case "Shinjuku" or "ShinjukuNight":
+                    mapPosX = 81380.72;
+                    mapPosY = 49918.78;
+                    mapPosZ = 41.57;
+                    mapRotX = 0;
+                    mapRotY = 0;
+                    mapRotZ = 35;
+                    break;
+                case "Parking Area":
+                    mapPosX = 81580.52;
+                    mapPosY = 50083.58;
+                    mapPosZ = 41;
+                    mapRotX = 0;
+                    mapRotY = 0;
+                    mapRotZ = 100;
+                    break;
+            }
+            _egosManager.UpdateMapDefaultSpawn(mapPosX, mapPosY, mapPosZ, mapRotX, mapRotY, mapRotZ);
+        }
+    }
 }

@@ -79,6 +79,17 @@ namespace AWSIM.Loader
             egoUISelecor.RefreshShownValue();
         }
 
+        // Sin cont.
+        public void UpdateMapDefaultSpawn(double mapPosX, double mapPosY, double mapPosZ, double mapRotX, double mapRotY, double mapRotZ)
+        {
+            positionInputFields[0].text = mapPosX.ToString();
+            positionInputFields[1].text = mapPosY.ToString();
+            positionInputFields[2].text = mapPosZ.ToString();
+            rotationInputFields[0].text = mapRotX.ToString();
+            rotationInputFields[1].text = mapRotY.ToString();
+            rotationInputFields[2].text = mapRotZ.ToString();
+        }
+
         /// <summary>
         /// Gets the position from the GUI input fields.
         /// </summary>
