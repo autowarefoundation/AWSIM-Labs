@@ -24,7 +24,7 @@ Please make sure that your machine meets the following requirements in order to 
 | OS                        | Ubuntu 22.04       |
 | CPU                       | 6c12t or higher    |
 | GPU                       | RTX 2080 or higher |
-| Nvidia Driver (Ubuntu 22) | >=545              |
+| Nvidia Driver (Ubuntu 22) | 545                |
 
 
 ### DDS configuration
@@ -108,7 +108,7 @@ To run the simulator, please follow the steps below.
     sudo ubuntu-drivers autoinstall
 
     # or install a specific version (following was tested)
-    sudo apt install nvidia-driver-550
+    sudo apt install nvidia-driver-545
     ```
     3. Reboot your machine to make the installed driver detected by the system.
     ```
@@ -117,17 +117,17 @@ To run the simulator, please follow the steps below.
     4. Open terminal and check if `nvidia-smi` command is available and outputs summary similar to the one presented below.
     ```
     $ nvidia-smi
-    +-----------------------------------------------------------------------------------------+
-    | NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
-    |-----------------------------------------+------------------------+----------------------+
-    | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
-    | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
-    |                                         |                        |               MIG M. |
-    |=========================================+========================+======================|
-    |   0  NVIDIA GeForce RTX 3080        Off |   00000000:2D:00.0  On |                  N/A |
-    | 30%   40C    P8             35W /  320W |    5299MiB /  10240MiB |      7%      Default |
-    |                                         |                        |                  N/A |
-    +-----------------------------------------+------------------------+----------------------+
+    +---------------------------------------------------------------------------------------+
+    | NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
+    |-----------------------------------------+----------------------+----------------------+
+    | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+    |                                         |                      |               MIG M. |
+    |=========================================+======================+======================|
+    |   0  NVIDIA GeForce RTX 4080        On  | 00000000:08:00.0  On |                  N/A |
+    |  0%   36C    P8              12W / 320W |   5456MiB / 16376MiB |      2%      Default |
+    |                                         |                      |                  N/A |
+    +-----------------------------------------+----------------------+----------------------+
     ...
     ```
 
