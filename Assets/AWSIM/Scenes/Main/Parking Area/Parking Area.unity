@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 30764857}
   - component: {fileID: 30764856}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &59534536
 Transform:
   m_ObjectHideFlags: 0
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 105772195}
   - component: {fileID: 105772196}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 117442110}
   - component: {fileID: 117442109}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1505,7 +1505,7 @@ GameObject:
   - component: {fileID: 163238535}
   - component: {fileID: 163238536}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1559,7 +1559,7 @@ GameObject:
   - component: {fileID: 164849639}
   - component: {fileID: 164849638}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3523,7 +3523,7 @@ GameObject:
   - component: {fileID: 475249251}
   - component: {fileID: 475249250}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5146,7 +5146,7 @@ GameObject:
   - component: {fileID: 755395902}
   - component: {fileID: 755395901}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5179,7 +5179,7 @@ MonoBehaviour:
   rightOfWayLanes: []
   stopLine: {fileID: 0}
   speedLimit: 2.7777777
-  intersectionLane: 0
+  intersectionLane: 1
 --- !u!4 &755395902
 Transform:
   m_ObjectHideFlags: 0
@@ -5206,7 +5206,7 @@ GameObject:
   - component: {fileID: 756420002}
   - component: {fileID: 756420003}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5334,7 +5334,7 @@ GameObject:
   - component: {fileID: 786429319}
   - component: {fileID: 786429320}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6792,7 +6792,7 @@ GameObject:
   - component: {fileID: 1064880952}
   - component: {fileID: 1064880951}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9043,8 +9043,8 @@ MonoBehaviour:
   - {fileID: 6604874415271597525, guid: 7e772e9ad7eb79040be629d8d04542ab, type: 3}
   npcBusPrefabs:
   - {fileID: 6850358619771218631, guid: 9bc315af95865dd4bbf4a8f716791609, type: 3}
-  npcPedestrianParent: {fileID: 0}
-  npcVehicleParent: {fileID: 0}
+  npcPedestrianParent: {fileID: 291274266}
+  npcVehicleParent: {fileID: 59534536}
   despawnTime: 30
 --- !u!1001 &1401216874
 PrefabInstance:
@@ -9212,7 +9212,7 @@ GameObject:
   - component: {fileID: 1445112509}
   - component: {fileID: 1445112508}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9245,7 +9245,7 @@ MonoBehaviour:
   rightOfWayLanes: []
   stopLine: {fileID: 0}
   speedLimit: 2.7777777
-  intersectionLane: 0
+  intersectionLane: 1
 --- !u!4 &1445112509
 Transform:
   m_ObjectHideFlags: 0
@@ -10332,7 +10332,7 @@ GameObject:
   - component: {fileID: 1695284367}
   - component: {fileID: 1695284366}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12258,7 +12258,7 @@ GameObject:
   - component: {fileID: 2071593301}
   - component: {fileID: 2071593300}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12388,7 +12388,7 @@ GameObject:
   - component: {fileID: 2093799698}
   - component: {fileID: 2093799697}
   m_Layer: 0
-  m_Name: TrafficLane
+  m_Name: TrafficLane.10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
