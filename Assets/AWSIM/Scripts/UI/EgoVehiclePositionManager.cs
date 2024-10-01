@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
-using VehiclePhysics;
 
 namespace AWSIM.Scripts.UI
 {
     public class EgoVehiclePositionManager : MonoBehaviour
     {
         public Transform EgoTransform { private get; set; }
-        private Vector3 initialEgoPosition;
-        private Quaternion initialEgoRotation;
+        private Vector3 _initialEgoPosition;
+        private Quaternion _initialEgoRotation;
+
+        // Event to notify subscribers that the ego vehicle has been reset to the spawn point.
+        public event Action<Vector3, Quaternion> OnEgoReset;
 
         private void Start()
         {
@@ -23,8 +26,8 @@ namespace AWSIM.Scripts.UI
         private void InitializeEgoTransform(Transform egoTransform)
         {
             EgoTransform = egoTransform;
-            initialEgoPosition = EgoTransform.position;
-            initialEgoRotation = EgoTransform.rotation;
+            _initialEgoPosition = EgoTransform.position;
+            _initialEgoRotation = EgoTransform.rotation;
         }
 
         // If the ego transform reference is present, reset the ego to the initial position and rotation.
@@ -36,8 +39,8 @@ namespace AWSIM.Scripts.UI
                 return;
             }
 
-            var vpController = EgoTransform.GetComponent<VPVehicleController>();
-            vpController.HardReposition(initialEgoPosition, initialEgoRotation);
+            // Reset the ego vehicle to the initial position and rotation.
+            OnEgoReset?.Invoke(_initialEgoPosition, _initialEgoRotation);
         }
     }
 }

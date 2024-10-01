@@ -15,7 +15,6 @@ namespace AWSIM.Scripts.UI
     public class VehicleDashboard : MonoBehaviour
     {
         private VPVehicleController _vehicleController;
-        private int[] _vehicleDataBus;
         private AutowareVPPAdapter _adapter;
         [Header("Speed")]
         [SerializeField] private Text _speedText;
@@ -39,26 +38,21 @@ namespace AWSIM.Scripts.UI
 
         private const float MsToKmH = 3.6f;
 
-        private void Start()
+        private void GetVariables()
         {
             _vehicleController = FindObjectOfType<VPVehicleController>();
-            _vehicleDataBus = _vehicleController.data.bus[Channel.Vehicle];
             _adapter = FindObjectOfType<AutowareVPPAdapter>();
-
-            if (_vehicleController == null || _adapter == null)
-            {
-                Debug.LogError("VehicleController or AutowareVPPAdapter component not found!");
-            }
         }
 
         public void Activate()
         {
-            Start();
+            GetVariables();
         }
 
         private void FixedUpdate()
         {
             if (_vehicleController == null) return;
+            if (_adapter == null) return;
 
             UpdateDashboard();
         }
@@ -67,12 +61,12 @@ namespace AWSIM.Scripts.UI
         {
             _speedText.text = UpdateSpeed(_vehicleController);
             // _transmissionModeText.text = UpdateTransmissionMode(_vehicleDataBus[VehicleData.GearboxMode]);
-            _gearText.text = UpdateGear(_vehicleDataBus[VehicleData.GearboxGear]);
+            _gearText.text = UpdateGear(_vehicleController.data.bus[Channel.Vehicle][VehicleData.GearboxGear]);
 
-            UpdateSystemState(_vehicleDataBus[VehicleData.AbsEngaged], _absText);
-            UpdateSystemState(_vehicleDataBus[VehicleData.AsrEngaged], _asrText);
-            UpdateSystemState(_vehicleDataBus[VehicleData.EscEngaged], _escText);
-            UpdateSystemState(_vehicleDataBus[VehicleData.TcsEngaged], _tcsText);
+            UpdateSystemState(_vehicleController.data.bus[Channel.Vehicle][VehicleData.AbsEngaged], _absText);
+            UpdateSystemState(_vehicleController.data.bus[Channel.Vehicle][VehicleData.AsrEngaged], _asrText);
+            UpdateSystemState(_vehicleController.data.bus[Channel.Vehicle][VehicleData.EscEngaged], _escText);
+            UpdateSystemState(_vehicleController.data.bus[Channel.Vehicle][VehicleData.TcsEngaged], _tcsText);
 
             // UpdateControlMode();
             UpdateControlModeImage();
@@ -166,7 +160,7 @@ namespace AWSIM.Scripts.UI
             return gearVal switch
             {
                 < 0 => "R",
-                0 => _vehicleDataBus[VehicleData.GearboxMode] switch
+                0 => _vehicleController.data.bus[Channel.Vehicle][VehicleData.GearboxMode] switch
                 {
                     (int)Gearbox.AutomaticGear.P => "P",
                     (int)Gearbox.AutomaticGear.N => "N",
