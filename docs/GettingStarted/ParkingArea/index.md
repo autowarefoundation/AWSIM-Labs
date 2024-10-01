@@ -11,14 +11,13 @@ _After completing the Quick Start demo, you can proceed to this section._
     [AWSIM Labs GitHub Releases Page](https://github.com/autowarefoundation/AWSIM-Labs/releases){.md-button .md-button--primary}
      and launch `awsim_labs.x86_64`.
 
-3. From the Map option, select **'Parking Area'**.
+3. To use with the scenario simulator, select the **Parking Area ss2** map. For regular use, select the **Parking Area** map.
 
-4. Set the Ego position to _**'81580.52, 50083.58, 41'**_ and rotation to _**'0,0,100'**_ for the starting point. You can later change the position by providing a 2D pose in the RViz2 screen to update the location.
-5. Uncheck the Traffic Control box.
+4. Start the simulation by clicking the **'Load'** button.
 
-6. Start the simulation by clicking the **'Load'** button.
+5. Now you can use the [e2e_simulator](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/QuickStartDemo/) or [scenario simulator](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/UsingOpenSCENARIO/).
 
-7. Now you can use the [e2e_simulator](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/QuickStartDemo/) or [scenario simulator](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/UsingOpenSCENARIO/).
+
 # Scenarios:
 Four simple scenarios have been created using the [scenario editor](https://github.com/tier4/scenario_simulator_v2) for use in the Parking Area environment. Before the scenarios can be used with the scenario simulator, the tutorial provided [here](https://autowarefoundation.github.io/AWSIM-Labs/main/GettingStarted/UsingOpenSCENARIO/) must be completed.
 Below are illustrated explanations of the scenarios.
