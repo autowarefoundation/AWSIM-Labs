@@ -139,7 +139,7 @@ namespace AWSIM.Loader
                 case "Parking Area":
                     mapPosX = 81580.52;
                     mapPosY = 50083.58;
-                    mapPosZ = 41;
+                    mapPosZ = 33.985;
                     mapRotX = 0;
                     mapRotY = 0;
                     mapRotZ = 100;
