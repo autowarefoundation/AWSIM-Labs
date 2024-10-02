@@ -131,7 +131,7 @@ namespace AWSIM.Scripts.Vehicles.VPP_Integration
         // RViz2 Update position variables
         [Header("RViz2 Update Position")]
         [SerializeField]
-        private float _updatePositionOffsetY = 1.33f;
+        private float _updatePositionOffsetY = 0.5f;
 
         [SerializeField] private float _updatePositionRayOriginY = 1000f;
 

@@ -1220,21 +1220,16 @@ MonoBehaviour:
   m_Script: {fileID: -1898320663, guid: b8873f7cd5fec6f49a4b37228b9b23ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  integrationSteps: 8
-  integrationUseRK4: 0
   centerOfMass: {fileID: 2963107001226707149}
-  tireSideDeflection: 0
-  tireSideDeflectionRate: 10
-  tireAdherentImpulseRatio: 0.5
-  wheelSleepVelocity: 0.2
-  advancedSuspensionDamper: 1
-  suspensionDamperLimitFactor: 2
+  solverSubsteps: 8
+  wheelMomentumFactor: 0.25
+  wheelMomentumModel: 0
   contactAngleAffectsTireForce: 1
   dontAdjustSuspensionForcePoint: 0
   disableSteerAngleFix: 0
   disableWheelReferenceFrameFix: 0
   scaleFactor: 1
-  vehicleSleepCriteria: 0
+  suspensionDamperLimitFactor: 2
   showContactGizmos: 1
   disableContactProcessing: 0
   inertia:
@@ -1333,6 +1328,7 @@ MonoBehaviour:
     ackerman: 1
     ackermanReference: {fileID: 5055317025945945549}
     ratioReference: {fileID: 0}
+    steeringWheelRange: 900
   brakes:
     maxBrakeTorque: 2800
     brakeBias: 0.68
@@ -1357,7 +1353,6 @@ MonoBehaviour:
       E: -2
       adherent: {x: 0.5, y: -1}
     frictionMultiplier: 1
-    maxAdherentSpeed: 6.388889
   engine:
     idleRpm: 1000
     peakRpm: 7700
@@ -1423,12 +1418,14 @@ MonoBehaviour:
     automaticShiftInterval: 1
     automaticGearDownRevs: 2000
     automaticGearUpRevs: 5000
+    automaticMaxRpm: 5500
     automaticThrottleSens: 0
     automaticThrottleSensMin: 0.6
     automaticFullThrottleGearDownRevs: 3000
     automaticFullThrottleGearUpRevs: 4500
-    automaticGearUpRequiresThrottle: 1
     automaticShiftReverseGears: 0
+    automaticGearUpRequiresThrottle: 1
+    automaticGearUpAboveMaxRpm: 0
     automaticInitialGearForward: 1
     automaticInitialGearReverse: -1
   antiLock:
@@ -1460,11 +1457,11 @@ MonoBehaviour:
     maxSpeed: 5.555556
     minRotationDiffRpm: 100
     maxRotationDiffRpm: 400
-    maxBrakeTorque: 1000
+    maxBrakeRatio: 1
   engineReactionFactor: 1
   parkModeReactionFactor: 0.95
   maxSubsystemsEnergy: 100000
-  "\u202A\u206C\u202D\u206D\u200B\u206E\u202B\u202B\u202D\u206D\u206B\u200E\u206B\u202C\u206B\u202C\u202B\u206F\u202C\u200F\u202B\u202C\u202C\u200B\u206C\u206E\u202A\u202B\u200B\u200B\u200F\u200D\u206F\u202C\u200C\u206F\u202D\u206E\u206D\u206A\u202E": 1
+  "\u200B\u202A\u202B\u200F\u200B\u206F\u206D\u202E\u206D\u202D\u206E\u206E\u206C\u206F\u202B\u200E\u202D\u206E\u206C\u202B\u202D\u200F\u202D\u202D\u200D\u200B\u202D\u206A\u202D\u202B\u200D\u202E\u202E\u202A\u202E\u202A\u206A\u206F\u206A\u206E\u202E": 1
 --- !u!114 &3608516095911096369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1494,9 @@ MonoBehaviour:
   disableSteerInput: 0
   disableThrottleInput: 0
   disableBrakeInput: 0
+  disableHandbrakeInput: 0
   disableClutchInput: 0
+  disableGearShiftInputs: 0
   externalThrottle: 0
   reverse: 0
   externalBrake: 0
@@ -1557,7 +1556,6 @@ MonoBehaviour:
   showContactPoints: 1
   showTireSlip: 1
   showTireForces: 1
-  showSurfaceForces: 0
   useLogScale: 1
 --- !u!114 &8627087200372202738
 MonoBehaviour:
@@ -1572,7 +1570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steeringWheel: {fileID: 0}
-  degreesOfRotation: 600
   localRotationAxis: 2
   brakeLightsOn:
   - {fileID: 0}
@@ -1619,7 +1616,7 @@ MonoBehaviour:
   _simulateSteering: 0
   _steerWheelInput: 45
   _emergencyBrakePercent: 100
-  _updatePositionOffsetY: 1.33
+  _updatePositionOffsetY: 0.5
   _updatePositionRayOriginY: 1000
   _doPedalCalibration: 0
 --- !u!114 &8380214914162268112
@@ -3412,13 +3409,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dynamicModel: 0
-  dynamicCoefficient: 0.04
+  constantCoefficient: 0.04
+  linearCoefficient: 0.0003
+  tirePressure: 2
   staticCoefficient: 0.004
   staticSpeedThreshold: 2
   axleFrictionFactors: []
   showDebugLabel: 0
   coefficient: -1
-  version: 1
+  version: 2
 --- !u!114 &7226978134186799435
 MonoBehaviour:
   m_ObjectHideFlags: 0
