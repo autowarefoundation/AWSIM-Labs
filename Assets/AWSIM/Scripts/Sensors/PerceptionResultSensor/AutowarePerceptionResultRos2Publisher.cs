@@ -17,7 +17,6 @@ namespace AWSIM
         /// Topic name in DetectedObject msg.
         /// </summary>
         public string objectTopic = "/perception/object_recognition/tracking/objects";
-        // private string trafficLightTopic = "/perception/traffic_light_recognition/traffic_signals";
 
         /// <summary>
         /// Object sensor frame id.
@@ -46,11 +45,8 @@ namespace AWSIM
         public Dictionary<string, NPC> id2npc = new Dictionary<string, NPC>();
 
         IPublisher<autoware_perception_msgs.msg.TrackedObjects> objectPublisher;
-        // IPublisher<autoware_perception_msgs.msg.TrafficSignalArray> lightPublisher;
         autoware_perception_msgs.msg.TrackedObjects objectsMsg;
         PerceptionResultSensor objectSensor;
-
-        // private Dictionary<long, TrafficLight> trafficLights = new Dictionary<long, TrafficLight>();
 
         void Start()
         {
@@ -66,24 +62,7 @@ namespace AWSIM
             // Create publisher.
             var qos = qosSettings.GetQoSProfile();
             objectPublisher = SimulatorROS2Node.CreatePublisher<autoware_perception_msgs.msg.TrackedObjects>(objectTopic, qos);
-            // lightPublisher = SimulatorROS2Node.CreatePublisher<autoware_perception_msgs.msg.TrafficSignalArray>(trafficLightTopic, qos);
-
-            // Get ALl TrafficLights
-            // GetLights();
         }
-
-        // void GetLights() {
-        //     var allTrafficLights = GameObject.FindObjectsOfType<TrafficLight>();
-        //     var trafficLightObjects = FindObjectsOfType<TrafficLightLaneletID>();
-        //     for (int i = 0; i < trafficLightObjects.Length; i++) {
-        //         TrafficLightLaneletID laneletId = trafficLightObjects[i];
-        //         GameObject obj = laneletId.gameObject;
-        //         TrafficLight tl = obj.GetComponent<TrafficLight>();
-        //         if (tl != null && laneletId != null && trafficLights.ContainsKey(laneletId.wayID) == false){
-        //             trafficLights.Add(laneletId.wayID, tl);
-        //         }
-        //     }
-        // }
 
         void Publish(PerceptionResultSensor.OutputData outputData)
         {
@@ -107,14 +86,12 @@ namespace AWSIM
                 var bou = detectedObject.bounds;
                 // Check if detectedObject.dimension and detectedObject.bounds are null
                 float distance = Vector3.Distance(outputData.origin.position, rb.transform.position);
-                // if (distance > maxDistance) continue;
 
                 var obj = new autoware_perception_msgs.msg.TrackedObject();
                 obj.Existence_probability = 1.0f;
                 // add UUID 
                 PropertyInfo property = obj.GetType().GetProperty("Object_id", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
                 property.SetValue(obj, obj2npc[detectedObject.rigidBody.gameObject].rosuuid);
-                //Debug.Log("UUID:" + BitConverter.ToString(obj.Object_id.Uuid));
                 //add classification
                 var classification = new autoware_perception_msgs.msg.ObjectClassification();
                 {
@@ -182,11 +159,7 @@ namespace AWSIM
                 }
                 // Add covariance
                 {
-                    // kinematics.Has_position_covariance = true;
                     kinematics.Orientation_availability = autoware_perception_msgs.msg.TrackedObjectKinematics.AVAILABLE;
-                    // kinematics.Has_twist = true;
-                    // kinematics.Has_twist_covariance = true;
-                    // Add covariance 6x6
                     const int size = 6;
                     for (int i = 0; i < size; i++)
                     {
@@ -229,50 +202,9 @@ namespace AWSIM
             objectPublisher.Publish(objectsMsg);
         }
 
-        // void PubishLights() {
-        //     var lights = new List<autoware_perception_msgs.msg.TrafficLight>();
-
-        //     TrafficSignal: lights.Signals -> (Map_primitive_id, Lights)
-        //     var trafficsignals = new List<autoware_perception_msgs.msg.TrafficSignal>();
-
-        //     foreach (var x in trafficLights) {
-        //         var light = x.Value;
-        //         var bulbDatas = light.GetBulbData();
-        //         var id = x.Key;
-        //         var tles = new List<autoware_perception_msgs.msg.TrafficLight>();
-        //         var ts = new autoware_perception_msgs.msg.TrafficSignal();
-        //         ts.Map_primitive_id = (int)id;
-        //         foreach (var bulb in bulbDatas) {
-        //             var tl = new autoware_perception_msgs.msg.TrafficLight();
-        //             tl.Color = (Byte)(bulb.Color + 1);
-        //             //Debug.Log("type:  " + tl.Color.GetType().Name);
-
-        //             if (bulb.Type <= TrafficLight.BulbType.GREEN_BULB) {
-        //                 tl.Shape = (Byte)5;
-        //             } else if (bulb.Type == TrafficLight.BulbType.CROSS_BULB) {
-        //                 tl.Shape = 0;
-        //             } else {
-        //                 tl.Shape = (Byte)(bulb.Type + 2);
-        //             }
-        //             tl.Status = (Byte)(bulb.Status + 13);
-        //             tl.Confidence = 1.0f;
-        //             tles.Add(tl);
-        //         }
-        //         ts.Lights = tles.ToArray();
-        //         trafficsignals.Add(ts);
-        //     }
-        //     var lightsMsg = new autoware_perception_msgs.msg.TrafficSignalArray();
-        //     lightsMsg.Signals = trafficsignals.ToArray();
-        //     var header = lightsMsg as MessageWithHeader;
-        //     SimulatorROS2Node.UpdateROSTimestamp(ref header);
-        //     lightsMsg.Header.Frame_id = "map";
-        //     lightPublisher.Publish(lightsMsg);
-        // }
-
         void OnDestroy()
         {
             SimulatorROS2Node.RemovePublisher<autoware_perception_msgs.msg.TrackedObjects>(objectPublisher);
-            // SimulatorROS2Node.RemovePublisher<autoware_perception_msgs.msg.TrafficSignalArray>(lightPublisher);
         }
     }
 }
