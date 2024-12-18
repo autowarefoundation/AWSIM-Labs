@@ -2,9 +2,9 @@
 
 _After completing the Quick Start demo, you can proceed to this section._
 
-1. Download the hd-map and pointcloud map of the parking area.
+1. Download the lanelet2 and point cloud maps of the parking area.
 
-    [Parking Are Map](https://drive.google.com/drive/folders/1ly8Z1_SQc9bJ834t_zKCyYSTyKJgj8ho?usp=sharing)
+    [Parking Are Maps](https://autoware-files.s3.us-west-2.amazonaws.com/awsim-labs/parking_area_maps.zip)
 
 2. Download the latest release from:
 
@@ -27,26 +27,24 @@ _The map named 'Parkin_Area_ss2' should be selected from map selection._
 
 !!! Warning
 
-    The titles can be clicked to download the scenarios.
+    Sadly, the links to the scenarios are not available at the moment.
+    We are working on reuploading them.
+    Please check back later.
 
 
-[**Test 1: (L parking next to vehicle)**
-](https://drive.google.com/file/d/1734TvS6G1IiF3dbVNyrzXm3pQFtAGnj9/view?usp=drive_link)
+**Test 1: (L parking next to vehicle)**
 
 ![1.png](1.png)
 
-[**Test 2: (L parking between 2 vehicles)**
-](https://drive.google.com/file/d/1rNGgOTXZO_X-FmLKAkTBaitx2r2jnYO3/view?usp=drive_link)
+**Test 2: (L parking between 2 vehicles)**
 
 ![2.png](2.png)
 
-[**Test 3: (Angled parking next to vehicle)**
-](https://drive.google.com/file/d/1pTGwo2SbF6yFIvij6n9iSkjIYZVd6EsJ/view?usp=drive_link)
+**Test 3: (Angled parking next to vehicle)**
 
 ![3.png](3.png)
 
-[**Test 4: (Parallel parking)**
-](https://drive.google.com/file/d/1--UMYejSgnzD_gwW2JpB8kUtMRin48iV/view?usp=drive_link)
+**Test 4: (Parallel parking)**
 
 ![4.png](4.png)
 
