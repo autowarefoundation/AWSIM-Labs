@@ -16,7 +16,7 @@ namespace AWSIM
         /// <summary>
         /// Topic name in DetectedObject msg.
         /// </summary>
-        public string objectTopic = "/perception/object_recognition/tracking/objects";
+        public string objectTopic = "/awsim/ground_truth/perception/object_recognition/tracking/objects";
 
         /// <summary>
         /// Object sensor frame id.
