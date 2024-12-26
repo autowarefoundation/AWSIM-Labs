@@ -30,6 +30,8 @@ namespace AWSIM
         {
             public DetectedObject[] objects;
             public Transform origin;
+            public int seconds;
+            public uint nanoseconds;
         }
 
         /// <summary>
@@ -92,6 +94,7 @@ namespace AWSIM
         void CreateDetectedObjectData()
         {
             outputData.objects = new DetectedObject[cachedObjectsWithClassification.Length];
+            AWSIM.SimulatorROS2Node.TimeSource.GetTime(out outputData.seconds, out outputData.nanoseconds);
             for (int i = 0; i < cachedObjectsWithClassification.Length; i++)
             {
                 ObjectClassification obj = cachedObjectsWithClassification[i];

@@ -9,7 +9,7 @@ namespace AWSIM
     /// NPC Vehicle class.
     /// Controlled by Position and Rotation.
     /// </summary>
-    public class NPCVehicle : MonoBehaviour
+    public class NPCVehicle : NPCs
     {
         public enum TurnSignalState
         {
@@ -193,11 +193,18 @@ namespace AWSIM
 
         Vector3 lastVelocity;
         Vector3 lastPosition;
+        QuaternionD lastRotation;
         float lastEulerAnguleY;
         float lastSpeed;
 
         public Transform RigidBodyTransform => rigidbody.transform;
         public Transform TrailerTransform => trailer?.transform;
+
+        Vector3 localLinearVelocity;
+        public override Vector3 LinearVelocity => localLinearVelocity;
+
+        Vector3 localAngularVelocity;
+        public override Vector3 AngularVelocity => localAngularVelocity;
 
         // Start is called before the first frame update
         void Awake()
@@ -211,6 +218,7 @@ namespace AWSIM
             rigidbody.centerOfMass = transform.InverseTransformPoint(centerOfMass.position);
             lastPosition = rigidbody.position;
             wheelbase = axleSettings.GetWheelBase();
+            SetUUID();
         }
 
         // Update is called once per frame
@@ -309,11 +317,19 @@ namespace AWSIM
             velocity = (rigidbody.position - lastPosition) / Time.deltaTime;
             speed = Vector3.Dot(velocity, transform.forward);
 
+            // angular velocity
+            var currentRotation = new QuaternionD(rigidbody.rotation);
+            var deltaRotation = currentRotation * QuaternionD.Inverse(lastRotation);
+            deltaRotation.ToAngleAxis(out var angle, out var axis);
+            var angularVelocity = ((float)angle * axis) / Time.deltaTime;
+            
             // accleration.
             acceleration = (speed - lastSpeed) / Time.deltaTime;
 
             // yaw angular speed.
             yawAngularSpeed = (rigidbody.rotation.eulerAngles.y - lastEulerAnguleY) / Time.deltaTime;
+
+            localLinearVelocity = (transform.InverseTransformDirection(rigidbody.position - lastPosition)) / Time.deltaTime;
 
             // TODO: set WheelCollider steer angle?
 
@@ -322,6 +338,8 @@ namespace AWSIM
             lastVelocity = velocity;
             lastEulerAnguleY = rigidbody.rotation.eulerAngles.y;
             lastSpeed = speed;
+            localLinearVelocity = transform.InverseTransformDirection(velocity);
+            localAngularVelocity = transform.InverseTransformDirection(angularVelocity);
         }
 
         void Reset()

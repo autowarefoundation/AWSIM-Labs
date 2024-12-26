@@ -40,9 +40,7 @@ namespace AWSIM
             Depth = 1,
         };
 
-        private Dictionary<GameObject, NPC> obj2npc = new Dictionary<GameObject, NPC>();
-        [NonSerialized]
-        public Dictionary<string, NPC> id2npc = new Dictionary<string, NPC>();
+        public Dictionary<string, NPCs> idToNpc = new Dictionary<string, NPCs>();
 
         IPublisher<autoware_perception_msgs.msg.TrackedObjects> objectPublisher;
         autoware_perception_msgs.msg.TrackedObjects objectsMsg;
@@ -71,14 +69,11 @@ namespace AWSIM
             foreach (var detectedObject in outputData.objects)
             {
                 if (detectedObject == null || detectedObject.rigidBody == null || detectedObject.dimension == null || detectedObject.bounds == null) continue;
-                var NPC = detectedObject.rigidBody.gameObject.GetComponent<NPC>();
+                var NPC = detectedObject.rigidBody.gameObject.GetComponent<NPCs>();
                 if (NPC != null)
                 {
-                    if (obj2npc.ContainsKey(detectedObject.rigidBody.gameObject) == false ){
-                        obj2npc.Add(detectedObject.rigidBody.gameObject, detectedObject.rigidBody.gameObject.GetComponent<NPC>());
-                    }
-                    if (id2npc.ContainsKey(BitConverter.ToString(obj2npc[detectedObject.rigidBody.gameObject].rosuuid.Uuid)) == false){
-                        id2npc.Add(BitConverter.ToString(obj2npc[detectedObject.rigidBody.gameObject].rosuuid.Uuid), detectedObject.rigidBody.gameObject.GetComponent<NPC>());
+                    if (idToNpc.ContainsKey(NPC.uuid) == false){
+                        idToNpc.Add(NPC.uuid, NPC);
                     }
                 }
                 var rb = detectedObject.rigidBody;
@@ -91,7 +86,7 @@ namespace AWSIM
                 obj.Existence_probability = 1.0f;
                 // add UUID 
                 PropertyInfo property = obj.GetType().GetProperty("Object_id", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-                property.SetValue(obj, obj2npc[detectedObject.rigidBody.gameObject].rosuuid);
+                property.SetValue(obj, NPC.uuid);
                 //add classification
                 var classification = new autoware_perception_msgs.msg.ObjectClassification();
                 {
