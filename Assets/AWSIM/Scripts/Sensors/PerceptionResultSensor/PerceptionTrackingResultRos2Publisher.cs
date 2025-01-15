@@ -11,7 +11,7 @@ namespace AWSIM
     /// Convert the data output from PerceptionResultSensor to ROS2 msg and Publish.
     /// </summary>
     [RequireComponent(typeof(PerceptionResultSensor))]
-    public class AutowarePerceptionResultRos2Publisher : MonoBehaviour
+    public class PerceptionTrackingResultRos2Publisher : MonoBehaviour
     {
         /// <summary>
         /// Topic name in DetectedObject msg.
