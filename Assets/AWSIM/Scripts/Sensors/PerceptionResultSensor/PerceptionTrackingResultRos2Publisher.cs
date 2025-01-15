@@ -189,8 +189,9 @@ namespace AWSIM
             // Converts data output from ObjectSensor to ROS2 msg
             objectsMsg.Objects = objectsList.ToArray();
             // Update msg header.
-            var header = objectsMsg as MessageWithHeader; //timeStamp違う
-            SimulatorROS2Node.UpdateROSTimestamp(ref header);
+            var header = objectsMsg as MessageWithHeader;
+            objectsMsg.Header.Stamp.Sec = outputData.seconds;
+            objectsMsg.Header.Stamp.Nanosec = outputData.nanoseconds;
             objectsMsg.Header.Frame_id = frameId;
 
             // Publish to ROS2.
