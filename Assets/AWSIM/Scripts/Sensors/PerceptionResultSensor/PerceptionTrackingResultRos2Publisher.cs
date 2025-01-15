@@ -72,8 +72,8 @@ namespace AWSIM
                 var NPC = detectedObject.rigidBody.gameObject.GetComponent<NPCs>();
                 if (NPC != null)
                 {
-                    if (idToNpc.ContainsKey(NPC.uuid) == false){
-                        idToNpc.Add(NPC.uuid, NPC);
+                    if (idToNpc.ContainsKey(BitConverter.ToString(NPC.uuid.Uuid)) == false){
+                        idToNpc.Add(BitConverter.ToString(NPC.uuid.Uuid), NPC);
                     }
                 }
                 var rb = detectedObject.rigidBody;
