@@ -73,6 +73,7 @@ namespace AWSIM.TrafficSimulation
         {
             // Steering the vehicle so that it heads toward the target point.
             var steeringDirection = state.TargetPoint - state.FrontCenterPosition;
+            var distance = Math.Sqrt(steeringDirection.x*steeringDirection.x + steeringDirection.y*steeringDirection.y);
             steeringDirection.y = 0f;
             var steeringAngle = Vector3.SignedAngle(state.Forward, steeringDirection, Vector3.up);
             var targetYawSpeed = steeringAngle * state.Speed * NPCVehicleConfig.YawSpeedMultiplier;
@@ -81,6 +82,15 @@ namespace AWSIM.TrafficSimulation
                 state.YawSpeed,
                 targetYawSpeed,
                 NPCVehicleConfig.YawSpeedLerpFactor * deltaTime);
+            
+            var vehicle = state.Vehicle;
+            if(state.Vehicle.outerControl == true){
+                var rateTime = deltaTime/state.Vehicle.outerTargetPointTime;
+                state.YawSpeed = Mathf.Lerp(
+                state.YawSpeed,
+                targetYawSpeed,
+                NPCVehicleConfig.YawSpeedLerpFactor * rateTime);
+            }
         }
 
         /// <summary>
