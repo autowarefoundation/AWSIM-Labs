@@ -39,6 +39,14 @@ namespace AWSIM.TrafficSimulation
             if (state.ShouldDespawn || state.CurrentFollowingLane == null)
                 return;
 
+            if(state.Vehicle.outerControl == true){
+                state.TargetPoint = state.Vehicle.outerTargetPoint;
+            }
+            else
+            {
+                state.TargetPoint = state.CurrentFollowingLane.Waypoints[state.WaypointIndex];
+            }
+
             state.TargetPoint = state.CurrentFollowingLane.Waypoints[state.WaypointIndex];
         }
 
