@@ -53,12 +53,10 @@ Applies to `tier4/AWSIM` repositories and all content contained in the [Releases
 
 See also [LICENSE](./LICENSE)
 
+Also, note that the copyright of the original code is held by TIER IV, Inc.
+(c) 2022 TIER IV, inc
+
 ## Contact
 
-日本語/English OK
-
-e-mail : takatoki.makino@tier4.jp
-discord : mackie#6141
-twitter : https&#58;//twitter.com/mackierx111
-
-(c) 2022 TIER IV, inc
+If you have any questions, please follow our support guidelines and create a discussion thread.
+- [Autoware Foundation Discussions](https://autowarefoundation.github.io/autoware-documentation/main/support/support-guidelines/#2-create-a-new-question-thread)
