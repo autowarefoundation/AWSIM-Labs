@@ -50,9 +50,6 @@ namespace AWSIM
                 var uuid = BitConverter.ToString(objects[i].Object_id.Uuid);
                 var npc = (NPCs)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
                 var objectPosition = objects[i].Kinematics.Predicted_paths[maxindex].Path[0].Position;
-                int queueIndex = 0;
-                double distance = 0.0;
-                double nextDistance = 10.0;  
 
                 var deltaTime =(currentSec + currentNanosec/1e9) - (rosSec + rosNanosec/1e9);
 
