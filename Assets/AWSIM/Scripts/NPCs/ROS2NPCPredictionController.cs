@@ -60,18 +60,18 @@ namespace AWSIM
                 int first_step = (int)(deltaTime / predictionPointDeltaTime);
                 int end_step = first_step + 1;
 
-                var endPositin = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
+                var endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
                 var endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
 
                 if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCVehicle"){
                     var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
                     var direction = endRotation * Vector3.forward;
-                    npcVehicle.outerTargetPoint = endPositin + (direction * npcVehicle.Bounds.size.y);
+                    npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
                     npcVehicle.outerTargetRotation = endRotation;
                     npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - (float)deltaTime;
 
                     var startPositin = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
-                    var velocity = (endPositin - startPositin) / (float)(predictionPointDeltaTime);
+                    var velocity = (endPosition - startPositin) / (float)(predictionPointDeltaTime);
                     npcVehicle.outerSpeed = Vector3.Dot(velocity, Vector3.forward);
                     if(end_step >= 2){
                         var prevprevPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step-1].Position);
@@ -82,7 +82,7 @@ namespace AWSIM
                     else
                     {
                         var nextnextPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
-                        var nextVelocity = (nextnextPosition - endPositin) / (float)(predictionPointDeltaTime);
+                        var nextVelocity = (nextnextPosition - endPosition) / (float)(predictionPointDeltaTime);
                         var nextSpeed = Vector3.Dot(nextVelocity, Vector3.forward);
                         npcVehicle.outerAcceleration = (nextSpeed - npcVehicle.outerSpeed) / (float)(predictionPointDeltaTime);  
                     }
