@@ -39,6 +39,11 @@ namespace AWSIM.TrafficSimulation
             float acceleration;
             switch (state.SpeedMode)
             {
+                case NPCVehicleSpeedMode.PREDICTION_CONTROL:
+                    var npcVhicle = state.Vehicle;
+                    targetSpeed = npcVhicle.outerSpeed;
+                    acceleration = npcVhicle.outerAcceleration;
+                    break;
                 case NPCVehicleSpeedMode.NORMAL:
                     targetSpeed = state.CurrentFollowingLane.SpeedLimit;
                     acceleration = config.Acceleration;
@@ -84,7 +89,7 @@ namespace AWSIM.TrafficSimulation
                 NPCVehicleConfig.YawSpeedLerpFactor * deltaTime);
             
             var vehicle = state.Vehicle;
-            if(state.Vehicle.outerControl == true){
+            if(state.Vehicle.outerPathControl == true){
                 var rateTime = deltaTime/state.Vehicle.outerTargetPointTime;
                 state.YawSpeed = Mathf.Lerp(
                 state.YawSpeed,

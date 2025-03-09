@@ -10,7 +10,8 @@ namespace AWSIM.TrafficSimulation
         SLOW,
         STOP,
         SUDDEN_STOP,
-        ABSOLUTE_STOP
+        ABSOLUTE_STOP,
+        PREDICTION_CONTROL
     }
 
     public enum NPCVehicleYieldPhase

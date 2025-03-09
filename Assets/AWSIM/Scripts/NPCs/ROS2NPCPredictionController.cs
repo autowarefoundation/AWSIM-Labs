@@ -17,6 +17,7 @@ namespace AWSIM
 
         PerceptionResultSensor objectSensor;
         PerceptionResultSensor.OutputData outputData;
+        public int stopCount = 0;
         void Start() {
             Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, myCallback, qoSSettings.GetQoSProfile());
             perceptionTrackingResultRos2Publisher = GetComponent<PerceptionTrackingResultRos2Publisher>();
@@ -68,6 +69,33 @@ namespace AWSIM
                     npcVehicle.outerTargetPoint = endPositin + (direction * npcVehicle.Bounds.size.y);
                     npcVehicle.outerTargetRotation = endRotation;
                     npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - (float)deltaTime;
+
+                    var startPositin = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
+                    var velocity = (endPositin - startPositin) / (float)(predictionPointDeltaTime);
+                    npcVehicle.outerSpeed = Vector3.Dot(velocity, Vector3.forward);
+                    if(end_step >= 2){
+                        var prevprevPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step-1].Position);
+                        var prevVelocity = (startPositin - prevprevPosition) / (float)(predictionPointDeltaTime);
+                        var prevSpeed = Vector3.Dot(prevVelocity, Vector3.forward);
+                        npcVehicle.outerAcceleration = (npcVehicle.outerSpeed - prevSpeed)/ (float)(predictionPointDeltaTime);
+                    }
+                    else
+                    {
+                        var nextnextPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
+                        var nextVelocity = (nextnextPosition - endPositin) / (float)(predictionPointDeltaTime);
+                        var nextSpeed = Vector3.Dot(nextVelocity, Vector3.forward);
+                        npcVehicle.outerAcceleration = (nextSpeed - npcVehicle.outerSpeed) / (float)(predictionPointDeltaTime);  
+                    }
+
+                    // Avoid external-stop
+                    if(npcVehicle.outerSpeed < 1.0F)stopCount++;
+                    else stopCount = 0;
+                    var isStack = (stopCount >= 1000);
+                    if(isStack) {
+                        npcVehicle.outerSpeed = 3.0F;
+                    }
+                    // Debug.Log("speed : " +npcVehicle.outerSpeed);
+                    // Debug.Log("accel : " +npcVehicle.outerAcceleration);
                 }
             }
         }

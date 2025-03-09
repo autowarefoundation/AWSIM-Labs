@@ -206,10 +206,13 @@ namespace AWSIM
         Vector3 localAngularVelocity;
         public override Vector3 AngularVelocity => localAngularVelocity;
 
-        public bool outerControl { get; set; }
+        public bool outerPathControl { get; set; }
+        public bool outerSpeedControl { get; set; }
         public float outerTargetPointTime { get; set; } = new float();
         public Vector3 outerTargetPoint { get; set; } = new Vector3();
         public Quaternion outerTargetRotation { get; set; } = new Quaternion();
+        public float outerSpeed { get; set; } = 0.0F;
+        public float outerAcceleration { get; set; } = 0.0F;
         public override float CurrentSpeed => speed;
 
         // Start is called before the first frame update
@@ -225,7 +228,8 @@ namespace AWSIM
             lastPosition = rigidbody.position;
             wheelbase = axleSettings.GetWheelBase();
             SetUUID();
-            outerControl = false;
+            outerPathControl = false;
+            outerSpeedControl = false;
         }
 
         // Update is called once per frame
