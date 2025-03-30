@@ -94,7 +94,7 @@ namespace AWSIM
         void CreateDetectedObjectData()
         {
             outputData.objects = new DetectedObject[cachedObjectsWithClassification.Length];
-            AWSIM.SimulatorROS2Node.TimeSource.GetTime(out outputData.seconds, out outputData.nanoseconds);
+
             for (int i = 0; i < cachedObjectsWithClassification.Length; i++)
             {
                 ObjectClassification obj = cachedObjectsWithClassification[i];
@@ -170,6 +170,7 @@ namespace AWSIM
                 outputData.objects[i].bounds = GenerateFootprint(o.dimension, o.rigidBody);
             }
             // Calls registered callbacks
+            AWSIM.SimulatorROS2Node.TimeSource.GetTime(out outputData.seconds, out outputData.nanoseconds);
             OnOutputData.Invoke(outputData);
         }
     }
