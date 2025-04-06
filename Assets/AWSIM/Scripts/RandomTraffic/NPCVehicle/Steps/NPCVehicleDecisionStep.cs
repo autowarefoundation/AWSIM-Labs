@@ -38,8 +38,14 @@ namespace AWSIM.TrafficSimulation
         {
             if (state.ShouldDespawn || state.CurrentFollowingLane == null)
                 return;
-
-            if(state.Vehicle.outerPathControl == true){
+            
+            bool isEmpty = 
+                (state.Vehicle.outerTargetPoint.x == 0) &&
+                (state.Vehicle.outerTargetPoint.y == 0) &&
+                (state.Vehicle.outerTargetPoint.z == 0);
+            bool usePrediction = (!isEmpty) && state.outerPathControl;
+            
+            if(usePrediction){
                 state.TargetPoint = state.Vehicle.outerTargetPoint;
             }
             else
@@ -80,7 +86,7 @@ namespace AWSIM.TrafficSimulation
                 state.IsStoppedByFrontVehicle = true;
             }
 
-            if(state.Vehicle.outerSpeedControl == true)
+            if(state.outerSpeedControl == true)
                 state.SpeedMode = NPCVehicleSpeedMode.PREDICTION_CONTROL;
             else if (distanceToStopPoint <= absoluteStopDistance)
                 state.SpeedMode = NPCVehicleSpeedMode.ABSOLUTE_STOP;

@@ -1104,15 +1104,14 @@ namespace AWSIM.TrafficSimulation
                 States = states
             }.Execute();
 
-            // set with-prediction status
             foreach (var state in states)
             {
                 if ((state.Vehicle.transform.position - egoTransform.position).magnitude <= 200F){
-                    state.Vehicle.outerPathControl = true;
-                    state.Vehicle.outerSpeedControl = true;
+                    state.outerPathControl = state.Vehicle.usePathControl;
+                    state.outerSpeedControl = state.Vehicle.useSpeedControl;
                 } else {
-                    state.Vehicle.outerPathControl = false;
-                    state.Vehicle.outerSpeedControl = false;
+                    state.outerPathControl = false;
+                    state.outerSpeedControl = false;
                 }
             }
 

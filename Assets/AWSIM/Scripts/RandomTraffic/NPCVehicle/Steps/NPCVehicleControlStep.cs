@@ -87,15 +87,6 @@ namespace AWSIM.TrafficSimulation
                 state.YawSpeed,
                 targetYawSpeed,
                 NPCVehicleConfig.YawSpeedLerpFactor * deltaTime);
-            
-            var vehicle = state.Vehicle;
-            if(state.Vehicle.outerPathControl == true){
-                var rateTime = deltaTime/state.Vehicle.outerTargetPointTime;
-                state.YawSpeed = Mathf.Lerp(
-                state.YawSpeed,
-                targetYawSpeed,
-                NPCVehicleConfig.YawSpeedLerpFactor * rateTime);
-            }
         }
 
         /// <summary>
