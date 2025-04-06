@@ -67,12 +67,12 @@ namespace AWSIM
                     npcVehicle.outerTargetRotation = endRotation;
                     npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
 
-                    var startPositin = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
-                    var velocity = (endPosition - startPositin) / (float)(predictionPointDeltaTime);
+                    var startPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
+                    var velocity = (endPosition - startPosition) / (float)(predictionPointDeltaTime);
                     npcVehicle.outerSpeed = Vector3.Dot(velocity, Vector3.forward);
                     if(end_step >= 2){
                         var prevprevPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step-1].Position);
-                        var prevVelocity = (startPositin - prevprevPosition) / (float)(predictionPointDeltaTime);
+                        var prevVelocity = (startPosition - prevprevPosition) / (float)(predictionPointDeltaTime);
                         var prevSpeed = Vector3.Dot(prevVelocity, Vector3.forward);
                         npcVehicle.outerAcceleration = (npcVehicle.outerSpeed - prevSpeed)/ (float)(predictionPointDeltaTime);
                     }
