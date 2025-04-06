@@ -51,9 +51,9 @@ namespace AWSIM
                 var npc = (NPCs)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
                 var objectPosition = objects[i].Kinematics.Predicted_paths[maxindex].Path[0].Position;
 
-                var deltaTime =(currentSec + currentNanosec/1e9) - (rosSec + rosNanosec/1e9);
+                var deltaTime =(currentSec + currentNanosec/1e9F) - (rosSec + rosNanosec/1e9F);
 
-                uint predictionPointDeltaTime = objects[i].Kinematics.Predicted_paths[maxindex].Time_step.Nanosec;
+                var predictionPointDeltaTime = (objects[i].Kinematics.Predicted_paths[maxindex].Time_step.Nanosec / 1e9F);
                 int first_step = (int)(deltaTime / predictionPointDeltaTime);
                 int end_step = first_step + 1;
 
@@ -65,7 +65,7 @@ namespace AWSIM
                     var direction = endRotation * Vector3.forward;
                     npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
                     npcVehicle.outerTargetRotation = endRotation;
-                    npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - (float)deltaTime;
+                    npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
 
                     var startPositin = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
                     var velocity = (endPosition - startPositin) / (float)(predictionPointDeltaTime);
