@@ -19,13 +19,13 @@ namespace AWSIM
         PerceptionResultSensor.OutputData outputData;
         public int stopCount = 0;
         void Start() {
-            Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, myCallback, qoSSettings.GetQoSProfile());
+            Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, predictionCallback, qoSSettings.GetQoSProfile());
             perceptionTrackingResultRos2Publisher = GetComponent<PerceptionTrackingResultRos2Publisher>();
             objectSensor = GetComponent<PerceptionResultSensor>();
             objectSensor.OnOutputData += Callback;
         }
 
-        void myCallback(autoware_perception_msgs.msg.PredictedObjects receivedMsg){
+        void predictionCallback(autoware_perception_msgs.msg.PredictedObjects receivedMsg){
             var objects = receivedMsg.Objects;
             int rosSec = receivedMsg.Header.Stamp.Sec;
             uint rosNanosec = receivedMsg.Header.Stamp.Nanosec;
