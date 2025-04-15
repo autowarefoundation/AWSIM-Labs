@@ -158,8 +158,8 @@ namespace AWSIM
                     const int size = 6;
                     for (int i = 0; i < size; i++)
                     {
-                        kinematics.Pose_with_covariance.Covariance[i * size + i] = 1;
-                        kinematics.Twist_with_covariance.Covariance[i * size + i] = 1;
+                        kinematics.Pose_with_covariance.Covariance[i * size + i] = 0.001;
+                        kinematics.Twist_with_covariance.Covariance[i * size + i] = 0.001;
                     }
                 }
                 obj.Kinematics = kinematics;
