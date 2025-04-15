@@ -91,8 +91,6 @@ namespace AWSIM
                     if(isStack) {
                         npcVehicle.outerSpeed = 3.0F;
                     }
-                    // Debug.Log("speed : " +npcVehicle.outerSpeed);
-                    // Debug.Log("accel : " +npcVehicle.outerAcceleration);
                 }
             }
         }
