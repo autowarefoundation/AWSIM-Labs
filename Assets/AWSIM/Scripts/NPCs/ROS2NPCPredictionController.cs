@@ -58,15 +58,30 @@ namespace AWSIM
                 int end_step = first_step + 1;
 
                 var endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
-                var endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
 
+                // use prediction-pose Rotation
+                // var endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
+
+                // estimate Rotation
+                var toPosition =  ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
+                var estimatedDirection = toPosition - endPosition;
+                Debug.Log("toPosition" + toPosition);
+                Debug.Log("endPosition" + endPosition);
+                var endRotation = Quaternion.LookRotation(estimatedDirection);
+
+                // set prediction value
                 if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCVehicle"){
                     var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
+                    if(estimatedDirection == Vector3.zero){
+                        endRotation = npcVehicle.predictRotation;
+                        Debug.Log("endRotation" + endRotation);
+                    }
                     var direction = endRotation * Vector3.forward;
                     npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
                     npcVehicle.outerTargetRotation = endRotation;
                     npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
 
+                    // estimate velocity and acceleration
                     var startPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
                     var velocity = (endPosition - startPosition) / (float)(predictionPointDeltaTime);
                     npcVehicle.outerSpeed = Vector3.Dot(velocity, Vector3.forward);
