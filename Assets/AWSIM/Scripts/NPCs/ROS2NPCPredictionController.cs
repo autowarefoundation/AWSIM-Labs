@@ -19,7 +19,7 @@ namespace AWSIM
         PerceptionResultSensor.OutputData outputData;
 
         int stopCount = 0;
-        float minimum_length = 1.0F;
+        float minimum_distance;
         bool useEstimateRotation = true;
 
         void Start() {
@@ -73,22 +73,22 @@ namespace AWSIM
                         endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
                     }
 
-                    // set minimum length
-                    minimum_length = 1.0F;
-                    float distance2D;
+                    // set minimum distance
                     if(npcVehicle.speed <= 0.1F){
-                        minimum_length = 0.3F;   
+                        minimum_distance = 0.3F;   
                     }else{
-                        // minimum_length = minimum_length + npcVehicle.speed * 2.0F;  // this 
+                        minimum_distance = 1.0F;
                     }
-                    minimum_length = minimum_length + npcVehicle.speed * 2.0F;  // this 
+                    var distance_offset = npcVehicle.speed * 2.0F;
+                    var final_distance = minimum_distance + distance_offset; 
 
+                    float distance2D;
                     while(true){
                         endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
                         Vector2 egoPoint = new Vector2(npcVehicle.lastPosition.x, npcVehicle.lastPosition.z);
                         Vector2 targetPoint = new Vector2(endPosition.x, endPosition.z);
                         distance2D = Vector2.Distance(egoPoint, targetPoint);
-                        if(distance2D >= minimum_length || end_step >= 10)break;
+                        if(distance2D >= final_distance || end_step >= 10)break;
                         first_step = first_step + 1;
                         end_step = first_step + 1;
                     }
@@ -96,11 +96,9 @@ namespace AWSIM
                     Debug.Log("end_step: " + end_step);
 
                     var direction = endRotation * Vector3.forward;
-                    if(distance2D >= minimum_length){
-                        npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
-                        npcVehicle.outerTargetRotation = endRotation;
-                        npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
-                    }
+                    npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
+                    npcVehicle.outerTargetRotation = endRotation;
+                    npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
 
                     // estimate velocity and acceleration
                     var startPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
