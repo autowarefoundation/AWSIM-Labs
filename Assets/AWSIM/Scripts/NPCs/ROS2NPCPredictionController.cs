@@ -17,8 +17,11 @@ namespace AWSIM
 
         PerceptionResultSensor objectSensor;
         PerceptionResultSensor.OutputData outputData;
+
         int stopCount = 0;
         float minimum_length = 1.0F;
+        bool useEstimateRotation = true;
+
         void Start() {
             Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, predictionCallback, qoSSettings.GetQoSProfile());
             perceptionTrackingResultRos2Publisher = GetComponent<PerceptionTrackingResultRos2Publisher>();
@@ -50,33 +53,29 @@ namespace AWSIM
                         }
                     }
 
-                    var deltaTime =(currentSec + currentNanosec/1e9F) - (rosSec + rosNanosec/1e9F);
+                    var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
 
+                    var deltaTime =(currentSec + currentNanosec/1e9F) - (rosSec + rosNanosec/1e9F);
                     var predictionPointDeltaTime = (objects[i].Kinematics.Predicted_paths[maxindex].Time_step.Nanosec / 1e9F);
                     int first_step = (int)(deltaTime / predictionPointDeltaTime);
                     int end_step = first_step + 1;
 
                     var endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
 
-                    // use prediction-pose Rotation
-                    // var endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
-
                     // estimate Rotation
-                    var toPosition =  ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
-                    var estimatedDirection = toPosition - endPosition;
-                    // Debug.Log("toPosition" + toPosition);
-                    // Debug.Log("endPosition" + endPosition);
-                    var endRotation = Quaternion.LookRotation(estimatedDirection);
-
-                    // set prediction value
-                
-                    var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
-                    if(estimatedDirection == Vector3.zero){
-                        endRotation = npcVehicle.predictRotation;
-                        Debug.Log("endRotation" + endRotation);
+                    Quaternion endRotation;
+                    if(useEstimateRotation){
+                        var toPosition =  ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
+                        var estimatedDirection = toPosition - endPosition;
+                        endRotation = Quaternion.LookRotation(estimatedDirection);
+                        if(estimatedDirection == Vector3.zero){
+                            endRotation = npcVehicle.predictRotation;
+                        }
+                    }else{
+                        endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
                     }
 
-                    // minimum length
+                    // set minimum length
                     minimum_length = 1.0F;
                     float distance2D;
                     if(npcVehicle.speed <= 0.1F){
