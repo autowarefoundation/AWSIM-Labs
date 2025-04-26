@@ -37,39 +37,39 @@ namespace AWSIM
 
             for (var i = 0; i < objects.Length; i++){
 
-                List<Vector3> path = new List<Vector3>();
-                List<Quaternion> rotation = new List<Quaternion>();
-                var confidence = -1f;
-                var maxindex = 0;
-                for (var j = 0; j < objects[i].Kinematics.Predicted_paths.Length; j++){
-                    if (objects[i].Kinematics.Predicted_paths[j].Confidence > confidence){
-                        confidence = objects[i].Kinematics.Predicted_paths[j].Confidence;
-                        maxindex = j;
-                    }
-                }
-
                 var uuid = BitConverter.ToString(objects[i].Object_id.Uuid);
-
-                var deltaTime =(currentSec + currentNanosec/1e9F) - (rosSec + rosNanosec/1e9F);
-
-                var predictionPointDeltaTime = (objects[i].Kinematics.Predicted_paths[maxindex].Time_step.Nanosec / 1e9F);
-                int first_step = (int)(deltaTime / predictionPointDeltaTime);
-                int end_step = first_step + 1;
-
-                var endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
-
-                // use prediction-pose Rotation
-                // var endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
-
-                // estimate Rotation
-                var toPosition =  ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
-                var estimatedDirection = toPosition - endPosition;
-                // Debug.Log("toPosition" + toPosition);
-                // Debug.Log("endPosition" + endPosition);
-                var endRotation = Quaternion.LookRotation(estimatedDirection);
-
-                // set prediction value
                 if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCVehicle"){
+                    List<Vector3> path = new List<Vector3>();
+                    List<Quaternion> rotation = new List<Quaternion>();
+                    var confidence = -1f;
+                    var maxindex = 0;
+                    for (var j = 0; j < objects[i].Kinematics.Predicted_paths.Length; j++){
+                        if (objects[i].Kinematics.Predicted_paths[j].Confidence > confidence){
+                            confidence = objects[i].Kinematics.Predicted_paths[j].Confidence;
+                            maxindex = j;
+                        }
+                    }
+
+                    var deltaTime =(currentSec + currentNanosec/1e9F) - (rosSec + rosNanosec/1e9F);
+
+                    var predictionPointDeltaTime = (objects[i].Kinematics.Predicted_paths[maxindex].Time_step.Nanosec / 1e9F);
+                    int first_step = (int)(deltaTime / predictionPointDeltaTime);
+                    int end_step = first_step + 1;
+
+                    var endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
+
+                    // use prediction-pose Rotation
+                    // var endRotation = ROS2Utility.RosToUnityRotation(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Orientation);
+
+                    // estimate Rotation
+                    var toPosition =  ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
+                    var estimatedDirection = toPosition - endPosition;
+                    // Debug.Log("toPosition" + toPosition);
+                    // Debug.Log("endPosition" + endPosition);
+                    var endRotation = Quaternion.LookRotation(estimatedDirection);
+
+                    // set prediction value
+                
                     var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
                     if(estimatedDirection == Vector3.zero){
                         endRotation = npcVehicle.predictRotation;
