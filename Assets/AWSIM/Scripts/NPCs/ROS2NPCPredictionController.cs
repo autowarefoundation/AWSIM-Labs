@@ -42,8 +42,6 @@ namespace AWSIM
 
                 var uuid = BitConverter.ToString(objects[i].Object_id.Uuid);
                 if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCVehicle"){
-                    List<Vector3> path = new List<Vector3>();
-                    List<Quaternion> rotation = new List<Quaternion>();
                     var confidence = -1f;
                     var maxindex = 0;
                     for (var j = 0; j < objects[i].Kinematics.Predicted_paths.Length; j++){
