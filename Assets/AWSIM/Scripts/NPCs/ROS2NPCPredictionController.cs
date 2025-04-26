@@ -17,7 +17,8 @@ namespace AWSIM
 
         PerceptionResultSensor objectSensor;
         PerceptionResultSensor.OutputData outputData;
-        public int stopCount = 0;
+        int stopCount = 0;
+        float minimum_length = 1.0F;
         void Start() {
             Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, predictionCallback, qoSSettings.GetQoSProfile());
             perceptionTrackingResultRos2Publisher = GetComponent<PerceptionTrackingResultRos2Publisher>();
@@ -65,8 +66,8 @@ namespace AWSIM
                 // estimate Rotation
                 var toPosition =  ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step+1].Position);
                 var estimatedDirection = toPosition - endPosition;
-                Debug.Log("toPosition" + toPosition);
-                Debug.Log("endPosition" + endPosition);
+                // Debug.Log("toPosition" + toPosition);
+                // Debug.Log("endPosition" + endPosition);
                 var endRotation = Quaternion.LookRotation(estimatedDirection);
 
                 // set prediction value
@@ -76,10 +77,35 @@ namespace AWSIM
                         endRotation = npcVehicle.predictRotation;
                         Debug.Log("endRotation" + endRotation);
                     }
+
+                    // minimum length
+                    minimum_length = 1.0F;
+                    float distance2D;
+                    if(npcVehicle.speed <= 0.1F){
+                        minimum_length = 0.3F;   
+                    }else{
+                        // minimum_length = minimum_length + npcVehicle.speed * 2.0F;  // this 
+                    }
+                    minimum_length = minimum_length + npcVehicle.speed * 2.0F;  // this 
+
+                    while(true){
+                        endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
+                        Vector2 egoPoint = new Vector2(npcVehicle.lastPosition.x, npcVehicle.lastPosition.z);
+                        Vector2 targetPoint = new Vector2(endPosition.x, endPosition.z);
+                        distance2D = Vector2.Distance(egoPoint, targetPoint);
+                        if(distance2D >= minimum_length || end_step >= 10)break;
+                        first_step = first_step + 1;
+                        end_step = first_step + 1;
+                    }
+                    Debug.Log("distance2D: " + distance2D);
+                    Debug.Log("end_step: " + end_step);
+
                     var direction = endRotation * Vector3.forward;
-                    npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
-                    npcVehicle.outerTargetRotation = endRotation;
-                    npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
+                    if(distance2D >= minimum_length){
+                        npcVehicle.outerTargetPoint = endPosition + (direction * npcVehicle.Bounds.size.y);
+                        npcVehicle.outerTargetRotation = endRotation;
+                        npcVehicle.outerTargetPointTime = end_step*predictionPointDeltaTime - deltaTime;
+                    }
 
                     // estimate velocity and acceleration
                     var startPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[first_step].Position);
