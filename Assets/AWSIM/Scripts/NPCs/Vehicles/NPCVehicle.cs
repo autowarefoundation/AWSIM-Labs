@@ -188,11 +188,11 @@ namespace AWSIM
         float wheelbase;        // m
         float acceleration;     // m/s^2
         Vector3 velocity;       // m/s
-        float speed;            // m/s (forward only)
+        public float speed;            // m/s (forward only)
         float yawAngularSpeed;  // deg/s (yaw only)
 
         Vector3 lastVelocity;
-        Vector3 lastPosition;
+        public Vector3 lastPosition;
         QuaternionD lastRotation;
         float lastEulerAnguleY;
         float lastSpeed;
@@ -216,6 +216,7 @@ namespace AWSIM
         public float outerSpeed { get; set; } = 0.0F;
         public float outerAcceleration { get; set; } = 0.0F;
         public override float CurrentSpeed => speed;
+        public Quaternion predictRotation { get; set; } = new Quaternion();
 
         // Start is called before the first frame update
         void Awake()
@@ -330,6 +331,7 @@ namespace AWSIM
             speed = Vector3.Dot(velocity, transform.forward);
 
             // angular velocity
+            predictRotation = rigidbody.rotation;
             var currentRotation = new QuaternionD(rigidbody.rotation);
             var deltaRotation = currentRotation * QuaternionD.Inverse(lastRotation);
             deltaRotation.ToAngleAxis(out var angle, out var axis);
