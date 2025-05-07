@@ -10,7 +10,8 @@ namespace AWSIM.TrafficSimulation
         SLOW,
         STOP,
         SUDDEN_STOP,
-        ABSOLUTE_STOP
+        ABSOLUTE_STOP,
+        PREDICTION_CONTROL
     }
 
     public enum NPCVehicleYieldPhase
@@ -69,6 +70,10 @@ namespace AWSIM.TrafficSimulation
 
         // Output from any steps
         public bool ShouldDespawn { get; set; }
+
+        // prediction-control
+        public bool outerPathControl { get; set; }
+        public bool outerSpeedControl { get; set; }
 
         // Debugs
         public Transform DominatingVehicle { get; set; }
@@ -232,6 +237,11 @@ namespace AWSIM.TrafficSimulation
                 Width = vehicle.Bounds.size.x
             };
             state.FollowingLanes.Add(lane);
+
+            // init prediction-mode
+            state.outerPathControl = false;
+            state.outerSpeedControl = false;
+
             return state;
         }
 
