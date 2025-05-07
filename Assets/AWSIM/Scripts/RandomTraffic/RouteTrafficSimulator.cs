@@ -96,7 +96,7 @@ namespace AWSIM.TrafficSimulation
             {
                 spawnedVehicle = null;
                 return false;
-            };
+            }
 
             if (npcVehicleSimulator.VehicleStates.Count >= npcVehicleSimulator.maxVehicleCount)
             {
