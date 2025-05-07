@@ -15,7 +15,7 @@ jobs:
         target_platform:
           - StandaloneLinux64
         unity_version:
-          - 2022.3.21f1
+          - 2022.3.62f1
     steps:
       - name: Get User Permission
         id: checkAccess
