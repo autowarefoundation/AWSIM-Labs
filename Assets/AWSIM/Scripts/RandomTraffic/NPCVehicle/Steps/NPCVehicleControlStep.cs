@@ -39,6 +39,11 @@ namespace AWSIM.TrafficSimulation
             float acceleration;
             switch (state.SpeedMode)
             {
+                case NPCVehicleSpeedMode.PREDICTION_CONTROL:
+                    var npcVhicle = state.Vehicle;
+                    targetSpeed = npcVhicle.outerSpeed;
+                    acceleration = npcVhicle.outerAcceleration;
+                    break;
                 case NPCVehicleSpeedMode.NORMAL:
                     targetSpeed = state.CurrentFollowingLane.SpeedLimit;
                     acceleration = config.Acceleration;
@@ -73,6 +78,7 @@ namespace AWSIM.TrafficSimulation
         {
             // Steering the vehicle so that it heads toward the target point.
             var steeringDirection = state.TargetPoint - state.FrontCenterPosition;
+            var distance = Math.Sqrt(steeringDirection.x*steeringDirection.x + steeringDirection.y*steeringDirection.y);
             steeringDirection.y = 0f;
             var steeringAngle = Vector3.SignedAngle(state.Forward, steeringDirection, Vector3.up);
             var targetYawSpeed = steeringAngle * state.Speed * NPCVehicleConfig.YawSpeedMultiplier;
