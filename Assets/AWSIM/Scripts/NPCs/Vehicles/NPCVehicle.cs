@@ -206,9 +206,8 @@ namespace AWSIM
         Vector3 localAngularVelocity;
         public override Vector3 AngularVelocity => localAngularVelocity;
 
-        // set with-prediction status
-        public bool usePathControl { get; } = true;
-        public bool useSpeedControl { get; } = false;
+        public bool outerPathControl { get; set; }
+        public bool outerSpeedControl { get; set; }
 
         public float outerTargetPointTime { get; set; } = new float();
         public Vector3 outerTargetPoint { get; set; } = new Vector3();
@@ -231,7 +230,8 @@ namespace AWSIM
             lastPosition = rigidbody.position;
             wheelbase = axleSettings.GetWheelBase();
             SetUUID();
-
+            outerPathControl = false;
+            outerSpeedControl = false;
         }
 
         // Update is called once per frame

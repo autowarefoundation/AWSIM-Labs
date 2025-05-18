@@ -23,11 +23,10 @@ namespace AWSIM.TrafficSimulation
 
         public void Execute(IReadOnlyList<NPCVehicleInternalState> states)
         {
-            var _egoVehicle = GameObject.FindWithTag("Ego");
-            var ego_rigidbody = _egoVehicle.GetComponent<Rigidbody>();
+    
             foreach (var state in states)
             {
-                UpdateTargetPoint(state, ego_rigidbody);
+                UpdateTargetPoint(state);
                 UpdateSpeedMode(state, config);
             }
         }
@@ -36,20 +35,12 @@ namespace AWSIM.TrafficSimulation
         /// Set short-term target point of the vehicle to the next waypoint.
         /// </summary>
         /// <param name="state"></param>
-        private static void UpdateTargetPoint(NPCVehicleInternalState state, Rigidbody ego_rigidbody)
+        private static void UpdateTargetPoint(NPCVehicleInternalState state)
         {
             if (state.ShouldDespawn || state.CurrentFollowingLane == null)
                 return;
             
-            var distanceEgo2NPC = Vector3.Distance(ego_rigidbody.transform.position, state.Vehicle.transform.position);
-            bool isInLidarRange =  distanceEgo2NPC <= 200;
-            bool isEmpty = 
-                (state.Vehicle.outerTargetPoint.x == 0) &&
-                (state.Vehicle.outerTargetPoint.y == 0) &&
-                (state.Vehicle.outerTargetPoint.z == 0);
-            
-            bool usePrediction = (!isEmpty) && state.Vehicle.usePathControl && isInLidarRange;
-            if(usePrediction){
+            if(state.Vehicle.outerPathControl){
                 state.TargetPoint = state.Vehicle.outerTargetPoint;
             }
             else
@@ -90,7 +81,7 @@ namespace AWSIM.TrafficSimulation
                 state.IsStoppedByFrontVehicle = true;
             }
 
-            if(state.Vehicle.useSpeedControl == true)
+            if(state.Vehicle.outerSpeedControl == true)
                 state.SpeedMode = NPCVehicleSpeedMode.PREDICTION_CONTROL;
             else if (distanceToStopPoint <= absoluteStopDistance)
                 state.SpeedMode = NPCVehicleSpeedMode.ABSOLUTE_STOP;
