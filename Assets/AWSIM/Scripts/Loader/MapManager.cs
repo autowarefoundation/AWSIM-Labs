@@ -86,9 +86,20 @@ namespace AWSIM.Loader
                     );
                 }
             }
-            mapUISelecor.value = 0;
-            mapUISelecor.RefreshShownValue();
+
+            // Set the listener for future value changes.
             mapUISelecor.onValueChanged.AddListener(delegate { UpdateFields(mapUISelecor.options[mapUISelecor.value]); });
+
+            // Check if any maps were actually found and added to the dropdown.
+            if (mapUISelecor.options.Count > 0)
+            {
+                mapUISelecor.value = 0;
+                mapUISelecor.RefreshShownValue();
+
+                // Manually call UpdateFields with the initial, default value (at index 0).
+                // This ensures the ego spawn position is set on start, not just on change.
+                UpdateFields(mapUISelecor.options[0]);
+            }
         }
 
         /// <summary>

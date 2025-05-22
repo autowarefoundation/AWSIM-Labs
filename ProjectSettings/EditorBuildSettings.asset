@@ -18,12 +18,15 @@ EditorBuildSettings:
     path: Assets/AWSIM/Scenes/Environments/ShinjukuNight.unity
     guid: b6fb22600d18cddd884bbf5bf85b45af
   - enabled: 1
-    path: Assets/AWSIM/Scenes/Main/AutowareSimulationScenarioSimulator.unity
-    guid: 13511b748ecff429f8de510369354f8b
+    path: Assets/AWSIM/Scenes/Environments/Flatlands/Flatlands.unity
+    guid: 7e5a72b04785a828ea6ee6d5e0e2881c
+  - enabled: 1
+    path: Assets/AWSIM/Scenes/Main/Parking Area/Parking Area.unity
+    guid: 57c7ef1975cd6f2369200fe44ab21dd2
   - enabled: 1
     path: Assets/AWSIM/Scenes/Main/Parking Area/Parking Area ss2.unity
     guid: 86410ab08089bce52b1742e7ee88fa17
   - enabled: 1
-    path: Assets/AWSIM/Scenes/Main/Parking Area/Parking Area.unity
-    guid: 57c7ef1975cd6f2369200fe44ab21dd2
+    path: Assets/AWSIM/Scenes/Main/AutowareSimulationScenarioSimulator.unity
+    guid: 13511b748ecff429f8de510369354f8b
   m_configObjects: {}

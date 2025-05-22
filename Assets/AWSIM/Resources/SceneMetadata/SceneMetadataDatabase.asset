@@ -21,9 +21,11 @@ MonoBehaviour:
     isSs2Scene: 0
   - sceneName: ShinjukuNight
     isSs2Scene: 0
-  - sceneName: AutowareSimulationScenarioSimulator
-    isSs2Scene: 1
-  - sceneName: Parking Area ss2
-    isSs2Scene: 1
+  - sceneName: Flatlands
+    isSs2Scene: 0
   - sceneName: Parking Area
     isSs2Scene: 0
+  - sceneName: Parking Area ss2
+    isSs2Scene: 1
+  - sceneName: AutowareSimulationScenarioSimulator
+    isSs2Scene: 1
