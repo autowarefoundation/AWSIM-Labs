@@ -23,6 +23,7 @@ namespace AWSIM.TrafficSimulation
 
         public void Execute(IReadOnlyList<NPCVehicleInternalState> states)
         {
+    
             foreach (var state in states)
             {
                 UpdateTargetPoint(state);
@@ -38,8 +39,14 @@ namespace AWSIM.TrafficSimulation
         {
             if (state.ShouldDespawn || state.CurrentFollowingLane == null)
                 return;
-
-            state.TargetPoint = state.CurrentFollowingLane.Waypoints[state.WaypointIndex];
+            
+            if(state.Vehicle.outerPathControl){
+                state.TargetPoint = state.Vehicle.outerTargetPoint;
+            }
+            else
+            {
+                state.TargetPoint = state.CurrentFollowingLane.Waypoints[state.WaypointIndex];
+            }
         }
 
         /// <summary>
@@ -74,7 +81,9 @@ namespace AWSIM.TrafficSimulation
                 state.IsStoppedByFrontVehicle = true;
             }
 
-            if (distanceToStopPoint <= absoluteStopDistance)
+            if(state.Vehicle.outerSpeedControl == true)
+                state.SpeedMode = NPCVehicleSpeedMode.PREDICTION_CONTROL;
+            else if (distanceToStopPoint <= absoluteStopDistance)
                 state.SpeedMode = NPCVehicleSpeedMode.ABSOLUTE_STOP;
             else if (distanceToStopPoint <= suddenStopDistance)
                 state.SpeedMode = NPCVehicleSpeedMode.SUDDEN_STOP;
