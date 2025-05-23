@@ -1,4 +1,4 @@
-# Troubleshooting Guide for AWSIM and Autoware
+# Troubleshooting Guide for AWSIM Labs and Autoware
 
 This document outlines common issues encountered when working with AWSIM and Autoware, along with suggested solutions.
 
@@ -114,6 +114,36 @@ Check the appropriate log files:
 - **Linux:** `~/.config/unity3d/CompanyName/ProductName/Player.log`
 
 More info: [Unity Documentation - Log Files](https://docs.unity3d.com/2021.1/Documentation/Manual/LogFiles.html)
+
+### Unity Editor Error when Playing
+
+**Error:**
+```log
+RuntimeError: failed to get symbol 'rmw_init_options_init' due to Environment variable 'AMENT_PREFIX_PATH' is not set or empty, at ./src/functions.cpp:171, at ./src/rcl/init_options.c:75
+ROS2.Utils.CheckReturnEnum (System.Int32 ret) (at <2034886caef046439cfa6ebcd9ed8cd7>:0)
+ROS2.Ros2cs.Init () (at <2034886caef046439cfa6ebcd9ed8cd7>:0)
+ROS2.ROS2ForUnity..ctor () (at Assets/Ros2ForUnity/Scripts/ROS2ForUnity.cs:326)
+ROS2.ROS2UnityCore..ctor () (at Assets/Ros2ForUnity/Scripts/ROS2UnityCore.cs:55)
+AWSIM.SimulatorROS2Node.Initialize () (at Assets/AWSIM/Scripts/ROS/SimulatorROS2Node.cs:37)
+```
+
+**Solution:**
+
+Required environment variables:
+
+```bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI=file:///home/add_your_username/cyclonedds.xml
+```
+
+- If you are launching unityhub **directly from a launcher**,
+  - Make sure the CycloneDDS related 2 environment variables are set in the:
+    - `~/.profile` file.
+    - if `~/.bash_profile` or `~/.bash_login` exists, they will be executed instead of `~/.profile`.
+- If you are launching unityhub **from a terminal**,
+  - Make sure the CycloneDDS related 2 environment variables are set in the `~/.bashrc` file.
+
+More information can be found at [DDS settings for ROS 2 and Autoware](https://autowarefoundation.github.io/autoware-documentation/main/installation/additional-settings-for-developers/network-configuration/dds-settings/).
 
 ---
 
