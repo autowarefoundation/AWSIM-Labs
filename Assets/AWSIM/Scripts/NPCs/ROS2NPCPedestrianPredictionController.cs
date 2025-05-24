@@ -11,7 +11,7 @@ namespace AWSIM
     public class ROS2NPCPedestrianPredictionController : ROS2PredictionController
     {
         Vector3 endPosittion;
-        List<(NPCPedestrian ped, Vector3 posi)> Pedestrian2Position = new List<(NPCPedestrian, Vector3)>{};
+        List<(NPCPedestrian Pedestrian, Vector3 targetPosition)> Pedestrian2Position = new List<(NPCPedestrian, Vector3)>{};
 
         void Start() {
             Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, predictionCallback, qoSSettings.GetQoSProfile());
@@ -24,7 +24,7 @@ namespace AWSIM
         void Update() {
             egoPosition = ego.GetComponent<Rigidbody>().transform.position;
             for(int i = 0; i < Pedestrian2Position.Count; i++){
-                Pedestrian2Position[i].ped.SetPosition(Pedestrian2Position[i].posi);
+                Pedestrian2Position[i].Pedestrian.SetPosition(Pedestrian2Position[i].targetPosition);
             }
         }
 
