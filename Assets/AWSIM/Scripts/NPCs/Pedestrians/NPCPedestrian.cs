@@ -6,7 +6,7 @@ namespace AWSIM
     /// NPC pedestrian that is controlled in the scenario.
     /// </summary>
     [RequireComponent(typeof(Rigidbody), typeof(Animator))]
-    public class NPCPedestrian : MonoBehaviour
+    public class NPCPedestrian : NPCs
     {
         [SerializeField] private new Rigidbody rigidbody;
         [SerializeField] private Transform referencePoint;
@@ -30,6 +30,15 @@ namespace AWSIM
 
         private const string moveSpeedProperty = "moveSpeed";
         private const string rotateSpeedProperty = "rotateSpeed";
+
+        public bool outerPathControl { get; set; }
+        public bool outerSpeedControl { get; set; }
+
+        private void Start(){
+            SetUUID();
+            outerPathControl = false;
+            outerSpeedControl = false;
+        }
 
         private void Update()
         {
