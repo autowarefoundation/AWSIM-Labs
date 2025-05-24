@@ -12,8 +12,6 @@ namespace AWSIM
         public unique_identifier_msgs.msg.UUID  uuid;
         public virtual Vector3 LinearVelocity { get; }
         public virtual Vector3 AngularVelocity { get; }
-        public virtual float CurrentSpeed { get;}
-        public virtual Vector3 OuterTargetPoint { get; set;}
         public void SetUUID(){
             Guid guid = Guid.NewGuid();
             uuid = new unique_identifier_msgs.msg.UUID();

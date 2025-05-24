@@ -214,7 +214,6 @@ namespace AWSIM
         public Quaternion outerTargetRotation { get; set; } = new Quaternion();
         public float outerSpeed { get; set; } = 0.0F;
         public float outerAcceleration { get; set; } = 0.0F;
-        public override float CurrentSpeed => speed;
         public Quaternion predictRotation { get; set; } = new Quaternion();
 
         // Start is called before the first frame update
