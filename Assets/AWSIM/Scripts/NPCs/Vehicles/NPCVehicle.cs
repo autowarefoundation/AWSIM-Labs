@@ -343,8 +343,6 @@ namespace AWSIM
             // yaw angular speed.
             yawAngularSpeed = (rigidbody.rotation.eulerAngles.y - lastEulerAnguleY) / Time.deltaTime;
 
-            localLinearVelocity = (transform.InverseTransformDirection(rigidbody.position - lastPosition)) / Time.deltaTime;
-
             // TODO: set WheelCollider steer angle?
 
             // Cache current frame values.
