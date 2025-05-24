@@ -8,27 +8,9 @@ using System.Reflection;
 /**********************/
 namespace AWSIM
 {
-    public class ROS2NPCPredictionController : MonoBehaviour
+    public class ROS2NPCPredictionController : ROS2PredictionController
     {
-        public PerceptionTrackingResultRos2Publisher perceptionTrackingResultRos2Publisher;
-        QoSSettings qoSSettings = new QoSSettings();
-        string subscribedTopic = "/awsim/perception/object_recognition/objects";
-        ISubscription<autoware_perception_msgs.msg.PredictedObjects> Subscriber;
-
-        PerceptionResultSensor objectSensor;
-        PerceptionResultSensor.OutputData outputData;
-        UnityEngine.GameObject ego;
-        UnityEngine.Vector3 egoPosition;
-
-        // set with-prediction status
-        bool usePredictionControl = true;
-        bool usePathControl = true;
-        bool useSpeedControl = false;
-        bool useEstimateRotation = true;
-        float prediction_distance = 70;
-        int stopCount = 0;
-        float minimum_distance = 1.0F;
-        float speed_weight = 1.5F;
+        private int stopCount = 0;
 
         void Start() {
             Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, predictionCallback, qoSSettings.GetQoSProfile());

@@ -8,27 +8,8 @@ using System.Reflection;
 /**********************/
 namespace AWSIM
 {
-    public class ROS2NPCPedestrianPredictionController : MonoBehaviour
+    public class ROS2NPCPedestrianPredictionController : ROS2PredictionController
     {
-        public PerceptionTrackingResultRos2Publisher perceptionTrackingResultRos2Publisher;
-        QoSSettings qoSSettings = new QoSSettings();
-        string subscribedTopic = "/awsim/perception/object_recognition/objects";
-
-        ISubscription<autoware_perception_msgs.msg.PredictedObjects> Subscriber;
-
-        PerceptionResultSensor objectSensor;
-        PerceptionResultSensor.OutputData outputData;
-        UnityEngine.GameObject ego;
-        UnityEngine.Vector3 egoPosition;
-
-        // set with-prediction status
-        bool usePredictionControl = true;
-        bool usePathControl = true;
-        bool useSpeedControl = false;
-        bool useEstimateRotation = true;
-        float prediction_distance = 70;
-        float minimum_distance = 1.0F;
-        float speed_weight = 1.5F;
         Vector3 endPosittion;
         List<(NPCPedestrian ped, Vector3 posi)> Pedestrian2Position = new List<(NPCPedestrian, Vector3)>{};
 
