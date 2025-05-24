@@ -349,6 +349,7 @@ namespace AWSIM
 
             // Cache current frame values.
             lastPosition = rigidbody.position;
+            lastRotation = new QuaternionD(rigidbody.rotation);
             lastVelocity = velocity;
             lastEulerAnguleY = rigidbody.rotation.eulerAngles.y;
             lastSpeed = speed;
