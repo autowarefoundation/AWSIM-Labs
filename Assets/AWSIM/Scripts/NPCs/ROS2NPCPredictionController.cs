@@ -36,19 +36,23 @@ namespace AWSIM
             for (var i = 0; i < objects.Length; i++){
                 var uuid = BitConverter.ToString(objects[i].Object_id.Uuid);
                 if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCVehicle"){
+                    var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
+
+                    var timeSinceSpwn = (currentSec + currentNanosec/1e9F) - (npcVehicle.spawnSec + npcVehicle.spawnNanosec/1e9F);
+                    bool isReadyToPrediction = timeSinceSpwn > 5.0F;
+
                     var rosNpcPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Initial_pose_with_covariance.Pose.Position);
                     Vector3 npcPosition = new Vector3((float)rosNpcPosition.x, (float)rosNpcPosition.y, (float)rosNpcPosition.z);
                     var distanceEgo2NPC = Vector3.Distance(egoPosition, npcPosition);
                     bool isInLidarRange =  (distanceEgo2NPC <= prediction_distance);
-                    
-                    // Debug.Log("distatnceEgo2NPC: " + distanceEgo2NPC); //for debug
-                    var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
-                    if(usePredictionControl && isInLidarRange){
+
+                    if(usePredictionControl && isInLidarRange && isReadyToPrediction){
                         npcVehicle.outerPathControl = usePathControl;
                         npcVehicle.outerSpeedControl = useSpeedControl;
                     } else {
                         npcVehicle.outerPathControl = false;
                         npcVehicle.outerSpeedControl = false;
+                        return;
                     }            
                     
                     var confidence = -1f;

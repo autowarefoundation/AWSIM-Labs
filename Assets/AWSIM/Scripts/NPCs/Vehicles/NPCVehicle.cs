@@ -229,6 +229,7 @@ namespace AWSIM
             lastPosition = rigidbody.position;
             wheelbase = axleSettings.GetWheelBase();
             SetUUID();
+            SetSpawnTime();
             outerPathControl = false;
             outerSpeedControl = false;
         }

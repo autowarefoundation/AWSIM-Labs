@@ -36,6 +36,7 @@ namespace AWSIM
 
         private void Start(){
             SetUUID();
+            SetSpawnTime();
             outerPathControl = false;
             outerSpeedControl = false;
         }
