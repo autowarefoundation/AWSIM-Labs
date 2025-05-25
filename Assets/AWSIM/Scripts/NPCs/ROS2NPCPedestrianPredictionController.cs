@@ -10,66 +10,87 @@ namespace AWSIM
 {
     public class ROS2NPCPedestrianPredictionController : ROS2PredictionController
     {
-        Vector3 endPosittion;
-        List<(NPCPedestrian Pedestrian, Vector3 targetPosition)> Pedestrian2Position = new List<(NPCPedestrian, Vector3)>{};
+        List<( 
+            NPCPedestrian Pedestrian, 
+            double rosTime, 
+            autoware_perception_msgs.msg.PredictedPath predictedPath
+        )> pedestrianWithPredctedPath = new List<(NPCPedestrian, double, autoware_perception_msgs.msg.PredictedPath)>{};
 
         void Start() {
-            Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(subscribedTopic, predictionCallback, qoSSettings.GetQoSProfile());
+            Subscriber = SimulatorROS2Node.CreateSubscription<autoware_perception_msgs.msg.PredictedObjects>(
+                subscribedTopic, 
+                predictionCallback, 
+                qoSSettings.GetQoSProfile());
             perceptionTrackingResultRos2Publisher = GetComponent<PerceptionTrackingResultRos2Publisher>();
             objectSensor = GetComponent<PerceptionResultSensor>();
             objectSensor.OnOutputData += Callback;
             ego = GameObject.FindWithTag("Ego");
         }
 
-        void Update() {
-            egoPosition = ego.GetComponent<Rigidbody>().transform.position;
-            for(int i = 0; i < Pedestrian2Position.Count; i++){
-                Pedestrian2Position[i].Pedestrian.SetPosition(Pedestrian2Position[i].targetPosition);
+        void FixedUpdate() {
+            int currentSec;
+            uint currentNanosec;
+            SimulatorROS2Node.TimeSource.GetTime(out currentSec, out currentNanosec);
+            for(int i = 0; i < pedestrianWithPredctedPath.Count; i++)
+            {
+                // Calculate TargetPosition from predicted path. 
+                var deltaTime =(currentSec + currentNanosec/1e9F) - pedestrianWithPredctedPath[i].rosTime;
+                var predictionPointDelta = (pedestrianWithPredctedPath[i].predictedPath.Time_step.Nanosec / 1e9F);
+                int target_index = (int)(deltaTime / predictionPointDelta) + 1;
+                var predictedPath = pedestrianWithPredctedPath[i].predictedPath;
+                Vector3 targetPosition = ROS2Utility.RosMGRSToUnityPosition(predictedPath.Path[target_index].Position);
+
+                // Set the destination.  
+                var npcPedestrian = pedestrianWithPredctedPath[i].Pedestrian;
+                npcPedestrian.SetPosition(targetPosition);
             }
+
+            // Cache egoPosition for calculating the distance between Ego and Pedestrian.
+            egoPosition = ego.GetComponent<Rigidbody>().transform.position;
         }
 
         void predictionCallback(autoware_perception_msgs.msg.PredictedObjects receivedMsg){
-            var objects = receivedMsg.Objects;
-            int rosSec = receivedMsg.Header.Stamp.Sec;
-            uint rosNanosec = receivedMsg.Header.Stamp.Nanosec;
-
-            int currentSec;
-            uint currentNanosec;
-            SimulatorROS2Node.TimeSource.GetTime(out currentSec, out currentNanosec);                                        
+            pedestrianWithPredctedPath.Clear();
             
-            Pedestrian2Position.Clear();
-            for (var i = 0; i < objects.Length; i++){
+            var objects = receivedMsg.Objects;
+            for (var i = 0; i < objects.Length; i++)
+            {
                 var uuid = BitConverter.ToString(objects[i].Object_id.Uuid);
-                if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCPedestrian"){
+                if (perceptionTrackingResultRos2Publisher.idToNpc[uuid].GetType().Name == "NPCPedestrian")
+                {
+                    // Find the predicted path with the highest confidence.
+                    var confidence = -1f;
+                    var max_index = 0;
+                    for (var j = 0; j < objects[i].Kinematics.Predicted_paths.Length; j++)
+                    {
+                        if (objects[i].Kinematics.Predicted_paths[j].Confidence > confidence)
+                        {
+                            confidence = objects[i].Kinematics.Predicted_paths[j].Confidence;
+                            max_index = j;
+                        }
+                    }
+
+                    // Set predicted path.
+                    var NPCPedestrian = (NPCPedestrian)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
+                    var predictionPath = objects[i].Kinematics.Predicted_paths[max_index];
+                    double rosTime = (receivedMsg.Header.Stamp.Sec + receivedMsg.Header.Stamp.Nanosec/1e9F);
+                    pedestrianWithPredctedPath.Add((NPCPedestrian, rosTime, predictionPath));
+
+                    // Set prediction status.
                     var rosNpcPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Initial_pose_with_covariance.Pose.Position);
                     Vector3 npcPosition = new Vector3((float)rosNpcPosition.x, (float)rosNpcPosition.y, (float)rosNpcPosition.z);
                     var distanceEgo2NPC = Vector3.Distance(egoPosition, npcPosition);
                     bool isInLidarRange =  (distanceEgo2NPC <= prediction_distance);
-                    
-                    var NPCPedestrian = (NPCPedestrian)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
-                    if(usePredictionControl && isInLidarRange){
+                    if(usePredictionControl && isInLidarRange)
+                    {
                         NPCPedestrian.outerPathControl = usePathControl;
                         NPCPedestrian.outerSpeedControl = useSpeedControl;
-                    } else {
+                    } 
+                    else
+                    {
                         NPCPedestrian.outerPathControl = false;
                         NPCPedestrian.outerSpeedControl = false;
-                    }            
-                    var confidence = -1f;
-                    var maxindex = 0;
-                    for (var j = 0; j < objects[i].Kinematics.Predicted_paths.Length; j++){
-                        if (objects[i].Kinematics.Predicted_paths[j].Confidence > confidence){
-                            confidence = objects[i].Kinematics.Predicted_paths[j].Confidence;
-                            maxindex = j;
-                        }
                     }
-
-                    var deltaTime =(currentSec + currentNanosec/1e9F) - (rosSec + rosNanosec/1e9F);
-                    var predictionPointDeltaTime = (objects[i].Kinematics.Predicted_paths[maxindex].Time_step.Nanosec / 1e9F);
-                    int first_step = (int)(deltaTime / predictionPointDeltaTime);
-                    int end_step = first_step + 1;
-                    
-                    Vector3 endPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Predicted_paths[maxindex].Path[end_step].Position);
-                    Pedestrian2Position.Add((NPCPedestrian,endPosition));
                 }
             }
         }
