@@ -17,8 +17,8 @@ namespace AWSIM
         protected bool usePathControl = true;
         protected bool useSpeedControl = false;
         protected bool useEstimateRotation = true;
-        protected float prediction_distance = 200;
-        protected float minimum_distance = 1.0F;
-        protected float speed_weight = 1.5F;
+        protected float predictionDistance = 200;
+        protected float minimumDistance = 1.0F;
+        protected float speedWeight = 1.5F;
     }
 }

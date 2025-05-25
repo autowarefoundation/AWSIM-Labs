@@ -80,7 +80,7 @@ namespace AWSIM
                     var rosNpcPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Initial_pose_with_covariance.Pose.Position);
                     Vector3 npcPosition = new Vector3((float)rosNpcPosition.x, (float)rosNpcPosition.y, (float)rosNpcPosition.z);
                     var distanceEgo2NPC = Vector3.Distance(egoPosition, npcPosition);
-                    bool isInLidarRange =  (distanceEgo2NPC <= prediction_distance);
+                    bool isInLidarRange =  (distanceEgo2NPC <= predictionDistance);
                     if(usePredictionControl && isInLidarRange)
                     {
                         NPCPedestrian.outerPathControl = usePathControl;
