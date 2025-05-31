@@ -2,6 +2,7 @@ using UnityEngine;
 using ROS2;
 /**************/
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -11,7 +12,6 @@ namespace AWSIM
     public class ROS2NPCPredictionController : ROS2PredictionController
     {
         private int stopCount = 0;
-
         List<( 
             NPCVehicle npcVehicle, 
             double rosTime, 
@@ -34,12 +34,17 @@ namespace AWSIM
             int currentSec;
             uint currentNanosec;
             SimulatorROS2Node.TimeSource.GetTime(out currentSec, out currentNanosec);
-            for(int i = 0; i < npcVehicleWithPredctedPath.Count; i++)
+
+            var NPCVehicleWithPredctedPath = npcVehicleWithPredctedPath.Select(
+                item => (item.npcVehicle, item.rosTime, item.predictedPath)).ToList();
+            for(int i = 0; i < NPCVehicleWithPredctedPath.Count; i++)
             {
-                var deltaTime =(currentSec + currentNanosec/1e9F) - npcVehicleWithPredctedPath[i].rosTime;
-                var predictionPointDelta = (npcVehicleWithPredctedPath[i].predictedPath.Time_step.Nanosec / 1e9F);
-                var predictedPath = npcVehicleWithPredctedPath[i].predictedPath;
-                var npcVehicle = npcVehicleWithPredctedPath[i].npcVehicle;
+                var deltaTime =(currentSec + currentNanosec/1e9F) - NPCVehicleWithPredctedPath[i].rosTime;
+                var predictionPointDelta = (NPCVehicleWithPredctedPath[i].predictedPath.Time_step.Nanosec / 1e9F);
+                var predictedPath = NPCVehicleWithPredctedPath[i].predictedPath;
+                var npcVehicle = NPCVehicleWithPredctedPath[i].npcVehicle;
+                if(npcVehicle == null)continue;
+                if(npcVehicle.outerPathControl == false)continue;
 
                 // Calculate TargetPosition from predicted path. 
                 var distanceOffset = npcVehicle.speed * speedWeight; 
@@ -48,7 +53,7 @@ namespace AWSIM
                 var pathLength = predictedPath.Path.Length;
                 int targetIndex = (int)(deltaTime / predictionPointDelta) + 1;
                 Vector3 targetPosition = ROS2Utility.RosMGRSToUnityPosition(predictedPath.Path[targetIndex].Position);
-                for( int j = 0; targetIndex < pathLength; j++)
+                for( int j = 0; targetIndex < pathLength-2; j++)
                 {
                     
                     var currentPoint = new Vector2(npcVehicle.GetComponent<Rigidbody>().position.x, npcVehicle.GetComponent<Rigidbody>().position.z);
@@ -158,13 +163,12 @@ namespace AWSIM
                     // Set prediction status.
                     // wait until prediction output becomes stable. 
                     var timeSinceSpawn = (currentSec + currentNanosec/1e9F) - (npcVehicle.spawnSec + npcVehicle.spawnNanosec/1e9F);
-                    bool isReadyToPrediction = timeSinceSpawn > 6.0F;
+                    bool isReadyToPrediction = timeSinceSpawn > 0.0F;
 
                     var rosNpcPosition = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Initial_pose_with_covariance.Pose.Position);
                     Vector3 npcPosition = new Vector3((float)rosNpcPosition.x, (float)rosNpcPosition.y, (float)rosNpcPosition.z);
                     var distanceEgo2NPC = Vector3.Distance(egoPosition, npcPosition);
                     bool isInLidarRange =  (distanceEgo2NPC <= predictionDistance);
-                    Debug.Log("[distanceEgo2NPC] : " + distanceEgo2NPC); //for debug
 
                     if(usePredictionControl && isInLidarRange && isReadyToPrediction){
                         npcVehicle.outerPathControl = usePathControl;
@@ -172,7 +176,6 @@ namespace AWSIM
                     } else {
                         npcVehicle.outerPathControl = false;
                         npcVehicle.outerSpeedControl = false;
-                        return;
                     }            
                     
                 }
