@@ -41,12 +41,14 @@ namespace AWSIM
         Vector3 localAngularVelocity;
         public override Vector3 AngularVelocity => localAngularVelocity;
 
+        public int stopCount { get; set; }
         public bool outerPathControl { get; set; }
         public bool outerSpeedControl { get; set; }
 
         private void Start(){
             SetUUID();
             SetSpawnTime();
+            stopCount = 0;
             outerPathControl = false;
             outerSpeedControl = false;
         }

@@ -11,7 +11,8 @@ namespace AWSIM
 {
     public class ROS2NPCPedestrianPredictionController : ROS2PredictionController
     {
-        public static int stopCount = 0; // debug
+        float speed = 1.667F; // initial_speed [m/s] = [6km/h] 
+        float step = 3F; // ration_speed [deg/s]
         List<( 
             NPCPedestrian Pedestrian, 
             double rosTime, 
@@ -34,7 +35,6 @@ namespace AWSIM
             uint currentNanosec;
             SimulatorROS2Node.TimeSource.GetTime(out currentSec, out currentNanosec);
             
-            stopCount++;
             var PedestrianWithPredctedPath = pedestrianWithPredctedPath.Select(
                 item => (item.Pedestrian, item.rosTime, item.predictedPath)).ToList();
             for(int i = 0; i < PedestrianWithPredctedPath.Count; i++)
@@ -54,25 +54,26 @@ namespace AWSIM
                 Vector3 targetPosition = npcPedestrian.GetComponent<Rigidbody>().position + (Velocity * Time.fixedDeltaTime);
 
                 // Rotation
-                float step = 100F;
                 Quaternion endRotation= ROS2Utility.RosToUnityRotation(predictedPath.Path[target_index].Orientation);
                 Quaternion targetRotation = Quaternion.RotateTowards(npcPedestrian.GetComponent<Rigidbody>().rotation, endRotation, step);
 
-                // avoid extternalStop (debug).  
-                if((1000 <= stopCount && stopCount <= 1100) || (6000 <= stopCount && stopCount <= 7000))
-                {
-                    var speed = 1.667F; // [6km/h]
+                // avoid extternalStop (debug).
+                var npcSpeed = Vector3.Dot(npcPedestrian.lastVelocity,  npcPedestrian.transform.forward);
+                if(npcSpeed <= 0.01F)npcPedestrian.stopCount++;
+                if(500 <= npcPedestrian.stopCount && npcPedestrian.stopCount <= 600 && npcPedestrian.outerPathControl){
+                    npcPedestrian.stopCount++;
                     targetPosition = (npcPedestrian.transform.position + (npcPedestrian.transform.forward * speed) * Time.fixedDeltaTime);
                     targetRotation = npcPedestrian.GetComponent<Rigidbody>().rotation;
                 }
                 else
                 {
-                    Debug.Log("startPosition : [ " + stopCount + " ] : " + (startPosition));
-                    Debug.Log("currentPosition : [ " + stopCount + " ] : " + (npcPedestrian.transform.position));
-                    Debug.Log("endPosition : [ " + stopCount + " ] : " + endPosition);
-                    Debug.Log("targetPosition : [ " + stopCount + " ] : " + (targetPosition));
-                    Debug.Log("ROSspeed : [ " + stopCount + " ] : " + Vector3.Distance(endPosition, startPosition)/predictionPointDelta *3.6F + "[km/s]");
-                    Debug.Log("RATEspeed : [ " + stopCount + " ] : " + Vector3.Distance(targetPosition, npcPedestrian.transform.position)/0.02F + "[km/s]");
+                    if(600 <= npcPedestrian.stopCount) npcPedestrian.stopCount = 0;
+                    Debug.Log("startPosition : [ " + npcPedestrian.stopCount + " ] : " + (startPosition));
+                    Debug.Log("currentPosition : [ " + npcPedestrian.stopCount + " ] : " + (npcPedestrian.transform.position));
+                    Debug.Log("endPosition : [ " + npcPedestrian.stopCount + " ] : " + endPosition);
+                    Debug.Log("targetPosition : [ " + npcPedestrian.stopCount + " ] : " + (targetPosition));
+                    Debug.Log("ROSspeed : [ " + npcPedestrian.stopCount + " ] : " + Vector3.Distance(endPosition, startPosition)/predictionPointDelta *3.6F + "[km/s]");
+                    Debug.Log("RATEspeed : [ " + npcPedestrian.stopCount + " ] : " + Vector3.Distance(targetPosition, npcPedestrian.transform.position)/0.02F + "[km/s]");
                 }
 
                 // update
