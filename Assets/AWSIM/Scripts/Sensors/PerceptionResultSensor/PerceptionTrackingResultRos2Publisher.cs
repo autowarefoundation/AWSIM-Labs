@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -79,9 +78,6 @@ namespace AWSIM
                 var rb = detectedObject.rigidBody;
                 var dim = detectedObject.dimension;
                 var bou = detectedObject.bounds;
-                // Check if detectedObject.dimension and detectedObject.bounds are null
-                float distance = Vector3.Distance(outputData.origin.position, rb.transform.position);
-
                 var obj = new autoware_perception_msgs.msg.TrackedObject();
                 obj.Existence_probability = 1.0f;
                 // add UUID 
@@ -189,7 +185,6 @@ namespace AWSIM
             // Converts data output from ObjectSensor to ROS2 msg
             objectsMsg.Objects = objectsList.ToArray();
             // Update msg header.
-            var header = objectsMsg as MessageWithHeader;
             objectsMsg.Header.Stamp.Sec = outputData.seconds;
             objectsMsg.Header.Stamp.Nanosec = outputData.nanoseconds;
             objectsMsg.Header.Frame_id = frameId;
