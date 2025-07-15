@@ -10,7 +10,6 @@ namespace AWSIM
     public class ROS2NPCPredictionController : ROS2PredictionController
     {
 
-        float initialSpeed = 3.7778F;
         double lastDeltaTime = -1;
         bool isFixedPath = false;
         float maxSteer = 60F;
@@ -66,13 +65,6 @@ namespace AWSIM
                 // Position.
                 var interporatedPosition = ComputeInterpolatedPostion(predictedPath, deltaTime);
                 Vector3 targetPosition   = ROS2Utility.RosMGRSToUnityPosition(interporatedPosition);
-                if (deltaTime <= lastDeltaTime){             
-                    var interporatedInitialPosition = ComputeInterpolatedPostion(predictedPath, deltaTime-Time.fixedDeltaTime);
-                    Vector3 initialPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedInitialPosition);
-                    npcVehicle.lastPosition = initialPosition;
-                    npcVehicle.velocity = (targetPosition - initialPosition) / Time.fixedDeltaTime;
-                    Debug.Log("velocity : [ " + Time.time.ToString("F4") + " ] : " + (npcVehicle.velocity.magnitude).ToString("F4"));
-                }
 
                 // Rotation.
                 int start_index = (int)(deltaTime / predictionPointDelta);
@@ -90,6 +82,7 @@ namespace AWSIM
                     var interporatedInitialPosition = ComputeInterpolatedPostion(predictedPath, prevTime);
                     Vector3 initialPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedInitialPosition);
                     npcVehicle.lastPosition = initialPosition;
+                    npcVehicle.velocity = (targetPosition - initialPosition) / Time.fixedDeltaTime;
                     
                     // Rotation
                     start_index = (int)(prevTime / predictionPointDelta);
@@ -115,8 +108,6 @@ namespace AWSIM
                     npcVehicle.outerSpeedControl = useSpeedControl;
                     if(600 < npcVehicle.stopCount)
                     {
-                        npcVehicle.outerPathControl  = usePathControl;
-                        npcVehicle.outerSpeedControl = useSpeedControl;
                         npcVehicle.stopCount = 0;
                         // todo: compute pose and velocity
                     } 
@@ -169,7 +160,6 @@ namespace AWSIM
                         Kinematics));
 
                     // Set prediction status.
-                    // wait until prediction output becomes stable. 
                     var rosNpcPosition  = ROS2Utility.RosMGRSToUnityPosition(objects[i].Kinematics.Initial_pose_with_covariance.Pose.Position);
                     Vector3 npcPosition = new Vector3((float)rosNpcPosition.x, (float)rosNpcPosition.y, (float)rosNpcPosition.z);
                     var distanceEgo2NPC = Vector3.Distance(egoPosition, npcPosition);
