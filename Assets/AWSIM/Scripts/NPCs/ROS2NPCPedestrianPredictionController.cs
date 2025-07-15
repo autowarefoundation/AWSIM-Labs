@@ -34,87 +34,90 @@ namespace AWSIM
             ego = GameObject.FindWithTag("Ego");
         }
 
-        void FixedUpdate() {            
+        void FixedUpdate()
+        {
             var PedestrianWithPredctedPath = pedestrianWithPredctedPath.Select(
                 item => (item.Pedestrian, item.rosTime, item.predictedPath, item.Kinematics)).ToList();
-            for(int i = 0; i < PedestrianWithPredctedPath.Count; i++)
+            if(PedestrianWithPredctedPath.Count == 0)return;
+
+            var deltaTime = (float)((double)Time.fixedTime - PedestrianWithPredctedPath[i].rosTime);
+            if(deltaTime < 0)return;
+
+            var predictionPointDelta = (PedestrianWithPredctedPath[i].predictedPath.Time_step.Nanosec / 1e9F);
+            if (predictionPointDelta < 0) return;
+
+            for (int i = 0; i < PedestrianWithPredctedPath.Count; i++)
             {
-                var npcPedestrian        = PedestrianWithPredctedPath[i].Pedestrian;
-                var deltaTime            = (float)((double)Time.fixedTime - PedestrianWithPredctedPath[i].rosTime);
-                var predictionPointDelta = (PedestrianWithPredctedPath[i].predictedPath.Time_step.Nanosec / 1e9F);
-                var predictedPath        = PedestrianWithPredctedPath[i].predictedPath;
-                var Kinematics           = PedestrianWithPredctedPath[i].Kinematics;
+                var npcPedestrian = PedestrianWithPredctedPath[i].Pedestrian;
+                var predictedPath = PedestrianWithPredctedPath[i].predictedPath;
+                var Kinematics = PedestrianWithPredctedPath[i].Kinematics;
 
                 // error handling
-                if(npcPedestrian.outerPathControl == false)continue;
-                if(deltaTime < 0)break;
-                Debug.Log(Time.time+" : predictedPath.Path: " + predictedPath.Path.Count());
-                if(predictedPath.Path.Count() < 2){
+                if (npcPedestrian.outerPathControl == false) continue;
+                if (predictedPath.Path.Count() < 2)
+                {
                     Debug.Log("Path-size is too small.");
                     Debug.Log("Path-size is " + predictedPath.Path.Count());
                     return;
                 }
-                
+
                 // Calculate Position and Rotation.
                 // Position
                 var interporatedPosition = ComputeInterpolatedPostion(predictedPath, deltaTime);
-                Vector3 targetPosition   = ROS2Utility.RosMGRSToUnityPosition(interporatedPosition);
+                Vector3 targetPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedPosition);
 
                 // Rotation
                 int start_index = (int)(deltaTime / predictionPointDelta);
-                int end_index   = start_index + 1;
-                float t         = (float)(deltaTime - (predictionPointDelta*start_index)) / predictionPointDelta;
-                Quaternion startRotation  = ROS2Utility.RosToUnityRotation(predictedPath.Path[start_index].Orientation);
-                Quaternion endRotation    = ROS2Utility.RosToUnityRotation(predictedPath.Path[end_index].Orientation);
+                int end_index = start_index + 1;
+                float t = (float)(deltaTime - (predictionPointDelta * start_index)) / predictionPointDelta;
+                Quaternion startRotation = ROS2Utility.RosToUnityRotation(predictedPath.Path[start_index].Orientation);
+                Quaternion endRotation = ROS2Utility.RosToUnityRotation(predictedPath.Path[end_index].Orientation);
                 Quaternion targetRotation = Quaternion.Slerp(startRotation, endRotation, t);
 
-                // Avoid externalStop (debug).
-                var npcSpeed = Vector3.Dot(npcPedestrian.velocity,  npcPedestrian.transform.forward);
-                if(npcSpeed <= 0.001F)npcPedestrian.stopCount++;
+                if (deltaTime < lastDeltaTime)
+                {
+                    var prevTime = deltaTime - Time.fixedDeltaTime;
 
-                // for debug@
-                var str = ROS2Utility.RosMGRSToUnityPosition(predictedPath.Path[start_index].Position);
-                var end = ROS2Utility.RosMGRSToUnityPosition(predictedPath.Path[end_index].Position);
+                    // Position
+                    var interporatedInitialPosition = ComputeInterpolatedPostion(predictedPath, prevTime);
+                    Vector3 initialPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedInitialPosition);
+                    npcPedestrian.lastPosition = initialPosition;
+                    npcPedestrian.lastVelocity = (targetPosition - initialPosition) / Time.fixedDeltaTime;
 
-                if(500 <= npcPedestrian.stopCount && npcPedestrian.stopCount <= 600 && npcPedestrian.outerPathControl){
+                    // todo?: add lastRotation
+                }
+
+                // Avoid externalStop.
+                var npcSpeed = Vector3.Dot(npcPedestrian.velocity, npcPedestrian.transform.forward);
+                if (npcSpeed <= 0.001F) npcPedestrian.stopCount++;
+
+                if (500 <= npcPedestrian.stopCount && npcPedestrian.stopCount <= 600)
+                {
                     npcPedestrian.stopCount++;
-                    var velocity           = npcPedestrian.transform.forward * initialSpeed;
-                    targetPosition         = (npcPedestrian.transform.position + velocity * Time.fixedDeltaTime);
-                    targetRotation         = npcPedestrian.GetComponent<Rigidbody>().rotation;
+                    var velocity = npcPedestrian.transform.forward * initialSpeed;
+                    targetPosition = (npcPedestrian.transform.position + velocity * Time.fixedDeltaTime);
+                    targetRotation = npcPedestrian.GetComponent<Rigidbody>().rotation;
                 }
                 else
                 {
-                    if(600 < npcPedestrian.stopCount)
+                    if (600 < npcPedestrian.stopCount)
                     {
                         npcPedestrian.stopCount = 0;
-                        
-                        // var velocity = npcPedestrian.transform.forward * initialSpeed;
-                        // npcPedestrian.lastVelocity = velocity;
-                        // npcPedestrian.velocity = velocity;
-                        // Vector3 initialPosition = new Vector3(targetPosition.x - (velocity.x*Time.fixedDeltaTime), targetPosition.y - (velocity.y*Time.fixedDeltaTime), targetPosition.z - (velocity.z*Time.fixedDeltaTime));
-                        // npcPedestrian.lastPosition = initialPosition;
-                    }
-
-                    // for test
-                    if(deltaTime < lastDeltaTime){
-                        // var interporatedInitialPosition = ComputeInterpolatedPostion(predictedPath, deltaTime-Time.fixedDeltaTime);
-                        // Vector3 initialPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedInitialPosition);
-                        // npcPedestrian.lastPosition = initialPosition;
-                        // npcPedestrian.lastVelocity = (targetPosition - initialPosition) / Time.fixedDeltaTime;
-                        // npcPedestrian.localLinearVelocity = npcPedestrian.GetComponent<Rigidbody>().transform.InverseTransformDirection(npcPedestrian.lastVelocity);
+                        // todo: compute pose and velocity
                     }
                 }
 
                 // update
-                npcPedestrian.SetPosition(targetPosition);
-                npcPedestrian.SetRotation(targetRotation);
-
-                lastDeltaTime = deltaTime;
-
+                if (npcPedestrian.outerPathControl)
+                {
+                    npcPedestrian.SetPosition(targetPosition);
+                    npcPedestrian.SetRotation(targetRotation);
+                }
             }
 
             // Cache egoPosition for calculating the distance between Ego and Pedestrian.
             egoPosition = ego.GetComponent<Rigidbody>().transform.position;
+            lastDeltaTime = deltaTime;
         }
 
         void predictionCallback(autoware_perception_msgs.msg.PredictedObjects receivedMsg){
