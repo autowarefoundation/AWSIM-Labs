@@ -15,7 +15,7 @@ namespace AWSIM
         /// <summary>
         /// Topic name in DetectedObject msg.
         /// </summary>
-        public string objectTopic = "/awsim/ground_truth/perception/object_recognition/tracking/objects";
+        public string objectTopic = "/perception/object_recognition/tracking/objects";
 
         /// <summary>
         /// Object sensor frame id.
@@ -139,14 +139,23 @@ namespace AWSIM
                 // Add twist
                 {
                     var rosLinearVelocity = ROS2Utility.UnityToRosPosition(NPC.LinearVelocity);
-                    kinematics.Twist_with_covariance.Twist.Linear.X = rosLinearVelocity.x;
-                    kinematics.Twist_with_covariance.Twist.Linear.Y = rosLinearVelocity.y;
-                    kinematics.Twist_with_covariance.Twist.Linear.Z = rosLinearVelocity.z;
+                    kinematics.Twist_with_covariance.Twist.Linear.X = rosLinearVelocity.magnitude;
+                    kinematics.Twist_with_covariance.Twist.Linear.Y = 0.0;
+                    kinematics.Twist_with_covariance.Twist.Linear.Z = 0.0;
 
                     var rosAngularVelocity = ROS2Utility.UnityToRosAngularVelocity(NPC.AngularVelocity);
-                    kinematics.Twist_with_covariance.Twist.Angular.X = rosAngularVelocity.x;
-                    kinematics.Twist_with_covariance.Twist.Angular.Y = rosAngularVelocity.y;
+                    kinematics.Twist_with_covariance.Twist.Angular.X = 0.0;
+                    kinematics.Twist_with_covariance.Twist.Angular.Y = 0.0;
                     kinematics.Twist_with_covariance.Twist.Angular.Z = rosAngularVelocity.z;
+
+                    var acceleration = (NPC.Acceleration);
+                    kinematics.Acceleration_with_covariance.Accel.Linear.X = acceleration;
+                    kinematics.Acceleration_with_covariance.Accel.Linear.Y = 0.0;
+                    kinematics.Acceleration_with_covariance.Accel.Linear.Z = 0.0;
+
+                    kinematics.Acceleration_with_covariance.Accel.Angular.X = 0.0;
+                    kinematics.Acceleration_with_covariance.Accel.Angular.Y = 0.0;
+                    kinematics.Acceleration_with_covariance.Accel.Angular.Z = 0.0;
                 }
                 // Add covariance
                 {
@@ -154,8 +163,8 @@ namespace AWSIM
                     const int size = 6;
                     for (int i = 0; i < size; i++)
                     {
-                        kinematics.Pose_with_covariance.Covariance[i * size + i] = 0.001;
-                        kinematics.Twist_with_covariance.Covariance[i * size + i] = 0.001;
+                        kinematics.Pose_with_covariance.Covariance[i * size + i] = 1;
+                        kinematics.Twist_with_covariance.Covariance[i * size + i] = 1;
                     }
                 }
                 obj.Kinematics = kinematics;
