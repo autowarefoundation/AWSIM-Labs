@@ -21,9 +21,16 @@ namespace AWSIM.TrafficSimulation
         {
             foreach (var state in states)
             {
-                UpdateSpeed(state, deltaTime);
-                UpdatePose(state, deltaTime);
-                UpdateYawSpeed(state, deltaTime);
+                if(state.Vehicle.outerSpeedControl == false)
+                {
+                    UpdateSpeed(state, deltaTime);
+                    UpdateYawSpeed(state, deltaTime);
+                }
+                
+                if(state.Vehicle.outerPathControl == false)
+                {
+                    UpdatePose(state, deltaTime);
+                }
             }
         }
 
@@ -39,11 +46,6 @@ namespace AWSIM.TrafficSimulation
             float acceleration;
             switch (state.SpeedMode)
             {
-                case NPCVehicleSpeedMode.PREDICTION_CONTROL:
-                    var npcVhicle = state.Vehicle;
-                    targetSpeed = npcVhicle.outerSpeed;
-                    acceleration = npcVhicle.outerAcceleration;
-                    break;
                 case NPCVehicleSpeedMode.NORMAL:
                     targetSpeed = state.CurrentFollowingLane.SpeedLimit;
                     acceleration = config.Acceleration;

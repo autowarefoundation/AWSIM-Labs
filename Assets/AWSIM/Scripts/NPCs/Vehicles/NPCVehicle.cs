@@ -185,27 +185,28 @@ namespace AWSIM
         float turnSignalTimer = 0;
         bool currentTurnSignalOn = false;
 
-        float wheelbase;        // m
-        float acceleration;     // m/s^2
-        Vector3 velocity;       // m/s
-        public float speed;            // m/s (forward only)
-        float yawAngularSpeed;  // deg/s (yaw only)
+        float wheelbase;         // m
+        float acceleration;      // m/s^2
+        public Vector3 velocity; // m/s
+        public float speed;      // m/s (forward only)
+        float yawAngularSpeed;   // deg/s (yaw only)
 
-        Vector3 lastVelocity;
+        public Vector3 lastVelocity;
         public Vector3 lastPosition;
-        QuaternionD lastRotation;
+        public QuaternionD lastRotation;
         float lastEulerAnguleY;
         float lastSpeed;
 
         public Transform RigidBodyTransform => rigidbody.transform;
         public Transform TrailerTransform => trailer?.transform;
 
-        Vector3 localLinearVelocity;
+        public Vector3 localLinearVelocity;
         public override Vector3 LinearVelocity => localLinearVelocity;
 
         Vector3 localAngularVelocity;
         public override Vector3 AngularVelocity => localAngularVelocity;
 
+        public int stopCount { get; set; }
         public bool outerPathControl { get; set; }
         public bool outerSpeedControl { get; set; }
 
@@ -230,6 +231,7 @@ namespace AWSIM
             wheelbase = axleSettings.GetWheelBase();
             SetUUID();
             SetSpawnTime();
+            stopCount = 0;
             outerPathControl = false;
             outerSpeedControl = false;
         }
@@ -327,7 +329,7 @@ namespace AWSIM
         {
             // Calculate physical states for visual update.
             // velocity & speed.
-            velocity = (rigidbody.position - lastPosition) / Time.deltaTime;
+            velocity = (rigidbody.position - lastPosition) / Time.fixedDeltaTime;
             speed = Vector3.Dot(velocity, transform.forward);
 
             // angular velocity
