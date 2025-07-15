@@ -9,6 +9,7 @@ namespace AWSIM
         public unique_identifier_msgs.msg.UUID  uuid;
         public virtual Vector3 LinearVelocity { get; }
         public virtual Vector3 AngularVelocity { get; }
+        public virtual float Acceleration { get; }
         public void SetUUID(){
             Guid guid = Guid.NewGuid();
             uuid = new unique_identifier_msgs.msg.UUID();

@@ -187,6 +187,7 @@ namespace AWSIM
 
         float wheelbase;         // m
         float acceleration;      // m/s^2
+        public override float Acceleration => acceleration;
         public Vector3 velocity; // m/s
         public float speed;      // m/s (forward only)
         float yawAngularSpeed;   // deg/s (yaw only)
