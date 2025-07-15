@@ -169,8 +169,13 @@ namespace AWSIM
                 if (o == null) continue;
                 outputData.objects[i].bounds = GenerateFootprint(o.dimension, o.rigidBody);
             }
+
+            // Set header time  
+            double fixedTime       = Time.fixedTime;
+            outputData.seconds     = (int) fixedTime;
+            outputData.nanoseconds = (uint)((fixedTime - outputData.seconds)*1e9);
+            
             // Calls registered callbacks
-            AWSIM.SimulatorROS2Node.TimeSource.GetTime(out outputData.seconds, out outputData.nanoseconds);
             OnOutputData.Invoke(outputData);
         }
     }
