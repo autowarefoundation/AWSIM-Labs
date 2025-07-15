@@ -40,10 +40,10 @@ namespace AWSIM
                 item => (item.Pedestrian, item.rosTime, item.predictedPath, item.Kinematics)).ToList();
             if(PedestrianWithPredctedPath.Count == 0)return;
 
-            var deltaTime = (float)((double)Time.fixedTime - PedestrianWithPredctedPath[i].rosTime);
+            var deltaTime = (float)((double)Time.fixedTime - PedestrianWithPredctedPath[0].rosTime);
             if(deltaTime < 0)return;
 
-            var predictionPointDelta = (PedestrianWithPredctedPath[i].predictedPath.Time_step.Nanosec / 1e9F);
+            var predictionPointDelta = (PedestrianWithPredctedPath[0].predictedPath.Time_step.Nanosec / 1e9F);
             if (predictionPointDelta < 0) return;
 
             for (int i = 0; i < PedestrianWithPredctedPath.Count; i++)
