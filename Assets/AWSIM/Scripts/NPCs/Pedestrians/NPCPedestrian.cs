@@ -32,13 +32,14 @@ namespace AWSIM
         private const string rotateSpeedProperty = "rotateSpeed";
 
         public Vector3 lastPosition;
+        public Vector3 velocity;
         public Vector3 lastVelocity;
         public QuaternionD lastRotation;
 
-        Vector3 localLinearVelocity;
+        public Vector3 localLinearVelocity;
         public override Vector3 LinearVelocity => localLinearVelocity;
 
-        Vector3 localAngularVelocity;
+        public Vector3 localAngularVelocity;
         public override Vector3 AngularVelocity => localAngularVelocity;
 
         public int stopCount { get; set; }
@@ -67,21 +68,20 @@ namespace AWSIM
         {
             // Calculate physical states for tracking result publisher.
             // velocity
-            var velocity = (rigidbody.position - lastPosition) / Time.deltaTime;
+            velocity = (rigidbody.position - lastPosition) / Time.fixedDeltaTime;
 
             // angular velocity
             var currentRotation = new QuaternionD(rigidbody.rotation);
             var deltaRotation = currentRotation * QuaternionD.Inverse(lastRotation);
             deltaRotation.ToAngleAxis(out var angle, out var axis);
-            var angularVelocity = ((float)angle * axis) / Time.deltaTime;
-
-            localLinearVelocity = transform.InverseTransformDirection(velocity);
-            localAngularVelocity = transform.InverseTransformDirection(angularVelocity);
+            var angularVelocity = ((float)angle * axis) / Time.fixedDeltaTime;
 
             // Cache current frame values.
             lastPosition = rigidbody.position;
             lastRotation = new QuaternionD(rigidbody.rotation);
             lastVelocity = velocity;
+            localLinearVelocity = transform.InverseTransformDirection(velocity);
+            localAngularVelocity = transform.InverseTransformDirection(angularVelocity);
         }
 
         private void Reset()
