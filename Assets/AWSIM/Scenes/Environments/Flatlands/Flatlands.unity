@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mgrsOffsetPosition: {x: 0, y: 0, z: 0}
-  mgrsGridZone: 
+  mgrsGridZone: 54SUE
 --- !u!4 &1365540679
 Transform:
   m_ObjectHideFlags: 0
