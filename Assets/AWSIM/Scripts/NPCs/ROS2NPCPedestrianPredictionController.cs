@@ -12,6 +12,9 @@ namespace AWSIM
     {
         float initialSpeed = 1.6667F; // initial_speed [m/s] = [2km/h] 
         double lastDeltaTime = -1;
+        int manualStartCount = 500;
+        int manualEndCount   = 600;
+
         List<( 
             NPCPedestrian Pedestrian, 
             double rosTime, 
@@ -91,7 +94,7 @@ namespace AWSIM
                 var npcSpeed = Vector3.Dot(npcPedestrian.velocity, npcPedestrian.transform.forward);
                 if (npcSpeed <= 0.001F) npcPedestrian.stopCount++;
 
-                if (500 <= npcPedestrian.stopCount && npcPedestrian.stopCount <= 600)
+                if (manualStartCount <= npcPedestrian.stopCount && npcPedestrian.stopCount <= manualEndCount)
                 {
                     npcPedestrian.stopCount++;
                     var velocity = npcPedestrian.transform.forward * initialSpeed;
@@ -100,7 +103,7 @@ namespace AWSIM
                 }
                 else
                 {
-                    if (600 < npcPedestrian.stopCount)
+                    if (manualEndCount < npcPedestrian.stopCount)
                     {
                         npcPedestrian.stopCount = 0;
                         // todo: compute pose and velocity
