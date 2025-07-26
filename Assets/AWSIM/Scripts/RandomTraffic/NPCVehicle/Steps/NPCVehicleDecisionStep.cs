@@ -23,6 +23,7 @@ namespace AWSIM.TrafficSimulation
 
         public void Execute(IReadOnlyList<NPCVehicleInternalState> states)
         {
+    
             foreach (var state in states)
             {
                 UpdateTargetPoint(state);
@@ -37,7 +38,9 @@ namespace AWSIM.TrafficSimulation
         private static void UpdateTargetPoint(NPCVehicleInternalState state)
         {
             if (state.ShouldDespawn || state.CurrentFollowingLane == null)
+            {
                 return;
+            }
 
             state.TargetPoint = state.CurrentFollowingLane.Waypoints[state.WaypointIndex];
         }

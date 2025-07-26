@@ -232,6 +232,7 @@ namespace AWSIM.TrafficSimulation
                 Width = vehicle.Bounds.size.x
             };
             state.FollowingLanes.Add(lane);
+
             return state;
         }
 

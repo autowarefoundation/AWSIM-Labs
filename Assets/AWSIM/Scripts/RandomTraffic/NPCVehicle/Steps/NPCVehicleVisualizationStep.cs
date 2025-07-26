@@ -23,9 +23,12 @@ namespace AWSIM.TrafficSimulation
             if (state.ShouldDespawn)
                 return;
 
-            var vehicle = state.Vehicle;
-            vehicle.SetPosition(state.Position);
-            vehicle.SetRotation(Quaternion.AngleAxis(state.Yaw, Vector3.up));
+            if(state.Vehicle.outerSpeedControl == false)
+            {
+                var vehicle = state.Vehicle;
+                vehicle.SetPosition(state.Position);
+                vehicle.SetRotation(Quaternion.AngleAxis(state.Yaw, Vector3.up));
+            }
         }
 
         private static void ApplyTurnSignalState(NPCVehicleInternalState state)
