@@ -5,7 +5,6 @@ using System.Linq;
 using System.Collections.Generic;
 /**********************/
 
-using System.IO; // debug
 namespace AWSIM
 {
     public class ROS2NPCPedestrianPredictionController : ROS2PredictionController

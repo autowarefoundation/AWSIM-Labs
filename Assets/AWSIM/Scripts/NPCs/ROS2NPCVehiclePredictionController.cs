@@ -5,17 +5,14 @@ using System.Linq;
 using System.Collections.Generic;
 /**********************/
 
-using System.IO;
-
 namespace AWSIM
 {
     public class ROS2NPCPredictionController : ROS2PredictionController
     {
 
         double lastDeltaTime = -1;
-        bool isFixedPath = false;
-        float maxSteer = 30F;
-        float lowpassRate = 0.5F;
+        float maxSteer = 15F;
+        float lowpassRate = 0.3F;
         
         List<( 
             NPCVehicle npcVehicle, 
@@ -93,10 +90,10 @@ namespace AWSIM
                 Quaternion targetRotation = Quaternion.RotateTowards(startRotation, endRotation, maxSteer*t);
 
                 // debug    
-                // Vector3 InitialVelocity = new Vector3(
-                //     (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.X,
-                //     (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.Y,
-                //     (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.Z);
+                Vector3 InitialVelocity = new Vector3(
+                    (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.X,
+                    (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.Y,
+                    (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.Z);
 
                 // Debug.Log(deltaTime.ToString("F4") + "] predictionInput_Velocity :  " + (InitialVelocity.magnitude*3.6F).ToString("F4") + " [km/s]" );
                 // Debug.Log(deltaTime.ToString("F4") + "] Akima_Velocity :  " + (((targetPosition - offsetPosition) / Time.fixedDeltaTime).magnitude*3.6F).ToString("F4") + " [km/s]" );
@@ -104,8 +101,11 @@ namespace AWSIM
 
                 if(npcVehicle.outerPathControl)
                 {
+                    Debug.Log(deltaTime.ToString("F4") + "] setPostion :  " + (targetPosition).ToString("F4")); 
                     npcVehicle.SetPosition(targetPosition);
                     npcVehicle.SetRotation(targetRotation);
+                    // npcVehicle.GetComponent<Rigidbody>().transform.position = targetPosition;
+                    // npcVehicle.GetComponent<Rigidbody>().transform.rotation = targetRotation;
                 }
             }
 
