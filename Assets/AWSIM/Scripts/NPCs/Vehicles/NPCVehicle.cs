@@ -187,8 +187,7 @@ namespace AWSIM
 
         float wheelbase;         // m
         float acceleration;      // m/s^2
-        public override float Acceleration => acceleration;
-        public Vector3 velocity; // m/s
+        Vector3 velocity;        // m/s
         public float speed;      // m/s (forward only)
         float yawAngularSpeed;   // deg/s (yaw only)
 
@@ -201,9 +200,13 @@ namespace AWSIM
         public Transform RigidBodyTransform => rigidbody.transform;
         public Transform TrailerTransform => trailer?.transform;
 
+        // for prediction-control
+        public Vector3 predictedVelocity; // m/s
+        public Vector3 predictedAngularVelocity; // m/s
+        public float predictedAcceleration;
+        public override float Acceleration => predictedAcceleration;
         public Vector3 localLinearVelocity;
         public override Vector3 LinearVelocity => localLinearVelocity;
-
         Vector3 localAngularVelocity;
         public override Vector3 AngularVelocity => localAngularVelocity;
 
@@ -211,12 +214,6 @@ namespace AWSIM
         public bool outerPathControl { get; set; }
         public bool outerSpeedControl { get; set; }
 
-        public float outerTargetPointTime { get; set; } = new float();
-        public Vector3 outerTargetPoint { get; set; } = new Vector3();
-        public Quaternion outerTargetRotation { get; set; } = new Quaternion();
-        public float outerSpeed { get; set; } = 0.0F;
-        public float outerAcceleration { get; set; } = 0.0F;
-        public Quaternion predictRotation { get; set; } = new Quaternion();
 
         // Start is called before the first frame update
         void Awake()
@@ -334,7 +331,6 @@ namespace AWSIM
             speed = Vector3.Dot(velocity, transform.forward);
 
             // angular velocity
-            predictRotation = rigidbody.rotation;
             var currentRotation = new QuaternionD(rigidbody.rotation);
             var deltaRotation = currentRotation * QuaternionD.Inverse(lastRotation);
             deltaRotation.ToAngleAxis(out var angle, out var axis);
@@ -349,13 +345,19 @@ namespace AWSIM
             // TODO: set WheelCollider steer angle?
 
             // Cache current frame values.
+            if(outerPathControl == false){
+                predictedVelocity        = velocity;
+                predictedAngularVelocity = angularVelocity;
+                predictedAcceleration    = acceleration;
+            }
+
             lastPosition = rigidbody.position;
             lastRotation = new QuaternionD(rigidbody.rotation);
             lastVelocity = velocity;
             lastEulerAnguleY = rigidbody.rotation.eulerAngles.y;
             lastSpeed = speed;
-            localLinearVelocity = transform.InverseTransformDirection(velocity);
-            localAngularVelocity = transform.InverseTransformDirection(angularVelocity);
+            localLinearVelocity = transform.InverseTransformDirection(predictedVelocity);
+            localAngularVelocity = transform.InverseTransformDirection(predictedAngularVelocity);
         }
 
         void Reset()

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Collections.Generic;
 /**********************/
 
+using System.IO;
+
 namespace AWSIM
 {
     public class ROS2NPCPredictionController : ROS2PredictionController
@@ -12,8 +14,9 @@ namespace AWSIM
 
         double lastDeltaTime = -1;
         bool isFixedPath = false;
-        float maxSteer = 60F;
-
+        float maxSteer = 30F;
+        float lowpassRate = 0.5F;
+        
         List<( 
             NPCVehicle npcVehicle, 
             double rosTime, 
@@ -53,71 +56,56 @@ namespace AWSIM
                 var predictedPath        = NPCVehicleWithPredctedPath[i].predictedPath;
                 var Kinematics           = NPCVehicleWithPredctedPath[i].Kinematics;
 
-                // error handling
                 if(npcVehicle.outerPathControl == false)continue;
-                if(predictedPath.Path.Count() < 4){
+                if(predictedPath.Path.Count() < 4)
+                {
                     Debug.Log("Path-size is too short.");
                     Debug.Log("Path-size is " + predictedPath.Path.Count());
                     continue;
                 }
 
-                // Calculate Position and Rotation.
-                // Position.
+                // Calculate Position Velocity, and Rotation.
+                float offsetTime;
+                if(deltaTime >= Time.fixedDeltaTime)offsetTime = deltaTime - Time.fixedDeltaTime;
+                else offsetTime = deltaTime + Time.fixedDeltaTime; 
+
+                // Position. 
                 var interporatedPosition = ComputeInterpolatedPostion(predictedPath, deltaTime);
                 Vector3 targetPosition   = ROS2Utility.RosMGRSToUnityPosition(interporatedPosition);
 
-                // Rotation.
-                int start_index = (int)(deltaTime / predictionPointDelta);
-                int end_index   = start_index + 1;
-                float t         = (float)(deltaTime - (predictionPointDelta*start_index));
-                Quaternion startRotation  = ROS2Utility.RosToUnityRotation(predictedPath.Path[start_index].Orientation);
-                Quaternion endRotation    = ROS2Utility.RosToUnityRotation(predictedPath.Path[end_index].Orientation);
-                Quaternion targetRotation = Quaternion.RotateTowards(startRotation, endRotation, maxSteer*t);
-                
-                // handling with changing with reference path. 
-                if (deltaTime <= lastDeltaTime){
-                    var prevTime = deltaTime - deltaTime-Time.fixedDeltaTime;
-
-                    // Position
-                    var interporatedInitialPosition = ComputeInterpolatedPostion(predictedPath, prevTime);
-                    Vector3 initialPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedInitialPosition);
-                    npcVehicle.lastPosition = initialPosition;
-                    npcVehicle.velocity = (targetPosition - initialPosition) / Time.fixedDeltaTime;
-                    
-                    // Rotation
-                    start_index = (int)(prevTime / predictionPointDelta);
-                    end_index   = start_index + 1;
-                    startRotation  = ROS2Utility.RosToUnityRotation(predictedPath.Path[start_index].Orientation);
-                    endRotation    = ROS2Utility.RosToUnityRotation(predictedPath.Path[end_index].Orientation);
-                    npcVehicle.lastRotation = new QuaternionD(Quaternion.RotateTowards(startRotation, endRotation, maxSteer*(prevTime)));
-                }
-
-                // Avoid external-stop (debug).
-                var npcSpeed = Vector3.Dot(npcVehicle.velocity,  npcVehicle.transform.forward);
-                if(npcSpeed <= 0.001F)npcVehicle.stopCount++;
-
-                if(500 <= npcVehicle.stopCount && npcVehicle.stopCount <= 600){
-                    npcVehicle.stopCount++;
-                    npcVehicle.outerPathControl  = false;
-                    npcVehicle.outerSpeedControl = false;
-                    
-                }
-                else
+                // Velocity
+                var interporatedInitialPosition = ComputeInterpolatedPostion(predictedPath, offsetTime);
+                Vector3 offsetPosition = ROS2Utility.RosMGRSToUnityPosition(interporatedInitialPosition);
+                if(deltaTime >= Time.fixedDeltaTime)
                 {
-                    npcVehicle.outerPathControl  = usePathControl;
-                    npcVehicle.outerSpeedControl = useSpeedControl;
-                    if(600 < npcVehicle.stopCount)
-                    {
-                        npcVehicle.stopCount = 0;
-                        // todo: compute pose and velocity
-                    } 
+                    Vector3 predictedVelocity = (targetPosition - offsetPosition) / Time.fixedDeltaTime;
+                    npcVehicle.predictedVelocity = lowpassRate*predictedVelocity + (1-lowpassRate)*npcVehicle.predictedVelocity;
+                    var accel = (predictedVelocity - npcVehicle.predictedVelocity) / Time.fixedDeltaTime;
+                    npcVehicle.predictedAcceleration = accel.magnitude;
                 }
-                
-                // update
-                if(npcVehicle.outerPathControl){
+
+                // Rotation.
+                int startIndex = (int)(deltaTime / predictionPointDelta);
+                int endIndex   = startIndex + 1;
+                float t         = (float)(deltaTime - (predictionPointDelta*startIndex));
+                Quaternion startRotation  = ROS2Utility.RosToUnityRotation(predictedPath.Path[startIndex].Orientation);
+                Quaternion endRotation    = ROS2Utility.RosToUnityRotation(predictedPath.Path[endIndex].Orientation);
+                Quaternion targetRotation = Quaternion.RotateTowards(startRotation, endRotation, maxSteer*t);
+
+                // debug    
+                // Vector3 InitialVelocity = new Vector3(
+                //     (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.X,
+                //     (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.Y,
+                //     (float)Kinematics.Initial_twist_with_covariance.Twist.Linear.Z);
+
+                // Debug.Log(deltaTime.ToString("F4") + "] predictionInput_Velocity :  " + (InitialVelocity.magnitude*3.6F).ToString("F4") + " [km/s]" );
+                // Debug.Log(deltaTime.ToString("F4") + "] Akima_Velocity :  " + (((targetPosition - offsetPosition) / Time.fixedDeltaTime).magnitude*3.6F).ToString("F4") + " [km/s]" );
+                // Debug.Log(deltaTime.ToString("F4") + "] lowpass_Velocity :  " + (npcVehicle.predictedVelocity.magnitude*3.6F).ToString("F4") + " [km/s]" );
+
+                if(npcVehicle.outerPathControl)
+                {
                     npcVehicle.SetPosition(targetPosition);
                     npcVehicle.SetRotation(targetRotation);
-                    Debug.Log("targetPosition : [ " + Time.time.ToString("F4") + " ] : " + (targetPosition).ToString("F4"));
                 }
             }
 
@@ -127,7 +115,6 @@ namespace AWSIM
         }
 
         void predictionCallback(autoware_perception_msgs.msg.PredictedObjects receivedMsg){
-            if(isFixedPath)return;
             npcVehicleWithPredctedPath.Clear();
 
             var objects = receivedMsg.Objects;
@@ -138,19 +125,19 @@ namespace AWSIM
                 {
                     // Find the predicted path with the highest confidence.
                     var confidence = -1f;
-                    var max_index = 0;
+                    var maxIndex = 0;
                     for (var j = 0; j < objects[i].Kinematics.Predicted_paths.Length; j++)
                     {
-                        if (objects[i].Kinematics.Predicted_paths[j].Confidence > confidence)
+                        if (objects[i].Kinematics.Predicted_paths[j].Confidence >= confidence)
                         {
                             confidence = objects[i].Kinematics.Predicted_paths[j].Confidence;
-                            max_index = j;
+                            maxIndex = j;
                         }
                     }
 
                     // Set predicted path.
                     var npcVehicle = (NPCVehicle)perceptionTrackingResultRos2Publisher.idToNpc[uuid];
-                    var predictedPath = objects[i].Kinematics.Predicted_paths[max_index];
+                    var predictedPath = objects[i].Kinematics.Predicted_paths[maxIndex];
                     var Kinematics = objects[i].Kinematics;
                     double rosTime = (receivedMsg.Header.Stamp.Sec + receivedMsg.Header.Stamp.Nanosec/1e9F);
                     npcVehicleWithPredctedPath.Add((
@@ -170,13 +157,7 @@ namespace AWSIM
                     } else {
                         npcVehicle.outerPathControl  = false;
                         npcVehicle.outerSpeedControl = false;
-                    }
-
-                    // for debug
-                    if(distanceEgo2NPC <= 40){
-                        isFixedPath = true;
-                    }
-                    
+                    }                    
                 }
             }
         }
