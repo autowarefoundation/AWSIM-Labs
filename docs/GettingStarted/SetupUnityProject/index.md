@@ -79,9 +79,9 @@ Follow the steps below to install Unity on your machine:
 To open the Unity AWSIM project in Unity Editor:
 
 === "Using Unity Hub"
-    1. Make sure you have the AWSIM repository cloned and ROS 2 is not sourced.
+    1. Make sure you have the AWSIM Labs repository cloned and **ROS 2 is NOT sourced**.
         ```
-        git clone git@github.com:autowarefoundation/AWSIM.git
+        git clone https://github.com/autowarefoundation/AWSIM-Labs.git
         ```
 
     2. Launch UnityHub.
@@ -142,11 +142,11 @@ To properly run and use AWSIM project in Unity it is required to download map pa
 
     The Externals directory is added to the `.gitignore` because the map has a large file size and should not be directly uploaded to the repository.
 
-## Import Vehicle Physics Pro Community Edition Asset
+### Import Vehicle Physics Pro Community Edition Asset
 
 Import Vehicle Physics Pro CE by following these instructions: [VPP CE Setup](../../DeveloperGuide/EditorSetup/VPPCommunityEdition/index.md)
 
-## Import Graphy Asset
+### Import Graphy Asset
 
 Import Graphy by following these instructions: [Graphy Asset Setup](../../DeveloperGuide/EditorSetup/Graphy/index.md)
 

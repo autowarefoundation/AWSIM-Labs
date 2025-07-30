@@ -5,7 +5,7 @@ The instruction assumes using the Ubuntu OS.
 
 ### Demo configuration
 
-The simulation provided in the AWSIM demo is configured as follows:
+The simulation provided in the AWSIM Labs demo is configured as follows:
 
 | AWSIM Demo Settings |                                            |
 |:--------------------|:-------------------------------------------|
