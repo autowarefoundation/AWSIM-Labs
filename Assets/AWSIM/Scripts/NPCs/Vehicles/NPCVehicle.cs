@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -9,7 +7,7 @@ namespace AWSIM
     /// NPC Vehicle class.
     /// Controlled by Position and Rotation.
     /// </summary>
-    public class NPCVehicle : MonoBehaviour
+    public class NPCVehicle : NPCs
     {
         public enum TurnSignalState
         {
@@ -185,19 +183,35 @@ namespace AWSIM
         float turnSignalTimer = 0;
         bool currentTurnSignalOn = false;
 
-        float wheelbase;        // m
-        float acceleration;     // m/s^2
-        Vector3 velocity;       // m/s
-        float speed;            // m/s (forward only)
-        float yawAngularSpeed;  // deg/s (yaw only)
+        float wheelbase;         // m
+        float acceleration;      // m/s^2
+        Vector3 velocity;        // m/s
+        public float speed;      // m/s (forward only)
+        float yawAngularSpeed;   // deg/s (yaw only)
 
-        Vector3 lastVelocity;
-        Vector3 lastPosition;
+        public Vector3 lastVelocity;
+        public Vector3 lastPosition;
+        public QuaternionD lastRotation;
         float lastEulerAnguleY;
         float lastSpeed;
 
         public Transform RigidBodyTransform => rigidbody.transform;
         public Transform TrailerTransform => trailer?.transform;
+
+        // for prediction-control
+        public Vector3 predictedVelocity; // m/s
+        public Vector3 predictedAngularVelocity; // m/s
+        public float predictedAcceleration;
+        public override float Acceleration => predictedAcceleration;
+        public Vector3 localLinearVelocity;
+        public override Vector3 LinearVelocity => localLinearVelocity;
+        Vector3 localAngularVelocity;
+        public override Vector3 AngularVelocity => localAngularVelocity;
+
+        public int stopCount { get; set; }
+        public bool outerPathControl { get; set; }
+        public bool outerSpeedControl { get; set; }
+
 
         // Start is called before the first frame update
         void Awake()
@@ -211,6 +225,11 @@ namespace AWSIM
             rigidbody.centerOfMass = transform.InverseTransformPoint(centerOfMass.position);
             lastPosition = rigidbody.position;
             wheelbase = axleSettings.GetWheelBase();
+            SetUUID();
+            SetSpawnTime();
+            stopCount = 0;
+            outerPathControl = false;
+            outerSpeedControl = false;
         }
 
         // Update is called once per frame
@@ -306,9 +325,15 @@ namespace AWSIM
         {
             // Calculate physical states for visual update.
             // velocity & speed.
-            velocity = (rigidbody.position - lastPosition) / Time.deltaTime;
+            velocity = (rigidbody.position - lastPosition) / Time.fixedDeltaTime;
             speed = Vector3.Dot(velocity, transform.forward);
 
+            // angular velocity
+            var currentRotation = new QuaternionD(rigidbody.rotation);
+            var deltaRotation = currentRotation * QuaternionD.Inverse(lastRotation);
+            deltaRotation.ToAngleAxis(out var angle, out var axis);
+            var angularVelocity = ((float)angle * axis) / Time.deltaTime;
+            
             // accleration.
             acceleration = (speed - lastSpeed) / Time.deltaTime;
 
@@ -318,10 +343,19 @@ namespace AWSIM
             // TODO: set WheelCollider steer angle?
 
             // Cache current frame values.
+            if(outerPathControl == false){
+                predictedVelocity        = velocity;
+                predictedAngularVelocity = angularVelocity;
+                predictedAcceleration    = acceleration;
+            }
+
             lastPosition = rigidbody.position;
+            lastRotation = new QuaternionD(rigidbody.rotation);
             lastVelocity = velocity;
             lastEulerAnguleY = rigidbody.rotation.eulerAngles.y;
             lastSpeed = speed;
+            localLinearVelocity = transform.InverseTransformDirection(predictedVelocity);
+            localAngularVelocity = transform.InverseTransformDirection(predictedAngularVelocity);
         }
 
         void Reset()

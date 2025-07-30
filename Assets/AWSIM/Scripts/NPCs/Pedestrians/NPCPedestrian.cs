@@ -6,7 +6,7 @@ namespace AWSIM
     /// NPC pedestrian that is controlled in the scenario.
     /// </summary>
     [RequireComponent(typeof(Rigidbody), typeof(Animator))]
-    public class NPCPedestrian : MonoBehaviour
+    public class NPCPedestrian : NPCs
     {
         [SerializeField] private new Rigidbody rigidbody;
         [SerializeField] private Transform referencePoint;
@@ -31,6 +31,29 @@ namespace AWSIM
         private const string moveSpeedProperty = "moveSpeed";
         private const string rotateSpeedProperty = "rotateSpeed";
 
+        public Vector3 lastPosition;
+        public Vector3 velocity;
+        public Vector3 lastVelocity;
+        public QuaternionD lastRotation;
+
+        public Vector3 localLinearVelocity;
+        public override Vector3 LinearVelocity => localLinearVelocity;
+
+        public Vector3 localAngularVelocity;
+        public override Vector3 AngularVelocity => localAngularVelocity;
+
+        public int stopCount { get; set; }
+        public bool outerPathControl { get; set; }
+        public bool outerSpeedControl { get; set; }
+
+        private void Start(){
+            SetUUID();
+            SetSpawnTime();
+            stopCount = 0;
+            outerPathControl = false;
+            outerSpeedControl = false;
+        }
+
         private void Update()
         {
             // Switch animation based on movement speed (m/s).
@@ -39,6 +62,26 @@ namespace AWSIM
 
             // Switch animation based on rotation speed (rad/s).
             animator.SetFloat(rotateSpeedProperty, rigidbody.angularVelocity.magnitude);
+        }
+
+        private void FixedUpdate()
+        {
+            // Calculate physical states for tracking result publisher.
+            // velocity
+            velocity = (rigidbody.position - lastPosition) / Time.fixedDeltaTime;
+
+            // angular velocity
+            var currentRotation = new QuaternionD(rigidbody.rotation);
+            var deltaRotation = currentRotation * QuaternionD.Inverse(lastRotation);
+            deltaRotation.ToAngleAxis(out var angle, out var axis);
+            var angularVelocity = ((float)angle * axis) / Time.fixedDeltaTime;
+
+            // Cache current frame values.
+            lastPosition = rigidbody.position;
+            lastRotation = new QuaternionD(rigidbody.rotation);
+            lastVelocity = velocity;
+            localLinearVelocity = transform.InverseTransformDirection(velocity);
+            localAngularVelocity = transform.InverseTransformDirection(angularVelocity);
         }
 
         private void Reset()

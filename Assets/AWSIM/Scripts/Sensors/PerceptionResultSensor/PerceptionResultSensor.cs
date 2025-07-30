@@ -30,6 +30,8 @@ namespace AWSIM
         {
             public DetectedObject[] objects;
             public Transform origin;
+            public int seconds;
+            public uint nanoseconds;
         }
 
         /// <summary>
@@ -92,6 +94,7 @@ namespace AWSIM
         void CreateDetectedObjectData()
         {
             outputData.objects = new DetectedObject[cachedObjectsWithClassification.Length];
+
             for (int i = 0; i < cachedObjectsWithClassification.Length; i++)
             {
                 ObjectClassification obj = cachedObjectsWithClassification[i];
@@ -166,6 +169,12 @@ namespace AWSIM
                 if (o == null) continue;
                 outputData.objects[i].bounds = GenerateFootprint(o.dimension, o.rigidBody);
             }
+
+            // Set header time  
+            double fixedTime       = Time.fixedTime;
+            outputData.seconds     = (int) fixedTime;
+            outputData.nanoseconds = (uint)((fixedTime - outputData.seconds)*1e9);
+            
             // Calls registered callbacks
             OnOutputData.Invoke(outputData);
         }
