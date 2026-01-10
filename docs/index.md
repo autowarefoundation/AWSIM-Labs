@@ -1,4 +1,4 @@
-# Welcome to AWSIM Labs
+# ❌ AWSIM Labs is no longer maintained
 
 !!! failure
 
