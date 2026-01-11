@@ -1,4 +1,8 @@
-# AWSIM Labs
+# ❌ AWSIM Labs is no longer maintained.
+
+See the [announcement post](https://github.com/orgs/autowarefoundation/discussions/6706).
+
+---
 
 <img src="docs/assets/images/E2ESim.png" height="300">
 

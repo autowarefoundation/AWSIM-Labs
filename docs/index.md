@@ -1,4 +1,9 @@
-# Welcome to AWSIM Labs
+# ❌ AWSIM Labs is no longer maintained
+
+!!! failure
+
+    AWSIM Labs is no longer maintained.
+    See the [announcement post](https://github.com/orgs/autowarefoundation/discussions/6706).
 
 ![](assets/images/E2ESim.png){: style="height:300px"}
 
